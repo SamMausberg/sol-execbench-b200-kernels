@@ -516,7 +516,10 @@ void rmsnorm_qk_flat_halfwarp_kernel(
     sum += __shfl_down_sync(kFullWarp, sum, offset, kFlatSubgroupWidth);
   }
 
-  const float scale_slot = fast_rsqrt(fmaf(sum, kInvHeadSize, eps));
+  float scale_slot = 0.0f;
+  if (sublane == 0) {
+    scale_slot = fast_rsqrt(fmaf(sum, kInvHeadSize, eps));
+  }
   const float scale =
       __shfl_sync(kFullWarp, scale_slot, 0, kFlatSubgroupWidth);
   const float2 scale2 = make_float2(scale, scale);
