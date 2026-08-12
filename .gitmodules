@@ -1,0 +1,3 @@
+[submodule "third_party/sol-execbench"]
+	path = third_party/sol-execbench
+	url = https://github.com/NVIDIA/SOL-ExecBench.git

@@ -1,0 +1,44 @@
+{
+  "author": "sol-038-flux-rmsnorm",
+  "definition": "038_flux_multi_head_rmsnorm_qk",
+  "description": "SM100 256-bit subwarp RMSNorm with packed FP32x2 arithmetic and persistent weights.",
+  "name": "flux_multi_head_rmsnorm_qk_stream4_vec32",
+  "sources": [
+    {
+      "path": "binding.cpp"
+    },
+    {
+      "path": "kernel.cu"
+    },
+    {
+      "path": "kernel.cuh"
+    }
+  ],
+  "spec": {
+    "binding": "torch",
+    "compile_options": {
+      "cflags": [
+        "-O3",
+        "-std=c++17"
+      ],
+      "cuda_cflags": [
+        "-O3",
+        "--use_fast_math",
+        "-std=c++17"
+      ],
+      "ld_flags": [
+        "-lcuda"
+      ]
+    },
+    "dependencies": [],
+    "destination_passing_style": true,
+    "entry_point": "binding.cpp::run",
+    "languages": [
+      "cuda_cpp"
+    ],
+    "target_hardware": [
+      "B200",
+      "LOCAL"
+    ]
+  }
+}

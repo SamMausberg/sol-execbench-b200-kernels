@@ -1,0 +1,22 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  repository:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Validate repository
+        run: python3 tools/repo.py lint
+      - name: Verify deterministic package
+        run: |
+          python3 tools/repo.py package --output dist/038_flux_multi_head_rmsnorm_qk-b200.json
+          python3 tools/repo.py verify-package --artifact dist/038_flux_multi_head_rmsnorm_qk-b200.json

@@ -1,0 +1,25 @@
+{
+  "contract": {
+    "canonicalization": "compact JSON preserving dataset field order",
+    "sha256": "c80cf9574612ec24ba6e67d6142ab67ab2ef3ff71d1cf7c29ba8224535665d4f"
+  },
+  "dataset": {
+    "path": "data/L1.parquet",
+    "repository": "nvidia/SOL-ExecBench",
+    "revision": "63699402f003496acc3af4eb534a5304a8ac1ea9",
+    "sha256": "dbaf8476812194920e405118cc5f4abc65035b79a4307b5ee88fb07666ceed48"
+  },
+  "evaluation_stack": "v1.1",
+  "evaluator": {
+    "repository": "https://github.com/NVIDIA/SOL-ExecBench.git",
+    "revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+    "version": "1.0.2"
+  },
+  "problem": {
+    "collection": "L1",
+    "id": 38,
+    "name": "038_flux_multi_head_rmsnorm_qk",
+    "workloads": 16
+  },
+  "schema_version": 1
+}

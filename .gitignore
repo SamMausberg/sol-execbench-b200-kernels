@@ -1,0 +1,10 @@
+.work/
+dist/
+*.ncu-rep
+*.ncu-rep.lock
+*.nsys-rep
+*.zip
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
