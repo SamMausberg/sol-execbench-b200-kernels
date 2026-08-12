@@ -1,8 +1,8 @@
 {
   "author": "sol-038-flux-rmsnorm",
   "definition": "038_flux_multi_head_rmsnorm_qk",
-  "description": "Shape-dispatched SM100 RMSNorm with measured G16, G8, 256-bit subwarp, and half-warp paths.",
-  "name": "flux_multi_head_rmsnorm_qk_hybrid",
+  "description": "Shape-dispatched SM100 RMSNorm with a launch-tuned 128-token path and low-register Q/K grid paths.",
+  "name": "flux_multi_head_rmsnorm_qk_qk_grid",
   "sources": [
     {
       "path": "binding.cpp"
