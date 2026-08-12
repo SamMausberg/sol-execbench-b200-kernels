@@ -19,6 +19,12 @@ constexpr int kFlatThreadsPerBlock = kFlatWarpsPerBlock * 32;
 constexpr int kTokenG16WarpsPerBlock = 8;
 constexpr int kTokenG16ThreadsPerBlock = kTokenG16WarpsPerBlock * 32;
 constexpr int kTokenG16Streams = 64;
+constexpr int kG8Width = 8;
+constexpr int kG8HeadPairsPerWarp = 2;
+constexpr int kG8HeadsPerBlock = 24;
+constexpr int kG8WarpsPerBlock =
+    kG8HeadsPerBlock / kG8HeadPairsPerWarp;
+constexpr int kG8ThreadsPerBlock = kG8WarpsPerBlock * 32;
 constexpr int kStream4MaxRows = 256;
 constexpr unsigned kFullWarp = 0xffffffffu;
 constexpr float kInvHeadSize = 1.0f / static_cast<float>(kHeadSize);
@@ -182,6 +188,55 @@ __device__ __forceinline__ void store256_streaming(
 #endif
 }
 
+// These coherent cache operators are used only by the measured 256-row G8
+// path. They change replacement priority, not data identity or semantics.
+__device__ __forceinline__ Pack256 load256_g8_input(
+    const Pack256* address) {
+#if defined(__CUDA_ARCH__) && __CUDA_ARCH__ >= 1000
+  Pack256 result;
+  asm volatile(
+      "ld.global.L1::no_allocate.L2::evict_first.v4.b64 "
+      "{%0, %1, %2, %3}, [%4];"
+      : "=l"(result.x), "=l"(result.y), "=l"(result.z), "=l"(result.w)
+      : "l"(address)
+      : "memory");
+  return result;
+#else
+  return *address;
+#endif
+}
+
+__device__ __forceinline__ Pack256 load256_g8_weight(
+    const Pack256* address) {
+#if defined(__CUDA_ARCH__) && __CUDA_ARCH__ >= 1000
+  Pack256 result;
+  asm volatile(
+      "ld.global.L1::evict_last.L2::evict_last.v4.b64 "
+      "{%0, %1, %2, %3}, [%4];"
+      : "=l"(result.x), "=l"(result.y), "=l"(result.z), "=l"(result.w)
+      : "l"(address)
+      : "memory");
+  return result;
+#else
+  return *address;
+#endif
+}
+
+__device__ __forceinline__ void store256_g8_output(
+    Pack256* address, Pack256 value) {
+#if defined(__CUDA_ARCH__) && __CUDA_ARCH__ >= 1000
+  asm volatile(
+      "st.global.L1::no_allocate.L2::evict_first.v4.b64 "
+      "[%0], {%1, %2, %3, %4};"
+      :
+      : "l"(address), "l"(value.x), "l"(value.y), "l"(value.z),
+        "l"(value.w)
+      : "memory");
+#else
+  *address = value;
+#endif
+}
+
 __device__ __forceinline__ void accumulate_square(
     Pack256 value, float2& acc0, float2& acc1, float2& acc2, float2& acc3) {
   const float2 value0 = unpack_f2(value.x);
@@ -192,6 +247,18 @@ __device__ __forceinline__ void accumulate_square(
   acc1 = fma2(value1, value1, acc1);
   acc2 = fma2(value2, value2, acc2);
   acc3 = fma2(value3, value3, acc3);
+}
+
+__device__ __forceinline__ void accumulate_square_2way(
+    Pack256 value, float2& even_acc, float2& odd_acc) {
+  const float2 value0 = unpack_f2(value.x);
+  const float2 value1 = unpack_f2(value.y);
+  const float2 value2 = unpack_f2(value.z);
+  const float2 value3 = unpack_f2(value.w);
+  even_acc = fma2(value0, value0, even_acc);
+  odd_acc = fma2(value1, value1, odd_acc);
+  even_acc = fma2(value2, value2, even_acc);
+  odd_acc = fma2(value3, value3, odd_acc);
 }
 
 __device__ __forceinline__ Pack256 scale_pack(
@@ -349,6 +416,60 @@ void rmsnorm_qk_token_g16_128_kernel(
       make_float4(output45.x, output45.y, output67.x, output67.y);
 }
 
+// B200-measured 256-row path from the supplied optimization bundle. Each warp
+// computes two complete Q/K head pairs using four independent 8-lane groups.
+__global__ __launch_bounds__(kG8ThreadsPerBlock, 3)
+void rmsnorm_qk_g8_256_kernel(
+    const Pack256* __restrict__ query,
+    const Pack256* __restrict__ key,
+    const Pack256* __restrict__ weight_q,
+    const Pack256* __restrict__ weight_k,
+    float eps,
+    Pack256* __restrict__ query_norm,
+    Pack256* __restrict__ key_norm) {
+  const int token = static_cast<int>(blockIdx.x);
+  const int head_tile = static_cast<int>(blockIdx.y);
+  const int warp = threadIdx.x >> 5;
+  const int lane = threadIdx.x & 31;
+  const int subgroup = lane >> 3;
+  const int sublane = lane & (kG8Width - 1);
+  const int pair_in_warp = subgroup >> 1;
+  const bool is_key = (subgroup & 1) != 0;
+  const int head =
+      head_tile * kG8HeadsPerBlock + warp * kG8HeadPairsPerWarp +
+      pair_in_warp;
+
+  const Pack256* __restrict__ input = is_key ? key : query;
+  const Pack256* __restrict__ weight = is_key ? weight_k : weight_q;
+  Pack256* __restrict__ output = is_key ? key_norm : query_norm;
+
+  const int weight_base = head * kPacksPerHead + sublane;
+  const int base =
+      token * (kHeads * kPacksPerHead) + weight_base;
+  const Pack256 input0 = load256_g8_input(input + base);
+  const Pack256 input1 = load256_g8_input(input + base + kG8Width);
+
+  float2 even_acc = make_float2(0.0f, 0.0f);
+  float2 odd_acc = make_float2(0.0f, 0.0f);
+  accumulate_square_2way(input0, even_acc, odd_acc);
+  accumulate_square_2way(input1, even_acc, odd_acc);
+  const float2 packed_sum = add2(even_acc, odd_acc);
+  float sum = packed_sum.x + packed_sum.y;
+  sum += __shfl_xor_sync(kFullWarp, sum, 4, kG8Width);
+  sum += __shfl_xor_sync(kFullWarp, sum, 2, kG8Width);
+  sum += __shfl_xor_sync(kFullWarp, sum, 1, kG8Width);
+  const float scale = fast_rsqrt(fmaf(sum, kInvHeadSize, eps));
+
+  Pack256 weight_pack = load256_g8_weight(weight + weight_base);
+  store256_g8_output(
+      output + base, scale_pack(input0, weight_pack, scale));
+  weight_pack =
+      load256_g8_weight(weight + weight_base + kG8Width);
+  store256_g8_output(
+      output + base + kG8Width,
+      scale_pack(input1, weight_pack, scale));
+}
+
 __global__ __launch_bounds__(kFlatThreadsPerBlock, 1)
 void rmsnorm_qk_flat_halfwarp_kernel(
     const float4* __restrict__ query,
@@ -447,6 +568,16 @@ void launch_flux_rmsnorm_qk(
             eps,
             reinterpret_cast<float4*>(query_norm.data_ptr<float>()),
             reinterpret_cast<float4*>(key_norm.data_ptr<float>()));
+  } else if (rows == 256) {
+    const dim3 grid(rows, kHeads / kG8HeadsPerBlock);
+    rmsnorm_qk_g8_256_kernel<<<grid, kG8ThreadsPerBlock, 0, stream>>>(
+        reinterpret_cast<const Pack256*>(query.data_ptr<float>()),
+        reinterpret_cast<const Pack256*>(key.data_ptr<float>()),
+        reinterpret_cast<const Pack256*>(weight_q.data_ptr<float>()),
+        reinterpret_cast<const Pack256*>(weight_k.data_ptr<float>()),
+        eps,
+        reinterpret_cast<Pack256*>(query_norm.data_ptr<float>()),
+        reinterpret_cast<Pack256*>(key_norm.data_ptr<float>()));
   } else if (rows <= kStream4MaxRows) {
     int rows_per_cta = rows / SOL38_TARGET_X_CTAS;
     if (rows_per_cta < 1) {
