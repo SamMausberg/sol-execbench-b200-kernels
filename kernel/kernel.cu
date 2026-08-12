@@ -16,6 +16,9 @@ constexpr int kFlatVecsPerHead = kHeadSize / 4;
 constexpr int kFlatSubgroupWidth = 16;
 constexpr int kFlatWarpsPerBlock = 32;
 constexpr int kFlatThreadsPerBlock = kFlatWarpsPerBlock * 32;
+constexpr int kTokenG16WarpsPerBlock = 8;
+constexpr int kTokenG16ThreadsPerBlock = kTokenG16WarpsPerBlock * 32;
+constexpr int kTokenG16Streams = 64;
 constexpr int kStream4MaxRows = 256;
 constexpr unsigned kFullWarp = 0xffffffffu;
 constexpr float kInvHeadSize = 1.0f / static_cast<float>(kHeadSize);
@@ -282,6 +285,70 @@ void rmsnorm_qk_stream4_vec32_kernel(
   }
 }
 
+__global__ __launch_bounds__(kTokenG16ThreadsPerBlock, 4)
+void rmsnorm_qk_token_g16_128_kernel(
+    const float4* __restrict__ query,
+    const float4* __restrict__ key,
+    const float4* __restrict__ weight_q,
+    const float4* __restrict__ weight_k,
+    float eps,
+    float4* __restrict__ query_norm,
+    float4* __restrict__ key_norm) {
+  const int warp = threadIdx.x >> 5;
+  const int lane = threadIdx.x & 31;
+  const int token_group = lane >> 4;
+  const int sublane = lane & 15;
+  const bool is_key = (static_cast<int>(blockIdx.x) & 1) != 0;
+  const int head_tile = static_cast<int>(blockIdx.x) >> 1;
+  const int head = head_tile * kTokenG16WarpsPerBlock + warp;
+  const int token = static_cast<int>(blockIdx.y) * 2 + token_group;
+
+  const float4* __restrict__ input = is_key ? key : query;
+  const float4* __restrict__ weight = is_key ? weight_k : weight_q;
+  float4* __restrict__ output = is_key ? key_norm : query_norm;
+
+  const int weight_base = head * kFlatVecsPerHead + sublane;
+  const float4 weight0 = weight[weight_base];
+  const float4 weight1 = weight[weight_base + 16];
+
+  const int64_t base =
+      (static_cast<int64_t>(token) * kHeads + head) * kFlatVecsPerHead +
+      sublane;
+  const float4 input0 = input[base];
+  const float4 input1 = input[base + 16];
+  const float2 input01 = make_float2(input0.x, input0.y);
+  const float2 input23 = make_float2(input0.z, input0.w);
+  const float2 input45 = make_float2(input1.x, input1.y);
+  const float2 input67 = make_float2(input1.z, input1.w);
+
+  float2 sum0 = fma2(input01, input01, make_float2(0.0f, 0.0f));
+  sum0 = fma2(input45, input45, sum0);
+  float2 sum1 = fma2(input23, input23, make_float2(0.0f, 0.0f));
+  sum1 = fma2(input67, input67, sum1);
+  const float2 packed_sum = add2(sum0, sum1);
+  float sum = packed_sum.x + packed_sum.y;
+  sum += __shfl_xor_sync(kFullWarp, sum, 8, 16);
+  sum += __shfl_xor_sync(kFullWarp, sum, 4, 16);
+  sum += __shfl_xor_sync(kFullWarp, sum, 2, 16);
+  sum += __shfl_xor_sync(kFullWarp, sum, 1, 16);
+
+  const float scale = fast_rsqrt(fmaf(sum, kInvHeadSize, eps));
+  const float2 scale2 = make_float2(scale, scale);
+  const float2 output01 =
+      mul2(mul2(input01, scale2), make_float2(weight0.x, weight0.y));
+  const float2 output23 =
+      mul2(mul2(input23, scale2), make_float2(weight0.z, weight0.w));
+  const float2 output45 =
+      mul2(mul2(input45, scale2), make_float2(weight1.x, weight1.y));
+  const float2 output67 =
+      mul2(mul2(input67, scale2), make_float2(weight1.z, weight1.w));
+
+  output[base] =
+      make_float4(output01.x, output01.y, output23.x, output23.y);
+  output[base + 16] =
+      make_float4(output45.x, output45.y, output67.x, output67.y);
+}
+
 __global__ __launch_bounds__(kFlatThreadsPerBlock, 1)
 void rmsnorm_qk_flat_halfwarp_kernel(
     const float4* __restrict__ query,
@@ -368,7 +435,19 @@ void launch_flux_rmsnorm_qk(
       rows64 <= std::numeric_limits<int>::max() / kHeads, "too many rows");
   const int rows = static_cast<int>(rows64);
 
-  if (rows <= kStream4MaxRows) {
+  if (rows == 128) {
+    constexpr int kHeadTiles = kHeads / kTokenG16WarpsPerBlock;
+    const dim3 grid(2 * kHeadTiles, kTokenG16Streams);
+    rmsnorm_qk_token_g16_128_kernel
+        <<<grid, kTokenG16ThreadsPerBlock, 0, stream>>>(
+            reinterpret_cast<const float4*>(query.data_ptr<float>()),
+            reinterpret_cast<const float4*>(key.data_ptr<float>()),
+            reinterpret_cast<const float4*>(weight_q.data_ptr<float>()),
+            reinterpret_cast<const float4*>(weight_k.data_ptr<float>()),
+            eps,
+            reinterpret_cast<float4*>(query_norm.data_ptr<float>()),
+            reinterpret_cast<float4*>(key_norm.data_ptr<float>()));
+  } else if (rows <= kStream4MaxRows) {
     int rows_per_cta = rows / SOL38_TARGET_X_CTAS;
     if (rows_per_cta < 1) {
       rows_per_cta = 1;

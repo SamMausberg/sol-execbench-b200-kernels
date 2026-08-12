@@ -1,7 +1,7 @@
 {
   "author": "sol-038-flux-rmsnorm",
   "definition": "038_flux_multi_head_rmsnorm_qk",
-  "description": "Shape-dispatched SM100 RMSNorm with short-row 256-bit subwarps and flat half-warps.",
+  "description": "Shape-dispatched SM100 RMSNorm with token-striped, 256-bit subwarp, and flat half-warp paths.",
   "name": "flux_multi_head_rmsnorm_qk_hybrid",
   "sources": [
     {
