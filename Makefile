@@ -149,7 +149,7 @@ profile: stage
 		report="/workspace/.work/profiles/$(TARGET)/workload-$(WORKLOAD)"; \
 		set +e; \
 		ncu --target-processes all --set basic --launch-count 1 --kill 1 \
-		--kernel-name regex:rmsnorm_qk_stream4_vec32_kernel --force-overwrite \
+		--kernel-name "regex:rmsnorm_qk_.*_kernel" --force-overwrite \
 		-o "$$report" \
 		sol-execbench /workspace/.work/profile-problem \
 		--solution /workspace/.work/stage/$(TARGET)/solution.json \

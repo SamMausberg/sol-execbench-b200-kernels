@@ -1,8 +1,8 @@
 {
   "author": "sol-038-flux-rmsnorm",
   "definition": "038_flux_multi_head_rmsnorm_qk",
-  "description": "SM100 256-bit subwarp RMSNorm with packed FP32x2 arithmetic and persistent weights.",
-  "name": "flux_multi_head_rmsnorm_qk_stream4_vec32",
+  "description": "Shape-dispatched SM100 RMSNorm with short-row 256-bit subwarps and flat half-warps.",
+  "name": "flux_multi_head_rmsnorm_qk_hybrid",
   "sources": [
     {
       "path": "binding.cpp"

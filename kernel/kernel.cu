@@ -12,6 +12,11 @@ constexpr int kHeads = 48;
 constexpr int kHeadSize = 128;
 constexpr int kPacksPerHead = 16;
 constexpr int kHeadGroupsPerWarp = 8;
+constexpr int kFlatVecsPerHead = kHeadSize / 4;
+constexpr int kFlatSubgroupWidth = 16;
+constexpr int kFlatWarpsPerBlock = 32;
+constexpr int kFlatThreadsPerBlock = kFlatWarpsPerBlock * 32;
+constexpr int kStream4MaxRows = 256;
 constexpr unsigned kFullWarp = 0xffffffffu;
 constexpr float kInvHeadSize = 1.0f / static_cast<float>(kHeadSize);
 
@@ -277,6 +282,75 @@ void rmsnorm_qk_stream4_vec32_kernel(
   }
 }
 
+__global__ __launch_bounds__(kFlatThreadsPerBlock, 1)
+void rmsnorm_qk_flat_halfwarp_kernel(
+    const float4* __restrict__ query,
+    const float4* __restrict__ key,
+    const float4* __restrict__ weight_q,
+    const float4* __restrict__ weight_k,
+    float eps,
+    int total_head_rows,
+    float4* __restrict__ query_norm,
+    float4* __restrict__ key_norm) {
+  const int warp = threadIdx.x >> 5;
+  const int lane = threadIdx.x & 31;
+  const int head_row =
+      static_cast<int>(blockIdx.x) * kFlatWarpsPerBlock + warp;
+  if (head_row >= total_head_rows) {
+    return;
+  }
+
+  const int sublane = lane & (kFlatSubgroupWidth - 1);
+  const bool is_key = lane >= kFlatSubgroupWidth;
+  const int head = head_row % kHeads;
+  const int64_t base =
+      static_cast<int64_t>(head_row) * kFlatVecsPerHead + sublane;
+  const int weight_base = head * kFlatVecsPerHead + sublane;
+
+  const float4* __restrict__ input = is_key ? key : query;
+  const float4* __restrict__ weight = is_key ? weight_k : weight_q;
+  float4* __restrict__ output = is_key ? key_norm : query_norm;
+
+  const float4 input0 = input[base];
+  const float4 input1 = input[base + kFlatSubgroupWidth];
+  const float2 input01 = make_float2(input0.x, input0.y);
+  const float2 input23 = make_float2(input0.z, input0.w);
+  const float2 input45 = make_float2(input1.x, input1.y);
+  const float2 input67 = make_float2(input1.z, input1.w);
+
+  float2 packed_sum = mul2(input01, input01);
+  packed_sum = fma2(input23, input23, packed_sum);
+  packed_sum = fma2(input45, input45, packed_sum);
+  packed_sum = fma2(input67, input67, packed_sum);
+  float sum = packed_sum.x + packed_sum.y;
+#pragma unroll
+  for (int offset = 8; offset > 0; offset >>= 1) {
+    sum += __shfl_down_sync(kFullWarp, sum, offset, kFlatSubgroupWidth);
+  }
+
+  const float scale_slot = fast_rsqrt(fmaf(sum, kInvHeadSize, eps));
+  const float scale =
+      __shfl_sync(kFullWarp, scale_slot, 0, kFlatSubgroupWidth);
+  const float2 scale2 = make_float2(scale, scale);
+
+  const float4 weight0 = __ldg(weight + weight_base);
+  const float2 output01 =
+      mul2(mul2(input01, scale2), make_float2(weight0.x, weight0.y));
+  const float2 output23 =
+      mul2(mul2(input23, scale2), make_float2(weight0.z, weight0.w));
+  output[base] =
+      make_float4(output01.x, output01.y, output23.x, output23.y);
+
+  const float4 weight1 =
+      __ldg(weight + weight_base + kFlatSubgroupWidth);
+  const float2 output45 =
+      mul2(mul2(input45, scale2), make_float2(weight1.x, weight1.y));
+  const float2 output67 =
+      mul2(mul2(input67, scale2), make_float2(weight1.z, weight1.w));
+  output[base + kFlatSubgroupWidth] =
+      make_float4(output45.x, output45.y, output67.x, output67.y);
+}
+
 }  // namespace
 
 void launch_flux_rmsnorm_qk(
@@ -290,30 +364,46 @@ void launch_flux_rmsnorm_qk(
     cudaStream_t stream) {
   const int64_t rows64 = query.numel() / (kHeads * kHeadSize);
   TORCH_CHECK(rows64 > 0, "empty input is unsupported");
-  TORCH_CHECK(rows64 <= std::numeric_limits<int>::max(), "too many rows");
+  TORCH_CHECK(
+      rows64 <= std::numeric_limits<int>::max() / kHeads, "too many rows");
   const int rows = static_cast<int>(rows64);
 
-  int rows_per_cta = rows / SOL38_TARGET_X_CTAS;
-  if (rows_per_cta < 1) {
-    rows_per_cta = 1;
-  }
-  const int grid_x = (rows + rows_per_cta - 1) / rows_per_cta;
+  if (rows <= kStream4MaxRows) {
+    int rows_per_cta = rows / SOL38_TARGET_X_CTAS;
+    if (rows_per_cta < 1) {
+      rows_per_cta = 1;
+    }
+    const int grid_x = (rows + rows_per_cta - 1) / rows_per_cta;
 
-  const dim3 block(kThreadsPerBlock);
-  const dim3 grid(grid_x, 2, kHeads / kHeadsPerBlock);
-  rmsnorm_qk_stream4_vec32_kernel<<<grid, block, 0, stream>>>(
-      reinterpret_cast<const Pack256*>(query.data_ptr<float>()),
-      reinterpret_cast<const Pack256*>(key.data_ptr<float>()),
-      reinterpret_cast<const Pack256*>(weight_q.data_ptr<float>()),
-      reinterpret_cast<const Pack256*>(weight_k.data_ptr<float>()),
-      eps,
-      rows,
-      rows_per_cta,
-      reinterpret_cast<Pack256*>(query_norm.data_ptr<float>()),
-      reinterpret_cast<Pack256*>(key_norm.data_ptr<float>()));
+    const dim3 block(kThreadsPerBlock);
+    const dim3 grid(grid_x, 2, kHeads / kHeadsPerBlock);
+    rmsnorm_qk_stream4_vec32_kernel<<<grid, block, 0, stream>>>(
+        reinterpret_cast<const Pack256*>(query.data_ptr<float>()),
+        reinterpret_cast<const Pack256*>(key.data_ptr<float>()),
+        reinterpret_cast<const Pack256*>(weight_q.data_ptr<float>()),
+        reinterpret_cast<const Pack256*>(weight_k.data_ptr<float>()),
+        eps,
+        rows,
+        rows_per_cta,
+        reinterpret_cast<Pack256*>(query_norm.data_ptr<float>()),
+        reinterpret_cast<Pack256*>(key_norm.data_ptr<float>()));
+  } else {
+    const int total_head_rows = rows * kHeads;
+    const int blocks =
+        (total_head_rows + kFlatWarpsPerBlock - 1) / kFlatWarpsPerBlock;
+    rmsnorm_qk_flat_halfwarp_kernel<<<blocks, kFlatThreadsPerBlock, 0, stream>>>(
+        reinterpret_cast<const float4*>(query.data_ptr<float>()),
+        reinterpret_cast<const float4*>(key.data_ptr<float>()),
+        reinterpret_cast<const float4*>(weight_q.data_ptr<float>()),
+        reinterpret_cast<const float4*>(weight_k.data_ptr<float>()),
+        eps,
+        total_head_rows,
+        reinterpret_cast<float4*>(query_norm.data_ptr<float>()),
+        reinterpret_cast<float4*>(key_norm.data_ptr<float>()));
+  }
 
   const cudaError_t error = cudaGetLastError();
   TORCH_CHECK(error == cudaSuccess,
-              "rmsnorm_qk_stream4_vec32_kernel launch failed: ",
+              "flux RMSNorm kernel launch failed: ",
               cudaGetErrorString(error));
 }
