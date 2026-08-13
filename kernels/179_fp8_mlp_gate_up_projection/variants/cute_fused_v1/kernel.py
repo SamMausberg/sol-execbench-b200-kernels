@@ -5,9 +5,10 @@
 #            blockwise_fp8_mm(x, up_weight)
 #
 # The tensor-core mainloop is a source-visible BSD-3-Clause derivative of the
-# CUTLASS v4.4.1 SM100 blockwise GEMM example.  The second projection loads the
-# first projection's in-place BF16 result in its epilogue and writes
-# SiLU(gate) * up, avoiding all scratch tensors and a third kernel launch.
+# CUTLASS v4.4.1 SM100 blockwise GEMM example. Paired CTAs compute gate and up
+# projections in one persistent launch, exchange activated BF16 gate subtiles
+# through a pipelined DSMEM ring, and write only SiLU(gate) * up. No global
+# scratch tensor or follow-up pointwise launch is required.
 
 from __future__ import annotations
 
@@ -35,7 +36,7 @@ _MAX_ACTIVE_CLUSTERS = {}
 
 
 class _GateUpFusedPipeline:
-    """Enqueue both projections from one compiled CuTe host entry point."""
+    """Run both projections in one persistent device-kernel launch."""
 
     def __init__(
         self,
@@ -50,15 +51,10 @@ class _GateUpFusedPipeline:
             "mma_tiler_mn": mma_tiler_mn,
             "cluster_shape_mn": cluster_shape_mn,
         }
-        self.gate_gemm = BlockwiseGemmKernel(
+        self.grouped_gemm = BlockwiseGemmKernel(
             **common,
-            fuse_source_silu=False,
-            pdl_role=1,
-        )
-        self.up_fused_gemm = BlockwiseGemmKernel(
-            **common,
-            fuse_source_silu=True,
-            pdl_role=2,
+            dual_projection=True,
+            activate_first_projection=True,
         )
 
     @cute.jit
@@ -74,22 +70,13 @@ class _GateUpFusedPipeline:
         max_active_clusters: cutlass.Constexpr,
         stream: cuda.CUstream,
     ):
-        self.gate_gemm(
+        self.grouped_gemm(
             a,
             gate_b,
-            output_c,
-            output_c,  # constexpr-disabled source argument
-            sfa,
-            gate_sfb,
-            max_active_clusters,
-            stream,
-        )
-        self.up_fused_gemm(
-            a,
             up_b,
             output_c,
-            output_c,
             sfa,
+            gate_sfb,
             up_sfb,
             max_active_clusters,
             stream,
@@ -147,9 +134,20 @@ def _max_active_clusters(device_index: int, cluster_shape: tuple[int, int]) -> i
     return value
 
 
-def _select_config(_m: int):
-    # Submission 36464 established this as the fastest schedule on B200.
-    # N/128 == 148 is exactly divisible by cluster-N=4, with no tail cluster.
+def _select_config(m: int):
+    # Keep the faster 1-CTA instruction, but use independent CTA rows in the
+    # cluster to multicast each B tile across multiple M tiles. Dispatch only
+    # to exact M-cluster divisors so the persistent grid never pays for a
+    # padded row. Three-row clusters matter for M=384 and every workload with
+    # an odd multiple of three tiles, where a power-of-two-only policy leaves
+    # most of the immutable weight bandwidth on the table.
+    m_tiles = m // 128
+    if m_tiles % 4 == 0:
+        return False, (128, 128), (4, 4)
+    if m_tiles % 3 == 0:
+        return False, (128, 128), (3, 4)
+    if m_tiles % 2 == 0:
+        return False, (128, 128), (2, 4)
     return False, (128, 128), (1, 4)
 
 

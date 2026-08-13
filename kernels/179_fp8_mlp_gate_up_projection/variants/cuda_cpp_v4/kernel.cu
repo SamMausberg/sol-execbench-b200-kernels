@@ -43,15 +43,7 @@ template <class Arch>
 using ScaleConfig = cutlass::detail::Sm1xxBlockwiseScaleConfig<
     1, 128, 128, cute::UMMA::Major::K, cute::UMMA::Major::K>;
 
-#if defined(SOL_TARGET_SM100)
-
 constexpr auto kRound = cutlass::FloatRoundStyle::round_to_nearest;
-
-#if defined(SOL_DYNAMIC_SCHEDULER)
-using Sm100TileScheduler = void;
-#else
-using Sm100TileScheduler = cutlass::gemm::StaticPersistentScheduler;
-#endif
 
 using FusedSiluMultiply = cutlass::epilogue::fusion::Sm90EVT<
     cutlass::epilogue::fusion::Sm90Compute<
@@ -64,6 +56,14 @@ using FusedSiluMultiply = cutlass::epilogue::fusion::Sm90EVT<
         cutlass::epilogue::fusion::Sm90Compute<
             cutlass::first, ElementD, ElementCompute, kRound>,
         cutlass::epilogue::fusion::Sm90AccFetch>>;
+
+#if defined(SOL_TARGET_SM100)
+
+#if defined(SOL_DYNAMIC_SCHEDULER)
+using Sm100TileScheduler = void;
+#else
+using Sm100TileScheduler = cutlass::gemm::StaticPersistentScheduler;
+#endif
 
 template <class TileShape, class ClusterShape, class MainloopSchedule,
           bool Fused = false>
@@ -137,21 +137,29 @@ using Sm100TwoFused = Sm100GemmBuilder<
 
 #if defined(SOL_TARGET_SM120)
 
-template <class TileShape, class MainloopSchedule>
+template <class TileShape, class MainloopSchedule, bool Fused = false>
 struct Sm120GemmBuilder {
   using ClusterShape = Shape<_1, _1, _1>;
   using Scales = ScaleConfig<cutlass::arch::Sm120>;
   using LayoutSFA = decltype(Scales::deduce_layoutSFA());
   using LayoutSFB = decltype(Scales::deduce_layoutSFB());
 
+  using ElementC = cute::conditional_t<Fused, ElementD, void>;
+  static constexpr int AlignmentCForKernel = Fused ? AlignmentD : 1;
+  using FusionOp = cute::conditional_t<
+      Fused, FusedSiluMultiply,
+      cutlass::epilogue::fusion::LinearCombination<
+          ElementD, ElementCompute, ElementC, ElementCompute, kRound>>;
+
   using Epilogue = typename cutlass::epilogue::collective::CollectiveBuilder<
       cutlass::arch::Sm120, cutlass::arch::OpClassTensorOp,
       TileShape, ClusterShape,
       cutlass::epilogue::collective::EpilogueTileAuto,
       ElementAccumulator, ElementCompute,
-      void, LayoutC, 1,
+      ElementC, LayoutC, AlignmentCForKernel,
       ElementD, LayoutD, AlignmentD,
-      cutlass::epilogue::collective::EpilogueScheduleAuto>::CollectiveOp;
+      cutlass::epilogue::collective::EpilogueScheduleAuto,
+      FusionOp>::CollectiveOp;
 
   using Mainloop = typename cutlass::gemm::collective::CollectiveBuilder<
       cutlass::arch::Sm120, cutlass::arch::OpClassTensorOp,
@@ -169,6 +177,8 @@ struct Sm120GemmBuilder {
 
 using Sm120Cooperative = Sm120GemmBuilder<
     Shape<_128, _128, _128>, cutlass::gemm::KernelScheduleSm120Blockwise>;
+using Sm120CooperativeFused = Sm120GemmBuilder<
+    Shape<_128, _128, _128>, cutlass::gemm::KernelScheduleSm120Blockwise, true>;
 
 #endif
 
@@ -277,10 +287,13 @@ void launch_fp8_mlp_gate_up(
   const auto* su = scale_up.data_ptr<float>();
   auto* result = reinterpret_cast<ElementD*>(output.data_ptr());
 
-  // This intermediate is recomputed from the current invocation's inputs and
-  // cannot survive into a later evaluator call.
+#if !defined(SOL_SM120_FUSED_EPILOGUE)
+  // This intermediate is recomputed from the current invocation's inputs.
   at::Tensor gate_scratch = at::empty_like(output);
   auto* gate_result = reinterpret_cast<ElementD*>(gate_scratch.data_ptr());
+#else
+  auto* gate_result = result;
+#endif
 
 #if defined(SOL_TARGET_SM100)
   if (((m / 128) & 1) == 0) {
@@ -300,14 +313,20 @@ void launch_fp8_mlp_gate_up(
   check_cutlass(run_gemm<Sm120Cooperative>(
                     m, a, gate, sx, sg, gate_result, stream),
                 "SM120 gate GEMM");
+#if defined(SOL_SM120_FUSED_EPILOGUE)
+  check_cutlass(run_gemm<Sm120CooperativeFused>(
+                    m, a, up, sx, su, result, stream, gate_result),
+                "SM120 fused up GEMM");
+#else
   check_cutlass(run_gemm<Sm120Cooperative>(
                     m, a, up, sx, su, result, stream),
                 "SM120 up GEMM");
+#endif
 #else
   TORCH_CHECK(false, "problem 179 requires SM100a or SM120");
 #endif
 
-#if defined(SOL_TARGET_SM120)
+#if defined(SOL_TARGET_SM120) && !defined(SOL_SM120_FUSED_EPILOGUE)
   const int64_t count = output.numel();
   constexpr int threads = 256;
   const int blocks = static_cast<int>((count / 2 + threads - 1) / threads);

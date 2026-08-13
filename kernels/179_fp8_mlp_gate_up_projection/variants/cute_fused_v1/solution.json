@@ -1,8 +1,8 @@
 {
   "author": "sol-b200-kernel-team",
   "definition": "003_fp8_mlp_gate_up_projection",
-  "description": "Source-visible CUTLASS 4.4.1 CuTe DSL derivative using the proven SM100 1-CTA N4 tensor-core mainloop, in-place destination passing, programmatic dependent launch, and a hardware-fast BF16 gate-load/SiLU/multiply up-projection epilogue; eliminates all scratch tensors and the standalone SwiGLU kernel.",
-  "name": "fp8_mlp_gate_up_cutedsl_inplace_pdl_fused_1cta_n4_v2",
+  "description": "One persistent CUTLASS 4.4.1 CuTe DSL kernel pairs gate/up CTAs in exact 2x4, 3x4, or 4x4 multicast clusters and pipelines activated BF16 gate subtiles through a three-stage DSMEM ring; the up CTA emits SwiGLU directly with no global scratch tensor or cleanup launch.",
+  "name": "fp8_mlp_gate_up_cutedsl_dsmem_ring_cluster_m_v5",
   "sources": [
     {
       "path": "kernel.py"

@@ -26,9 +26,10 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Modified for SOL-ExecBench problem 179: an optional BF16 source tensor is
-# loaded directly into the epilogue registers and combined as
-# SiLU(source) * accumulator. The tensor-core mainloop is unchanged.
+# Modified for SOL-ExecBench problem 179: gate and up projections share one
+# persistent schedule. Paired cluster CTAs exchange activated BF16 gate
+# subtiles through a three-stage DSMEM ring, overlap both epilogues, and emit
+# the final SwiGLU result without global scratch traffic.
 
 from typing import Type, Tuple, Union
 
@@ -36,6 +37,8 @@ import cuda.bindings.driver as cuda
 
 import cutlass
 import cutlass.cute as cute
+from cutlass._mlir.dialects import llvm
+from cutlass.cutlass_dsl import dsl_user_op
 from cutlass.cute.nvgpu import cpasync, tcgen05
 import cutlass.utils as utils
 import cutlass.pipeline as pipeline
@@ -43,6 +46,54 @@ from cutlass.pipeline import pipeline_init_arrive, pipeline_init_wait
 import cutlass.utils.blackwell_helpers as sm100_utils
 
 import math
+
+
+@dsl_user_op
+def _mbarrier_arrive_release_cluster(
+    remote_mbar_ptr: cute.Pointer,
+    *,
+    loc=None,
+    ip=None,
+) -> None:
+    """Publish prior CTA writes while arriving at a peer CTA's barrier."""
+    llvm.inline_asm(
+        None,
+        [remote_mbar_ptr.toint(loc=loc, ip=ip).ir_value()],
+        "mbarrier.arrive.release.cluster.shared::cluster.b64 _, [$0];",
+        "r",
+        has_side_effects=True,
+        is_align_stack=False,
+        asm_dialect=llvm.AsmDialect.AD_ATT,
+    )
+
+
+@dsl_user_op
+def _mbarrier_wait_acquire_cluster(
+    local_mbar_ptr: cute.Pointer,
+    phase: cutlass.Int32,
+    *,
+    loc=None,
+    ip=None,
+) -> None:
+    """Wait for a peer arrival and acquire its cluster-scoped writes."""
+    llvm.inline_asm(
+        None,
+        [
+            local_mbar_ptr.toint(loc=loc, ip=ip).ir_value(),
+            phase.ir_value(loc=loc, ip=ip),
+        ],
+        """{
+        .reg .pred P1;
+        LAB_WAIT: mbarrier.try_wait.parity.acquire.cluster.shared::cta.b64 P1, [$0], $1, 10000000;
+        @P1 bra.uni DONE;
+        bra.uni LAB_WAIT;
+        DONE:
+        }""",
+        "r,r",
+        has_side_effects=True,
+        is_align_stack=False,
+        asm_dialect=llvm.AsmDialect.AD_ATT,
+    )
 
 
 """
@@ -154,8 +205,8 @@ class BlockwiseGemmKernel:
         use_2cta_instrs: bool,
         mma_tiler_mn: Tuple[int, int],
         cluster_shape_mn: Tuple[int, int],
-        fuse_source_silu: bool = False,
-        pdl_role: int = 0,
+        dual_projection: bool = False,
+        activate_first_projection: bool = False,
     ):
         """Initializes the configuration for a Blackwell blockwise dense GEMM kernel.
 
@@ -183,8 +234,8 @@ class BlockwiseGemmKernel:
         self.acc_dtype: Type[cutlass.Numeric] = acc_dtype
         self.use_2cta_instrs = use_2cta_instrs
         self.cluster_shape_mn = cluster_shape_mn
-        self.fuse_source_silu = fuse_source_silu
-        self.pdl_role = pdl_role
+        self.dual_projection = dual_projection
+        self.activate_first_projection = activate_first_projection
         # K dimension is deferred in _setup_attributes
         self.mma_tiler = (*mma_tiler_mn, 1)
 
@@ -390,10 +441,11 @@ class BlockwiseGemmKernel:
         self,
         a: cute.Tensor,
         b: cute.Tensor,
+        b2: cute.Tensor,
         c: cute.Tensor,
-        source: cute.Tensor,
         sfa: cute.Tensor,
         sfb: cute.Tensor,
+        sfb2: cute.Tensor,
         max_active_clusters: cutlass.Constexpr,
         stream: cuda.CUstream,
         epilogue_op: cutlass.Constexpr = lambda x: x,
@@ -426,10 +478,11 @@ class BlockwiseGemmKernel:
         # Setup static attributes before smem/grid/tma computation
         self.a_dtype: Type[cutlass.Numeric] = a.element_type
         self.b_dtype: Type[cutlass.Numeric] = b.element_type
+        self.b2_dtype: Type[cutlass.Numeric] = b2.element_type
         self.c_dtype: Type[cutlass.Numeric] = c.element_type
-        self.source_dtype: Type[cutlass.Numeric] = source.element_type
         self.sfa_dtype: Type[cutlass.Numeric] = sfa.element_type
         self.sfb_dtype: Type[cutlass.Numeric] = sfb.element_type
+        self.sfb2_dtype: Type[cutlass.Numeric] = sfb2.element_type
         self.a_major_mode = utils.LayoutEnum.from_tensor(a).mma_major_mode()
         self.b_major_mode = utils.LayoutEnum.from_tensor(b).mma_major_mode()
         self.c_layout = utils.LayoutEnum.from_tensor(c)
@@ -438,11 +491,14 @@ class BlockwiseGemmKernel:
         if cutlass.const_expr(self.a_dtype != self.b_dtype):
             raise TypeError(f"Type must match: {self.a_dtype} != {self.b_dtype}")
         if cutlass.const_expr(
-            self.fuse_source_silu and self.source_dtype != self.c_dtype
+            self.dual_projection
+            and (
+                self.b2_dtype != self.b_dtype
+                or self.sfb2_dtype != self.sfb_dtype
+            )
         ):
             raise TypeError(
-                f"Fused source type must match output: "
-                f"{self.source_dtype} != {self.c_dtype}"
+                "Both projections must use identical B/C/scale dtypes"
             )
 
         # Setup attributes that dependent on gemm inputs
@@ -487,6 +543,17 @@ class BlockwiseGemmKernel:
                 cutlass.TFloat32 if b.element_type is cutlass.Float32 else None
             ),
         )
+        tma_atom_b2, tma_tensor_b2 = cute.nvgpu.make_tiled_tma_atom_B(
+            b_op,
+            b2,
+            b_smem_layout,
+            self.mma_tiler,
+            tiled_mma,
+            self.cluster_layout_vmnk.shape,
+            internal_type=(
+                cutlass.TFloat32 if b2.element_type is cutlass.Float32 else None
+            ),
+        )
 
         a_copy_size = cute.size_in_bytes(self.a_dtype, a_smem_layout)
         b_copy_size = cute.size_in_bytes(self.b_dtype, b_smem_layout)
@@ -505,7 +572,6 @@ class BlockwiseGemmKernel:
             epi_smem_layout,
             c_cta_v_layout,
         )
-
         tensor_sfa = cute.make_tensor(
             sfa.iterator,
             cute.make_layout(
@@ -536,10 +602,29 @@ class BlockwiseGemmKernel:
                 ),
             ),
         )
+        tensor_sfb2 = cute.make_tensor(
+            sfb2.iterator,
+            cute.make_layout(
+                (
+                    (self.scale_granularity_n, sfb2.shape[0]),
+                    (self.scale_granularity_k, sfb2.shape[1]),
+                    sfb2.shape[2],
+                ),
+                stride=(
+                    (0, sfb2.layout.stride[0]),
+                    (0, sfb2.layout.stride[1]),
+                    sfb2.layout.stride[2],
+                ),
+            ),
+        )
 
         # Compute grid size
         self.tile_sched_params, grid = self._compute_grid(
-            c, self.cta_tile_shape_mnk, self.cluster_shape_mn, max_active_clusters
+            c,
+            self.cta_tile_shape_mnk,
+            self.cluster_shape_mn,
+            max_active_clusters,
+            2 if self.dual_projection else 1,
         )
 
         self.buffer_align_bytes = 1024
@@ -564,6 +649,9 @@ class BlockwiseGemmKernel:
                 cutlass.Int64, self.num_tile_stage * 2
             ]
             epi_mbar_ptr: cute.struct.MemRange[cutlass.Int64, 1 * 2]
+            gate_ready_mbar_ptr: cute.struct.MemRange[
+                cutlass.Int64, self.num_c_stage
+            ]
             tmem_dealloc_mbar_ptr: cutlass.Int64
             tmem_holding_buf: cutlass.Int32
             # (EPI_TILE_M, EPI_TILE_N, STAGE)
@@ -612,11 +700,13 @@ class BlockwiseGemmKernel:
             tma_tensor_a,
             tma_atom_b,
             tma_tensor_b,
+            tma_atom_b2,
+            tma_tensor_b2,
             tma_atom_c,
             tma_tensor_c,
-            source,
             tensor_sfa,
             tensor_sfb,
+            tensor_sfb2,
             self.cluster_layout_vmnk,
             self.a_smem_layout_staged,
             self.b_smem_layout_staged,
@@ -626,7 +716,6 @@ class BlockwiseGemmKernel:
             self.epi_tile,
             self.tile_sched_params,
             epilogue_op,
-            self.pdl_role,
         ).launch(
             grid=grid,
             block=[self.threads_per_cta, 1, 1],
@@ -634,7 +723,6 @@ class BlockwiseGemmKernel:
             smem=self.shared_storage.size_in_bytes(),
             stream=stream,
             min_blocks_per_mp=1,
-            use_pdl=self.pdl_role != 0,
         )
         return
 
@@ -647,11 +735,13 @@ class BlockwiseGemmKernel:
         mA_mkl: cute.Tensor,
         tma_atom_b: cute.CopyAtom,
         mB_nkl: cute.Tensor,
+        tma_atom_b2: cute.CopyAtom,
+        mB2_nkl: cute.Tensor,
         tma_atom_c: cute.CopyAtom,
         mC_mnl: cute.Tensor,
-        mSource_mnl: cute.Tensor,
         mSFA_mkl: cute.Tensor,
         mSFB_nkl: cute.Tensor,
+        mSFB2_nkl: cute.Tensor,
         cluster_layout_vmnk: cute.Layout,
         a_smem_layout_staged: cute.ComposedLayout,
         b_smem_layout_staged: cute.ComposedLayout,
@@ -661,7 +751,6 @@ class BlockwiseGemmKernel:
         epi_tile: cute.Tile,
         tile_sched_params: utils.PersistentTileSchedulerParams,
         epilogue_op: cutlass.Constexpr,
-        pdl_role: cutlass.Constexpr,
     ):
         """
         GPU device kernel performing the Persistent batched GEMM computation.
@@ -670,17 +759,13 @@ class BlockwiseGemmKernel:
         warp_idx = cute.arch.make_warp_uniform(warp_idx)
         lane_idx = cute.arch.lane_idx()
 
-        if cutlass.const_expr(pdl_role == 1):
-            # The dependent up GEMM may initialize and compute independent
-            # inputs early; its epilogue waits for this grid before reading C.
-            cute.arch.griddepcontrol_launch_dependents()
-
         #
         # Prefetch tma desc
         #
         if warp_idx == self.tma_warp_id:
             cpasync.prefetch_descriptor(tma_atom_a)
             cpasync.prefetch_descriptor(tma_atom_b)
+            cpasync.prefetch_descriptor(tma_atom_b2)
             cpasync.prefetch_descriptor(tma_atom_c)
 
         use_2cta_instrs = cute.size(tiled_mma.thr_id.shape) == 2
@@ -709,6 +794,12 @@ class BlockwiseGemmKernel:
 
         tmem_dealloc_mbar_ptr = storage.tmem_dealloc_mbar_ptr
         tmem_holding_buf = storage.tmem_holding_buf
+        gate_ready_mbar_ptr = storage.gate_ready_mbar_ptr.data_ptr()
+
+        if tidx == 0:
+            for stage_idx in cutlass.range_constexpr(self.num_c_stage):
+                cute.arch.mbarrier_init(gate_ready_mbar_ptr + stage_idx, 1)
+        cute.arch.mbarrier_init_fence()
 
         # Initialize mainloop ab_pipeline (barrier) and states
         ab_pipeline_producer_group = pipeline.CooperativeGroup(pipeline.Agent.Thread)
@@ -853,17 +944,15 @@ class BlockwiseGemmKernel:
         gB_nkl = cute.local_tile(
             mB_nkl, cute.slice_(self.mma_tiler, (0, None, None)), (None, None, None)
         )
+        gB2_nkl = cute.local_tile(
+            mB2_nkl,
+            cute.slice_(self.mma_tiler, (0, None, None)),
+            (None, None, None),
+        )
         # (bM, bN, loopM, loopN, loopL)
         gC_mnl = cute.local_tile(
             mC_mnl, cute.slice_(self.mma_tiler, (None, None, 0)), (None, None, None)
         )
-        gSource_mnl = None
-        if cutlass.const_expr(self.fuse_source_silu):
-            gSource_mnl = cute.local_tile(
-                mSource_mnl,
-                cute.slice_(self.mma_tiler, (None, None, 0)),
-                (None, None, None),
-            )
         # (bM, bK, loopM, loopK, loopL)
         gSFA_mkl = cute.local_tile(
             mSFA_mkl,
@@ -873,6 +962,11 @@ class BlockwiseGemmKernel:
         # (bN, bK, loopN, loopK, loopL)
         gSFB_nkl = cute.local_tile(
             mSFB_nkl,
+            cute.slice_(self.cta_tile_shape_mnk, (0, None, None)),
+            (None, None, None),
+        )
+        gSFB2_nkl = cute.local_tile(
+            mSFB2_nkl,
             cute.slice_(self.cta_tile_shape_mnk, (0, None, None)),
             (None, None, None),
         )
@@ -901,11 +995,9 @@ class BlockwiseGemmKernel:
         tCgA = thr_mma.partition_A(gA_mkl)
         # (MMA, MMA_N, MMA_K, loopN, loopK, loopL)
         tCgB = thr_mma.partition_B(gB_nkl)
+        tCgB2 = thr_mma.partition_B(gB2_nkl)
         # (MMA, MMA_M, MMA_N, loopM, loopN, loopL)
         tCgC = thr_mma.partition_C(gC_mnl)
-        tCgSource = None
-        if cutlass.const_expr(self.fuse_source_silu):
-            tCgSource = thr_mma.partition_C(gSource_mnl)
 
         # scale viewed as C tensor
         sSFA_view_as_C_layout = cute.make_layout(
@@ -956,6 +1048,13 @@ class BlockwiseGemmKernel:
             cute.group_modes(sB, 0, 3),
             cute.group_modes(tCgB, 0, 3),
         )
+        _, tBgB2 = cpasync.tma_partition(
+            tma_atom_b2,
+            block_in_cluster_coord_vmnk[1],
+            b_cta_layout,
+            cute.group_modes(sB, 0, 3),
+            cute.group_modes(tCgB2, 0, 3),
+        )
 
         #
         # Partition global/shared tensor for TMA load A/B
@@ -982,6 +1081,7 @@ class BlockwiseGemmKernel:
         # ((atom_v, rest_v), STAGE)
         # ((atom_v, rest_v), loopN, loopK, loopL)
         tBgSFB_nkl = thr_copy_sfb.partition_S(gSFB_nkl)
+        tBgSFB2_nkl = thr_copy_sfb.partition_S(gSFB2_nkl)
         tBsSFB = thr_copy_sfb.partition_D(sSFB)
         tBcSFB = thr_copy_sfb.partition_S(cSFB)
 
@@ -1088,9 +1188,11 @@ class BlockwiseGemmKernel:
             is_valid_tile = tile_info[3] == 1
 
             while is_valid_tile:
+                projection_idx = tile_info[1] % 2
+                local_tile_n = tile_info[1] // 2
                 mma_tile_coord_mnl = (
                     tile_info[0] // cute.size(tiled_mma.thr_id.shape),
-                    tile_info[1],
+                    local_tile_n,
                     tile_info[2],
                 )
                 #
@@ -1102,6 +1204,9 @@ class BlockwiseGemmKernel:
                 ]
                 # ((atom_v, rest_v), loopK)
                 tBgB_slice = tBgB[
+                    (None, mma_tile_coord_mnl[1], None, mma_tile_coord_mnl[2])
+                ]
+                tBgB2_slice = tBgB2[
                     (None, mma_tile_coord_mnl[1], None, mma_tile_coord_mnl[2])
                 ]
 
@@ -1118,6 +1223,7 @@ class BlockwiseGemmKernel:
                 for k_tile in cutlass.range(0, k_tile_cnt, 1, unroll=1):
                     tAgA_k = tAgA_slice[(None, ab_producer_state.count)]
                     tBgB_k = tBgB_slice[(None, ab_producer_state.count)]
+                    tBgB2_k = tBgB2_slice[(None, ab_producer_state.count)]
                     tAsA_pipe = tAsA[(None, ab_producer_state.index)]
                     tBsB_pipe = tBsB[(None, ab_producer_state.index)]
 
@@ -1144,13 +1250,22 @@ class BlockwiseGemmKernel:
                         tma_bar_ptr=tma_bar,
                         mcast_mask=a_full_mcast_mask,
                     )
-                    cute.copy(
-                        tma_atom_b,
-                        tBgB_k,
-                        tBsB_pipe,
-                        tma_bar_ptr=tma_bar,
-                        mcast_mask=b_full_mcast_mask,
-                    )
+                    if projection_idx == 0:
+                        cute.copy(
+                            tma_atom_b,
+                            tBgB_k,
+                            tBsB_pipe,
+                            tma_bar_ptr=tma_bar,
+                            mcast_mask=b_full_mcast_mask,
+                        )
+                    else:
+                        cute.copy(
+                            tma_atom_b2,
+                            tBgB2_k,
+                            tBsB_pipe,
+                            tma_bar_ptr=tma_bar,
+                            mcast_mask=b_full_mcast_mask,
+                        )
 
                 #
                 # Advance to next tile
@@ -1207,6 +1322,8 @@ class BlockwiseGemmKernel:
             is_valid_tile = tile_info[3] == 1
 
             while is_valid_tile:
+                projection_idx = tile_info[1] % 2
+                local_tile_n = tile_info[1] // 2
                 #
                 # Prepare the mask for scaleA/scaleB
                 #
@@ -1266,7 +1383,19 @@ class BlockwiseGemmKernel:
                                 None,
                                 None,
                                 None,
-                                tile_info[1],
+                                local_tile_n,
+                                scale_producer_state.count,
+                                tile_info[2],
+                            )
+                        ]
+                    )
+                    tBgSFB2_k = cute.filter_zeros(
+                        tBgSFB2_nkl[
+                            (
+                                None,
+                                None,
+                                None,
+                                local_tile_n,
                                 scale_producer_state.count,
                                 tile_info[2],
                             )
@@ -1293,7 +1422,7 @@ class BlockwiseGemmKernel:
                                 None,
                                 None,
                                 None,
-                                tile_info[1],
+                                local_tile_n,
                                 scale_producer_state.count,
                                 tile_info[2],
                             ),
@@ -1315,7 +1444,20 @@ class BlockwiseGemmKernel:
 
                     # load scaleA/scaleB
                     cute.copy(tiled_copy_sfa, tAgSFA_k, tAsSFA_pipe, pred=tApSFA)
-                    cute.copy(tiled_copy_sfb, tBgSFB_k, tBsSFB_pipe, pred=tBpSFB)
+                    if projection_idx == 0:
+                        cute.copy(
+                            tiled_copy_sfb,
+                            tBgSFB_k,
+                            tBsSFB_pipe,
+                            pred=tBpSFB,
+                        )
+                    else:
+                        cute.copy(
+                            tiled_copy_sfb,
+                            tBgSFB2_k,
+                            tBsSFB_pipe,
+                            pred=tBpSFB,
+                        )
 
                     scale_pipeline.producer_commit(scale_producer_state)
 
@@ -1773,16 +1915,6 @@ class BlockwiseGemmKernel:
                 epi_tidx, tCtAcc_final, tCgC, epi_tile, use_2cta_instrs
             )
 
-            tTR_gSource_partitioned = None
-            tTR_rSource = None
-            if cutlass.const_expr(self.fuse_source_silu):
-                tTR_gSource_partitioned = self.epilog_source_partition(
-                    tiled_copy_t2r, epi_tidx, tCgSource, epi_tile
-                )
-                tTR_rSource = cute.make_rmem_tensor(
-                    tTR_rAcc.shape, self.source_dtype
-                )
-
             tTR_rC = None
             tiled_copy_r2s = None
             simt_atom = None
@@ -1794,6 +1926,36 @@ class BlockwiseGemmKernel:
             tiled_copy_r2s, tRS_rC, tRS_sC = self.epilog_smem_copy_and_partition(
                 tiled_copy_t2r, tTR_rC, epi_tidx, sC
             )
+            cluster_n_coord = block_in_cluster_coord_vmnk[2]
+            partner_cta_rank = cta_rank_in_cluster + self.cluster_shape_mn[0] * (
+                1 - 2 * (cluster_n_coord % 2)
+            )
+            # CUTLASS 4.4.1 implements this DSMEM helper in cute.core but
+            # does not re-export it from cutlass.cute.
+            remote_sC_ptr = cute.core.get_remote_smem_ptr_in_cluster(
+                sC.iterator, partner_cta_rank
+            )
+            remote_sC = cute.make_tensor(remote_sC_ptr, sC.layout)
+            remote_gate_ready_mbar_ptr = (
+                cute.core.get_remote_smem_ptr_in_cluster(
+                    gate_ready_mbar_ptr,
+                    partner_cta_rank,
+                )
+            )
+            copy_atom_s2r = cute.make_copy_atom(
+                cute.nvgpu.CopyUniversalOp(),
+                self.c_dtype,
+                num_bits_per_copy=128,
+            )
+            tiled_copy_s2r = cute.make_tiled_copy_S(
+                copy_atom_s2r, tiled_copy_r2s
+            )
+            thr_copy_s2r = tiled_copy_s2r.get_slice(epi_tidx)
+            tSR_sGate = thr_copy_s2r.partition_S(remote_sC)
+            tSR_rGate = cute.make_rmem_tensor(
+                cute.slice_(tSR_sGate, (None, None, None, 0)).shape,
+                self.c_dtype,
+            )
             (
                 tma_atom_c,
                 bSG_sC,
@@ -1801,11 +1963,6 @@ class BlockwiseGemmKernel:
             ) = self.epilog_gmem_copy_and_partition(
                 epi_tidx, tma_atom_c, tCgC, epi_tile, sC
             )
-
-            if cutlass.const_expr(pdl_role == 2):
-                # All gate TMA stores must be visible before the in-place
-                # source load. Up-projection mainloop work can precede this.
-                cute.arch.griddepcontrol_wait()
 
             #
             # Persistent tile scheduling loop
@@ -1848,11 +2005,12 @@ class BlockwiseGemmKernel:
             is_valid_tile = tile_info[3] == 1
 
             num_prev_subtiles = cutlass.Int32(0)
-
             while is_valid_tile:
+                projection_idx = tile_info[1] % 2
+                local_tile_n = tile_info[1] // 2
                 mma_tile_coord_mnl = (
                     tile_info[0] // cute.size(tiled_mma.thr_id.shape),
-                    tile_info[1],
+                    local_tile_n,
                     tile_info[2],
                 )
                 #
@@ -1870,24 +2028,6 @@ class BlockwiseGemmKernel:
                         mma_tile_coord_mnl[2],
                     )
                 ]
-                tTR_gSource = None
-                if cutlass.const_expr(self.fuse_source_silu):
-                    tTR_gSource = tTR_gSource_partitioned[
-                        (
-                            None,
-                            None,
-                            None,
-                            None,
-                            None,
-                            mma_tile_coord_mnl[0],
-                            mma_tile_coord_mnl[1],
-                            mma_tile_coord_mnl[2],
-                        )
-                    ]
-                    tTR_gSource = cute.group_modes(
-                        tTR_gSource, 3, cute.rank(tTR_gSource)
-                    )
-
                 # Set tensor memory buffer for current tile
                 # (T2R, T2R_M, T2R_N, EPI_M, EPI_M)
                 tTR_tAcc = tTR_tAcc_base[
@@ -1919,56 +2059,114 @@ class BlockwiseGemmKernel:
                     tTR_rAcc_r2s = tiled_copy_r2s.retile(tTR_rAcc)
                     acc_vec = tTR_rAcc_r2s.load()
                     acc_vec = epilogue_op(acc_vec.to(self.c_dtype))
-                    if cutlass.const_expr(self.fuse_source_silu):
-                        tTR_gSource_mn = tTR_gSource[
-                            (None, None, None, subtile_idx)
-                        ]
-                        cute.autovec_copy(tTR_gSource_mn, tTR_rSource)
-                        source_vec = tiled_copy_r2s.retile(tTR_rSource).load()
-                        for value_idx in cutlass.range_constexpr(
-                            cute.size(source_vec.shape)
-                        ):
-                            source_value = cutlass.Float32(source_vec[value_idx])
-                            sigmoid = cute.arch.rcp_approx(
-                                1.0
-                                + cute.math.exp(
-                                    -source_value, fastmath=True
+                    if cutlass.const_expr(self.activate_first_projection):
+                        if projection_idx == 0:
+                            for value_idx in cutlass.range_constexpr(
+                                cute.size(acc_vec.shape)
+                            ):
+                                source_value = cutlass.Float32(acc_vec[value_idx])
+                                sigmoid = cute.arch.rcp_approx(
+                                    1.0
+                                    + cute.math.exp(
+                                        -source_value, fastmath=True
+                                    )
                                 )
-                            )
-                            activated = self.c_dtype(source_value * sigmoid)
-                            tRS_rC[value_idx] = activated * acc_vec[value_idx]
+                                tRS_rC[value_idx] = self.c_dtype(
+                                    source_value * sigmoid
+                                )
+                        else:
+                            tRS_rC.store(acc_vec)
                     else:
                         tRS_rC.store(acc_vec)
 
-                    #
-                    # Store C to shared memory
-                    #
                     num_prev_subtiles = num_prev_subtiles + 1
                     c_buffer = num_prev_subtiles % self.num_c_stage
-                    cute.copy(
-                        tiled_copy_r2s,
-                        tRS_rC,
-                        tRS_sC[(None, None, None, c_buffer)],
-                    )
-                    # Fence and barrier to make sure shared memory store is visible to TMA store
-                    cute.arch.fence_proxy(
-                        "async.shared",
-                        space="cta",
-                    )
-                    self.epilog_sync_barrier.arrive_and_wait()
+                    stage_phase = (
+                        (num_prev_subtiles - 1) // self.num_c_stage
+                    ) % 2
 
-                    #
-                    # TMA store C to global memory
-                    #
-                    if warp_idx == self.epilog_warp_id[0]:
+                    # Even-N CTAs produce activated gate subtiles into a
+                    # three-stage DSMEM ring. Odd-N CTAs retain their up
+                    # accumulator in registers until the matching gate stage
+                    # arrives, avoiding a redundant shared-memory round trip.
+                    if projection_idx == 0:
                         cute.copy(
-                            tma_atom_c,
-                            bSG_sC[(None, c_buffer)],
-                            bSG_gC[(None, subtile_idx)],
+                            tiled_copy_r2s,
+                            tRS_rC,
+                            tRS_sC[(None, None, None, c_buffer)],
                         )
-                        # Fence and barrier to make sure shared memory store is visible to TMA store
-                        c_pipeline.producer_commit()
-                        c_pipeline.producer_acquire()
+                        self.epilog_sync_barrier.arrive_and_wait()
+                        if warp_idx == self.epilog_warp_id[0]:
+                            with cute.arch.elect_one():
+                                _mbarrier_arrive_release_cluster(
+                                    remote_gate_ready_mbar_ptr + c_buffer,
+                                )
+                    else:
+                        if warp_idx == self.epilog_warp_id[0]:
+                            with cute.arch.elect_one():
+                                _mbarrier_wait_acquire_cluster(
+                                    gate_ready_mbar_ptr + c_buffer,
+                                    stage_phase,
+                                )
+                        self.epilog_sync_barrier.arrive_and_wait()
+                        cute.copy(
+                            tiled_copy_s2r,
+                            tSR_sGate[(None, None, None, c_buffer)],
+                            tSR_rGate,
+                        )
+                        gate_vec = tSR_rGate.load()
+                        for value_idx in cutlass.range_constexpr(
+                            cute.size(gate_vec.shape)
+                        ):
+                            tRS_rC[value_idx] = self.c_dtype(
+                                cutlass.Float32(gate_vec[value_idx])
+                                * cutlass.Float32(tRS_rC[value_idx])
+                            )
+                        cute.copy(
+                            tiled_copy_r2s,
+                            tRS_rC,
+                            tRS_sC[(None, None, None, c_buffer)],
+                        )
+                        cute.arch.fence_proxy(
+                            "async.shared",
+                            space="cta",
+                        )
+                        self.epilog_sync_barrier.arrive_and_wait()
+                        if warp_idx == self.epilog_warp_id[0]:
+                            with cute.arch.elect_one():
+                                _mbarrier_arrive_release_cluster(
+                                    remote_gate_ready_mbar_ptr + c_buffer,
+                                )
+                                cute.copy(
+                                    tma_atom_c,
+                                    bSG_sC[(None, c_buffer)],
+                                    bSG_gC[(None, subtile_idx)],
+                                )
+                                c_pipeline.producer_commit()
+                                c_pipeline.producer_acquire()
+
+                    # Before gate producers wrap around the ring, wait for
+                    # the up consumer to acknowledge the stage that the next
+                    # subtile will reuse. The first three subtiles run without
+                    # backpressure, overlapping gate SiLU with up multiply.
+                    if projection_idx == 0:
+                        if num_prev_subtiles >= self.num_c_stage:
+                            next_c_buffer = (
+                                num_prev_subtiles + 1
+                            ) % self.num_c_stage
+                            if warp_idx == self.epilog_warp_id[0]:
+                                with cute.arch.elect_one():
+                                    _mbarrier_wait_acquire_cluster(
+                                        gate_ready_mbar_ptr + next_c_buffer,
+                                        (
+                                            (
+                                                num_prev_subtiles
+                                                - self.num_c_stage
+                                            )
+                                            // self.num_c_stage
+                                        )
+                                        % 2,
+                                    )
                     self.epilog_sync_barrier.arrive_and_wait()
 
                 #
@@ -1990,6 +2188,37 @@ class BlockwiseGemmKernel:
                 )
                 tile_info_pipeline.consumer_release(tile_info_consumer_state)
                 tile_info_consumer_state.advance()
+
+            # Drain any gate stages still owned by the paired up CTA before
+            # this CTA releases tensor/shared-memory resources.
+            if cluster_n_coord % 2 == 0:
+                if warp_idx == self.epilog_warp_id[0]:
+                    with cute.arch.elect_one():
+                        for stage_idx in cutlass.range_constexpr(
+                            self.num_c_stage
+                        ):
+                            first_use = (
+                                self.num_c_stage
+                                if stage_idx == 0
+                                else stage_idx
+                            )
+                            if num_prev_subtiles >= first_use:
+                                last_produced = num_prev_subtiles - (
+                                    (
+                                        num_prev_subtiles
+                                        - stage_idx
+                                        + self.num_c_stage
+                                    )
+                                    % self.num_c_stage
+                                )
+                                _mbarrier_wait_acquire_cluster(
+                                    gate_ready_mbar_ptr + stage_idx,
+                                    (
+                                        (last_produced - 1)
+                                        // self.num_c_stage
+                                    )
+                                    % 2,
+                                )
 
             #
             # Dealloc the tensor memory buffer
@@ -2412,6 +2641,7 @@ class BlockwiseGemmKernel:
         cta_tile_shape_mnk: Tuple[int, int, int],
         cluster_shape_mn: Tuple[int, int],
         max_active_clusters: cutlass.Constexpr,
+        projection_count: cutlass.Constexpr = 1,
     ) -> Tuple[utils.PersistentTileSchedulerParams, Tuple[int, int, int]]:
         """Use persistent tile scheduler to compute the grid size for the output tensor C.
 
@@ -2432,6 +2662,11 @@ class BlockwiseGemmKernel:
         c_shape = cute.slice_(cta_tile_shape_mnk, (None, None, 0))
         gc = cute.zipped_divide(c, tiler=c_shape)
         num_ctas_mnl = gc[(0, (None, None, None))].shape
+        num_ctas_mnl = (
+            num_ctas_mnl[0],
+            num_ctas_mnl[1] * projection_count,
+            num_ctas_mnl[2],
+        )
         cluster_shape_mnl = (*cluster_shape_mn, 1)
 
         tile_sched_params = utils.PersistentTileSchedulerParams(
@@ -2542,7 +2777,6 @@ class BlockwiseGemmKernel:
             cluster_shape_mn[0] * cluster_shape_mn[1] > 16
             or cluster_shape_mn[0] <= 0
             or cluster_shape_mn[1] <= 0
-            or not is_power_of_2(cluster_shape_mn[0])
             or not is_power_of_2(cluster_shape_mn[1])
         ):
             is_valid = False
