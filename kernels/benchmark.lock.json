@@ -1,0 +1,33 @@
+{
+  "dataset": {
+    "repository": "nvidia/SOL-ExecBench",
+    "revision": "63699402f003496acc3af4eb534a5304a8ac1ea9"
+  },
+  "evaluation_stack": "v1.1",
+  "evaluator": {
+    "repository": "https://github.com/NVIDIA/SOL-ExecBench.git",
+    "revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+    "version": "1.0.2"
+  },
+  "problems": {
+    "179": {
+      "artifact": "003_fp8_mlp_gate_up_projection-b200.json",
+      "collection": "Quant",
+      "contract_sha256": "e48ea16ecc77363d548c2ce9d1cc97af5ee2ddc0b818450182a1b0462da79793",
+      "dataset_sha256": "aa30e9a66ac2292499eacb1cc73ad789ddc7c5f5808ddb10d9dc211e94560036",
+      "directory": "179_fp8_mlp_gate_up_projection",
+      "name": "003_fp8_mlp_gate_up_projection",
+      "workloads": 16
+    },
+    "29": {
+      "artifact": "029_mamba_conv1d_with_gating-b200.json",
+      "collection": "L1",
+      "contract_sha256": "b41c5c49100c94591809bb31418b26be5fb37f29fb3d5f7e506822c12df53656",
+      "dataset_sha256": "dbaf8476812194920e405118cc5f4abc65035b79a4307b5ee88fb07666ceed48",
+      "directory": "029_mamba_conv1d_with_gating",
+      "name": "029_mamba_conv1d_with_gating",
+      "workloads": 16
+    }
+  },
+  "schema_version": 1
+}

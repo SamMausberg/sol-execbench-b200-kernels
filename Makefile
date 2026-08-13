@@ -50,6 +50,18 @@ GPU_EVAL_RUN = docker run --rm --gpus all \
 
 .PHONY: help setup submodule image dirs fetch info lint stage test bench profile
 .PHONY: status package verify-package
+.PHONY: extra-fetch extra-lint extra-stage extra-compile extra-test extra-test-one extra-bench
+.PHONY: extra-package extra-verify-package extra-status
+
+EXTRA_STAGE = /workspace/.work/extra-kernels/stage/$(KERNEL_ID)-$(TARGET).json
+EXTRA_PROBLEM = /workspace/.work/extra-kernels/problems/$(KERNEL_ID)
+EXTRA_TRACE_DIR = $(ROOT)/.work/extra-kernels/traces/$(KERNEL_ID)/$(TARGET)
+
+ifeq ($(TARGET),local)
+  EXTRA_COMPILE_RUN = $(GPU_TOOL_RUN)
+else
+  EXTRA_COMPILE_RUN = $(TOOL_RUN)
+endif
 
 help:
 	@sed -n 's/^## //p' Makefile
@@ -173,3 +185,71 @@ verify-package: package fetch
 		--solution "/workspace/dist/038_flux_multi_head_rmsnorm_qk-b200.json" \
 		--compile-timeout 300 --timeout 1800 --lock-clocks \
 		-o "/workspace/.work/traces/b200/package.jsonl"
+
+## make extra-fetch             Extract the pinned #29 and #179 contracts.
+extra-fetch: image dirs
+	$(TOOL_RUN) /workspace/tools/extra_kernels.py fetch
+
+## make extra-lint              Validate both additional kernel source manifests.
+extra-lint: extra-fetch
+	$(TOOL_RUN) /workspace/tools/extra_kernels.py lint
+
+extra-stage: extra-fetch
+	@test -n "$(KERNEL_ID)" || { echo "set KERNEL_ID to 29 or 179" >&2; exit 2; }
+	mkdir -p "$(ROOT)/.work/extra-kernels/stage"
+	$(TOOL_RUN) /workspace/tools/extra_kernels.py stage "$(KERNEL_ID)" \
+		--target "$(TARGET)" --output "$(EXTRA_STAGE)"
+
+## make extra-compile KERNEL_ID=179 TARGET=b200  Compile-only proof for one target.
+extra-compile: extra-fetch
+	@test -n "$(KERNEL_ID)" || { echo "set KERNEL_ID to 29 or 179" >&2; exit 2; }
+	$(EXTRA_COMPILE_RUN) /workspace/tools/extra_kernels.py compile "$(KERNEL_ID)" \
+		--target "$(TARGET)" --timeout 1200
+
+## make extra-test KERNEL_ID=29  Compile and check all workloads on the local GPU.
+extra-test: extra-stage
+	mkdir -p "$(EXTRA_TRACE_DIR)"
+	$(GPU_EVAL_RUN) sol-execbench "$(EXTRA_PROBLEM)" \
+		--solution "$(EXTRA_STAGE)" --compile-timeout 600 --timeout 3600 \
+		$(CLOCK_FLAG) -o "/workspace/.work/extra-kernels/traces/$(KERNEL_ID)/$(TARGET)/test.jsonl"
+
+## make extra-test-one KERNEL_ID=179 WORKLOAD=3  Check one selected workload.
+extra-test-one: extra-stage
+	@test -n "$(WORKLOAD)" || { echo "set WORKLOAD to an index from 0 to 15" >&2; exit 2; }
+	mkdir -p "$(ROOT)/.work/extra-kernels/selected/$(KERNEL_ID)-$(WORKLOAD)" "$(EXTRA_TRACE_DIR)"
+	$(TOOL_RUN) /workspace/tools/extra_kernels.py select-workload "$(KERNEL_ID)" \
+		--index "$(WORKLOAD)" \
+		--output "/workspace/.work/extra-kernels/selected/$(KERNEL_ID)-$(WORKLOAD)"
+	$(GPU_EVAL_RUN) sol-execbench \
+		"/workspace/.work/extra-kernels/selected/$(KERNEL_ID)-$(WORKLOAD)" \
+		--solution "$(EXTRA_STAGE)" --compile-timeout 600 --timeout 3600 \
+		$(CLOCK_FLAG) \
+		-o "/workspace/.work/extra-kernels/traces/$(KERNEL_ID)/$(TARGET)/workload-$(WORKLOAD).jsonl"
+
+## make extra-bench KERNEL_ID=29  Run three official-harness trials.
+extra-bench: extra-stage
+	mkdir -p "$(EXTRA_TRACE_DIR)" "$(ROOT)/.work/extra-kernels/summaries"
+	@set -eu; for trial in 1 2 3; do \
+		echo "official harness trial $$trial of 3"; \
+		$(GPU_EVAL_RUN) sol-execbench "$(EXTRA_PROBLEM)" \
+			--solution "$(EXTRA_STAGE)" --compile-timeout 600 --timeout 3600 \
+			$(CLOCK_FLAG) \
+			-o "/workspace/.work/extra-kernels/traces/$(KERNEL_ID)/$(TARGET)/trial-$$trial.jsonl"; \
+	done
+	$(TOOL_RUN) /workspace/tools/extra_kernels.py summarize "$(KERNEL_ID)" \
+		--output "/workspace/.work/extra-kernels/summaries/$(KERNEL_ID)-$(TARGET).json" \
+		"/workspace/.work/extra-kernels/traces/$(KERNEL_ID)/$(TARGET)/trial-1.jsonl" \
+		"/workspace/.work/extra-kernels/traces/$(KERNEL_ID)/$(TARGET)/trial-2.jsonl" \
+		"/workspace/.work/extra-kernels/traces/$(KERNEL_ID)/$(TARGET)/trial-3.jsonl"
+
+## make extra-package           Build both deterministic B200 submission JSON files.
+extra-package: extra-lint
+	$(TOOL_RUN) /workspace/tools/extra_kernels.py package
+
+## make extra-verify-package    Byte-verify both B200 submission JSON files.
+extra-verify-package: extra-package
+	$(TOOL_RUN) /workspace/tools/extra_kernels.py verify-package
+
+## make extra-status            Print the live #29 and #179 B200 leaderboards.
+extra-status: image
+	$(TOOL_RUN) /workspace/tools/extra_kernels.py status
