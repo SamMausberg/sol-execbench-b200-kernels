@@ -33,6 +33,8 @@ _BLOCK_K = 128
 _BLOCK_N = 128
 _EPILOGUE_BLOCK = 1024
 _DEBUG = os.environ.get("SOL179_DEBUG", "0") == "1"
+_SCHEDULE_POLICY = "1cta_n4"
+_EXECUTION_POLICY = "separate"
 
 _COMPILED = {}
 _MAX_ACTIVE_CLUSTERS = {}
@@ -70,12 +72,89 @@ def _load_official_blockwise_kernel():
 BlockwiseGemmKernel = _load_official_blockwise_kernel()
 
 
+def _cute_silu(x):
+    one = cute.full_like(x, 1.0)
+    return (x * (one / (one + cute.exp(-x)))).to(cutlass.BFloat16)
+
+
+class _DualBlockwiseGemmKernel:
+    """Compile two official GEMM launches behind one CuTe host entry point."""
+
+    def __init__(
+        self,
+        acc_dtype,
+        use_2cta_instrs: bool,
+        mma_tiler_mn: tuple[int, int],
+        cluster_shape_mn: tuple[int, int],
+        fuse_gate_silu: bool,
+    ) -> None:
+        self.fuse_gate_silu = fuse_gate_silu
+        self.gate_gemm = BlockwiseGemmKernel(
+            acc_dtype=acc_dtype,
+            use_2cta_instrs=use_2cta_instrs,
+            mma_tiler_mn=mma_tiler_mn,
+            cluster_shape_mn=cluster_shape_mn,
+        )
+        self.up_gemm = BlockwiseGemmKernel(
+            acc_dtype=acc_dtype,
+            use_2cta_instrs=use_2cta_instrs,
+            mma_tiler_mn=mma_tiler_mn,
+            cluster_shape_mn=cluster_shape_mn,
+        )
+
+    @cute.jit
+    def __call__(
+        self,
+        a: cute.Tensor,
+        gate_b: cute.Tensor,
+        up_b: cute.Tensor,
+        gate_c: cute.Tensor,
+        up_c: cute.Tensor,
+        sfa: cute.Tensor,
+        gate_sfb: cute.Tensor,
+        up_sfb: cute.Tensor,
+        max_active_clusters: cutlass.Constexpr,
+        stream: cuda.CUstream,
+    ):
+        if cutlass.const_expr(self.fuse_gate_silu):
+            self.gate_gemm(
+                a,
+                gate_b,
+                gate_c,
+                sfa,
+                gate_sfb,
+                max_active_clusters,
+                stream,
+                _cute_silu,
+            )
+        else:
+            self.gate_gemm(
+                a,
+                gate_b,
+                gate_c,
+                sfa,
+                gate_sfb,
+                max_active_clusters,
+                stream,
+            )
+        self.up_gemm(
+            a,
+            up_b,
+            up_c,
+            sfa,
+            up_sfb,
+            max_active_clusters,
+            stream,
+        )
+
+
 @triton.jit
 def _swiglu_bf16_epilogue(
     gate_ptr,
     up_ptr,
     output_ptr,
     BLOCK: tl.constexpr,
+    GATE_IS_ACTIVATED: tl.constexpr,
 ):
     # All official workloads have M % 128 == 0 and N == 148 * 128, so the
     # flattened element count is divisible by 16,384 and this launch has no tail.
@@ -85,7 +164,10 @@ def _swiglu_bf16_epilogue(
 
     # Match the reference's precision boundary:
     # GEMM -> BF16, SiLU -> BF16, multiply -> BF16.
-    activated = (gate * tl.sigmoid(gate)).to(tl.bfloat16)
+    if GATE_IS_ACTIVATED:
+        activated = gate.to(tl.bfloat16)
+    else:
+        activated = (gate * tl.sigmoid(gate)).to(tl.bfloat16)
     result = activated.to(tl.float32) * up
     tl.store(output_ptr + offsets, result)
 
@@ -148,9 +230,23 @@ def _fresh_up_output(output: torch.Tensor) -> torch.Tensor:
 
 
 def _select_config(m: int):
-    # N/128 == 148 is exactly divisible by four. This gives four-way
-    # activation TMA multicast with no cluster tail on any workload.
-    return False, (128, 128), (1, 4)
+    # N/128 == 148 is exactly divisible by four, so every policy keeps
+    # four-way activation multicast without a cluster-N tail.  Policies are
+    # packaged as separate JSON candidates; the checked-in default reproduces
+    # the known-good submission exactly.
+    if _SCHEDULE_POLICY == "1cta_n4":
+        return False, (128, 128), (1, 4)
+    if _SCHEDULE_POLICY == "2cta_256_even_n4":
+        if ((m // 128) & 1) == 0:
+            return True, (256, 128), (2, 4)
+        return False, (128, 128), (1, 4)
+    if _SCHEDULE_POLICY == "2cta_128_even_n4":
+        if ((m // 128) & 1) == 0:
+            return True, (128, 128), (2, 4)
+        return False, (128, 128), (1, 4)
+    if _SCHEDULE_POLICY == "2cta_256_all_n4":
+        return True, (256, 128), (2, 4)
+    raise RuntimeError(f"Unknown SOL179 schedule policy: {_SCHEDULE_POLICY}")
 
 
 def _compile_or_get(
@@ -190,6 +286,60 @@ def _compile_or_get(
     )
     _COMPILED[key] = compiled
     return compiled
+
+
+def _compile_dual_or_get(
+    config,
+    a: cute.Tensor,
+    gate_b: cute.Tensor,
+    up_b: cute.Tensor,
+    gate_c: cute.Tensor,
+    up_c: cute.Tensor,
+    sfa: cute.Tensor,
+    gate_sfb: cute.Tensor,
+    up_sfb: cute.Tensor,
+    stream,
+    device_index: int,
+    fuse_gate_silu: bool,
+):
+    use_2cta, mma_tiler_mn, cluster_shape_mn = config
+    key = (
+        "dual",
+        fuse_gate_silu,
+        device_index,
+        use_2cta,
+        mma_tiler_mn,
+        cluster_shape_mn,
+    )
+    cached = _COMPILED.get(key)
+    if cached is not None:
+        return cached
+
+    max_clusters = _max_active_clusters(device_index, cluster_shape_mn)
+    dual_gemm = _DualBlockwiseGemmKernel(
+        acc_dtype=cutlass.Float32,
+        use_2cta_instrs=use_2cta,
+        mma_tiler_mn=mma_tiler_mn,
+        cluster_shape_mn=cluster_shape_mn,
+        fuse_gate_silu=fuse_gate_silu,
+    )
+    compiled = cute.compile(
+        dual_gemm,
+        a,
+        gate_b,
+        up_b,
+        gate_c,
+        up_c,
+        sfa,
+        gate_sfb,
+        up_sfb,
+        max_clusters,
+        stream,
+        options="--opt-level 2",
+    )
+    cached = (compiled, max_clusters)
+    _COMPILED[key] = cached
+    return cached
 
 
 def _debug_validate(
@@ -293,20 +443,51 @@ def run(
         device_index = torch.cuda.current_device()
     stream = _current_stream(x.device)
 
-    compiled = _compile_or_get(
-        config,
-        a,
-        gate_b,
-        gate_c,
-        sfa,
-        gate_sfb,
-        stream,
-        device_index,
-    )
+    gate_is_activated = _EXECUTION_POLICY == "dual_cute_silu"
+    if _EXECUTION_POLICY in ("dual", "dual_cute_silu"):
+        compiled, max_clusters = _compile_dual_or_get(
+            config,
+            a,
+            gate_b,
+            up_b,
+            gate_c,
+            up_c,
+            sfa,
+            gate_sfb,
+            up_sfb,
+            stream,
+            device_index,
+            gate_is_activated,
+        )
+        compiled(
+            a,
+            gate_b,
+            up_b,
+            gate_c,
+            up_c,
+            sfa,
+            gate_sfb,
+            up_sfb,
+            max_clusters,
+            stream,
+        )
+    elif _EXECUTION_POLICY == "separate":
+        compiled = _compile_or_get(
+            config,
+            a,
+            gate_b,
+            gate_c,
+            sfa,
+            gate_sfb,
+            stream,
+            device_index,
+        )
 
-    # One compiled dynamic-M kernel serves both projections and all 16 workloads.
-    compiled(a, gate_b, gate_c, sfa, gate_sfb, stream)
-    compiled(a, up_b, up_c, sfa, up_sfb, stream)
+        # One compiled dynamic-M kernel serves both projections and all workloads.
+        compiled(a, gate_b, gate_c, sfa, gate_sfb, stream)
+        compiled(a, up_b, up_c, sfa, up_sfb, stream)
+    else:
+        raise RuntimeError(f"Unknown SOL179 execution policy: {_EXECUTION_POLICY}")
 
     total = output.numel()
     if _DEBUG and total % _EPILOGUE_BLOCK != 0:
@@ -317,5 +498,6 @@ def run(
         up_output,
         output,
         BLOCK=_EPILOGUE_BLOCK,
+        GATE_IS_ACTIVATED=gate_is_activated,
         num_warps=8,
     )

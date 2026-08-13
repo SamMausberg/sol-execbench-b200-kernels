@@ -1,8 +1,8 @@
 {
   "author": "sol-b200-kernel-team",
   "definition": "003_fp8_mlp_gate_up_projection",
-  "description": "Cache-safe CUTLASS 4.4.1 native blockwise FP8 gate/up GEMMs with B200 1SM/2SM dispatch and a custom SiLU-product EVT preserving every BF16 boundary; includes a source-compatible SM120 validation path.",
-  "name": "fp8_mlp_gate_up_sm100a_evt_cache_safe_v4",
+  "description": "Cache-safe custom CUTLASS 4.4.1 blockwise FP8 gate/up GEMMs with an SM100 static persistent scheduler, even-M 2-CTA MMA, four-way activation multicast, and a fused precision-correct BF16 SwiGLU epilogue; includes an SM120 validation path.",
+  "name": "fp8_mlp_gate_up_sm100a_static_2cta_n4_evt_v6",
   "sources": [
     {
       "path": "binding.cpp"

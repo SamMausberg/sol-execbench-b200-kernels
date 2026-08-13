@@ -47,6 +47,8 @@ using ScaleConfig = cutlass::detail::Sm1xxBlockwiseScaleConfig<
 
 constexpr auto kRound = cutlass::FloatRoundStyle::round_to_nearest;
 
+using Sm100TileScheduler = cutlass::gemm::StaticPersistentScheduler;
+
 using FusedSiluMultiply = cutlass::epilogue::fusion::Sm90EVT<
     cutlass::epilogue::fusion::Sm90Compute<
         cutlass::multiplies, ElementD, ElementCompute, kRound>,
@@ -92,22 +94,40 @@ struct Sm100GemmBuilder {
       MainloopSchedule>::CollectiveOp;
 
   using Kernel = cutlass::gemm::kernel::GemmUniversal<
-      Shape<int, int, int, int>, Mainloop, Epilogue, void>;
+      Shape<int, int, int, int>, Mainloop, Epilogue, Sm100TileScheduler>;
   using Gemm = cutlass::gemm::device::GemmUniversalAdapter<Kernel>;
 };
 
+#ifndef SOL_CLUSTER_N
+#define SOL_CLUSTER_N 4
+#endif
+
+#if SOL_CLUSTER_N == 1
+#define SOL_CLUSTER_N_CUTE _1
+#elif SOL_CLUSTER_N == 2
+#define SOL_CLUSTER_N_CUTE _2
+#elif SOL_CLUSTER_N == 4
+#define SOL_CLUSTER_N_CUTE _4
+#elif SOL_CLUSTER_N == 8
+#define SOL_CLUSTER_N_CUTE _8
+#else
+#error "SOL_CLUSTER_N must be 1, 2, 4, or 8"
+#endif
+
 using Sm100One = Sm100GemmBuilder<
-    Shape<_128, _128, _128>, Shape<_1, _1, _1>,
+    Shape<_128, _128, _128>, Shape<_1, SOL_CLUSTER_N_CUTE, _1>,
     cutlass::gemm::KernelTmaWarpSpecializedBlockwise1SmSm100>;
 using Sm100Two = Sm100GemmBuilder<
-    Shape<_256, _128, _128>, Shape<_2, _1, _1>,
+    Shape<_256, _128, _128>, Shape<_2, SOL_CLUSTER_N_CUTE, _1>,
     cutlass::gemm::KernelTmaWarpSpecializedBlockwise2SmSm100>;
 using Sm100OneFused = Sm100GemmBuilder<
-    Shape<_128, _128, _128>, Shape<_1, _1, _1>,
+    Shape<_128, _128, _128>, Shape<_1, SOL_CLUSTER_N_CUTE, _1>,
     cutlass::gemm::KernelTmaWarpSpecializedBlockwise1SmSm100, true>;
 using Sm100TwoFused = Sm100GemmBuilder<
-    Shape<_256, _128, _128>, Shape<_2, _1, _1>,
+    Shape<_256, _128, _128>, Shape<_2, SOL_CLUSTER_N_CUTE, _1>,
     cutlass::gemm::KernelTmaWarpSpecializedBlockwise2SmSm100, true>;
+
+#undef SOL_CLUSTER_N_CUTE
 
 #endif
 

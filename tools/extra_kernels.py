@@ -174,6 +174,17 @@ def kernel_dir(config: dict[str, Any]) -> Path:
     return ROOT / "kernels" / config["directory"]
 
 
+def variant_dir(config: dict[str, Any], variant: str | None = None) -> Path:
+    directory = kernel_dir(config)
+    if variant is None:
+        return directory
+    variants_root = (directory / "variants").resolve()
+    candidate = (variants_root / variant).resolve()
+    if variants_root not in candidate.parents or not candidate.is_dir():
+        raise RepoError(f"unknown source variant: {variant}")
+    return candidate
+
+
 def problem_dir(problem_id: str) -> Path:
     return WORK_ROOT / "problems" / problem_id
 
@@ -277,8 +288,10 @@ def command_fetch(arguments: argparse.Namespace) -> None:
         print(f"problem {problem_id}: {len(workloads)} workloads, contract {actual}")
 
 
-def load_source_manifest(config: dict[str, Any]) -> dict[str, Any]:
-    directory = kernel_dir(config)
+def load_source_manifest(
+    config: dict[str, Any], variant: str | None = None
+) -> dict[str, Any]:
+    directory = variant_dir(config, variant)
     manifest_path = directory / "solution.json"
     manifest = load_json(manifest_path)
     if manifest_path.read_bytes() != canonical_json_bytes(manifest):
@@ -380,8 +393,16 @@ def load_source_manifest(config: dict[str, Any]) -> dict[str, Any]:
     return manifest
 
 
-def build_artifact(config: dict[str, Any], target: str) -> bytes:
-    manifest = load_source_manifest(config)
+def build_artifact(
+    config: dict[str, Any],
+    target: str,
+    variant: str | None = None,
+    extra_cuda_cflags: list[str] | None = None,
+    cute_policy: str | None = None,
+    cute_static_max_clusters: int | None = None,
+    cute_execution_policy: str | None = None,
+) -> bytes:
+    manifest = load_source_manifest(config, variant)
     packaged = json.loads(json.dumps(manifest))
     packaged["spec"]["target_hardware"] = [target]
     languages = set(packaged["spec"]["languages"])
@@ -402,9 +423,69 @@ def build_artifact(config: dict[str, Any], target: str) -> bytes:
             packaged["spec"]["compile_options"]["cuda_cflags"].append(
                 "-gencode=arch=compute_120a,code=sm_120a"
             )
-    directory = kernel_dir(config)
+    if extra_cuda_cflags:
+        if not languages & CPP_LANGUAGES:
+            raise RepoError("extra CUDA flags require a C++/CUDA source variant")
+        packaged["spec"]["compile_options"]["cuda_cflags"].extend(
+            extra_cuda_cflags
+        )
+    directory = variant_dir(config, variant)
     for source in packaged["sources"]:
-        source["content"] = (directory / source["path"]).read_text(encoding="utf-8")
+        content = (directory / source["path"]).read_text(encoding="utf-8")
+        if cute_policy is not None:
+            if (
+                config["directory"] != "179_fp8_mlp_gate_up_projection"
+                or variant is not None
+                or source["path"] != "kernel.py"
+            ):
+                raise RepoError(
+                    "CuTe schedule policies require the canonical problem 179 source"
+                )
+            needle = '_SCHEDULE_POLICY = "1cta_n4"'
+            replacement = f'_SCHEDULE_POLICY = "{cute_policy}"'
+            if content.count(needle) != 1:
+                raise RepoError("problem 179 CuTe policy sentinel is missing")
+            content = content.replace(needle, replacement)
+            packaged["name"] = f"{packaged['name']}_{cute_policy}"
+        if cute_static_max_clusters is not None:
+            if (
+                config["directory"] != "179_fp8_mlp_gate_up_projection"
+                or variant is not None
+                or source["path"] != "kernel.py"
+            ):
+                raise RepoError(
+                    "a static CuTe cluster count requires canonical problem 179"
+                )
+            if cute_static_max_clusters <= 0:
+                raise RepoError("the static CuTe cluster count must be positive")
+            needle = (
+                "value = cutlass_utils.HardwareInfo().get_max_active_clusters("
+                "cluster_size)"
+            )
+            replacement = f"value = {cute_static_max_clusters}"
+            if content.count(needle) != 1:
+                raise RepoError("problem 179 occupancy-query sentinel is missing")
+            content = content.replace(needle, replacement)
+            packaged["name"] = (
+                f"{packaged['name']}_compilecheck_clusters"
+                f"{cute_static_max_clusters}"
+            )
+        if cute_execution_policy is not None:
+            if (
+                config["directory"] != "179_fp8_mlp_gate_up_projection"
+                or variant is not None
+                or source["path"] != "kernel.py"
+            ):
+                raise RepoError(
+                    "a CuTe execution policy requires canonical problem 179"
+                )
+            needle = '_EXECUTION_POLICY = "separate"'
+            replacement = f'_EXECUTION_POLICY = "{cute_execution_policy}"'
+            if content.count(needle) != 1:
+                raise RepoError("problem 179 execution-policy sentinel is missing")
+            content = content.replace(needle, replacement)
+            packaged["name"] = f"{packaged['name']}_{cute_execution_policy}"
+        source["content"] = content
     return canonical_json_bytes(packaged)
 
 
@@ -427,7 +508,15 @@ def command_stage(arguments: argparse.Namespace) -> None:
     output = Path(arguments.output).resolve()
     if ROOT not in output.parents:
         raise RepoError("staged artifacts must remain inside the repository")
-    data = build_artifact(config, hardware)
+    data = build_artifact(
+        config,
+        hardware,
+        arguments.variant,
+        arguments.cuda_cflag,
+        arguments.cute_policy,
+        arguments.cute_static_max_clusters,
+        arguments.cute_execution_policy,
+    )
     atomic_write(output, data)
     print(f"staged {hardware} artifact: {output.relative_to(ROOT)}")
     print(f"SHA-256: {sha256_bytes(data)}")
@@ -446,7 +535,19 @@ def command_compile(arguments: argparse.Namespace) -> None:
     config = problem_config(lock, problem_id)
     verify_contract(problem_id, config)
     hardware = "LOCAL" if arguments.target == "local" else "B200"
-    solution = Solution(**json.loads(build_artifact(config, hardware)))
+    solution = Solution(
+        **json.loads(
+            build_artifact(
+                config,
+                hardware,
+                arguments.variant,
+                arguments.cuda_cflag,
+                arguments.cute_policy,
+                arguments.cute_static_max_clusters,
+                arguments.cute_execution_policy,
+            )
+        )
+    )
     definition = Definition(**load_json(problem_dir(problem_id) / "definition.json"))
     workloads = read_workloads(problem_dir(problem_id) / "workload.jsonl")
     workload = Workload(**workloads[0])
@@ -508,6 +609,16 @@ def command_compile(arguments: argparse.Namespace) -> None:
             check=True,
         )
         log_text += f"cuobjdump:\n{cubin_listing.stdout}\n{cubin_listing.stderr}\n"
+        resource_listing = subprocess.run(
+            ["cuobjdump", "--dump-resource-usage", str(artifact)],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        log_text += (
+            "resource usage:\n"
+            f"{resource_listing.stdout}\n{resource_listing.stderr}\n"
+        )
         log_path = build_root / f"{problem_id}-{arguments.target}.log"
         atomic_write(log_path, log_text.encode("utf-8"))
         expected_arch = "sm_120" if arguments.target == "local" else "sm_100"
@@ -679,6 +790,26 @@ def build_parser() -> argparse.ArgumentParser:
     stage.add_argument("problem_id", choices=("29", "179"))
     stage.add_argument("--target", required=True, choices=("local", "b200"))
     stage.add_argument("--output", required=True)
+    stage.add_argument("--variant")
+    stage.add_argument("--cuda-cflag", action="append", default=[])
+    stage.add_argument(
+        "--cute-policy",
+        choices=(
+            "1cta_n4",
+            "2cta_256_even_n4",
+            "2cta_128_even_n4",
+            "2cta_256_all_n4",
+        ),
+    )
+    stage.add_argument(
+        "--cute-static-max-clusters",
+        type=int,
+        help="replace B200 occupancy discovery for a local compile-only check",
+    )
+    stage.add_argument(
+        "--cute-execution-policy",
+        choices=("separate", "dual", "dual_cute_silu"),
+    )
     stage.set_defaults(function=command_stage)
 
     compile_command = subparsers.add_parser(
@@ -687,6 +818,26 @@ def build_parser() -> argparse.ArgumentParser:
     compile_command.add_argument("problem_id", choices=("29", "179"))
     compile_command.add_argument("--target", required=True, choices=("local", "b200"))
     compile_command.add_argument("--timeout", type=int, default=1200)
+    compile_command.add_argument("--variant")
+    compile_command.add_argument("--cuda-cflag", action="append", default=[])
+    compile_command.add_argument(
+        "--cute-policy",
+        choices=(
+            "1cta_n4",
+            "2cta_256_even_n4",
+            "2cta_128_even_n4",
+            "2cta_256_all_n4",
+        ),
+    )
+    compile_command.add_argument(
+        "--cute-static-max-clusters",
+        type=int,
+        help="replace B200 occupancy discovery for a local compile-only check",
+    )
+    compile_command.add_argument(
+        "--cute-execution-policy",
+        choices=("separate", "dual", "dual_cute_silu"),
+    )
     compile_command.set_defaults(function=command_compile)
 
     select = subparsers.add_parser("select-workload", help="extract one workload")
