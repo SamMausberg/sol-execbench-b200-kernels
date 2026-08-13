@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# SPDX-FileCopyrightText: 2026 sol-038-flux-rmsnorm contributors
+# SPDX-FileCopyrightText: 2026 SOL-ExecBench B200 Kernels contributors
 # SPDX-License-Identifier: Apache-2.0
 
 """Reproduce, stage, benchmark, and package the additional SOL kernels."""

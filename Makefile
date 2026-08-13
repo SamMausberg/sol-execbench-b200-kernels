@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2026 sol-038-flux-rmsnorm contributors
+# SPDX-FileCopyrightText: 2026 SOL-ExecBench B200 Kernels contributors
 # SPDX-License-Identifier: Apache-2.0
 
 SHELL := /bin/bash

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-# SPDX-FileCopyrightText: 2026 sol-038-flux-rmsnorm contributors
+# SPDX-FileCopyrightText: 2026 SOL-ExecBench B200 Kernels contributors
 # SPDX-License-Identifier: Apache-2.0
 
-"""Repository automation for SOL-ExecBench kernel 38."""
+"""Repository automation for the SOL-ExecBench kernel 38 workflow."""
 
 from __future__ import annotations
 
@@ -23,8 +23,9 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCK_PATH = ROOT / "benchmark.lock.json"
-SOLUTION_PATH = ROOT / "kernel" / "solution.json"
-KERNEL_DIR = ROOT / "kernel"
+KERNEL_RELATIVE_DIR = Path("kernels") / "038_flux_multi_head_rmsnorm_qk"
+SOLUTION_PATH = ROOT / KERNEL_RELATIVE_DIR / "solution.json"
+KERNEL_DIR = ROOT / KERNEL_RELATIVE_DIR
 DATA_PATH = ROOT / ".work" / "data" / "L1.parquet"
 PROBLEM_DIR = ROOT / ".work" / "problem-038"
 EVALUATOR_DIR = ROOT / "third_party" / "sol-execbench"
@@ -47,6 +48,14 @@ LEADERBOARD_URL = (
     f"kernel/{PROBLEM_ID}/B200?evaluation_stack_version={EVALUATION_STACK}"
 )
 SOURCE_PATHS = ("binding.cpp", "kernel.cu", "kernel.cuh")
+SUBMISSION_ARTIFACTS = (
+    "dist/003_fp8_mlp_gate_up_projection-b200.json",
+    "dist/003_fp8_mlp_gate_up_projection-b200.json.sha256",
+    "dist/029_mamba_conv1d_with_gating-b200.json",
+    "dist/029_mamba_conv1d_with_gating-b200.json.sha256",
+    "dist/038_flux_multi_head_rmsnorm_qk-b200.json",
+    "dist/038_flux_multi_head_rmsnorm_qk-b200.json.sha256",
+)
 
 
 class RepoError(RuntimeError):
@@ -209,7 +218,10 @@ def validate_solution(
         if require_embedded is True and not isinstance(content, str):
             raise RepoError(f"packaged source {source['path']} has no content")
         if require_embedded is False and "content" in source:
-            raise RepoError("kernel/solution.json must not embed source content")
+            raise RepoError(
+                f"{KERNEL_RELATIVE_DIR.as_posix()}/solution.json must not embed "
+                "source content"
+            )
 
 
 def validate_abi() -> None:
@@ -257,7 +269,9 @@ def command_fetch(_: argparse.Namespace) -> None:
     if not DATA_PATH.exists() or sha256_file(DATA_PATH) != DATASET_SHA256:
         print(f"fetching {DATASET_URL}")
         temporary = DATA_PATH.with_suffix(".parquet.download")
-        request = urllib.request.Request(DATASET_URL, headers={"User-Agent": "sol-038-repo/1"})
+        request = urllib.request.Request(
+            DATASET_URL, headers={"User-Agent": "sol-execbench-b200-kernels/1"}
+        )
         with urllib.request.urlopen(request, timeout=120) as response, temporary.open("wb") as output:
             shutil.copyfileobj(response, output)
         actual = sha256_file(temporary)
@@ -335,10 +349,9 @@ def command_lint(_: argparse.Namespace) -> None:
         "LICENSE",
         "Makefile",
         "benchmark.lock.json",
-        "kernel/binding.cpp",
-        "kernel/kernel.cu",
-        "kernel/kernel.cuh",
-        "kernel/solution.json",
+        *[f"{KERNEL_RELATIVE_DIR.as_posix()}/{path}" for path in SOURCE_PATHS],
+        f"{KERNEL_RELATIVE_DIR.as_posix()}/solution.json",
+        *SUBMISSION_ARTIFACTS,
         "tools/repo.py",
         "results/results.jsonl",
         "third_party/sol-execbench",
@@ -376,17 +389,28 @@ def command_lint(_: argparse.Namespace) -> None:
     license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
     if "Apache License" not in license_text or "Version 2.0" not in license_text:
         raise RepoError("LICENSE is not Apache-2.0")
-    for relative in ("Makefile", "tools/repo.py", *[f"kernel/{p}" for p in SOURCE_PATHS]):
+    for relative in (
+        "Makefile",
+        "tools/repo.py",
+        *[f"{KERNEL_RELATIVE_DIR.as_posix()}/{path}" for path in SOURCE_PATHS],
+    ):
         text = (ROOT / relative).read_text(encoding="utf-8")
         if "SPDX-License-Identifier: Apache-2.0" not in text:
             raise RepoError(f"missing Apache-2.0 SPDX header in {relative}")
 
     tracked = set(run_git("ls-files").splitlines())
+    allowed_dist = set(SUBMISSION_ARTIFACTS)
+    unexpected_dist = sorted(
+        path for path in tracked if path.startswith("dist/") and path not in allowed_dist
+    )
+    if unexpected_dist:
+        raise RepoError(
+            "unexpected generated artifacts are tracked: " + ", ".join(unexpected_dist)
+        )
     forbidden_patterns = (
         re.compile(r"(^|/)definition\.json$"),
         re.compile(r"(^|/)workload\.jsonl$"),
         re.compile(r"\.parquet$"),
-        re.compile(r"(^|/)dist/"),
         re.compile(r"\.ncu-rep$"),
         re.compile(r"\.nsys-rep$"),
         re.compile(r"\.zip$"),
@@ -663,7 +687,10 @@ def command_info(_: argparse.Namespace) -> None:
 
 
 def command_status(_: argparse.Namespace) -> None:
-    request = urllib.request.Request(LEADERBOARD_URL, headers={"User-Agent": "sol-038-repo/1"})
+    request = urllib.request.Request(
+        LEADERBOARD_URL,
+        headers={"User-Agent": "sol-execbench-b200-kernels/1"},
+    )
     with urllib.request.urlopen(request, timeout=30) as response:
         payload = json.load(response)
     data = payload.get("data") or {}

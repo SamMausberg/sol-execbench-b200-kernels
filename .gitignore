@@ -1,5 +1,11 @@
 .work/
-dist/
+dist/*
+!dist/003_fp8_mlp_gate_up_projection-b200.json
+!dist/003_fp8_mlp_gate_up_projection-b200.json.sha256
+!dist/029_mamba_conv1d_with_gating-b200.json
+!dist/029_mamba_conv1d_with_gating-b200.json.sha256
+!dist/038_flux_multi_head_rmsnorm_qk-b200.json
+!dist/038_flux_multi_head_rmsnorm_qk-b200.json.sha256
 *.ncu-rep
 *.ncu-rep.lock
 *.nsys-rep
