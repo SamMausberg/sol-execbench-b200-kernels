@@ -186,11 +186,10 @@ cutlass::Status run_gemm(
 
   Gemm gemm;
   const size_t workspace_size = Gemm::get_workspace_size(arguments);
-  static thread_local at::Tensor workspace;
-  if (workspace_size != 0 &&
-      (!workspace.defined() || workspace.numel() < workspace_size)) {
-    // Device is set by CUDAGuard in the binding. This allocation occurs during
-    // evaluator correctness/warmup, before performance measurement.
+  at::Tensor workspace;
+  if (workspace_size != 0) {
+    // CUTLASS workspace is invocation-local. Never retain device memory that
+    // participates in numerical computation across evaluator calls.
     workspace = at::empty(
         {static_cast<int64_t>(workspace_size)},
         at::TensorOptions().device(at::kCUDA).dtype(at::kByte));
@@ -254,13 +253,9 @@ void launch_fp8_mlp_gate_up(
   const auto* su = scale_up.data_ptr<float>();
   auto* result = reinterpret_cast<ElementD*>(output.data_ptr());
 
-  // Reuse one scratch tensor per M. The evaluator warmups establish it before
-  // the measured loop; the shifting allocator changes only argument pointers.
-  static thread_local at::Tensor gate_scratch;
-  if (!gate_scratch.defined() || gate_scratch.device() != output.device() ||
-      gate_scratch.sizes() != output.sizes()) {
-    gate_scratch = at::empty_like(output);
-  }
+  // This intermediate is recomputed from the current invocation's inputs and
+  // cannot survive into a later evaluator call.
+  at::Tensor gate_scratch = at::empty_like(output);
   auto* gate_result = reinterpret_cast<ElementD*>(gate_scratch.data_ptr());
 
 #if defined(SOL_TARGET_SM100)

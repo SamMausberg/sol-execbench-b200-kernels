@@ -1,8 +1,8 @@
 {
   "author": "sol-038-flux-rmsnorm contributors",
   "definition": "029_mamba_conv1d_with_gating",
-  "description": "B200 CUTLASS 4.4.1 BF16 TMA/UMMA projection with 1SM/2SM dispatch and a per-column bias EVT, followed by a shared-memory fused mask, causal depthwise-conv4, SiLU, and mask tail. Local SM120 validation retains the proven ATen projection fallback; the gate is a zero-copy transpose view.",
-  "name": "029_mamba_conv1d_with_gating_b200_mask_aware_tail",
+  "description": "Cache-safe B200 CUTLASS 4.4.1 BF16 TMA/UMMA projection with 1SM and 2SM 2x2-cluster dispatch plus a per-column bias EVT, followed by a shared-memory fused mask, causal depthwise-conv4, SiLU, and mask tail. Local SM120 validation uses the equivalent ATen projection; the gate is a zero-copy transpose view.",
+  "name": "029_mamba_conv1d_with_gating_b200_cluster2x2_v2",
   "sources": [
     {
       "path": "binding.cpp"

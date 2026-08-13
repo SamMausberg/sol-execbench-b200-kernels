@@ -23,8 +23,8 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCK_PATH = ROOT / "benchmark.lock.json"
-SOLUTION_PATH = ROOT / "kernel" / "solution.json"
-KERNEL_DIR = ROOT / "kernel"
+KERNEL_DIR = ROOT / "kernels" / "038_flux_multi_head_rmsnorm_qk"
+SOLUTION_PATH = KERNEL_DIR / "solution.json"
 DATA_PATH = ROOT / ".work" / "data" / "L1.parquet"
 PROBLEM_DIR = ROOT / ".work" / "problem-038"
 EVALUATOR_DIR = ROOT / "third_party" / "sol-execbench"
@@ -209,7 +209,10 @@ def validate_solution(
         if require_embedded is True and not isinstance(content, str):
             raise RepoError(f"packaged source {source['path']} has no content")
         if require_embedded is False and "content" in source:
-            raise RepoError("kernel/solution.json must not embed source content")
+            raise RepoError(
+                "kernels/038_flux_multi_head_rmsnorm_qk/solution.json "
+                "must not embed source content"
+            )
 
 
 def validate_abi() -> None:
@@ -335,10 +338,10 @@ def command_lint(_: argparse.Namespace) -> None:
         "LICENSE",
         "Makefile",
         "benchmark.lock.json",
-        "kernel/binding.cpp",
-        "kernel/kernel.cu",
-        "kernel/kernel.cuh",
-        "kernel/solution.json",
+        "kernels/038_flux_multi_head_rmsnorm_qk/binding.cpp",
+        "kernels/038_flux_multi_head_rmsnorm_qk/kernel.cu",
+        "kernels/038_flux_multi_head_rmsnorm_qk/kernel.cuh",
+        "kernels/038_flux_multi_head_rmsnorm_qk/solution.json",
         "tools/repo.py",
         "results/results.jsonl",
         "third_party/sol-execbench",
@@ -376,12 +379,23 @@ def command_lint(_: argparse.Namespace) -> None:
     license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
     if "Apache License" not in license_text or "Version 2.0" not in license_text:
         raise RepoError("LICENSE is not Apache-2.0")
-    for relative in ("Makefile", "tools/repo.py", *[f"kernel/{p}" for p in SOURCE_PATHS]):
+    kernel_prefix = "kernels/038_flux_multi_head_rmsnorm_qk"
+    for relative in (
+        "Makefile",
+        "tools/repo.py",
+        *[f"{kernel_prefix}/{path}" for path in SOURCE_PATHS],
+    ):
         text = (ROOT / relative).read_text(encoding="utf-8")
         if "SPDX-License-Identifier: Apache-2.0" not in text:
             raise RepoError(f"missing Apache-2.0 SPDX header in {relative}")
 
-    tracked = set(run_git("ls-files").splitlines())
+    # Treat an unstaged deletion as absent so contributors can validate the
+    # exact fix for accidentally tracked generated artifacts before staging it.
+    tracked = {
+        path
+        for path in run_git("ls-files").splitlines()
+        if (ROOT / path).exists()
+    }
     forbidden_patterns = (
         re.compile(r"(^|/)definition\.json$"),
         re.compile(r"(^|/)workload\.jsonl$"),

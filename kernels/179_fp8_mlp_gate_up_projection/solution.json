@@ -1,44 +1,29 @@
 {
   "author": "sol-b200-kernel-team",
   "definition": "003_fp8_mlp_gate_up_projection",
-  "description": "CUTLASS 4.4.1 native blockwise FP8 gate/up GEMMs with B200 1SM/2SM dispatch and a custom SiLU-product EVT preserving every BF16 boundary; includes a source-compatible SM120 validation path.",
-  "name": "fp8_mlp_gate_up_sm100a_evt_v2",
+  "description": "Cache-safe exact CUTLASS 4.4.1 CuTe DSL blockwise FP8 gate/up projections using persistent SM100 1-CTA MMA, a 1x4 multicast cluster, and a precision-correct BF16 SwiGLU epilogue.",
+  "name": "fp8_mlp_gate_up_cutedsl_1sm_cluster_n4_cache_safe_v5",
   "sources": [
     {
-      "path": "binding.cpp"
-    },
-    {
-      "path": "kernel.cu"
-    },
-    {
-      "path": "kernel.cuh"
+      "path": "kernel.py"
     }
   ],
   "spec": {
-    "binding": "torch",
-    "compile_options": {
-      "cflags": [
-        "-O3",
-        "-std=c++17"
-      ],
-      "cuda_cflags": [
-        "-O3",
-        "--use_fast_math",
-        "-std=c++17"
-      ],
-      "ld_flags": [
-        "-lcuda"
-      ]
-    },
-    "dependencies": [],
+    "binding": null,
+    "compile_options": {},
+    "dependencies": [
+      "torch",
+      "cutlass",
+      "triton"
+    ],
     "destination_passing_style": true,
-    "entry_point": "binding.cpp::run",
+    "entry_point": "kernel.py::run",
     "languages": [
-      "cuda_cpp"
+      "cute_dsl",
+      "triton"
     ],
     "target_hardware": [
-      "B200",
-      "LOCAL"
+      "B200"
     ]
   }
 }

@@ -1,6 +1,12 @@
-# SOL-ExecBench #38
+# SOL-ExecBench B200 kernels
 
-CUDA C++ solution for `038_flux_multi_head_rmsnorm_qk`.
+CUDA C++ and CuTe DSL solutions for:
+
+- `029_mamba_conv1d_with_gating`
+- `038_flux_multi_head_rmsnorm_qk`
+- `003_fp8_mlp_gate_up_projection` (SOL problem 179)
+
+Each source submission lives under its matching `kernels/` subdirectory.
 
 ## Requirements
 
@@ -39,6 +45,15 @@ make bench TARGET=b200
 make status
 ```
 
+Problems 29 and 179 use the `extra-*` targets with `KERNEL_ID=29` or
+`KERNEL_ID=179`, for example:
+
+```sh
+make extra-test KERNEL_ID=179
+make extra-compile KERNEL_ID=179 TARGET=b200
+make extra-package
+```
+
 ## Package
 
 ```sh
@@ -46,7 +61,8 @@ make package
 make verify-package
 ```
 
-Run `make verify-package` on B200. Upload the generated JSON from `dist/` to
-kernel #38. Submission and publication are manual.
+Run `make verify-package` on B200. Kernel #38 is generated under `dist/`;
+problems 29 and 179 are generated under `.work/extra-kernels/submissions/`.
+Upload the matching JSON to NVIDIA. Submission and publication are manual.
 
 Apache-2.0. See `LICENSE`.

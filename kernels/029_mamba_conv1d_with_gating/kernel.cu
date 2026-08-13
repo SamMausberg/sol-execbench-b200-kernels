@@ -84,7 +84,7 @@ using Sm100Projection1Sm = Sm100ProjectionBuilder<
     cutlass::gemm::KernelTmaWarpSpecialized1SmSm100,
     cutlass::epilogue::TmaWarpSpecialized1Sm>;
 using Sm100Projection2Sm = Sm100ProjectionBuilder<
-    Shape<_256, _128, _64>, Shape<_2, _1, _1>,
+    Shape<_256, _128, _64>, Shape<_2, _2, _1>,
     cutlass::gemm::KernelTmaWarpSpecialized2SmSm100,
     cutlass::epilogue::TmaWarpSpecialized2Sm>;
 
@@ -121,12 +121,10 @@ cutlass::Status run_sm100_projection(
 
   Gemm gemm;
   const size_t workspace_size = Gemm::get_workspace_size(arguments);
-  static thread_local at::Tensor workspace;
-  if (workspace_size != 0 &&
-      (!workspace.defined() || workspace.device() != device ||
-       static_cast<size_t>(workspace.numel()) < workspace_size)) {
-    // The evaluator's correctness/warmup calls establish this cache before
-    // performance collection, so allocator activity is outside timed trials.
+  at::Tensor workspace;
+  if (workspace_size != 0) {
+    // CUTLASS workspace is invocation-local. Never retain device memory that
+    // participates in numerical computation across evaluator calls.
     workspace = at::empty(
         {static_cast<int64_t>(workspace_size)},
         at::TensorOptions().device(device).dtype(at::kByte));

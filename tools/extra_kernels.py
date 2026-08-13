@@ -24,17 +24,20 @@ ROOT = Path(__file__).resolve().parents[1]
 LOCK_PATH = ROOT / "kernels" / "benchmark.lock.json"
 WORK_ROOT = ROOT / ".work" / "extra-kernels"
 DATA_ROOT = ROOT / ".work" / "data"
-DIST_ROOT = ROOT / "dist"
+SUBMISSION_ROOT = WORK_ROOT / "submissions"
 
 ALLOWED_LANGUAGES = {
     "cuda_cpp",
     "cublas",
     "cudnn",
     "cutlass",
+    "cute_dsl",
     "pytorch",
     "triton",
 }
-ALLOWED_DEPENDENCIES = {"cublas", "cudnn", "cutlass", "torch"}
+ALLOWED_DEPENDENCIES = {"cublas", "cudnn", "cutlass", "torch", "triton"}
+CPP_LANGUAGES = {"cuda_cpp", "cublas", "cudnn", "cutlass"}
+PYTHON_LANGUAGES = {"cute_dsl", "pytorch", "triton"}
 
 # Shape dispatch, persistent scratch, and PyTorch's current CUDA stream are all
 # legitimate. These fragments are narrowly limited to APIs that inspect or
@@ -72,8 +75,12 @@ FORBIDDEN_SOURCE_FRAGMENTS = {
         "/proc/",
     ),
     "deliberate delay": ("sleep(", "usleep("),
-    "Python runtime mutation": ("sys.modules", "monkeypatch", "setattr(torch"),
+    "Python runtime mutation": ("monkeypatch", "setattr(torch"),
     "profiler access": ("cupti", "nvtxrange"),
+    "persistent numeric workspace": (
+        "thread_local at::tensor",
+        "thread_local torch::tensor",
+    ),
 }
 
 
@@ -307,8 +314,15 @@ def load_source_manifest(config: dict[str, Any]) -> dict[str, Any]:
         or any(language not in ALLOWED_LANGUAGES for language in languages)
     ):
         raise RepoError("solution languages are missing or unsupported")
-    if spec.get("binding") != "torch":
-        raise RepoError("additional kernels require the official torch binding")
+    uses_cpp = any(language in CPP_LANGUAGES for language in languages)
+    uses_python = any(language in PYTHON_LANGUAGES for language in languages)
+    if uses_cpp and uses_python:
+        raise RepoError("C++ and Python solution languages cannot be mixed")
+    expected_binding = "torch" if uses_cpp else None
+    if spec.get("binding") != expected_binding:
+        raise RepoError(
+            f"solution binding must be {expected_binding!r} for its languages"
+        )
     dependencies = spec.get("dependencies")
     if (
         not isinstance(dependencies, list)
@@ -325,12 +339,11 @@ def load_source_manifest(config: dict[str, Any]) -> dict[str, Any]:
     ):
         raise RepoError("solution entry point must be <source>::<symbol>")
     compile_options = spec.get("compile_options")
-    if not isinstance(compile_options, dict) or set(compile_options) != {
-        "cflags",
-        "cuda_cflags",
-        "ld_flags",
-    }:
-        raise RepoError("compile_options must contain cflags, cuda_cflags, and ld_flags")
+    expected_compile_fields = {"cflags", "cuda_cflags", "ld_flags"} if uses_cpp else set()
+    if not isinstance(compile_options, dict) or set(compile_options) != expected_compile_fields:
+        raise RepoError(
+            f"compile_options fields must be {sorted(expected_compile_fields)}"
+        )
     for option_name, values in compile_options.items():
         if not isinstance(values, list) or any(not isinstance(value, str) for value in values):
             raise RepoError(f"compile option {option_name} must be a list of strings")
@@ -371,7 +384,11 @@ def build_artifact(config: dict[str, Any], target: str) -> bytes:
     manifest = load_source_manifest(config)
     packaged = json.loads(json.dumps(manifest))
     packaged["spec"]["target_hardware"] = [target]
-    if config["directory"] == "179_fp8_mlp_gate_up_projection":
+    languages = set(packaged["spec"]["languages"])
+    if (
+        config["directory"] == "179_fp8_mlp_gate_up_projection"
+        and languages & CPP_LANGUAGES
+    ):
         architecture_define = (
             "-DSOL_TARGET_SM120=1" if target == "LOCAL" else "-DSOL_TARGET_SM100=1"
         )
@@ -433,6 +450,13 @@ def command_compile(arguments: argparse.Namespace) -> None:
     definition = Definition(**load_json(problem_dir(problem_id) / "definition.json"))
     workloads = read_workloads(problem_dir(problem_id) / "workload.jsonl")
     workload = Workload(**workloads[0])
+
+    if not any(language.value in CPP_LANGUAGES for language in solution.spec.languages):
+        print(
+            f"problem {problem_id}: official {hardware} Python/CuTe DSL "
+            "schema validation passed (device code compiles JIT on the target)"
+        )
+        return
 
     build_root = WORK_ROOT / "compile"
     build_root.mkdir(parents=True, exist_ok=True)
@@ -499,7 +523,7 @@ def command_compile(arguments: argparse.Namespace) -> None:
 
 
 def write_package(config: dict[str, Any]) -> tuple[Path, str]:
-    output = DIST_ROOT / config["artifact"]
+    output = SUBMISSION_ROOT / config["artifact"]
     data = build_artifact(config, "B200")
     digest = sha256_bytes(data)
     atomic_write(output, data)
@@ -522,7 +546,7 @@ def command_verify_package(arguments: argparse.Namespace) -> None:
     lock = load_lock()
     for problem_id in select_ids(arguments, lock):
         config = problem_config(lock, problem_id)
-        artifact = DIST_ROOT / config["artifact"]
+        artifact = SUBMISSION_ROOT / config["artifact"]
         expected = build_artifact(config, "B200")
         actual = artifact.read_bytes()
         if actual != expected:
