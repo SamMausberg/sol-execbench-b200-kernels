@@ -47,7 +47,11 @@ using ScaleConfig = cutlass::detail::Sm1xxBlockwiseScaleConfig<
 
 constexpr auto kRound = cutlass::FloatRoundStyle::round_to_nearest;
 
+#if defined(SOL_DYNAMIC_SCHEDULER)
+using Sm100TileScheduler = void;
+#else
 using Sm100TileScheduler = cutlass::gemm::StaticPersistentScheduler;
+#endif
 
 using FusedSiluMultiply = cutlass::epilogue::fusion::Sm90EVT<
     cutlass::epilogue::fusion::Sm90Compute<

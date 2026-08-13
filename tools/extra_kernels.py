@@ -448,28 +448,26 @@ def build_artifact(
             content = content.replace(needle, replacement)
             packaged["name"] = f"{packaged['name']}_{cute_policy}"
         if cute_static_max_clusters is not None:
-            if (
-                config["directory"] != "179_fp8_mlp_gate_up_projection"
-                or variant is not None
-                or source["path"] != "kernel.py"
-            ):
+            if config["directory"] != "179_fp8_mlp_gate_up_projection":
                 raise RepoError(
-                    "a static CuTe cluster count requires canonical problem 179"
+                    "a static CuTe cluster count requires a problem 179 "
+                    "kernel.py source"
                 )
-            if cute_static_max_clusters <= 0:
-                raise RepoError("the static CuTe cluster count must be positive")
-            needle = (
-                "value = cutlass_utils.HardwareInfo().get_max_active_clusters("
-                "cluster_size)"
-            )
-            replacement = f"value = {cute_static_max_clusters}"
-            if content.count(needle) != 1:
-                raise RepoError("problem 179 occupancy-query sentinel is missing")
-            content = content.replace(needle, replacement)
-            packaged["name"] = (
-                f"{packaged['name']}_compilecheck_clusters"
-                f"{cute_static_max_clusters}"
-            )
+            if source["path"] == "kernel.py":
+                if cute_static_max_clusters <= 0:
+                    raise RepoError("the static CuTe cluster count must be positive")
+                needle = (
+                    "value = cutlass_utils.HardwareInfo().get_max_active_clusters("
+                    "cluster_size)"
+                )
+                replacement = f"value = {cute_static_max_clusters}"
+                if content.count(needle) != 1:
+                    raise RepoError("problem 179 occupancy-query sentinel is missing")
+                content = content.replace(needle, replacement)
+                packaged["name"] = (
+                    f"{packaged['name']}_compilecheck_clusters"
+                    f"{cute_static_max_clusters}"
+                )
         if cute_execution_policy is not None:
             if (
                 config["directory"] != "179_fp8_mlp_gate_up_projection"
@@ -619,6 +617,8 @@ def command_compile(arguments: argparse.Namespace) -> None:
             "resource usage:\n"
             f"{resource_listing.stdout}\n{resource_listing.stderr}\n"
         )
+        saved_artifact = build_root / f"{problem_id}-{arguments.target}.so"
+        shutil.copy2(artifact, saved_artifact)
         log_path = build_root / f"{problem_id}-{arguments.target}.log"
         atomic_write(log_path, log_text.encode("utf-8"))
         expected_arch = "sm_120" if arguments.target == "local" else "sm_100"
@@ -630,6 +630,7 @@ def command_compile(arguments: argparse.Namespace) -> None:
             f"problem {problem_id}: official {hardware} compile passed "
             f"({sha256_file(artifact)})"
         )
+        print(f"compiled artifact: {saved_artifact.relative_to(ROOT)}")
         print(f"compile log: {log_path.relative_to(ROOT)}")
 
 
