@@ -282,6 +282,19 @@ __global__ void __launch_bounds__(NTHREADS) k1_sm100(
 
 #endif  // K001_HAS_SM100
 
+void k001_debug_build_tma(const void* Wd, const void* W, const void* mask,
+                          const void* dO, const void* V, Dims dims) {
+#if defined(K001_HAS_SM100)
+  auto a0 = make_tma_wd((const bf16*)Wd, dims);
+  auto a1 = make_tma_dok((const bf16*)dO, dims);
+  auto a2 = make_tma_domn((const bf16*)dO, dims);
+  auto a3 = make_tma_v((const bf16*)V, dims);
+  auto a4 = make_tma_w((const bf16*)W, dims);
+  auto a5 = make_tma_m((const uint8_t*)mask, dims);
+  (void)a0; (void)a1; (void)a2; (void)a3; (void)a4; (void)a5;
+#endif
+}
+
 int k001_sm100_available() {
 #if defined(K001_HAS_SM100)
   return 1;

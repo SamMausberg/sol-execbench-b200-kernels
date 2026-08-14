@@ -191,6 +191,8 @@ void run(torch::Tensor grad_attn_output, torch::Tensor attn_weights,
   bf16* dV = reinterpret_cast<bf16*>(grad_value_states.data_ptr());
 
   const int kv_aligned = (dims.Skv % 16 == 0) ? 1 : 0;
+  static const bool debug_tma = getenv("K001_BUILD_TMA") != nullptr;
+  if (debug_tma && kv_aligned) k001_debug_build_tma(Wd, W, mask, dO, V, dims);
   cudaDeviceProp* prop = at::cuda::getCurrentDeviceProperties();
   // Skv < 128: degenerate/peaked-softmax shapes go through the exact-Delta
   // fallback (they are tiny anyway; no benchmark workload hits this).

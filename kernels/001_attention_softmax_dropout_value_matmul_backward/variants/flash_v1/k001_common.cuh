@@ -53,6 +53,9 @@ __device__ inline float ds_math(float dp, float w, bool m, float inv,
 
 // SM100 launchers (defined in k1_sm100.cu / k2_sm100.cu).
 int k001_sm100_available();
+// Host-only debug: construct all TMA descriptors (cute prints on failure).
+void k001_debug_build_tma(const void* Wd, const void* W, const void* mask,
+                          const void* dO, const void* V, Dims dims);
 void k001_launch_k1(const void* Wd, const void* dO, const void* V, void* dV,
                     float* delta_part, float* dv_ws, Dims dims, int kv_aligned,
                     cudaStream_t stream);

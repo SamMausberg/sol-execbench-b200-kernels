@@ -82,9 +82,9 @@ __global__ void __launch_bounds__(NTHREADS) k2_sm100(
   Tensor mV = p.tma_v.get_tma_tensor(
       make_shape(dims.Skv, Int<D>{}, Int<KVH>{}, dims.B));
   Tensor mW =
-      p.tma_w.get_tma_tensor(make_shape(dims.Skv, dims.Sq, Int<H>{}, dims.B));
+      p.tma_w.get_tma_tensor(make_shape(dims.Sq, dims.Skv, Int<H>{}, dims.B));
   Tensor mM =
-      p.tma_m.get_tma_tensor(make_shape(dims.Skv, dims.Sq, Int<H>{}, dims.B));
+      p.tma_m.get_tma_tensor(make_shape(dims.Sq, dims.Skv, Int<H>{}, dims.B));
 
   // Prologue: dO tile (before the PDL dependency sync — it's an input).
   {
@@ -142,14 +142,14 @@ __global__ void __launch_bounds__(NTHREADS) k2_sm100(
               (uint32_t)(sizeof(bf16) * cosize_v<SWLayout> +
                          cosize_v<SMLayout>));
           Tensor gW = local_tile(mW(_, _, h, b), Shape<Int<TILE>, Int<TILE>>{},
-                                 make_coord(iter, mt));
+                                 make_coord(mt, iter));
           auto sW_s = sW_stage(slot);
           auto [twg, tws] = tma_partition(p.tma_w, Int<0>{}, Layout<_1>{},
                                           group_modes<0, 2>(sW_s),
                                           group_modes<0, 2>(gW));
           copy(p.tma_w.with(smem.epi_full[slot]), twg, tws);
           Tensor gM = local_tile(mM(_, _, h, b), Shape<Int<TILE>, Int<TILE>>{},
-                                 make_coord(iter, mt));
+                                 make_coord(mt, iter));
           auto sM_s = sM_stage(slot);
           auto [tmg, tms] = tma_partition(p.tma_m, Int<0>{}, Layout<_1>{},
                                           group_modes<0, 2>(sM_s),
