@@ -42,7 +42,8 @@ def main():
     args = ap.parse_args()
 
     meta = VARIANTS[args.variant]
-    src = (PROBLEM / "variants" / args.variant / "kernel.cu").read_text()
+    vdir = PROBLEM / "variants" / args.variant
+    files = sorted(vdir.glob("*.cu")) + sorted(vdir.glob("*.cuh"))
 
     solution = {
         "name": meta["name"],
@@ -68,7 +69,9 @@ def main():
                 "ld_flags": ["-lcuda"],
             },
         },
-        "sources": [{"path": "kernel.cu", "content": src}],
+        "sources": [
+            {"path": f.name, "content": f.read_text()} for f in files
+        ],
     }
 
     out = Path(args.output) if args.output else (
