@@ -106,11 +106,11 @@ __device__ inline auto& smem_mk(T& t, int m, int k) {
 }
 
 // NOTE: the contiguous mode of every gmem tensor must carry a *static* _1
-// stride — a runtime int64 stride of 1 is not provably contiguous to CuTe and
+// stride -- a runtime int64 stride of 1 is not provably contiguous to CuTe and
 // produces an invalid TMA descriptor (2-byte stride on a non-inner dim).
 
 inline auto make_tma_wd(const bf16* p, const Dims& d) {
-  // (kv, q, h, b), kv contiguous — matches the MN-major (kv-contiguous) A tile.
+  // (kv, q, h, b), kv contiguous -- matches the MN-major (kv-contiguous) A tile.
   auto g = make_tensor(make_gmem_ptr(p), make_shape(d.Skv, d.Sq, Int<H>{}, d.B),
                        make_stride(_1{}, (int64_t)d.Skv, (int64_t)d.Sq * d.Skv,
                                    (int64_t)H * d.Sq * d.Skv));
@@ -118,7 +118,7 @@ inline auto make_tma_wd(const bf16* p, const Dims& d) {
                        make_shape(Int<TILE>{}, Int<TILE>{}));
 }
 inline auto make_tma_domn(const bf16* p, const Dims& d) {
-  // (d, q, h, b), d contiguous — MN-major B tile of MmaDV.
+  // (d, q, h, b), d contiguous -- MN-major B tile of MmaDV.
   auto g = make_tensor(make_gmem_ptr(p), make_shape(Int<D>{}, d.Sq, Int<H>{}, d.B),
                        make_stride(_1{}, (int64_t)H * D, (int64_t)D,
                                    (int64_t)d.Sq * H * D));
@@ -126,7 +126,7 @@ inline auto make_tma_domn(const bf16* p, const Dims& d) {
                        make_shape(Int<D>{}, Int<TILE>{}));
 }
 inline auto make_tma_dok(const bf16* p, const Dims& d) {
-  // (q, d, h, b), d contiguous — K-major A tile of MmaDP.
+  // (q, d, h, b), d contiguous -- K-major A tile of MmaDP.
   auto g = make_tensor(make_gmem_ptr(p), make_shape(d.Sq, Int<D>{}, Int<H>{}, d.B),
                        make_stride((int64_t)H * D, _1{}, (int64_t)D,
                                    (int64_t)d.Sq * H * D));
@@ -134,7 +134,7 @@ inline auto make_tma_dok(const bf16* p, const Dims& d) {
                        make_shape(Int<TILE>{}, Int<D>{}));
 }
 inline auto make_tma_v(const bf16* p, const Dims& d) {
-  // (kv, d, kvh, b), d contiguous — K-major B tile of MmaDP.
+  // (kv, d, kvh, b), d contiguous -- K-major B tile of MmaDP.
   auto g = make_tensor(make_gmem_ptr(p),
                        make_shape(d.Skv, Int<D>{}, Int<KVH>{}, d.B),
                        make_stride((int64_t)D, _1{}, (int64_t)d.Skv * D,
@@ -143,7 +143,7 @@ inline auto make_tma_v(const bf16* p, const Dims& d) {
                        make_shape(Int<TILE>{}, Int<D>{}));
 }
 inline auto make_tma_w(const bf16* p, const Dims& d) {
-  // (q, kv, h, b), kv contiguous — matches SWLayout's (row=q, col=kv) modes
+  // (q, kv, h, b), kv contiguous -- matches SWLayout's (row=q, col=kv) modes
   // read by the epilogue as (my_row, c).
   auto g = make_tensor(make_gmem_ptr(p), make_shape(d.Sq, d.Skv, Int<H>{}, d.B),
                        make_stride((int64_t)d.Skv, _1{}, (int64_t)d.Sq * d.Skv,

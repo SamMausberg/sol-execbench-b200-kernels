@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 //
-// SOL-ExecBench problem 001 — "safe" variant: cuBLAS batched GEMMs (via ATen)
+// SOL-ExecBench problem 001 -- "safe" variant: cuBLAS batched GEMMs (via ATen)
 // plus one fused elementwise kernel. No CUTLASS/tcgen05 dependencies.
 //
 //   dO_t = transpose(dO)                        (ATen copy kernel)

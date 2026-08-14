@@ -8,3 +8,9 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .ruff_cache/
+stage/
+build_100a/
+build_120a/
+*.log
+kernels/*/definition.json
+kernels/*/workload.jsonl

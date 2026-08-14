@@ -86,7 +86,7 @@ __global__ void __launch_bounds__(NTHREADS) k2_sm100(
   Tensor mM =
       p.tma_m.get_tma_tensor(make_shape(dims.Sq, dims.Skv, Int<H>{}, dims.B));
 
-  // Prologue: dO tile (before the PDL dependency sync — it's an input).
+  // Prologue: dO tile (before the PDL dependency sync -- it's an input).
   {
     Tensor gDO = local_tile(mDOk(_, _, h, b), Shape<Int<TILE>, Int<D>>{},
                             make_coord(mt, 0));
