@@ -1,0 +1,33 @@
+{
+  "problem_id": 85,
+  "problem_name": "085_geglu_activation",
+  "passed": true,
+  "official_workloads": 16,
+  "full_harness_trials": 3,
+  "clock_mode": "unlocked",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "contract_sha256": "c5f07fc13a97ad5a07ec7317ba57b1465a124a88443d35b45808057b36fada75",
+  "submission_sha256": "a3daabb9daebea4c330f2d6a73a3f383a0470e5013b42e3808d0b8eb032cb5e3",
+  "source_sha256": {
+    "kernel.py": "1fd083f73ffa055d4c5c415a105f0151383b3df663d17d200566affeb7736fda"
+  },
+  "local_sol_score": 0.6566627444222782,
+  "trial_sol_scores": [
+    0.6566620923440574,
+    0.6571613295264287,
+    0.6566909604733766
+  ],
+  "geometric_mean_latency_ms": 0.017910485086595238,
+  "max_workload_relative_spread": 0.014423076923076884,
+  "leader_snapshot_sol_score": 0.680444,
+  "recommend_submission": false,
+  "reason": "All workloads pass, but the local estimate is below the public leader; local clocks are unlocked.",
+  "archived_run": "results/2026-09-06/85/20260906T173415.191340Z-measured-v2-a3daabb9daeb",
+  "summary_sha256": "dc4f8eb8fa6398f1383df1025bec4745e943db45a99b03064528ead93087c1d4",
+  "trace_sha256": {
+    "trial-1.jsonl": "d7f4b659b63349ce692f8bad42ff5066534813264cc57de7bf65774f5c4f016d",
+    "trial-2.jsonl": "6fa16de0e34a3c5516711f196a3eed0345c33de760c9c08f1677e4aea45bb381",
+    "trial-3.jsonl": "ed5c96aa77e6b7685413dd242620daf487a39ae8a1504080b9276037ebc79f7f"
+  }
+}

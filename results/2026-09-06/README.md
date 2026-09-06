@@ -8,7 +8,9 @@ a hosted leaderboard rank. NVIDIA's hosted evaluations fix the SM clock at 1500 
 | Problem | Local SOL score | Published leader snapshot | Submission recommendation |
 | --- | ---: | ---: | --- |
 | 025 video GELU | 0.630734 | 0.652275 | Continue optimizing |
+| 038 Q/K RMSNorm, Triton alternative | 0.596559 | 0.615074 | Retain as alternative |
 | 084 SiLU backward | 0.527926 | 0.560079 | Continue optimizing |
+| 085 GEGLU | 0.656663 | 0.680444 | Continue optimizing |
 | 088 rotary embedding | 0.678962 | 0.688375 | Continue optimizing |
 
 Scores use the arithmetic mean of workload scores, computed from each workload's
@@ -28,5 +30,7 @@ Other GPU jobs on the same pod should acquire that same lock.
 
 The leaderboard values are snapshots of the official problem boards:
 [025](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/25/B200),
+[038](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/38/B200),
 [084](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/84/B200),
+[085](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/85/B200),
 [088](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/88/B200).

@@ -1,0 +1,229 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "batch_size": {
+          "description": "Batch size",
+          "type": "var"
+        },
+        "inner_dim": {
+          "description": "Inner dimension (output dimension after GEGLU)",
+          "type": "const",
+          "value": 5120
+        },
+        "input_dim": {
+          "description": "Input dimension (2x inner_dim for GEGLU split)",
+          "expression": "inner_dim * 2",
+          "type": "expr"
+        },
+        "seq_len": {
+          "description": "Sequence length",
+          "type": "var"
+        }
+      },
+      "baseline": "import torch\nimport torch.nn.functional as F\n\n@torch.no_grad()\ndef run(x: torch.Tensor) -> torch.Tensor:\n    \"\"\"\n    GEGLU activation: GELU(x_gate) * x_linear\n    \n    Args:\n        x: Input tensor of shape (batch_size, seq_len, inner_dim * 2)\n        \n    Returns:\n        Output tensor of shape (batch_size, seq_len, inner_dim)\n    \"\"\"\n    # Split input into two halves along last dimension\n    # x_gate and x_linear each have shape (batch_size, seq_len, inner_dim)\n    x_gate, x_linear = x.chunk(2, dim=-1)\n    \n    # Apply approximate GELU (tanh-based) to gate and multiply with linear part\n    # GELU_approx(x) = 0.5 * x * (1 + tanh(sqrt(2/pi) * (x + 0.044715 * x^3)))\n    output = F.gelu(x_gate, approximate='tanh') * x_linear\n    \n    return output\n",
+      "baseline_latency_ms": 0.006611,
+      "description": "GEGLU (Gated GLU with GELU) activation function. Splits input along last dimension into two halves, applies approximate GELU (tanh-based) to the first half, and multiplies element-wise with the second half. Used in transformer feed-forward networks.",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 85,
+      "inputs": {
+        "x": {
+          "description": "Input tensor to be split and processed by GEGLU",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "input_dim"
+          ]
+        }
+      },
+      "latency_unit": "ms",
+      "name": "085_geglu_activation",
+      "outputs": {
+        "output": {
+          "description": "Output after GEGLU activation",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "inner_dim"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "mlp",
+        "L1",
+        "model:stable-diffusion-xl-refiner-1.0"
+      ],
+      "title": "085_geglu_activation",
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 1,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 0.0312479999999999,
+          "sol_ms": 0.0086
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 541
+          },
+          "baseline_latency_ms": 0.023584,
+          "sol_ms": 0.0091
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.02256,
+          "sol_ms": 0.0086
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.0406399999999999,
+          "sol_ms": 0.0168
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.0408,
+          "sol_ms": 0.0168
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.013376,
+          "sol_ms": 0.0009
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.07576,
+          "sol_ms": 0.0332
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.02592,
+          "sol_ms": 0.0025
+        },
+        {
+          "axes": {
+            "batch_size": 32,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.040816,
+          "sol_ms": 0.0168
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 211
+          },
+          "baseline_latency_ms": 0.0225445,
+          "sol_ms": 0.0021
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 613
+          },
+          "baseline_latency_ms": 0.047488,
+          "sol_ms": 0.02
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.045313,
+          "sol_ms": 0.0045
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 131
+          },
+          "baseline_latency_ms": 0.013408,
+          "sol_ms": 0.0009
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 449
+          },
+          "baseline_latency_ms": 0.0675045,
+          "sol_ms": 0.0292
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.0259685,
+          "sol_ms": 0.0025
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "inner_dim": 5120,
+            "input_dim": 10240,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.045296,
+          "sol_ms": 0.0045
+        }
+      ]
+    }
+  },
+  "response_sha256": "98b475f315b697d210f9e3d191a1b45d43145d57a0972f62f304f775cee471f8",
+  "retrieved_at": "2026-09-06T17:34:15.190109+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/85"
+}

@@ -1,0 +1,34 @@
+{
+  "problem_id": 38,
+  "problem_name": "038_flux_multi_head_rmsnorm_qk",
+  "variant": "triton_v2",
+  "passed": true,
+  "official_workloads": 16,
+  "full_harness_trials": 3,
+  "clock_mode": "unlocked",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "contract_sha256": "c80cf9574612ec24ba6e67d6142ab67ab2ef3ff71d1cf7c29ba8224535665d4f",
+  "submission_sha256": "ddc923a62d73f468338e7a9af5b1f6825b931f537dcc1a086d0c96d0c23d615c",
+  "source_sha256": {
+    "kernel.py": "19bbb9fc259d385a6b9d0ace041dddf232d6cade9a66898a3ad8b24e85b189c2"
+  },
+  "local_sol_score": 0.596558969495657,
+  "trial_sol_scores": [
+    0.5963516967244313,
+    0.5981600356733497,
+    0.5961835879968158
+  ],
+  "geometric_mean_latency_ms": 0.02389566368102747,
+  "max_workload_relative_spread": 0.04020100502512565,
+  "leader_snapshot_sol_score": 0.615074,
+  "recommend_submission": false,
+  "reason": "Correct alternative, but no demonstrated lead over the existing CUDA implementation or public leader; local clocks are unlocked.",
+  "archived_run": "results/2026-09-06/38/20260906T174415.031174Z-triton-v2-final-ddc923a62d73",
+  "summary_sha256": "8c8b3c4ef12caa78ae1e0bfeef04703e247b1aee569be31d47db9ca2c2182fcc",
+  "trace_sha256": {
+    "trial-1.jsonl": "f026a58911d6f4ab577caea7ee8cf1969488d77acec90537f63cfb2a073b99bc",
+    "trial-2.jsonl": "4d02f739476455615640e8eac63402fa21c738d29ad9ccb9d123c0151490f987",
+    "trial-3.jsonl": "9edea79ce1d3f648f41bc775607e25fd8982df799f0d355b673c0186dbeb8917"
+  }
+}

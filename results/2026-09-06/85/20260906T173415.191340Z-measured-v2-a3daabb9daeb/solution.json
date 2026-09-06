@@ -1,0 +1,26 @@
+{
+  "author": "SamMausberg",
+  "definition": "085_geglu_activation",
+  "description": "Fused split-channel GEGLU with measured row and flat launch geometries.",
+  "name": "085_geglu_activation_triton_b200_v2",
+  "sources": [
+    {
+      "content": "# SPDX-License-Identifier: Apache-2.0\n\"\"\"Load both channel halves and fuse tanh GELU with the gate product.\"\"\"\n\nimport triton\nimport triton.language as tl\nfrom triton.language.extra.cuda import libdevice\n\n\n@triton.jit\ndef _geglu(X, Y, D: tl.constexpr, N: tl.constexpr, BLOCK: tl.constexpr):\n    offset = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)\n    row = offset // D\n    col = offset % D\n    valid = offset < N\n    x = tl.load(X + row * (2 * D) + col, valid, 0)\n    linear = tl.load(X + row * (2 * D) + col + D, valid, 0)\n    cube = x * x * x\n    inner = 0.7978845608028654 * (x + 0.044715 * cube)\n    gelu = (0.5 * x) * (1.0 + libdevice.tanh(inner))\n    tl.store(Y + offset, gelu * linear, valid)\n\n\n@triton.jit\ndef _geglu_rows(X, Y, D: tl.constexpr, BLOCK: tl.constexpr, FAST: tl.constexpr):\n    row = tl.program_id(0)\n    col = tl.program_id(1) * BLOCK + tl.arange(0, BLOCK)\n    valid = col < D\n    x = tl.load(X + row * (2 * D) + col, valid, 0)\n    linear = tl.load(X + row * (2 * D) + col + D, valid, 0)\n    cube = x * x * x\n    inner = 0.7978845608028654 * (x + 0.044715 * cube)\n    if FAST == 1:\n        tanh = tl.inline_asm_elementwise(\n            \"tanh.approx.f32 $0, $1;\", constraints=\"=f,f\", args=[inner],\n            dtype=tl.float32, is_pure=True, pack=1,\n        )\n    elif FAST == 2:\n        tanh = 2.0 / (1.0 + tl.exp(-2.0 * inner)) - 1.0\n    else:\n        tanh = libdevice.tanh(inner)\n    gelu = (0.5 * x) * (1.0 + tanh)\n    tl.store(Y + row * D + col, gelu * linear, valid)\n\n\ndef run(x, output):\n    d = x.shape[-1] // 2\n    n = output.numel()\n    rows = n // d\n    if rows <= 512:\n        block = 2048\n        _geglu_rows[(rows, triton.cdiv(d, block))](\n            x, output, d, block, 2, num_warps=8, enable_fp_fusion=False,\n        )\n    else:\n        block = 512 if rows <= 2048 else 2048\n        _geglu[(triton.cdiv(n, block),)](\n            x, output, d, n, block, num_warps=4, enable_fp_fusion=False,\n        )\n",
+      "path": "kernel.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": [
+      "triton"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

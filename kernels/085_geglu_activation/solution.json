@@ -1,0 +1,25 @@
+{
+  "author": "SamMausberg",
+  "definition": "085_geglu_activation",
+  "description": "Fused split-channel GEGLU with measured row and flat launch geometries.",
+  "name": "085_geglu_activation_triton_b200_v2",
+  "sources": [
+    {
+      "path": "kernel.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": [
+      "triton"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

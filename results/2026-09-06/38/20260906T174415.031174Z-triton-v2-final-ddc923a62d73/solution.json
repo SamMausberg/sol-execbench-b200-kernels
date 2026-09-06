@@ -1,0 +1,25 @@
+{
+  "author": "SamMausberg",
+  "definition": "038_flux_multi_head_rmsnorm_qk",
+  "description": "One-launch Q/K RMSNorm with vectorized row tiles and separate FP32 normalization and weight multiplies.",
+  "name": "flux_qk_rmsnorm_triton_v2",
+  "sources": [
+    {
+      "content": "# SPDX-License-Identifier: Apache-2.0\n\"\"\"Single-launch Q/K RMSNorm with short contiguous rows and FP32 intermediates.\"\"\"\n\nimport triton\nimport triton.language as tl\n\n\n@triton.jit\ndef _rmsnorm_grid(\n    Q, K, WQ, WK, OQ, OK, EPS: tl.constexpr, ROWS: tl.constexpr,\n    BLOCK_ROWS: tl.constexpr, STREAM: tl.constexpr = False,\n):\n    row = tl.program_id(0) * BLOCK_ROWS + tl.arange(0, BLOCK_ROWS)\n    col = tl.arange(0, 128)\n    if tl.program_id(1) == 0:\n        source, weight, output = Q, WQ, OQ\n    else:\n        source, weight, output = K, WK, OK\n    offsets = row[:, None] * 128 + col[None, :]\n    values = tl.load(\n        source + offsets, row[:, None] < ROWS, 0,\n        cache_modifier=\".cg\" if STREAM else \"\",\n    )\n    scale = tl.rsqrt(tl.sum(values * values, 1) * (1.0 / 128) + EPS)\n    weights = tl.load(weight + (row[:, None] % 48) * 128 + col[None, :])\n    normalized = values * scale[:, None]\n    tl.store(\n        output + offsets, normalized * weights, row[:, None] < ROWS,\n        cache_modifier=\".cs\" if STREAM else \"\",\n    )\n\n\n@triton.jit\ndef _rmsnorm_dual(\n    Q, K, WQ, WK, OQ, OK, EPS: tl.constexpr, ROWS: tl.constexpr,\n    BLOCK_ROWS: tl.constexpr, STREAM: tl.constexpr = False,\n):\n    row = tl.program_id(0) * BLOCK_ROWS + tl.arange(0, BLOCK_ROWS)\n    col = tl.arange(0, 128)\n    offsets = row[:, None] * 128 + col[None, :]\n    weight_offsets = (row[:, None] % 48) * 128 + col[None, :]\n    q = tl.load(Q + offsets, row[:, None] < ROWS, 0, cache_modifier=\".cg\" if STREAM else \"\")\n    k = tl.load(K + offsets, row[:, None] < ROWS, 0, cache_modifier=\".cg\" if STREAM else \"\")\n    qs = tl.rsqrt(tl.sum(q * q, 1) * (1.0 / 128) + EPS)\n    ks = tl.rsqrt(tl.sum(k * k, 1) * (1.0 / 128) + EPS)\n    wq = tl.load(WQ + weight_offsets)\n    wk = tl.load(WK + weight_offsets)\n    qn = q * qs[:, None]\n    kn = k * ks[:, None]\n    tl.store(OQ + offsets, qn * wq, row[:, None] < ROWS, cache_modifier=\".cs\" if STREAM else \"\")\n    tl.store(OK + offsets, kn * wk, row[:, None] < ROWS, cache_modifier=\".cs\" if STREAM else \"\")\n\n\ndef run(query, key, weight_q, weight_k, eps, query_norm, key_norm):\n    rows = query.numel() // 128\n    block_rows = 8\n    _rmsnorm_grid[(triton.cdiv(rows, block_rows), 2)](\n        query, key, weight_q, weight_k, query_norm, key_norm,\n        eps, rows, block_rows, True, num_warps=4, enable_fp_fusion=False,\n    )\n",
+      "path": "kernel.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": [
+      "triton"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

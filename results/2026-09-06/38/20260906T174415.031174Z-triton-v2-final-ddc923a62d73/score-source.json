@@ -1,0 +1,273 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "batch_size": {
+          "description": "Batch size",
+          "type": "var"
+        },
+        "head_dim": {
+          "description": "Dimension of each attention head",
+          "type": "const",
+          "value": 128
+        },
+        "num_heads": {
+          "description": "Number of attention heads",
+          "type": "const",
+          "value": 48
+        },
+        "seq_len": {
+          "description": "Sequence length",
+          "type": "var"
+        }
+      },
+      "baseline": "import torch\n\n@torch.no_grad()\ndef run(query: torch.Tensor, key: torch.Tensor, weight_q: torch.Tensor, weight_k: torch.Tensor, eps: float):\n    \"\"\"\n    Per-head RMSNorm for both query and key tensors.\n    \n    Args:\n        query: Query tensor [batch_size, seq_len, num_heads, head_dim]\n        key: Key tensor [batch_size, seq_len, num_heads, head_dim]\n        weight_q: Per-head scale for query [num_heads, head_dim]\n        weight_k: Per-head scale for key [num_heads, head_dim]\n        eps: Epsilon for numerical stability\n    \n    Returns:\n        Tuple of (normalized_query, normalized_key)\n    \"\"\"\n    input_dtype = query.dtype\n    \n    # Compute RMS for query per head (normalize over head_dim dimension)\n    # variance shape: [batch, seq_len, num_heads, 1]\n    q_variance = query.to(torch.float32).pow(2).mean(dim=-1, keepdim=True)\n    query_norm = query * torch.rsqrt(q_variance + eps)\n    \n    # Compute RMS for key per head\n    k_variance = key.to(torch.float32).pow(2).mean(dim=-1, keepdim=True)\n    key_norm = key * torch.rsqrt(k_variance + eps)\n    \n    # Apply learnable scales\n    # weight shape: [num_heads, head_dim]\n    # Broadcast to [batch, seq_len, num_heads, head_dim]\n    query_norm = query_norm * weight_q.unsqueeze(0).unsqueeze(0)\n    key_norm = key_norm * weight_k.unsqueeze(0).unsqueeze(0)\n    \n    return query_norm.to(input_dtype), key_norm.to(input_dtype)\n",
+      "baseline_latency_ms": 0.009195,
+      "description": "Per-head RMSNorm applied to query and key tensors after projection in Flux attention. Applies RMSNorm independently to each attention head's Q and K vectors, normalizing across head_dim (128) for each of the 48 heads. This dual variant processes both Q and K tensors together to enable kernel fusion opportunities.",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 38,
+      "inputs": {
+        "eps": {
+          "description": "Epsilon for numerical stability",
+          "dtype": "float32",
+          "shape": null
+        },
+        "key": {
+          "description": "Key tensor after projection",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "num_heads",
+            "head_dim"
+          ]
+        },
+        "query": {
+          "description": "Query tensor after projection",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "num_heads",
+            "head_dim"
+          ]
+        },
+        "weight_k": {
+          "description": "Per-head learnable scale parameters for key",
+          "dtype": "float32",
+          "shape": [
+            "num_heads",
+            "head_dim"
+          ]
+        },
+        "weight_q": {
+          "description": "Per-head learnable scale parameters for query",
+          "dtype": "float32",
+          "shape": [
+            "num_heads",
+            "head_dim"
+          ]
+        }
+      },
+      "latency_unit": "ms",
+      "name": "038_flux_multi_head_rmsnorm_qk",
+      "outputs": {
+        "key_norm": {
+          "description": "Normalized key tensor",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "num_heads",
+            "head_dim"
+          ]
+        },
+        "query_norm": {
+          "description": "Normalized query tensor",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "num_heads",
+            "head_dim"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "normalization",
+        "diffusion",
+        "L1",
+        "model:FLUX.2-dev"
+      ],
+      "title": "038_flux_multi_head_rmsnorm_qk",
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 2,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.0104,
+          "sol_ms": 0.002
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 1657
+          },
+          "baseline_latency_ms": 0.1072485,
+          "sol_ms": 0.0429
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.066688,
+          "sol_ms": 0.0267
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 773
+          },
+          "baseline_latency_ms": 0.102736,
+          "sol_ms": 0.04
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.0225275,
+          "sol_ms": 0.007
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 293
+          },
+          "baseline_latency_ms": 0.017472,
+          "sol_ms": 0.0042
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.0664805,
+          "sol_ms": 0.0267
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.0224,
+          "sol_ms": 0.007
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.022448,
+          "sol_ms": 0.007
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.009344,
+          "sol_ms": 0.0012
+        },
+        {
+          "axes": {
+            "batch_size": 32,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.066624,
+          "sol_ms": 0.0267
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.037632,
+          "sol_ms": 0.0135
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 131
+          },
+          "baseline_latency_ms": 0.009376,
+          "sol_ms": 0.0012
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.0374085,
+          "sol_ms": 0.0135
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 8192
+          },
+          "baseline_latency_ms": 0.12336,
+          "sol_ms": 0.0529
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 128,
+            "num_heads": 48,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.0105274999999999,
+          "sol_ms": 0.002
+        }
+      ]
+    }
+  },
+  "response_sha256": "fb8a005b97edccf075185f5a1f7ac336e14c5130db9285bb7529d8b28c6cd928",
+  "retrieved_at": "2026-09-06T17:44:15.030400+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/38"
+}

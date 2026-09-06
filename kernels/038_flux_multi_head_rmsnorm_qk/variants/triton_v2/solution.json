@@ -1,0 +1,18 @@
+{
+  "author": "SamMausberg",
+  "definition": "038_flux_multi_head_rmsnorm_qk",
+  "description": "One-launch Q/K RMSNorm with vectorized row tiles and separate FP32 normalization and weight multiplies.",
+  "name": "flux_qk_rmsnorm_triton_v2",
+  "sources": [
+    {
+      "path": "kernel.py"
+    }
+  ],
+  "spec": {
+    "dependencies": ["triton"],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": ["triton"],
+    "target_hardware": ["B200"]
+  }
+}

@@ -1,16 +1,7 @@
 # SOL-ExecBench B200 kernels
 
-CUDA C++, CuTe DSL, and Triton solutions for:
-
-- `029_mamba_conv1d_with_gating`
-- `038_flux_multi_head_rmsnorm_qk`
-- `003_fp8_mlp_gate_up_projection` (SOL problem 179)
-- `001_attention_softmax_dropout_value_matmul_backward`
-- `025_video_latent_gelu_activation`
-- `084_silu_activation_backward`
-- `088_rotary_position_embedding_application`
-
-Each source submission lives under its matching `kernels/` subdirectory.
+CUDA C++, CuTe DSL, and Triton solutions for SOL-ExecBench.
+Sources, manifests, and validation reports live in [kernels/](kernels/).
 
 ## Native Runpod setup
 
