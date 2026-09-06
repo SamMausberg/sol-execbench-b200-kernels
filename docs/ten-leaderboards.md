@@ -17,8 +17,11 @@ the official 1500 MHz SM clock setting, so local leads need additional margin.
 | 033 post-norm residual | 0.782529 | 0.795472 | 16 workloads x 3 trials; 4 exact edge cases | Below leader; retain for collection coverage |
 
 The remaining positions will be selected from measured opportunities. Work is
-underway on 030 projection with residual, 092 causal grouped attention, and 218
-FP16 GEMM. Problem 121 passes all 16 workloads in one trial, but its 0.419214 local
+underway on 050 grouped QKV projection, 119 MoE backward, and 173 vision attention.
+Problems 030 and 092 now pass all official workloads, but their experimental
+implementations do not establish leads. Problem 218's exact library comparison
+shows a large apparent score advantage under different clocks without a kernel improvement.
+Problem 121 passes all 16 workloads in one trial, but its 0.419214 local
 score is below the 0.573023 leader; it remains an experimental checkpoint.
 Other completed activation and normalization candidates are recorded in the
 [local results](../results/2026-09-06/README.md); none currently exceeds its leader.
@@ -33,3 +36,9 @@ the local score ties the snapshot leader. They are sensitivity calculations and
 do not predict the effect of changing the GPU clock. Problem 031's variation audit
 passes the pinned 99% matching requirement in all 30 cases; 27 also satisfy every
 element's tolerance. The remaining three have one or two near-zero deviations.
+
+The newer 010 cuBLASLt candidate passes nine full correctness trials and 30 input
+variations. A monitor qualified one timing trial at 0.663578 and rejected five
+other attempts for foreign CUDA contexts. It needs two more uncontended repeats
+before replacing the table entry; its uniform latency buffer is 22.67%.
+This campaign continues to use zero hosted submission quota.

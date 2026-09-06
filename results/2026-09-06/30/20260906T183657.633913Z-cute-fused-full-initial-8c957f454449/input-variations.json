@@ -1,0 +1,528 @@
+{
+  "tolerance": {
+    "max_atol": 0.02,
+    "max_rtol": 0.05,
+    "required_matched_ratio": 0.99,
+    "max_error_cap": null,
+    "allow_negative_inf": false
+  },
+  "cases": [
+    {
+      "seq": 128,
+      "case": "fresh",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 128,
+      "case": "reused_storage",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 128,
+      "case": "cancellation",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 128,
+      "case": "scaled_values",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 128,
+      "case": "zero_weight",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 128,
+      "case": "zero_input",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 128,
+      "case": "strided",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 128,
+      "case": "strided_output",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 131,
+      "case": "fresh",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 131,
+      "case": "reused_storage",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 131,
+      "case": "cancellation",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 131,
+      "case": "scaled_values",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 131,
+      "case": "zero_weight",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 131,
+      "case": "zero_input",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 131,
+      "case": "strided",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 131,
+      "case": "strided_output",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 541,
+      "case": "fresh",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 541,
+      "case": "reused_storage",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 541,
+      "case": "cancellation",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 541,
+      "case": "scaled_values",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 541,
+      "case": "zero_weight",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 541,
+      "case": "zero_input",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 541,
+      "case": "strided",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 541,
+      "case": "strided_output",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 2048,
+      "case": "fresh",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 2048,
+      "case": "reused_storage",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 2048,
+      "case": "cancellation",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 2048,
+      "case": "scaled_values",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 2048,
+      "case": "zero_weight",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 2048,
+      "case": "zero_input",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 2048,
+      "case": "strided",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "seq": 2048,
+      "case": "strided_output",
+      "passed": true,
+      "inputs_unchanged": true,
+      "strict_allclose": true,
+      "matched_ratio": 1.0,
+      "fully_written": true,
+      "correctness": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    }
+  ],
+  "source_sha256": {
+    "cute_kernel.py": "fa8832d2e67d00d2cbce4feeaa5e715cdda4250d3283e6ff6b2521a149c4c1cb",
+    "cute_residual.py": "c8198674a98a6e4ce28c8a9ad6a4803cfba21db2352bde451ff556dc07ef2c1c",
+    "kernel.py": "80b5b149b3b318248a8394d2a4da04145cbf1446e779ccef6467a7d45796439c"
+  }
+}

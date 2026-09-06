@@ -1,0 +1,289 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "K": {
+          "type": "const",
+          "value": 2048
+        },
+        "M": {
+          "type": "var"
+        },
+        "N": {
+          "type": "const",
+          "value": 5120
+        }
+      },
+      "baseline": "import torch\n\ndef run(A, B):\n    C = torch.matmul(A, B.T)\n    return C",
+      "baseline_latency_ms": 0.008648,
+      "description": "General matrix multiply (GEMM) C = A @ B.T. Captured from Qwen 3 30B A3B attn.qkv_proj.",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 218,
+      "inputs": {
+        "A": {
+          "dtype": "float16",
+          "shape": [
+            "M",
+            "K"
+          ]
+        },
+        "B": {
+          "dtype": "float16",
+          "shape": [
+            "N",
+            "K"
+          ]
+        }
+      },
+      "latency_unit": "ms",
+      "name": "009_gemm_n5120_k2048",
+      "outputs": {
+        "C": {
+          "dtype": "float16",
+          "shape": [
+            "M",
+            "N"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "gemm",
+        "FlashInfer-Bench"
+      ],
+      "title": "009_gemm_n5120_k2048",
+      "workloads": [
+        {
+          "axes": {
+            "K": 2048,
+            "M": 6,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.008736,
+          "sol_ms": 0.0031
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 1,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.008768,
+          "sol_ms": 0.0031
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 34,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.009216,
+          "sol_ms": 0.0032
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 17,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.0094559999999999,
+          "sol_ms": 0.0032
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 952,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.021328,
+          "sol_ms": 0.0114
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 16,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.0093125,
+          "sol_ms": 0.0032
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 172,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.0115045,
+          "sol_ms": 0.0034
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 16294,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.223088,
+          "sol_ms": 0.1891
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 12251,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.1712004999999999,
+          "sol_ms": 0.1422
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 64,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.009056,
+          "sol_ms": 0.0032
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 63,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.0089284999999999,
+          "sol_ms": 0.0032
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 2,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.008672,
+          "sol_ms": 0.0031
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 93,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.010272,
+          "sol_ms": 0.0033
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 4,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.008736,
+          "sol_ms": 0.0031
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 289,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.013024,
+          "sol_ms": 0.0037
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 5,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.00872,
+          "sol_ms": 0.0031
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 25,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.009504,
+          "sol_ms": 0.0032
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 8,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.008672,
+          "sol_ms": 0.0031
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 492,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.014144,
+          "sol_ms": 0.0061
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 14915,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.2075525,
+          "sol_ms": 0.1731
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 32,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.009664,
+          "sol_ms": 0.0032
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 12853,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.182256,
+          "sol_ms": 0.1492
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 11006,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.156096,
+          "sol_ms": 0.1278
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 8828,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.130576,
+          "sol_ms": 0.1026
+        },
+        {
+          "axes": {
+            "K": 2048,
+            "M": 128,
+            "N": 5120
+          },
+          "baseline_latency_ms": 0.0095839999999999,
+          "sol_ms": 0.0033
+        }
+      ]
+    }
+  },
+  "response_sha256": "1fd7745527395463a9c055b6c11ea4e4464ff16d41dbfcafc0e2f8dc64c43a21",
+  "retrieved_at": "2026-09-06T18:19:56.070598+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/218"
+}

@@ -1,0 +1,116 @@
+{
+  "clock_mode": "unlocked",
+  "contract": {
+    "collection": "FlashInfer-Bench",
+    "contract_sha256": "32a4edddd3595deae594c99969924877ec664aee159e2b657bfe220ef7440b77",
+    "dataset_metadata_url": "https://huggingface.co/api/datasets/nvidia/SOL-ExecBench/tree/63699402f003496acc3af4eb534a5304a8ac1ea9/data",
+    "dataset_repository": "nvidia/SOL-ExecBench",
+    "dataset_revision": "63699402f003496acc3af4eb534a5304a8ac1ea9",
+    "dataset_sha256": "89d1feacf02b6f8c07ec8d67a9dbb2c531652251095a7f762f2bc296f6a1fe74",
+    "name": "009_gemm_n5120_k2048",
+    "website_id": 218,
+    "workload_count": 25
+  },
+  "definition_adapter": {
+    "field_changes": [
+      {
+        "field": "hf_id",
+        "native": null,
+        "original": ""
+      }
+    ],
+    "kind": "empty_optional_hf_id_to_null",
+    "native_definition_file": "definition.native.json",
+    "native_definition_sha256": "208be9d2e537e00f624535529c578cddfe5fa2215fc7f3c959abdbf565297f0a",
+    "original_definition_sha256": "593d9d663c63d0346af19e284277e9118321439cb31c04560dcccfb26982f068",
+    "reason": "Pinned Definition accepts a null optional hf_id but rejects an empty string."
+  },
+  "evaluation_definition_file": "definition.native.json",
+  "evaluation_scope": "metadata-adapted native evaluation: optional hf_id normalized from empty string to null",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "finished_at": "2026-09-06T18:20:48.164956+00:00",
+  "gpu_lock": "/workspace/sol-execbench-b200-kernels/.work/gpu.lock",
+  "requested_trials": 1,
+  "schema_version": 1,
+  "score_source_sha256": "f27c952d4baf2f3910057594513f5232541e87c4cadfd8d918d863d475ee1520",
+  "source_sha256": {
+    "library.py": "cd760a33e42e2d76befef1183e410b2c7083dfde996ac00e2b5e5d6f865da189"
+  },
+  "started_at": "2026-09-06T18:19:56.180280+00:00",
+  "submission_sha256": "77dc66487ffff4f24cb1b9e5b543f051cfe65689d88aeb50bdefa71e99ccb517",
+  "trials": [
+    {
+      "command": [
+        "/workspace/venvs/sol-execbench/bin/python",
+        "-m",
+        "sol_execbench.cli.main",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/218/20260906T181956.072932Z-fp16-gemm-library-metadata-adapted-77dc66487fff",
+        "--solution",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/218/20260906T181956.072932Z-fp16-gemm-library-metadata-adapted-77dc66487fff/solution.json",
+        "--compile-timeout",
+        "600",
+        "--timeout",
+        "3600",
+        "--verbose",
+        "-o",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/218/20260906T181956.072932Z-fp16-gemm-library-metadata-adapted-77dc66487fff/trial-1.jsonl",
+        "--definition",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/218/20260906T181956.072932Z-fp16-gemm-library-metadata-adapted-77dc66487fff/definition.native.json"
+      ],
+      "elapsed_seconds": 30.31090394803323,
+      "finished_at": "2026-09-06T18:20:48.046064+00:00",
+      "gpu_after": {
+        "command": [
+          "nvidia-smi",
+          "--query-gpu=uuid,name,driver_version,pstate,clocks.current.graphics,clocks.current.sm,clocks.current.memory,temperature.gpu,power.draw,power.limit,utilization.gpu,memory.used,memory.total",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "uuid, name, driver_version, pstate, clocks.current.graphics [MHz], clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], power.limit [W], utilization.gpu [%], memory.used [MiB], memory.total [MiB]\nGPU-b93d0ebe-03a8-bdde-60fe-024fb902497b, NVIDIA B200, 580.105.08, P0, 1965 MHz, 1965 MHz, 3996 MHz, 32, 241.15 W, 1000.00 W, 100 %, 9652 MiB, 183359 MiB"
+      },
+      "gpu_before": {
+        "command": [
+          "nvidia-smi",
+          "--query-gpu=uuid,name,driver_version,pstate,clocks.current.graphics,clocks.current.sm,clocks.current.memory,temperature.gpu,power.draw,power.limit,utilization.gpu,memory.used,memory.total",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "uuid, name, driver_version, pstate, clocks.current.graphics [MHz], clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], power.limit [W], utilization.gpu [%], memory.used [MiB], memory.total [MiB]\nGPU-b93d0ebe-03a8-bdde-60fe-024fb902497b, NVIDIA B200, 580.105.08, P0, 1965 MHz, 1965 MHz, 3996 MHz, 32, 241.48 W, 1000.00 W, 100 %, 742 MiB, 183359 MiB"
+      },
+      "returncode": 0,
+      "started_at": "2026-09-06T18:20:17.650235+00:00",
+      "trial": 1
+    }
+  ],
+  "website_id": 218,
+  "workload_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ]
+}

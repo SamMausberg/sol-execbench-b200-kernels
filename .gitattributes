@@ -1,0 +1,2 @@
+# Preserve the validated third-party source formatting and identify its origin.
+kernels/030_attention_output_projection_with_residual/cute_residual.py linguist-vendored whitespace=-blank-at-eof

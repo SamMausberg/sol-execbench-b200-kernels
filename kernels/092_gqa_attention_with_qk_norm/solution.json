@@ -1,0 +1,15 @@
+{
+  "name": "gqa_qk_norm_rounded_causal_b200_v1",
+  "definition": "092_gqa_attention_with_qk_norm",
+  "author": "sol-b200-kernel-team",
+  "description": "Fused per-head FP32 RMSNorm and BF16 RoPE with grouped causal attention preserving BF16 logits and normalized probabilities.",
+  "spec": {
+    "languages": ["triton"],
+    "target_hardware": ["B200"],
+    "entry_point": "kernel.py::run",
+    "destination_passing_style": true,
+    "dependencies": ["torch", "triton"],
+    "compile_options": {}
+  },
+  "sources": [{"path": "kernel.py"}]
+}

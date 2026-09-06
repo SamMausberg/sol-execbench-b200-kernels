@@ -113,6 +113,54 @@ def contract_digest(definition, workloads):
     return sha(payload.encode())
 
 
+def stage_definition(run_dir, original_bytes):
+    """Keep pinned bytes and normalize an empty optional provenance ID for loading."""
+    write(run_dir / "definition.json", original_bytes)
+    definition = json.loads(original_bytes)
+    if definition.get("hf_id") != "":
+        return None
+    native = {**definition, "hf_id": None}
+    native_bytes = encoded(native, sort_keys=False)
+    write(run_dir / "definition.native.json", native_bytes)
+    return {
+        "kind": "empty_optional_hf_id_to_null",
+        "field_changes": [{"field": "hf_id", "original": "", "native": None}],
+        "original_definition_sha256": sha(original_bytes),
+        "native_definition_sha256": sha(native_bytes),
+        "native_definition_file": "definition.native.json",
+        "reason": "Pinned Definition accepts a null optional hf_id but rejects an empty string.",
+    }
+
+
+def validate_definition_adapter(run_dir, run, definition):
+    """Accept only the recorded provenance-field normalization, never math changes."""
+    adapter = run.get("definition_adapter")
+    expected_file = "definition.native.json" if adapter else "definition.json"
+    if run.get("evaluation_definition_file", "definition.json") != expected_file:
+        raise CampaignError("Evaluation definition file disagrees with metadata adapter")
+    for trial in run.get("trials", []):
+        command = trial.get("command", [])
+        definition_options = [i for i, value in enumerate(command) if value == "--definition"]
+        if adapter and len(definition_options) != 1:
+            raise CampaignError("Adapted trial must explicitly select its native definition")
+        if definition_options:
+            index = definition_options[0]
+            if len(definition_options) != 1 or index + 1 >= len(command) or Path(command[index + 1]).name != expected_file:
+                raise CampaignError("Trial command uses a different evaluation definition")
+    if not adapter:
+        return
+    if adapter.get("kind") != "empty_optional_hf_id_to_null" or adapter.get("native_definition_file") != expected_file:
+        raise CampaignError("Unknown definition metadata adapter")
+    if adapter.get("field_changes") != [{"field": "hf_id", "original": "", "native": None}] or definition.get("hf_id") != "":
+        raise CampaignError("Definition adapter must change only empty hf_id to null")
+    original_bytes = (run_dir / "definition.json").read_bytes()
+    native_bytes = (run_dir / expected_file).read_bytes()
+    if sha(original_bytes) != adapter.get("original_definition_sha256") or sha(native_bytes) != adapter.get("native_definition_sha256"):
+        raise CampaignError("Archived definition adapter file hash differs from its record")
+    if json.loads(native_bytes) != {**definition, "hf_id": None}:
+        raise CampaignError("Native definition changes fields beyond optional hf_id metadata")
+
+
 def load_problem(problem_id):
     directory = WORK / "problems" / str(problem_id)
     definition = read_json(directory / "definition.json")
@@ -228,13 +276,17 @@ def gpu_snapshot():
     return capture(["nvidia-smi", "--query-gpu=uuid,name,driver_version,pstate,clocks.current.graphics,clocks.current.sm,clocks.current.memory,temperature.gpu,power.draw,power.limit,utilization.gpu,memory.used,memory.total", "--format=csv"])
 
 
+def gpu_processes_snapshot():
+    return capture(["nvidia-smi", "--query-compute-apps=pid,process_name,used_memory", "--format=csv"])
+
+
 def environment():
     keys = ("CUDA_HOME", "CUDACXX", "CUTLASS_DIR", "CPLUS_INCLUDE_PATH", "LD_LIBRARY_PATH", "LIBRARY_PATH", "PATH", "PYTHONPATH", "MAX_JOBS", "SOL_GPU_LOCK", "CUDA_VISIBLE_DEVICES", "SOL_EXECBENCH_CLOCKS_LOCKED", "SOL_EXECBENCH_GPU_CLK_MHZ", "SOL_EXECBENCH_DRAM_CLK_MHZ", "TRITON_CACHE_DIR", "CUDA_CACHE_PATH", "TORCH_EXTENSIONS_DIR", "CUTE_DSL_CACHE_DIR", "TMPDIR")
     return {
         "recorded_at": now(), "python": sys.version, "executable": sys.executable, "platform": platform.platform(),
         "packages": dict(sorted((dist.metadata["Name"], dist.version) for dist in importlib.metadata.distributions() if dist.metadata["Name"])),
         "environment": {key: os.environ[key] for key in keys if key in os.environ},
-        "gpu": gpu_snapshot(), "gpu_processes": capture(["nvidia-smi", "--query-compute-apps=pid,process_name,used_memory", "--format=csv"]),
+        "gpu": gpu_snapshot(), "gpu_processes": gpu_processes_snapshot(),
         "nvcc": capture([os.environ.get("CUDACXX", "nvcc"), "--version"]), "gcc": capture(["gcc", "--version"]),
         "repository_commit": git("rev-parse", "HEAD"), "repository_status": git("status", "--porcelain"),
         "evaluator_commit": git("rev-parse", "HEAD", cwd=EVALUATOR),
@@ -305,6 +357,7 @@ def summarize(run_dir):
         raise CampaignError("Archived solution bytes differ from recorded package hash")
     manifest = json.loads(solution_bytes)
     definition = read_json(run_dir / "definition.json")
+    validate_definition_adapter(run_dir, run, definition)
     full_workloads = read_jsonl(run_dir / "all-workloads.jsonl")
     if contract_digest(definition, full_workloads) != run["contract"]["contract_sha256"]:
         raise CampaignError("Archived contract differs from recorded contract hash")
@@ -378,6 +431,10 @@ def summarize(run_dir):
         "environment_file": "environment.json", "environment_sha256": sha((run_dir / "environment.json").read_bytes()),
         "trace_sha256": trace_hashes, "workloads": metrics,
     }
+    if run.get("definition_adapter"):
+        summary["definition_adapter"] = run["definition_adapter"]
+        summary["evaluation_scope"] = "metadata-adapted native evaluation: optional hf_id normalized from empty string to null"
+        summary["result_scope"] = "local estimate with a documented metadata adapter; official leaderboard requires server evaluation"
     write_json(run_dir / "summary.json", summary)
     return summary
 
@@ -404,7 +461,7 @@ def execute(command, log_path, timeout, env):
 
 def command_bench(args):
     lock = verify_evaluator()
-    _, definition, workloads, provenance = load_problem(args.problem_id)
+    problem_dir, definition, workloads, provenance = load_problem(args.problem_id)
     payload = package(args.problem_id, args.solution)
     indices = sorted(set(args.workload)) if args.workload else list(range(len(workloads)))
     if not indices or min(indices) < 0 or max(indices) >= len(workloads):
@@ -416,7 +473,10 @@ def command_bench(args):
     run_dir = WORK / "runs" / str(args.problem_id) / f"{stamp}-{label}-{sha(payload)[:12]}"
     run_dir.mkdir(parents=True, exist_ok=False)
     write(run_dir / "solution.json", payload)
-    write_json(run_dir / "definition.json", definition, sort_keys=False)
+    original_definition_bytes = (problem_dir / "definition.json").read_bytes()
+    if json.loads(original_definition_bytes) != definition:
+        raise CampaignError("Extracted definition changed during staging")
+    adapter = stage_definition(run_dir, original_definition_bytes)
     write_jsonl(run_dir / "all-workloads.jsonl", workloads)
     write_jsonl(run_dir / "workload.jsonl", [workloads[index] for index in indices])
     write_json(run_dir / "score-source.json", snapshot)
@@ -429,8 +489,14 @@ def command_bench(args):
         "evaluation_stack": lock["evaluation_stack"], "clock_mode": "locked" if args.lock_clocks else "unlocked",
         "gpu_lock": str(Path(args.gpu_lock).resolve()), "trials": [],
     }
+    if adapter:
+        run["definition_adapter"] = adapter
+        run["evaluation_definition_file"] = "definition.native.json"
+        run["evaluation_scope"] = "metadata-adapted native evaluation: optional hf_id normalized from empty string to null"
     write_json(run_dir / "run.json", run)
     print(f"Run artifacts: {run_dir}", flush=True)
+    if adapter:
+        print("Metadata adapter: native hf_id is null; original definition bytes and contract hash are preserved", flush=True)
     clock_lock_owned = False
     try:
         with gpu_lock(args.gpu_lock):
@@ -450,17 +516,19 @@ def command_bench(args):
                 write_json(run_dir / "environment.json", snapshot_env)
                 for trial in range(1, args.trials + 1):
                     command = [sys.executable, "-m", "sol_execbench.cli.main", str(run_dir), "--solution", str(run_dir / "solution.json"), "--compile-timeout", str(args.compile_timeout), "--timeout", str(args.timeout), "--verbose", "-o", str(run_dir / f"trial-{trial}.jsonl")]
+                    if adapter:
+                        command.extend(["--definition", str(run_dir / "definition.native.json")])
                     if args.lock_clocks:
                         command.append("--lock-clocks")
                     if args.keep_staging:
                         command.append("--keep-staging")
                     print(f"Official evaluator trial {trial}/{args.trials}; log: {run_dir / f'trial-{trial}.log'}", flush=True)
-                    trial_record = {"trial": trial, "command": command, "started_at": now(), "gpu_before": gpu_snapshot()}
+                    trial_record = {"trial": trial, "command": command, "started_at": now(), "gpu_before": gpu_snapshot(), "gpu_processes_before": gpu_processes_snapshot()}
                     run["trials"].append(trial_record)
                     write_json(run_dir / "run.json", run)
                     start = time.monotonic()
                     trial_record["returncode"] = execute(command, run_dir / f"trial-{trial}.log", args.timeout + args.compile_timeout + 120, env)
-                    trial_record.update({"finished_at": now(), "elapsed_seconds": time.monotonic() - start, "gpu_after": gpu_snapshot()})
+                    trial_record.update({"finished_at": now(), "elapsed_seconds": time.monotonic() - start, "gpu_after": gpu_snapshot(), "gpu_processes_after": gpu_processes_snapshot()})
                     write_json(run_dir / "run.json", run)
                     if trial_record["returncode"] != 0:
                         break

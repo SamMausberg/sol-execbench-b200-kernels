@@ -33,10 +33,31 @@ passed in one complete trial, with local score 0.419214 versus leader 0.573023.
 It also passes five changed-input checks, but does not justify more full trials
 until its performance improves.
 
+Additional experimental checkpoints preserve full correctness evidence without
+claiming accepted ranking timings:
+
+- 030 projection with residual: 16 workloads and 32 input variations pass.
+  The unqualified observed score is 0.498701, below leader snapshot 0.546380.
+- 092 grouped causal attention: 16 workloads and six extra cases pass with
+  explicit BF16 logits and normalized probability rounding. Foreign GPU jobs
+  overlapped the full trial, so its timing is excluded from ranking comparisons.
+- 218 GEMM: the exact library comparison passes 25 workloads with a documented
+  optional-metadata adapter. Its raw score of 0.687683 exceeds the leader snapshot
+  0.535630 under different clocks; this does not demonstrate a kernel improvement.
+
 To reproduce, run `bash tools/bootstrap_native.sh`, source `tools/native_env.sh`,
 then use `tools/campaign.py bench ID --solution PATH --trials 3`.
 GPU evaluations acquire `/workspace/sol-execbench-b200-kernels/.work/gpu.lock`.
 Other GPU jobs on the same pod should acquire that same lock.
+The [qualification helper](../../tools/qualify_gpu.md) monitors CUDA process
+ownership, rejects observed overlap and retries only contaminated timing trials.
+
+The configured cuBLASLt variant for problem 010 passes nine complete correctness
+trials and 30 changed-input checks. One monitored trial qualifies at 0.663578;
+five other monitored attempts contain foreign CUDA contexts and are excluded.
+The original 010 table entry retains its three-trial estimate until the new
+variant obtains two more uncontended repeats. Its exact source, all trials, and
+the process qualification report are preserved in the 010 result directories.
 
 The leaderboard values are snapshots of the official problem boards:
 [010](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/10/B200),

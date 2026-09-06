@@ -1,0 +1,755 @@
+{
+  "problem_id": 10,
+  "problem_name": "010_attention_value_projection_with_transpose",
+  "status": "correctness validated; one qualified performance trial, further repeats need coordinated GPU access",
+  "passed": true,
+  "official_workloads": 16,
+  "full_harness_trials": 9,
+  "qualified_performance_trials": 1,
+  "clock_mode": "unlocked",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "contract_sha256": "ab259e165a2818e5353b9959148e7d41397ed531e955f3b0dba8d29b2bb93421",
+  "submission_sha256": "61db5fba78d98691616053a25d8486bce73d7fa179186aa433c593c7a55170bd",
+  "source_sha256": {
+    "binding.cpp": "529f766ec02b76819770290b50ff394b5a7184c372235bf0ec0f3f15d513ecbf",
+    "cublaslt_bridge.h": "bbc3bcfd6089ebac2fcb50820fd3b28c8557660a20739e52403c27b56382d71d"
+  },
+  "cublaslt_version": 130000,
+  "cublas_package_version": "13.0.0.19",
+  "provisional_local_sol_score": 0.6637100105343232,
+  "provisional_trial_sol_scores": [
+    0.6674142677831147,
+    0.663969447557195,
+    0.6621821913213544
+  ],
+  "provisional_geometric_mean_latency_ms": 0.019832719647942497,
+  "max_workload_relative_spread": 0.13612565445026167,
+  "leader_snapshot": {
+    "sol_score": 0.534899,
+    "username": "RIAC as well",
+    "submission_id": 40940,
+    "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/leaderboard/kernel/10/B200?evaluation_stack_version=v1.1",
+    "retrieved_at": "2026-09-06T18:40:17.028903+00:00",
+    "path": ".work/leaderboard-10-cublaslt-v2.json",
+    "sha256": "d1e40c45ca5bc2ae5189048e73cc787d4def8d3851fa6330d0d18d8531255ed0"
+  },
+  "provisional_uniform_latency_slowdown_buffer": 0.2265531881831666,
+  "hypothetical_uniform_1965_to_1500_clock_scaling_score": 0.5004089316512284,
+  "recommend_submission": false,
+  "reason": "Nine full official correctness trials and 30 changed-input checks pass. The bounded six-attempt monitor run obtained one qualified timing trial and rejected five with foreign CUDA contexts. The qualified local lead remains sensitive to the unavailable official clock setting; the 1965/1500 compute-bound sensitivity estimate falls below the leader. More uncontended trials and clock evidence are required before hosted submission.",
+  "gpu_concurrency_audit": {
+    "monitor_path": ".work/validation/10/v2-repeat-process-monitor.jsonl",
+    "monitor_sha256": "5619e86699a744e3dc237d0173144b65c4fd8ab0d1ef3e8a051d8d271672959c",
+    "sampling_seconds": 2,
+    "first_timestamp": "2026-09-06T18:33:23.302832+00:00",
+    "last_timestamp": "2026-09-06T18:35:58.274029+00:00",
+    "foreign_contexts": [
+      {
+        "pid": 143030,
+        "first_seen": "2026-09-06T18:33:35.699143+00:00",
+        "last_seen": "2026-09-06T18:33:43.901324+00:00"
+      },
+      {
+        "pid": 143920,
+        "first_seen": "2026-09-06T18:34:06.586196+00:00",
+        "last_seen": "2026-09-06T18:34:14.883740+00:00"
+      },
+      {
+        "pid": 145247,
+        "first_seen": "2026-09-06T18:34:35.803685+00:00",
+        "last_seen": "2026-09-06T18:34:46.066231+00:00"
+      },
+      {
+        "pid": 147797,
+        "first_seen": "2026-09-06T18:35:47.908549+00:00",
+        "last_seen": "2026-09-06T18:35:56.196288+00:00"
+      }
+    ],
+    "note": "Process snapshots establish overlapping CUDA contexts, not per-kernel execution intervals. Both repeat trials are excluded from performance qualification conservatively."
+  },
+  "source_runs": [
+    {
+      "directory": ".work/runs/10/20260906T182830.437731Z-configured-cublaslt-v2-61db5fba78d9",
+      "summary_sha256": "aaa9f593ef34b06de0e4b32418d087c66ba666cca8a297fe4336039ead9f23ed",
+      "environment_sha256": "09064bda8a2935a0aff3b9d222f66934b7922eea9099ba0050fcb8a4a7d4aa9a",
+      "trace_sha256": {
+        "trial-1.jsonl": "41eb5e8f87b0267d476535facd25176da43a92bea073086efcf9b5a06b50a016"
+      },
+      "timing_status": "unqualified; unidentified CUDA process present in environment snapshot"
+    },
+    {
+      "directory": ".work/runs/10/20260906T183126.983792Z-configured-cublaslt-v2-repeat-61db5fba78d9",
+      "summary_sha256": "9e7187049fcd97afefbe2d020249dc65a44f36be9eb1bf811f578e515b1d206e",
+      "environment_sha256": "281e5f76247e5803b9f59218c185c5fe48d143bf35f1b32ee74018ad1f6a6815",
+      "trace_sha256": {
+        "trial-1.jsonl": "11b733d95371e0f8b54919241f96a6fa1776d72cd19e4209c6aad885a6096107",
+        "trial-2.jsonl": "f6c6cac4435b740d13bb75e59970001ca9402f75cbb75d689902ee5e0d85bdf5"
+      },
+      "timing_status": "exclude from performance qualification; foreign CUDA processes observed during both trials"
+    },
+    {
+      "directory": ".work/runs/10/20260906T184635.003619Z-cublaslt-v2-20260906T184629306247Z-a1-61db5fba78d9",
+      "summary_sha256": "d240e3737f9524c16e4483cb80b156f92c28d74a1178b1713519c635543d226c",
+      "environment_sha256": "dbf2b0c16a22b066f26ad3b0fa1e33a26ecb2e8ff62676e7b046d63c02e18cca",
+      "trace_sha256": {
+        "trial-1.jsonl": "651d3ad330b804aeb8117b02b51458d2de967101b946ff3de2c3ee31480ab240"
+      },
+      "timing_status": "contaminated",
+      "monitor_path": ".work/qualification/10/20260906T184629306247Z-cublaslt-v2/attempt-1-processes.jsonl",
+      "monitor_sha256": "20a04f7fb644efe4805bcd139a19cdcc88b005d4dcc5840f2cee4161b25f8884"
+    },
+    {
+      "directory": ".work/runs/10/20260906T184817.719329Z-cublaslt-v2-20260906T184629306247Z-a2-61db5fba78d9",
+      "summary_sha256": "7f93d0a3b30619ea4a11d2086b4b03046f8f98fc03e7fbbc0249f77fc00b2c8e",
+      "environment_sha256": "d927c88f35db44a78f3ccf2df955a644eb1cc4a5ca3585404a92fbf2b4428ff6",
+      "trace_sha256": {
+        "trial-1.jsonl": "ff3392d75e566a025ed23a7d7a0f57999580cb4cd6cafc4b3186209c648983e7"
+      },
+      "timing_status": "contaminated",
+      "monitor_path": ".work/qualification/10/20260906T184629306247Z-cublaslt-v2/attempt-2-processes.jsonl",
+      "monitor_sha256": "9766ff10687c24f8908a8c3548f6262efc369df8d9554251564f6e3db7967f23"
+    },
+    {
+      "directory": ".work/runs/10/20260906T185026.248065Z-cublaslt-v2-20260906T184629306247Z-a3-61db5fba78d9",
+      "summary_sha256": "fa1faf1a09033c04c1f18aa2ec15b6fa6696bb572902ff575aef5be555704790",
+      "environment_sha256": "b3cc66fccc535edb6576b5c85be8724288b34ab0798cf24e49d102327a706e3a",
+      "trace_sha256": {
+        "trial-1.jsonl": "c1dc3e8721c3b25857023e5311bf67e6c9caa221cb378b732f56b1075e362010"
+      },
+      "timing_status": "qualified",
+      "monitor_path": ".work/qualification/10/20260906T184629306247Z-cublaslt-v2/attempt-3-processes.jsonl",
+      "monitor_sha256": "fbdb8cda3477cf7119212119ff2b18b998b5557a66a4dad6b1e1ea6e80408873"
+    },
+    {
+      "directory": ".work/runs/10/20260906T185205.556238Z-cublaslt-v2-20260906T184629306247Z-a4-61db5fba78d9",
+      "summary_sha256": "8d22c4e79ee494486b4de4932e5f469f38ca80f8be87c7cd58ea83353c1396ae",
+      "environment_sha256": "28a90777a9f3c9211fd4e09b2ff20054302201731ce2261b8139a51cc154c2f1",
+      "trace_sha256": {
+        "trial-1.jsonl": "6b6346d45d3b65e0203c65866ee4fc7de1c879cfc87e738a24370d40728645c8"
+      },
+      "timing_status": "contaminated",
+      "monitor_path": ".work/qualification/10/20260906T184629306247Z-cublaslt-v2/attempt-4-processes.jsonl",
+      "monitor_sha256": "73d74041a6b9ac73405a3ccf9a5482fefa433ddf867a49a7f56474617a4d590b"
+    },
+    {
+      "directory": ".work/runs/10/20260906T185357.927661Z-cublaslt-v2-20260906T184629306247Z-a5-61db5fba78d9",
+      "summary_sha256": "7016d2a89bd47a8efda02a4ff33c08010cbd5b2e81c07da39576bf48dc747b67",
+      "environment_sha256": "f206a0891edef4fe765385fe04460bfad814986f155d4be49848465d3986750d",
+      "trace_sha256": {
+        "trial-1.jsonl": "82a081b1b5381575443f4680b5e6176f4dbd6850038a0e5c0861b3b83d1eddb3"
+      },
+      "timing_status": "contaminated",
+      "monitor_path": ".work/qualification/10/20260906T184629306247Z-cublaslt-v2/attempt-5-processes.jsonl",
+      "monitor_sha256": "7b5484e9ac217313e09863d3babcdee3a23c0bc0e1d6470f8481010ba9160b6d"
+    },
+    {
+      "directory": ".work/runs/10/20260906T185520.405429Z-cublaslt-v2-20260906T184629306247Z-a6-61db5fba78d9",
+      "summary_sha256": "c71323c87a255c39e04b695a1ab5797c50952e5e4c0c8c011a282705b28bcf0d",
+      "environment_sha256": "58a119feacda1a3b00e4c0e3fc274bf67b54b57164b4eb2ee40030adca9aba6a",
+      "trace_sha256": {
+        "trial-1.jsonl": "bb4c96e884d5303fc4bd85258f60776cb033c5b7434535f3189159c39cedc825"
+      },
+      "timing_status": "contaminated",
+      "monitor_path": ".work/qualification/10/20260906T184629306247Z-cublaslt-v2/attempt-6-processes.jsonl",
+      "monitor_sha256": "bda946d7d766082d5844850dbce9ea02803b2e79e4c9e98bdaa85f7eec655a5c"
+    }
+  ],
+  "changed_input_checks": {
+    "path": ".work/validation/10/cublaslt-v2-values-20260906T183709Z.json",
+    "sha256": "5870cb5b4557d891f880cc253505b140d7a06183159a5f0181eb26b9794084d6",
+    "cases": 30,
+    "minimum_matched_ratio": 0.999969482421875,
+    "tolerance": {
+      "max_atol": 1e-05,
+      "max_rtol": 0.05,
+      "required_matched_ratio": 0.99,
+      "max_error_cap": null,
+      "allow_negative_inf": false
+    },
+    "checks_output_storage_ownership": true,
+    "checks_reused_input_storage": true,
+    "core_source_matches_packaged_header": true
+  },
+  "output_layout": {
+    "concrete_tensor": true,
+    "shape": [
+      "batch_size",
+      8,
+      "seq_len",
+      128
+    ],
+    "stride": [
+      "seq_len * 1024",
+      128,
+      1024,
+      1
+    ],
+    "contiguous": false,
+    "contract_requires_contiguous": false,
+    "destination_passing_style": false
+  },
+  "selection_record": {
+    "path": "kernels/010_attention_value_projection_with_transpose/variants/cublaslt_v2/selected-algorithms.json",
+    "sha256": "78ca8f51de9442a043c88f21262ec992ebb622f52f18138a2f1e98688b789b6e",
+    "key": "batch_size * seq_len",
+    "fields": [
+      "id",
+      "tile",
+      "split_k",
+      "reduction",
+      "swizzle",
+      "custom",
+      "stages",
+      "inner_shape",
+      "cluster_shape"
+    ]
+  },
+  "requested_qualified_trials": 3,
+  "local_sol_score": 0.663578003516582,
+  "trial_sol_scores": [
+    0.6635780035165819
+  ],
+  "geometric_mean_latency_ms": 0.019805846164286878,
+  "qualified_max_workload_relative_spread": 0.0,
+  "uniform_latency_slowdown_buffer": 0.22668838039995243,
+  "qualification": {
+    "path": ".work/qualification/10/20260906T184629306247Z-cublaslt-v2/qualification.json",
+    "sha256": "6a2d0bc214fcbf05097d22d7b5c2a0ba49fc296e510a91e2a21c3bbff5211e2e",
+    "tool_sha256": "873a63f4bcd2bbc318c3efe3ee357c07fd8812695bdf7ce2ee18957deaa6728f",
+    "attempts": 6,
+    "qualified_trials": 1,
+    "rejected_trials": 5,
+    "sampling_seconds": 0.5,
+    "stop_reason": "attempt limit reached",
+    "note": "Only the qualified attempt contributes to local_sol_score. No foreign CUDA context was observed in its recorded trial window; overlap shorter than the sample interval cannot be excluded."
+  },
+  "provisional_workloads": [
+    {
+      "uuid": "3aa8f76c-2f1e-5cd4-b081-c1ef756fad09",
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 128
+      },
+      "times": [
+        0.0098875,
+        0.009856,
+        0.009984
+      ],
+      "median": 0.0098875,
+      "spread": 0.01294563843236406,
+      "baseline": 0.012432,
+      "sol": 0.0022,
+      "score": 0.5709980747230671
+    },
+    {
+      "uuid": "63925da7-d895-52ac-bfaa-f8ed36192fd6",
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 541
+      },
+      "times": [
+        0.0192,
+        0.0191355,
+        0.019296
+      ],
+      "median": 0.0192,
+      "spread": 0.008359375000000049,
+      "baseline": 0.026752,
+      "sol": 0.0129,
+      "score": 0.6873759428344582
+    },
+    {
+      "uuid": "9275b9e5-5183-5189-9353-f10117c44fea",
+      "axes": {
+        "batch_size": 16,
+        "seq_len": 128
+      },
+      "times": [
+        0.0190245,
+        0.0190725,
+        0.019152
+      ],
+      "median": 0.0190725,
+      "spread": 0.006685017695635032,
+      "baseline": 0.0232485,
+      "sol": 0.0123,
+      "score": 0.6178263077704419
+    },
+    {
+      "uuid": "8f7f7722-853a-53b4-8baa-bf24eca500ba",
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 512
+      },
+      "times": [
+        0.01904,
+        0.019136,
+        0.019055500000000003
+      ],
+      "median": 0.019055500000000003,
+      "spread": 0.005037915562435982,
+      "baseline": 0.023296,
+      "sol": 0.0123,
+      "score": 0.6194406106526209
+    },
+    {
+      "uuid": "7ae5f58c-2fbb-5998-8cec-b1c44f8eac56",
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 256
+      },
+      "times": [
+        0.012448,
+        0.012352,
+        0.012512
+      ],
+      "median": 0.012448,
+      "spread": 0.012853470437018028,
+      "baseline": 0.017168,
+      "sol": 0.0063,
+      "score": 0.6386929948283968
+    },
+    {
+      "uuid": "e71134c6-678c-5f5e-a160-4c6401e4d47d",
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 128
+      },
+      "times": [
+        0.031023500000000002,
+        0.030816,
+        0.030992
+      ],
+      "median": 0.030992,
+      "spread": 0.006695276200309849,
+      "baseline": 0.040576,
+      "sol": 0.0241,
+      "score": 0.7050667579596032
+    },
+    {
+      "uuid": "833b707b-7847-516c-b12c-6eba17aa78c1",
+      "axes": {
+        "batch_size": 8,
+        "seq_len": 128
+      },
+      "times": [
+        0.012208,
+        0.012303999999999999,
+        0.012288
+      ],
+      "median": 0.012288,
+      "spread": 0.007812499999999907,
+      "baseline": 0.0171045,
+      "sol": 0.0063,
+      "score": 0.6434122376060741
+    },
+    {
+      "uuid": "35c8c58f-8693-5a1d-b3d0-7b4a4068e41b",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 256
+      },
+      "times": [
+        0.00992,
+        0.009984,
+        0.009888
+      ],
+      "median": 0.00992,
+      "spread": 0.00967741935483877,
+      "baseline": 0.012416,
+      "sol": 0.0022,
+      "score": 0.5695807314897412
+    },
+    {
+      "uuid": "9f310f9d-30e1-5aa8-a469-8511cec3da90",
+      "axes": {
+        "batch_size": 64,
+        "seq_len": 128
+      },
+      "times": [
+        0.0534395,
+        0.053568,
+        0.0535035
+      ],
+      "median": 0.0535035,
+      "spread": 0.002401712037530193,
+      "baseline": 0.0719365,
+      "sol": 0.0478,
+      "score": 0.8088639410187669
+    },
+    {
+      "uuid": "b0eeae57-3064-5e87-9f4b-e60e7ff57432",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 8192
+      },
+      "times": [
+        0.053472,
+        0.0535675,
+        0.053615499999999996
+      ],
+      "median": 0.0535675,
+      "spread": 0.0026788631166285116,
+      "baseline": 0.072208,
+      "sol": 0.0478,
+      "score": 0.808868121489288
+    },
+    {
+      "uuid": "15ec2850-0959-565b-9b74-5c189e12d7e1",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 512
+      },
+      "times": [
+        0.010464,
+        0.01056,
+        0.010624
+      ],
+      "median": 0.01056,
+      "spread": 0.015151515151515192,
+      "baseline": 0.0130879999999999,
+      "sol": 0.0034,
+      "score": 0.5750237416904059
+    },
+    {
+      "uuid": "67c51f93-ea69-5b99-9614-b9ae0a149f6a",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "times": [
+        0.01072,
+        0.012224,
+        0.012384
+      ],
+      "median": 0.012224,
+      "spread": 0.13612565445026167,
+      "baseline": 0.015072,
+      "sol": 0.002,
+      "score": 0.5611263736263736
+    },
+    {
+      "uuid": "e7c39430-0198-5271-a7cc-65440dc58c50",
+      "axes": {
+        "batch_size": 16,
+        "seq_len": 256
+      },
+      "times": [
+        0.03088,
+        0.030927,
+        0.0312
+      ],
+      "median": 0.030927,
+      "spread": 0.010346946034209506,
+      "baseline": 0.0403675,
+      "sol": 0.0241,
+      "score": 0.7043884907661999
+    },
+    {
+      "uuid": "8459290b-23d9-5945-9a6b-47bfe9777643",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1571
+      },
+      "times": [
+        0.015136,
+        0.015072,
+        0.014976
+      ],
+      "median": 0.015072,
+      "spread": 0.010615711252653955,
+      "baseline": 0.0215995,
+      "sol": 0.0095,
+      "score": 0.684690037631214
+    },
+    {
+      "uuid": "95e0233d-1c5d-5c47-abca-1683460eeb72",
+      "axes": {
+        "batch_size": 8,
+        "seq_len": 1024
+      },
+      "times": [
+        0.053472,
+        0.053632,
+        0.0536
+      ],
+      "median": 0.0536,
+      "spread": 0.0029850746268656795,
+      "baseline": 0.0720965,
+      "sol": 0.0478,
+      "score": 0.8072865615603144
+    },
+    {
+      "uuid": "17a3d18e-355a-5d94-9d38-a3e8e7587939",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 2048
+      },
+      "times": [
+        0.018928,
+        0.019104,
+        0.019168
+      ],
+      "median": 0.019104,
+      "spread": 0.012562814070351792,
+      "baseline": 0.0232479999999999,
+      "sol": 0.0123,
+      "score": 0.6167192429022059
+    }
+  ],
+  "workloads": [
+    {
+      "uuid": "3aa8f76c-2f1e-5cd4-b081-c1ef756fad09",
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 128
+      },
+      "latencies_ms": [
+        0.010048
+      ],
+      "median_latency_ms": 0.010048,
+      "baseline_latency_ms": 0.012432,
+      "sol_ms": 0.0022,
+      "score": 0.565929203539823,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "63925da7-d895-52ac-bfaa-f8ed36192fd6",
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 541
+      },
+      "latencies_ms": [
+        0.0193275
+      ],
+      "median_latency_ms": 0.0193275,
+      "baseline_latency_ms": 0.026752,
+      "sol_ms": 0.0129,
+      "score": 0.683054315934811,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "9275b9e5-5183-5189-9353-f10117c44fea",
+      "axes": {
+        "batch_size": 16,
+        "seq_len": 128
+      },
+      "latencies_ms": [
+        0.019408
+      ],
+      "median_latency_ms": 0.019408,
+      "baseline_latency_ms": 0.0232485,
+      "sol_ms": 0.0123,
+      "score": 0.6063467449394954,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "8f7f7722-853a-53b4-8baa-bf24eca500ba",
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 512
+      },
+      "latencies_ms": [
+        0.019104
+      ],
+      "median_latency_ms": 0.019104,
+      "baseline_latency_ms": 0.023296,
+      "sol_ms": 0.0123,
+      "score": 0.6177528089887641,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "7ae5f58c-2fbb-5998-8cec-b1c44f8eac56",
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 256
+      },
+      "latencies_ms": [
+        0.01232
+      ],
+      "median_latency_ms": 0.01232,
+      "baseline_latency_ms": 0.017168,
+      "sol_ms": 0.0063,
+      "score": 0.6435338702036949,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "e71134c6-678c-5f5e-a160-4c6401e4d47d",
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 128
+      },
+      "latencies_ms": [
+        0.031184
+      ],
+      "median_latency_ms": 0.031184,
+      "baseline_latency_ms": 0.040576,
+      "sol_ms": 0.0241,
+      "score": 0.6993208828522919,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "833b707b-7847-516c-b12c-6eba17aa78c1",
+      "axes": {
+        "batch_size": 8,
+        "seq_len": 128
+      },
+      "latencies_ms": [
+        0.0121925
+      ],
+      "median_latency_ms": 0.0121925,
+      "baseline_latency_ms": 0.0171045,
+      "sol_ms": 0.0063,
+      "score": 0.647092292028508,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "35c8c58f-8693-5a1d-b3d0-7b4a4068e41b",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 256
+      },
+      "latencies_ms": [
+        0.01008
+      ],
+      "median_latency_ms": 0.01008,
+      "baseline_latency_ms": 0.012416,
+      "sol_ms": 0.0022,
+      "score": 0.5645446507515473,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "9f310f9d-30e1-5aa8-a469-8511cec3da90",
+      "axes": {
+        "batch_size": 64,
+        "seq_len": 128
+      },
+      "latencies_ms": [
+        0.0536
+      ],
+      "median_latency_ms": 0.0536,
+      "baseline_latency_ms": 0.0719365,
+      "sol_ms": 0.0478,
+      "score": 0.8062565764200894,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "b0eeae57-3064-5e87-9f4b-e60e7ff57432",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 8192
+      },
+      "latencies_ms": [
+        0.0534555
+      ],
+      "median_latency_ms": 0.0534555,
+      "baseline_latency_ms": 0.072208,
+      "sol_ms": 0.0478,
+      "score": 0.8118815174547211,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "15ec2850-0959-565b-9b74-5c189e12d7e1",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 512
+      },
+      "latencies_ms": [
+        0.0104485
+      ],
+      "median_latency_ms": 0.0104485,
+      "baseline_latency_ms": 0.0130879999999999,
+      "sol_ms": 0.0034,
+      "score": 0.5788545992292271,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "67c51f93-ea69-5b99-9614-b9ae0a149f6a",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "latencies_ms": [
+        0.011536000000000001
+      ],
+      "median_latency_ms": 0.011536000000000001,
+      "baseline_latency_ms": 0.015072,
+      "sol_ms": 0.002,
+      "score": 0.578202406227884,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "e7c39430-0198-5271-a7cc-65440dc58c50",
+      "axes": {
+        "batch_size": 16,
+        "seq_len": 256
+      },
+      "latencies_ms": [
+        0.030992
+      ],
+      "median_latency_ms": 0.030992,
+      "baseline_latency_ms": 0.0403675,
+      "sol_ms": 0.0241,
+      "score": 0.7024115373820681,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "8459290b-23d9-5945-9a6b-47bfe9777643",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1571
+      },
+      "latencies_ms": [
+        0.015008
+      ],
+      "median_latency_ms": 0.015008,
+      "baseline_latency_ms": 0.0215995,
+      "sol_ms": 0.0095,
+      "score": 0.6871787590515406,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "95e0233d-1c5d-5c47-abca-1683460eeb72",
+      "axes": {
+        "batch_size": 8,
+        "seq_len": 1024
+      },
+      "latencies_ms": [
+        0.053424
+      ],
+      "median_latency_ms": 0.053424,
+      "baseline_latency_ms": 0.0720965,
+      "sol_ms": 0.0478,
+      "score": 0.8120352266840465,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "17a3d18e-355a-5d94-9d38-a3e8e7587939",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 2048
+      },
+      "latencies_ms": [
+        0.019215999999999997
+      ],
+      "median_latency_ms": 0.019215999999999997,
+      "baseline_latency_ms": 0.0232479999999999,
+      "sol_ms": 0.0123,
+      "score": 0.6128526645768004,
+      "relative_spread": 0.0
+    }
+  ],
+  "archived_runs": [
+    "results/2026-09-06/10/20260906T182830.437731Z-configured-cublaslt-v2-61db5fba78d9",
+    "results/2026-09-06/10/20260906T183126.983792Z-configured-cublaslt-v2-repeat-61db5fba78d9",
+    "results/2026-09-06/10/20260906T184635.003619Z-cublaslt-v2-20260906T184629306247Z-a1-61db5fba78d9",
+    "results/2026-09-06/10/20260906T184817.719329Z-cublaslt-v2-20260906T184629306247Z-a2-61db5fba78d9",
+    "results/2026-09-06/10/20260906T185026.248065Z-cublaslt-v2-20260906T184629306247Z-a3-61db5fba78d9",
+    "results/2026-09-06/10/20260906T185205.556238Z-cublaslt-v2-20260906T184629306247Z-a4-61db5fba78d9",
+    "results/2026-09-06/10/20260906T185357.927661Z-cublaslt-v2-20260906T184629306247Z-a5-61db5fba78d9",
+    "results/2026-09-06/10/20260906T185520.405429Z-cublaslt-v2-20260906T184629306247Z-a6-61db5fba78d9"
+  ],
+  "archived_qualification": "results/2026-09-06/10/qualification-cublaslt-v2/qualification.json",
+  "archived_input_variations": "results/2026-09-06/10/qualification-cublaslt-v2/input-variations.json"
+}

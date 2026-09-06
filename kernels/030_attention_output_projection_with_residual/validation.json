@@ -1,0 +1,34 @@
+{
+  "problem_id": 30,
+  "problem_name": "030_attention_output_projection_with_residual",
+  "status": "experimental, below leader",
+  "passed": true,
+  "official_workloads": 16,
+  "full_harness_trials": 1,
+  "additional_input_variations": 32,
+  "strict_allclose_variations": 32,
+  "clock_mode": "unlocked",
+  "timing_valid_for_ranking": false,
+  "local_sol_score": null,
+  "observed_unqualified_sol_score": 0.49870115114171504,
+  "leader_snapshot_sol_score": 0.54638,
+  "local_lead": false,
+  "hosted_rank_confirmed": false,
+  "recommend_submission": false,
+  "reason": "The observed full score is below the public leader. The full trial was not continuously monitored and a foreign context appeared in its pre-run snapshot; some tuning observations overlapped another session. Source correctness passed all workloads and changed-input checks.",
+  "contract_sha256": "9d7f95bcd5729c77dd5c7323b8331287eb3e5800c839eff6490dd9bb31d09586",
+  "submission_sha256": "8c957f454449047e06f8c3d06bff7493e1eb2107c29b113ea91e562eeab73324",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "evaluation_stack": "v1.1",
+  "source_sha256": {
+    "cute_kernel.py": "fa8832d2e67d00d2cbce4feeaa5e715cdda4250d3283e6ff6b2521a149c4c1cb",
+    "cute_residual.py": "c8198674a98a6e4ce28c8a9ad6a4803cfba21db2352bde451ff556dc07ef2c1c",
+    "kernel.py": "80b5b149b3b318248a8394d2a4da04145cbf1446e779ccef6467a7d45796439c"
+  },
+  "summary_sha256": "b5bf603cd6a36a67889c95676b5911d489642638114e18477b71064e6e87eadf",
+  "trace_sha256": {
+    "trial-1.jsonl": "9978226f1e102a0d0b2ceea1390f3e854d3f60b0743c217b751159a6f6fd27bf"
+  },
+  "input_variations_sha256": "0088b0bc98a858ded9a4b00f84867fe784ce09ffddee60c288fb7b0a2fdba763",
+  "archived_run": "results/2026-09-06/30/20260906T183657.633913Z-cute-fused-full-initial-8c957f454449"
+}

@@ -1,0 +1,644 @@
+{
+  "passed": true,
+  "tolerance": {
+    "max_atol": 1e-05,
+    "max_rtol": 0.05,
+    "required_matched_ratio": 0.99,
+    "max_error_cap": null,
+    "allow_negative_inf": false
+  },
+  "bridge_source_sha256": "bbc3bcfd6089ebac2fcb50820fd3b28c8557660a20739e52403c27b56382d71d",
+  "cublaslt_version": 130000,
+  "cases": [
+    {
+      "seed": 41,
+      "batch": 1,
+      "sequence": 128,
+      "input_revision": 0,
+      "passed": true,
+      "matched_ratio": 0.9999923706054688,
+      "errors": {
+        "max_relative_error": 0.07500000298023224,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 41,
+      "batch": 1,
+      "sequence": 128,
+      "input_revision": 1,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.024390242993831635,
+        "max_absolute_error": 0.25,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 41,
+      "batch": 2,
+      "sequence": 128,
+      "input_revision": 0,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 41,
+      "batch": 2,
+      "sequence": 128,
+      "input_revision": 1,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 41,
+      "batch": 4,
+      "sequence": 541,
+      "input_revision": 0,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        553984,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 41,
+      "batch": 4,
+      "sequence": 541,
+      "input_revision": 1,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        553984,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 41,
+      "batch": 1,
+      "sequence": 1571,
+      "input_revision": 0,
+      "passed": true,
+      "matched_ratio": 0.9999999403953552,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        1608704,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 41,
+      "batch": 1,
+      "sequence": 1571,
+      "input_revision": 1,
+      "passed": true,
+      "matched_ratio": 0.9999999403953552,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        1608704,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 41,
+      "batch": 1,
+      "sequence": 8192,
+      "input_revision": 0,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        8388608,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 41,
+      "batch": 1,
+      "sequence": 8192,
+      "input_revision": 1,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        8388608,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 733,
+      "batch": 1,
+      "sequence": 128,
+      "input_revision": 0,
+      "passed": true,
+      "matched_ratio": 0.9999847412109375,
+      "errors": {
+        "max_relative_error": 5.5,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 733,
+      "batch": 1,
+      "sequence": 128,
+      "input_revision": 1,
+      "passed": true,
+      "matched_ratio": 0.9999847412109375,
+      "errors": {
+        "max_relative_error": 0.10891088843345642,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 733,
+      "batch": 2,
+      "sequence": 128,
+      "input_revision": 0,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 733,
+      "batch": 2,
+      "sequence": 128,
+      "input_revision": 1,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 733,
+      "batch": 4,
+      "sequence": 541,
+      "input_revision": 0,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        553984,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 733,
+      "batch": 4,
+      "sequence": 541,
+      "input_revision": 1,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        553984,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 733,
+      "batch": 1,
+      "sequence": 1571,
+      "input_revision": 0,
+      "passed": true,
+      "matched_ratio": 0.9999999403953552,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        1608704,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 733,
+      "batch": 1,
+      "sequence": 1571,
+      "input_revision": 1,
+      "passed": true,
+      "matched_ratio": 0.9999999403953552,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        1608704,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 733,
+      "batch": 1,
+      "sequence": 8192,
+      "input_revision": 0,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        8388608,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 733,
+      "batch": 1,
+      "sequence": 8192,
+      "input_revision": 1,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        8388608,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 8109,
+      "batch": 1,
+      "sequence": 128,
+      "input_revision": 0,
+      "passed": true,
+      "matched_ratio": 0.9999771118164062,
+      "errors": {
+        "max_relative_error": 0.2010309249162674,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 8109,
+      "batch": 1,
+      "sequence": 128,
+      "input_revision": 1,
+      "passed": true,
+      "matched_ratio": 0.999969482421875,
+      "errors": {
+        "max_relative_error": 0.20720720291137695,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 8109,
+      "batch": 2,
+      "sequence": 128,
+      "input_revision": 0,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 8109,
+      "batch": 2,
+      "sequence": 128,
+      "input_revision": 1,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 8109,
+      "batch": 4,
+      "sequence": 541,
+      "input_revision": 0,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        553984,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 8109,
+      "batch": 4,
+      "sequence": 541,
+      "input_revision": 1,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        553984,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 8109,
+      "batch": 1,
+      "sequence": 1571,
+      "input_revision": 0,
+      "passed": true,
+      "matched_ratio": 0.9999999403953552,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        1608704,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 8109,
+      "batch": 1,
+      "sequence": 1571,
+      "input_revision": 1,
+      "passed": true,
+      "matched_ratio": 0.9999999403953552,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        1608704,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 8109,
+      "batch": 1,
+      "sequence": 8192,
+      "input_revision": 0,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        8388608,
+        128,
+        1024,
+        1
+      ]
+    },
+    {
+      "seed": 8109,
+      "batch": 1,
+      "sequence": 8192,
+      "input_revision": 1,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "output_strides": [
+        8388608,
+        128,
+        1024,
+        1
+      ]
+    }
+  ]
+}

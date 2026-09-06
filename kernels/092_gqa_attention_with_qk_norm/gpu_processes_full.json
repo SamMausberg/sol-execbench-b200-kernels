@@ -1,0 +1,1460 @@
+{
+  "monitor_pid": 152631,
+  "campaign_pid": 152644,
+  "return_code": 0,
+  "observed_foreign_process_samples": 15,
+  "samples": [
+    {
+      "time": "2026-09-06T18:38:53.477622+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 150619,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1554"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:38:54.055936+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 150619,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1554"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:38:54.794397+00:00",
+      "gpu_lock_acquired": false,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:38:55.491443+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "14"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:38:56.069991+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "824"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:38:56.630496+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "824"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:38:57.205626+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "824"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:38:57.775841+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "824"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:38:58.340069+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "824"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:38:58.903260+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "824"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:38:59.486146+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "824"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:00.052587+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "824"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:00.614736+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "824"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:01.171064+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "824"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:01.731233+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "824"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:02.288842+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "824"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:02.872303+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "824"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:03.563869+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "828"
+        },
+        {
+          "pid": 152638,
+          "belongs_to_campaign": false,
+          "process_basename": "python3",
+          "memory_mib": "14"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:04.141500+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "870"
+        },
+        {
+          "pid": 152638,
+          "belongs_to_campaign": false,
+          "process_basename": "python3",
+          "memory_mib": "708"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:04.838527+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "870"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:05.418567+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "870"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:05.993642+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "870"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:06.565727+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "870"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:07.130672+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "870"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:07.702855+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "870"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:08.269678+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "870"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:08.865900+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "870"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:09.437391+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "870"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:10.019239+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "870"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:10.587594+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "896"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:11.179854+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "896"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:11.740775+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "896"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:12.309265+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "896"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:12.882775+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "896"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:13.455216+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "896"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:14.026254+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "896"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:14.602641+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "896"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:15.162816+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "896"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:15.730787+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "896"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:16.329332+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "964"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:16.911920+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "964"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:17.484064+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "964"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:18.120518+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "964"
+        },
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "14"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:18.692921+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "964"
+        },
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:19.282494+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "964"
+        },
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:19.851369+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "964"
+        },
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:20.429935+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "964"
+        },
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:21.040950+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "964"
+        },
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:21.609615+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "964"
+        },
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:22.181570+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "964"
+        },
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:22.767058+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "964"
+        },
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:23.340889+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1204"
+        },
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:23.975408+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 152002,
+          "belongs_to_campaign": false,
+          "process_basename": "[No data]",
+          "memory_mib": "1204"
+        },
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:24.591364+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:25.155551+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:25.717467+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:26.286206+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:26.849319+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:27.414056+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1308"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:27.983992+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153011,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1708"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:28.561533+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:29.126968+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:29.688503+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:30.258532+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:30.919641+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:31.483639+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:32.104148+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:32.669178+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:33.234933+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:33.803111+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:34.366482+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:34.923309+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:35.499632+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:36.060648+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:36.638043+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:37.199408+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:37.771383+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:38.411947+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:38.982644+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:39.551405+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:40.386195+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:40.947260+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:41.512678+00:00",
+      "gpu_lock_acquired": true,
+      "processes": []
+    },
+    {
+      "time": "2026-09-06T18:39:42.171227+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "14"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:42.760202+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1174"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:43.345591+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1362"
+        },
+        {
+          "pid": 153964,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "14"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:43.950364+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1362"
+        },
+        {
+          "pid": 153964,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1108"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:44.535107+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1362"
+        },
+        {
+          "pid": 153964,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1364"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:45.110947+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1362"
+        },
+        {
+          "pid": 153964,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "1364"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:45.693995+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1362"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:46.269991+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1362"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:46.917516+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1362"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:47.496349+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1362"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:48.067613+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1598"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:48.634026+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1224"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:49.209472+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1224"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:49.781056+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1224"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:50.358074+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1586"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:50.933983+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1700"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:51.500306+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "2816"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:52.088047+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "2602"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:52.659359+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "2602"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:53.227504+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "2602"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:53.811685+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "2602"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:54.381539+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1306"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:54.960025+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1666"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:55.529650+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "2204"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:56.090018+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "2204"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:56.660301+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "2204"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:57.229787+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "2204"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:57.792293+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "2338"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:58.384377+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "6266"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:58.960146+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "9548"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:39:59.524654+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "2522"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:40:00.102239+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "3730"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:40:00.677222+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "5734"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:40:01.261048+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1396"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:40:01.841746+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "4698"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:40:02.423361+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1888"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:40:03.012020+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1576"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:40:03.647060+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1576"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:40:04.230139+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1576"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:40:04.801659+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1576"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:40:05.628261+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 153891,
+          "belongs_to_campaign": true,
+          "process_basename": "python",
+          "memory_mib": "1696"
+        },
+        {
+          "pid": 154580,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "14"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:40:06.403442+00:00",
+      "gpu_lock_acquired": true,
+      "processes": [
+        {
+          "pid": 154580,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "8900"
+        }
+      ]
+    },
+    {
+      "time": "2026-09-06T18:40:06.988457+00:00",
+      "gpu_lock_acquired": false,
+      "processes": [
+        {
+          "pid": 154580,
+          "belongs_to_campaign": false,
+          "process_basename": "python",
+          "memory_mib": "8900"
+        }
+      ]
+    }
+  ]
+}

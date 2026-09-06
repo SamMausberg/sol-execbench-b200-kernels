@@ -1,0 +1,296 @@
+[
+  {
+    "index": 0,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 512
+    },
+    "passed": true,
+    "matched_ratio": 0.9986205101013184,
+    "correctness": {
+      "max_relative_error": 3.179931640625,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "preparation_latency_us": {
+      "heads_8_warps_4": {
+        "passed": true,
+        "matched_ratio": 0.9986205101013184,
+        "correctness": {
+          "max_relative_error": 3.179931640625,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": true,
+        "latency_us": 10.984466666666666
+      },
+      "heads_8_warps_8": {
+        "passed": true,
+        "matched_ratio": 0.9986171722412109,
+        "correctness": {
+          "max_relative_error": 3.179931640625,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": false,
+        "latency_us": 10.724266666666667
+      },
+      "heads_16_warps_4": {
+        "passed": true,
+        "matched_ratio": 0.9986205101013184,
+        "correctness": {
+          "max_relative_error": 3.179931640625,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": true,
+        "latency_us": 10.263466666666666
+      },
+      "heads_16_warps_8": {
+        "passed": true,
+        "matched_ratio": 0.9986205101013184,
+        "correctness": {
+          "max_relative_error": 3.179931640625,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": true,
+        "latency_us": 10.540733333333334
+      },
+      "heads_32_warps_4": {
+        "passed": true,
+        "matched_ratio": 0.9986205101013184,
+        "correctness": {
+          "max_relative_error": 3.179931640625,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": true,
+        "latency_us": 10.553666666666667
+      },
+      "heads_32_warps_8": {
+        "passed": true,
+        "matched_ratio": 0.9986205101013184,
+        "correctness": {
+          "max_relative_error": 3.179931640625,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": true,
+        "latency_us": 10.867133333333335
+      }
+    }
+  },
+  {
+    "index": 12,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 128
+    },
+    "passed": true,
+    "matched_ratio": 0.9986228942871094,
+    "correctness": {
+      "max_relative_error": 2.040863037109375,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "preparation_latency_us": {
+      "heads_8_warps_4": {
+        "passed": true,
+        "matched_ratio": 0.9986228942871094,
+        "correctness": {
+          "max_relative_error": 2.040863037109375,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": true,
+        "latency_us": 4.518466666666667
+      },
+      "heads_8_warps_8": {
+        "passed": true,
+        "matched_ratio": 0.9986228942871094,
+        "correctness": {
+          "max_relative_error": 2.040863037109375,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": false,
+        "latency_us": 4.230333333333333
+      },
+      "heads_16_warps_4": {
+        "passed": true,
+        "matched_ratio": 0.9986228942871094,
+        "correctness": {
+          "max_relative_error": 2.040863037109375,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": true,
+        "latency_us": 4.445733333333332
+      },
+      "heads_16_warps_8": {
+        "passed": true,
+        "matched_ratio": 0.9986228942871094,
+        "correctness": {
+          "max_relative_error": 2.040863037109375,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": true,
+        "latency_us": 4.119266666666666
+      },
+      "heads_32_warps_4": {
+        "passed": true,
+        "matched_ratio": 0.9986228942871094,
+        "correctness": {
+          "max_relative_error": 2.040863037109375,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": true,
+        "latency_us": 4.932199999999999
+      },
+      "heads_32_warps_8": {
+        "passed": true,
+        "matched_ratio": 0.9986228942871094,
+        "correctness": {
+          "max_relative_error": 2.040863037109375,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": true,
+        "latency_us": 4.475733333333333
+      }
+    }
+  },
+  {
+    "index": 13,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 32,
+      "seq_len": 256
+    },
+    "passed": true,
+    "matched_ratio": 0.9998763799667358,
+    "correctness": {
+      "max_relative_error": 2.8213798999786377,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "preparation_latency_us": {
+      "heads_8_warps_4": {
+        "passed": true,
+        "matched_ratio": 0.9998763799667358,
+        "correctness": {
+          "max_relative_error": 2.8213798999786377,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": true,
+        "latency_us": 131.24626666666666
+      },
+      "heads_8_warps_8": {
+        "passed": true,
+        "matched_ratio": 0.9998763799667358,
+        "correctness": {
+          "max_relative_error": 2.8213798999786377,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": false,
+        "latency_us": 133.73180000000002
+      },
+      "heads_16_warps_4": {
+        "passed": true,
+        "matched_ratio": 0.9998763799667358,
+        "correctness": {
+          "max_relative_error": 2.8213798999786377,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": true,
+        "latency_us": 110.56993333333334
+      },
+      "heads_16_warps_8": {
+        "passed": true,
+        "matched_ratio": 0.9998763799667358,
+        "correctness": {
+          "max_relative_error": 2.8213798999786377,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": true,
+        "latency_us": 123.53173333333332
+      },
+      "heads_32_warps_4": {
+        "passed": true,
+        "matched_ratio": 0.9998763799667358,
+        "correctness": {
+          "max_relative_error": 2.8213798999786377,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": true,
+        "latency_us": 112.18013333333333
+      },
+      "heads_32_warps_8": {
+        "passed": true,
+        "matched_ratio": 0.9998763799667358,
+        "correctness": {
+          "max_relative_error": 2.8213798999786377,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "same_preparation_bits": true,
+        "latency_us": 123.90713333333333
+      }
+    }
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "030_attention_output_projection_with_residual",
+  "description": "Blackwell tensor-map GEMM with BF16 projection rounding followed by a fused residual addition.",
+  "name": "030_projection_residual_b200_v1",
+  "sources": [{"path": "kernel.py"}],
+  "spec": {
+    "dependencies": ["torch", "triton"],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": ["triton"],
+    "target_hardware": ["B200"]
+  }
+}

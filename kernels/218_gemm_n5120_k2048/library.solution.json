@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "009_gemm_n5120_k2048",
+  "description": "Exact torch.mm library comparison with the supplied FP16 destination.",
+  "name": "218_fp16_gemm_library_comparison",
+  "sources": [{"path": "library.py"}],
+  "spec": {
+    "dependencies": ["torch"],
+    "destination_passing_style": true,
+    "entry_point": "library.py::run",
+    "languages": ["pytorch"],
+    "target_hardware": ["B200"]
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "batch_size": {
+          "description": "Batch size",
+          "type": "var"
+        },
+        "hidden_size": {
+          "description": "Hidden dimension size",
+          "type": "const",
+          "value": 2560
+        },
+        "seq_len": {
+          "description": "Sequence length",
+          "type": "var"
+        }
+      },
+      "baseline": "import torch\n\n\n@torch.no_grad()\ndef run(\n    attn_output: torch.Tensor,\n    residual: torch.Tensor,\n    o_proj_weight: torch.Tensor,\n) -> torch.Tensor:\n    \"\"\"\n    Fused attention output projection with residual addition.\n    \n    This performs:\n    1. Linear projection: attn_output @ o_proj_weight.T\n    2. Residual addition: projected + residual\n    \n    In a custom CUDA kernel, these operations would be fused to:\n    - Compute matmul tiles in registers\n    - Add residual directly to register-held results\n    - Write final result to global memory (eliminating intermediate write)\n    \n    Args:\n        attn_output: Attention output of shape (batch, seq_len, hidden_size)\n        residual: Original input before attention of shape (batch, seq_len, hidden_size)\n        o_proj_weight: Output projection weight of shape (hidden_size, hidden_size)\n    \n    Returns:\n        Output with residual added, shape (batch, seq_len, hidden_size)\n    \"\"\"\n    # Linear projection: (batch, seq_len, hidden_size) @ (hidden_size, hidden_size).T\n    # -> (batch, seq_len, hidden_size)\n    projected = torch.matmul(attn_output, o_proj_weight.t())\n    \n    # Residual addition\n    output = projected + residual\n    \n    return output\n",
+      "baseline_latency_ms": 0.019789,
+      "description": "Fused attention output projection (o_proj) with residual addition. After computing attention outputs, this operation performs the final linear projection and adds the residual connection. The projection is a matmul (hidden_size x hidden_size) fused with elementwise residual add to eliminate intermediate memory traffic.",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 30,
+      "inputs": {
+        "attn_output": {
+          "description": "Attention output tensor after reshape from multi-head format",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "hidden_size"
+          ]
+        },
+        "o_proj_weight": {
+          "description": "Output projection weight matrix (hidden_size x hidden_size)",
+          "dtype": "bfloat16",
+          "shape": [
+            "hidden_size",
+            "hidden_size"
+          ]
+        },
+        "residual": {
+          "description": "Residual tensor from before attention layer",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "hidden_size"
+          ]
+        }
+      },
+      "latency_unit": "ms",
+      "name": "030_attention_output_projection_with_residual",
+      "outputs": {
+        "output": {
+          "description": "Output with projection and residual added",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "hidden_size"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "other",
+        "L1",
+        "model:AI21-Jamba-Reasoning-3B"
+      ],
+      "title": "030_attention_output_projection_with_residual",
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 16,
+            "hidden_size": 2560,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.0859844999999999,
+          "sol_ms": 0.0597
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 2560,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.012,
+          "sol_ms": 0.0041
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "hidden_size": 2560,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.085952,
+          "sol_ms": 0.0597
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 2560,
+            "seq_len": 1571
+          },
+          "baseline_latency_ms": 0.021984,
+          "sol_ms": 0.0118
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 2560,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.044192,
+          "sol_ms": 0.03
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "hidden_size": 2560,
+            "seq_len": 2053
+          },
+          "baseline_latency_ms": 0.044096,
+          "sol_ms": 0.0301
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "hidden_size": 2560,
+            "seq_len": 997
+          },
+          "baseline_latency_ms": 0.085728,
+          "sol_ms": 0.0581
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "hidden_size": 2560,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.0441915,
+          "sol_ms": 0.03
+        },
+        {
+          "axes": {
+            "batch_size": 64,
+            "hidden_size": 2560,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.086032,
+          "sol_ms": 0.0597
+        },
+        {
+          "axes": {
+            "batch_size": 32,
+            "hidden_size": 2560,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.085984,
+          "sol_ms": 0.0597
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "hidden_size": 2560,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.044224,
+          "sol_ms": 0.03
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 2560,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.01584,
+          "sol_ms": 0.0078
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "hidden_size": 2560,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.02592,
+          "sol_ms": 0.0152
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "hidden_size": 2560,
+            "seq_len": 293
+          },
+          "baseline_latency_ms": 0.014,
+          "sol_ms": 0.0046
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 2560,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 0.025952,
+          "sol_ms": 0.0152
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 2560,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.009888,
+          "sol_ms": 0.0023
+        }
+      ]
+    }
+  },
+  "response_sha256": "0a7f9de628f87a9341797fd2b673598c9b8ce63b23ea1587b0be44aa12f7b561",
+  "retrieved_at": "2026-09-06T18:36:57.632729+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/30"
+}

@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "009_gemm_n5120_k2048",
+  "description": "Small-row GEMV and split-K tensor-core candidates with a library GEMM for larger matrices.",
+  "name": "218_fp16_gemm_b200_v1",
+  "sources": [{"path": "kernel.py"}],
+  "spec": {
+    "dependencies": ["torch", "triton"],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": ["pytorch", "triton"],
+    "target_hardware": ["B200"]
+  }
+}

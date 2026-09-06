@@ -1,0 +1,548 @@
+{
+  "clock_mode": "unlocked",
+  "complete_problem": true,
+  "contract_sha256": "19d4a32c411f2955feeb74479308831f911be3edbe5bef62a87d217c26bbdd0d",
+  "environment_file": "environment.json",
+  "environment_sha256": "d7dce9b6a231b091d6a796997ec36caa2dc9191bed848d273f064645d924d48a",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "geometric_mean_latency_ms": 0.602837713276705,
+  "local_mean_sol_score": 0.41038470774008406,
+  "passed": true,
+  "problem_mean_sol_score": 0.41038470774008406,
+  "problem_name": "092_gqa_attention_with_qk_norm",
+  "recorded_at": "2026-09-06T18:40:06.870174+00:00",
+  "requested_trials": 1,
+  "result_scope": "local estimate; official leaderboard requires server evaluation",
+  "schema_version": 1,
+  "score_aggregation": "arithmetic mean of per-workload SOL scores; per-workload latency is the median across trials",
+  "score_formula": "1 / (1 + (latency_ms - sol_ms) / (baseline_latency_ms - sol_ms))",
+  "score_source_retrieved_at": "2026-09-06T18:38:55.992393+00:00",
+  "score_source_sha256": "e706a59ce7b338222e7f182d841d8dc47c7c9f0b7d9f7f2c6f787dc261bc1cda",
+  "score_source_url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/92",
+  "selected_workloads": 16,
+  "sol_is_dummy": false,
+  "submission_sha256": "11905b1d6f2d5ce6e8acf9f7c5ce1f5620aaaebf98ae1b6181f2b0ee213a48b4",
+  "total_workloads": 16,
+  "trace_sha256": {
+    "trial-1.jsonl": "d3e89b7007a2dee7e6f317bbdbb013cf771a109455640dcc9025f6b3759316f3"
+  },
+  "trial_mean_sol_scores": [
+    0.41038470774008406
+  ],
+  "website_id": 92,
+  "workloads": [
+    {
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 512
+      },
+      "baseline_latency_ms": 0.1949604999999999,
+      "below_sol_bound": false,
+      "latency_ms_median": 0.366558,
+      "median_latency_sol_score": 0.29722288200586816,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 0.366558,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.0692,
+      "trial_sol_scores": [
+        0.29722288200586816
+      ],
+      "uuid": "c92bb0a5-0dff-5559-921c-3f4e48c6ec5d"
+    },
+    {
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 128
+      },
+      "baseline_latency_ms": 0.2001125,
+      "below_sol_bound": false,
+      "latency_ms_median": 0.2801905,
+      "median_latency_sol_score": 0.3864795592892603,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 0.2801905,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.0638,
+      "trial_sol_scores": [
+        0.3864795592892603
+      ],
+      "uuid": "51c2b5bd-fcfa-54aa-8b49-7dcf549e8071"
+    },
+    {
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 256
+      },
+      "baseline_latency_ms": 0.1930885,
+      "below_sol_bound": false,
+      "latency_ms_median": 0.2992625,
+      "median_latency_sol_score": 0.35300608332802624,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 0.2992625,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.0656,
+      "trial_sol_scores": [
+        0.35300608332802624
+      ],
+      "uuid": "ce688df8-9e5d-54d3-808b-5dfacd84c6e1"
+    },
+    {
+      "axes": {
+        "batch_size": 16,
+        "seq_len": 256
+      },
+      "baseline_latency_ms": 0.8893305,
+      "below_sol_bound": false,
+      "latency_ms_median": 0.841755,
+      "median_latency_sol_score": 0.534631317737818,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 0.841755,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.5221,
+      "trial_sol_scores": [
+        0.534631317737818
+      ],
+      "uuid": "6c00773e-6f6e-5f0c-b52a-a3a4b5bb7a3a"
+    },
+    {
+      "axes": {
+        "batch_size": 8,
+        "seq_len": 373
+      },
+      "baseline_latency_ms": 0.732162,
+      "below_sol_bound": false,
+      "latency_ms_median": 0.6936450000000001,
+      "median_latency_sol_score": 0.5298115964687689,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 0.6936450000000001,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.3899,
+      "trial_sol_scores": [
+        0.5298115964687689
+      ],
+      "uuid": "65a1864d-4cc8-548f-a9d5-c42a9e639607"
+    },
+    {
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 2048
+      },
+      "baseline_latency_ms": 0.5844495,
+      "below_sol_bound": false,
+      "latency_ms_median": 1.001083,
+      "median_latency_sol_score": 0.2588738124795629,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 1.001083,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.3608,
+      "trial_sol_scores": [
+        0.2588738124795629
+      ],
+      "uuid": "4e17d54d-ba8b-5456-a399-d6ed486e94f4"
+    },
+    {
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1024
+      },
+      "baseline_latency_ms": 0.311521,
+      "below_sol_bound": false,
+      "latency_ms_median": 0.519374,
+      "median_latency_sol_score": 0.30260686236336526,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 0.519374,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.1522,
+      "trial_sol_scores": [
+        0.30260686236336526
+      ],
+      "uuid": "d0ce8c45-23c5-55e8-a582-f62b1f6068a9"
+    },
+    {
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 2048
+      },
+      "baseline_latency_ms": 1.0447065,
+      "below_sol_bound": false,
+      "latency_ms_median": 1.8813819999999999,
+      "median_latency_sol_score": 0.2180040492393436,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 1.8813819999999999,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.7213,
+      "trial_sol_scores": [
+        0.2180040492393436
+      ],
+      "uuid": "45487d16-a02f-5861-a6b1-4e565c7d7285"
+    },
+    {
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 512
+      },
+      "baseline_latency_ms": 0.5113295,
+      "below_sol_bound": false,
+      "latency_ms_median": 0.527693,
+      "median_latency_sol_score": 0.4832348918338807,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 0.527693,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.2755,
+      "trial_sol_scores": [
+        0.4832348918338807
+      ],
+      "uuid": "d30e1ce8-92e4-570b-a489-bcdb3170de61"
+    },
+    {
+      "axes": {
+        "batch_size": 8,
+        "seq_len": 512
+      },
+      "baseline_latency_ms": 0.9066265,
+      "below_sol_bound": false,
+      "latency_ms_median": 1.0017874999999998,
+      "median_latency_sol_score": 0.4410705041032234,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 1.0017874999999998,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.5505,
+      "trial_sol_scores": [
+        0.4410705041032234
+      ],
+      "uuid": "36af929c-db1b-5edc-8de5-3b0f3700c535"
+    },
+    {
+      "axes": {
+        "batch_size": 16,
+        "seq_len": 128
+      },
+      "baseline_latency_ms": 0.5143854999999999,
+      "below_sol_bound": false,
+      "latency_ms_median": 0.40754999999999997,
+      "median_latency_sol_score": 0.6291108691422418,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 0.40754999999999997,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.2541,
+      "trial_sol_scores": [
+        0.6291108691422418
+      ],
+      "uuid": "047a5b81-f0f6-5bc5-85b8-499f96dc333e"
+    },
+    {
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 1024
+      },
+      "baseline_latency_ms": 0.9507065,
+      "below_sol_bound": false,
+      "latency_ms_median": 1.3198340000000002,
+      "median_latency_sol_score": 0.3251807617496913,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 1.3198340000000002,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.6074,
+      "trial_sol_scores": [
+        0.3251807617496913
+      ],
+      "uuid": "07ab2bf3-193a-57df-b434-30a648c63369"
+    },
+    {
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "baseline_latency_ms": 0.184385,
+      "below_sol_bound": false,
+      "latency_ms_median": 0.27731,
+      "median_latency_sol_score": 0.39171978233258364,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 0.27731,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.0163,
+      "trial_sol_scores": [
+        0.39171978233258364
+      ],
+      "uuid": "ccea3f00-da6d-515a-846e-3c65f48ad459"
+    },
+    {
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "baseline_latency_ms": 1.668116,
+      "below_sol_bound": false,
+      "latency_ms_median": 1.660888,
+      "median_latency_sol_score": 0.5029112198768492,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 1.660888,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 1.0438,
+      "trial_sol_scores": [
+        0.5029112198768492
+      ],
+      "uuid": "785dbede-dd28-536f-89c1-a2e8ec40d983"
+    },
+    {
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 512
+      },
+      "baseline_latency_ms": 0.297953,
+      "below_sol_bound": false,
+      "latency_ms_median": 0.335119,
+      "median_latency_sol_score": 0.44798640811482565,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 0.335119,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.1379,
+      "trial_sol_scores": [
+        0.44798640811482565
+      ],
+      "uuid": "610a5d07-2a1f-520e-a7df-8eba4a0dc3a8"
+    },
+    {
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 293
+      },
+      "baseline_latency_ms": 0.362337,
+      "below_sol_bound": false,
+      "latency_ms_median": 0.3948625,
+      "median_latency_sol_score": 0.4643047237760358,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 0.3948625,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.1508,
+      "trial_sol_scores": [
+        0.4643047237760358
+      ],
+      "uuid": "1e96cc88-5675-52ff-a563-8a51a889e1fe"
+    }
+  ]
+}

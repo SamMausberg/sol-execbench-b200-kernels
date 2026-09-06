@@ -1,0 +1,368 @@
+{
+  "recorded_at": "2026-09-06T18:26:15.510634+00:00",
+  "bridge_source_sha256": "bbc3bcfd6089ebac2fcb50820fd3b28c8557660a20739e52403c27b56382d71d",
+  "bridge_source_path": "/workspace/cache/torch_extensions/sol_cublaslt_sources/bbc3bcfd6089ebac2fcb50820fd3b28c8557660a20739e52403c27b56382d71d/cublaslt_bridge.cpp",
+  "cublaslt_version": 130000,
+  "records": [
+    {
+      "m": 128,
+      "n": 1024,
+      "k": 5120,
+      "algorithm": {
+        "index": 2,
+        "workspace_bytes": 1572880,
+        "estimated_waves": 0.21621622145175934,
+        "id": 66,
+        "tile": 15,
+        "split_k": 3,
+        "reduction": 2,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35,
+        "inner_shape": 0,
+        "cluster_shape": 6
+      },
+      "configuration": [
+        66,
+        15,
+        3,
+        2,
+        0,
+        3,
+        35,
+        0,
+        6
+      ],
+      "workspace_bytes": 1572880,
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.2073170691728592,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.010768
+    },
+    {
+      "m": 256,
+      "n": 1024,
+      "k": 5120,
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "estimated_waves": 0.8648648858070374,
+        "id": 66,
+        "tile": 12,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 2,
+        "stages": 35,
+        "inner_shape": 0,
+        "cluster_shape": 6
+      },
+      "configuration": [
+        66,
+        12,
+        1,
+        0,
+        0,
+        2,
+        35,
+        0,
+        6
+      ],
+      "workspace_bytes": 0,
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.009968000000000001
+    },
+    {
+      "m": 512,
+      "n": 1024,
+      "k": 5120,
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "estimated_waves": 0.8648648858070374,
+        "id": 66,
+        "tile": 15,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35,
+        "inner_shape": 0,
+        "cluster_shape": 6
+      },
+      "configuration": [
+        66,
+        15,
+        1,
+        0,
+        0,
+        3,
+        35,
+        0,
+        6
+      ],
+      "workspace_bytes": 0,
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0104
+    },
+    {
+      "m": 1024,
+      "n": 1024,
+      "k": 5120,
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "estimated_waves": 0.8648648858070374,
+        "id": 66,
+        "tile": 17,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35,
+        "inner_shape": 0,
+        "cluster_shape": 6
+      },
+      "configuration": [
+        66,
+        17,
+        1,
+        0,
+        0,
+        3,
+        35,
+        0,
+        6
+      ],
+      "workspace_bytes": 0,
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.012303999999999999
+    },
+    {
+      "m": 1571,
+      "n": 1024,
+      "k": 5120,
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "estimated_waves": 0.9729729890823364,
+        "id": 66,
+        "tile": 328,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 1,
+        "stages": 35,
+        "inner_shape": 0,
+        "cluster_shape": 3
+      },
+      "configuration": [
+        66,
+        328,
+        1,
+        0,
+        0,
+        1,
+        35,
+        0,
+        3
+      ],
+      "workspace_bytes": 0,
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.015008
+    },
+    {
+      "m": 2048,
+      "n": 1024,
+      "k": 5120,
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "estimated_waves": 0.8648648858070374,
+        "id": 66,
+        "tile": 20,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35,
+        "inner_shape": 0,
+        "cluster_shape": 6
+      },
+      "configuration": [
+        66,
+        20,
+        1,
+        0,
+        0,
+        3,
+        35,
+        0,
+        6
+      ],
+      "workspace_bytes": 0,
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.019151500000000002
+    },
+    {
+      "m": 2164,
+      "n": 1024,
+      "k": 5120,
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "estimated_waves": 0.9189189076423645,
+        "id": 66,
+        "tile": 20,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 1,
+        "stages": 35,
+        "inner_shape": 0,
+        "cluster_shape": 3
+      },
+      "configuration": [
+        66,
+        20,
+        1,
+        0,
+        0,
+        1,
+        35,
+        0,
+        3
+      ],
+      "workspace_bytes": 0,
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0193275
+    },
+    {
+      "m": 4096,
+      "n": 1024,
+      "k": 5120,
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "estimated_waves": 0.8648648858070374,
+        "id": 66,
+        "tile": 23,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35,
+        "inner_shape": 0,
+        "cluster_shape": 6
+      },
+      "configuration": [
+        66,
+        23,
+        1,
+        0,
+        0,
+        3,
+        35,
+        0,
+        6
+      ],
+      "workspace_bytes": 0,
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.030896
+    },
+    {
+      "m": 8192,
+      "n": 1024,
+      "k": 5120,
+      "algorithm": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "estimated_waves": 0.8648648858070374,
+        "id": 66,
+        "tile": 513,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35,
+        "inner_shape": 0,
+        "cluster_shape": 6
+      },
+      "configuration": [
+        66,
+        513,
+        1,
+        0,
+        0,
+        3,
+        35,
+        0,
+        6
+      ],
+      "workspace_bytes": 0,
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0535195
+    }
+  ]
+}

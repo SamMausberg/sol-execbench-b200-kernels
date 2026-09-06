@@ -1,0 +1,110 @@
+[
+  {
+    "index": 0,
+    "seed": 2026,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 512
+    },
+    "passed": true,
+    "matched_ratio": 0.9988255500793457,
+    "correctness": {
+      "max_relative_error": 3.42254638671875,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    }
+  },
+  {
+    "index": 0,
+    "seed": 7103,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 512
+    },
+    "passed": true,
+    "matched_ratio": 0.9987883567810059,
+    "correctness": {
+      "max_relative_error": 2.8961181640625,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    }
+  },
+  {
+    "index": 5,
+    "seed": 2026,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 2048
+    },
+    "passed": true,
+    "matched_ratio": 0.9997687339782715,
+    "correctness": {
+      "max_relative_error": 2.6150407791137695,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    }
+  },
+  {
+    "index": 5,
+    "seed": 7103,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 2048
+    },
+    "passed": true,
+    "matched_ratio": 0.9998111724853516,
+    "correctness": {
+      "max_relative_error": 2.653846263885498,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    }
+  },
+  {
+    "index": 12,
+    "seed": 2026,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 128
+    },
+    "passed": true,
+    "matched_ratio": 0.998779296875,
+    "correctness": {
+      "max_relative_error": 2.248427391052246,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    }
+  },
+  {
+    "index": 12,
+    "seed": 7103,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 128
+    },
+    "passed": true,
+    "matched_ratio": 0.9986457824707031,
+    "correctness": {
+      "max_relative_error": 2.589506149291992,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    }
+  }
+]

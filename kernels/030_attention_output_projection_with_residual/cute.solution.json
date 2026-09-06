@@ -1,0 +1,18 @@
+{
+  "author": "SamMausberg",
+  "definition": "030_attention_output_projection_with_residual",
+  "description": "Persistent Blackwell matrix multiplication with explicit BF16 accumulator rounding followed by residual addition in the epilogue.",
+  "name": "projection_residual_cute_b200_v1",
+  "sources": [
+    {"path": "cute_kernel.py"},
+    {"path": "cute_residual.py"},
+    {"path": "kernel.py"}
+  ],
+  "spec": {
+    "dependencies": ["torch", "triton", "nvidia-cutlass-dsl", "cuda-python"],
+    "destination_passing_style": true,
+    "entry_point": "cute_kernel.py::run",
+    "languages": ["cute_dsl", "pytorch"],
+    "target_hardware": ["B200"]
+  }
+}

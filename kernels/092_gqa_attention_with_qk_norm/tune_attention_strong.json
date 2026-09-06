@@ -1,0 +1,94 @@
+[
+  {
+    "index": 12,
+    "seed": 913,
+    "variant": "strong_q_norm",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 128
+    },
+    "passed": true,
+    "matched_ratio": 1.0,
+    "correctness": {
+      "max_relative_error": 0.5205940008163452,
+      "max_absolute_error": 0.015625,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "attention_variants": {
+      "(64, 64, 1, False, 4)": {
+        "passed": true,
+        "matched_ratio": 0.9956340789794922,
+        "correctness": {
+          "max_relative_error": 2.7735092639923096,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_us": 9.495333333333333
+      },
+      "(64, 64, 12, False, 4)": {
+        "passed": true,
+        "matched_ratio": 0.9956340789794922,
+        "correctness": {
+          "max_relative_error": 2.7735092639923096,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_us": 9.727866666666666
+      },
+      "(64, 64, 1, True, 4)": {
+        "passed": true,
+        "matched_ratio": 1.0,
+        "correctness": {
+          "max_relative_error": 0.5205940008163452,
+          "max_absolute_error": 0.015625,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_us": 11.991333333333333
+      },
+      "(64, 64, 12, True, 4)": {
+        "passed": true,
+        "matched_ratio": 1.0,
+        "correctness": {
+          "max_relative_error": 0.5205940008163452,
+          "max_absolute_error": 0.015625,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_us": 11.637199999999998
+      },
+      "(128, 64, 12, True, 8)": {
+        "passed": true,
+        "matched_ratio": 1.0,
+        "correctness": {
+          "max_relative_error": 0.5205940008163452,
+          "max_absolute_error": 0.015625,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_us": 13.725866666666667
+      },
+      "(64, 128, 1, True, 4)": {
+        "passed": true,
+        "matched_ratio": 1.0,
+        "correctness": {
+          "max_relative_error": 0.5205940008163452,
+          "max_absolute_error": 0.015625,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_us": 11.756800000000002
+      }
+    }
+  }
+]

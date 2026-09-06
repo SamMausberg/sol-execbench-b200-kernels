@@ -102,6 +102,16 @@ Replaying a summary checks the archived package, scoring snapshot and contract
 hashes, then checks trace identity, workload UUIDs and axes. An official rank
 requires submission and evaluation on NVIDIA's service.
 
+Some pinned FlashInfer-Bench definitions encode an absent `hf_id` as an empty
+string. The pinned evaluator accepts `null` for this optional provenance field
+and rejects the empty string. For these records, the campaign preserves the
+original `definition.json` bytes and contract hash, writes a separate
+`definition.native.json` with `hf_id: null`, and selects it through the official
+CLI's `--definition` option. Run and summary records explicitly label this
+metadata adaptation and include both file hashes and the exact field change.
+Summary validation rejects additional changes, including rehashed reference
+changes. Run the focused checks with `python tools/test_campaign_metadata.py`.
+
 The `native-fetch`, `native-package`, `native-test` and `native-bench` Make targets
 accept `KERNEL_ID` and `SOLUTION`. `native-test` runs one complete trial;
 `native-bench` runs three by default. Add `NATIVE_ARGS='--workload 0'` for a selected

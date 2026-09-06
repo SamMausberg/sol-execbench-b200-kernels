@@ -1,0 +1,43 @@
+{
+  "problem_id": 218,
+  "problem_name": "009_gemm_n5120_k2048",
+  "status": "library baseline investigation",
+  "passed": true,
+  "official_workloads": 25,
+  "full_harness_trials": 1,
+  "clock_mode": "unlocked",
+  "local_sol_score": null,
+  "observed_library_baseline_sol_score": 0.6876826357524279,
+  "leader_snapshot_sol_score": 0.53563,
+  "local_lead": null,
+  "hosted_rank_confirmed": false,
+  "recommend_submission": false,
+  "reason": "Unoptimized exact torch.mm already exceeds the public leader under different clocks. This is a comparison baseline, not a demonstrated kernel improvement. Four workload times fall below the published SOL bound.",
+  "contract_sha256": "32a4edddd3595deae594c99969924877ec664aee159e2b657bfe220ef7440b77",
+  "submission_sha256": "77dc66487ffff4f24cb1b9e5b543f051cfe65689d88aeb50bdefa71e99ccb517",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "evaluation_stack": "v1.1",
+  "source_sha256": {
+    "library.py": "cd760a33e42e2d76befef1183e410b2c7083dfde996ac00e2b5e5d6f865da189"
+  },
+  "summary_sha256": "46268708960051eb64eb9761a1eb6935bc78eb02770c06b56caf7bd166b17c76",
+  "trace_sha256": {
+    "trial-1.jsonl": "8208dda513c781d808da9529f782f14dfcb6a0c3ad7a5518e52bdbb825c848da"
+  },
+  "definition_adapter": {
+    "field_changes": [
+      {
+        "field": "hf_id",
+        "native": null,
+        "original": ""
+      }
+    ],
+    "kind": "empty_optional_hf_id_to_null",
+    "native_definition_file": "definition.native.json",
+    "native_definition_sha256": "208be9d2e537e00f624535529c578cddfe5fa2215fc7f3c959abdbf565297f0a",
+    "original_definition_sha256": "593d9d663c63d0346af19e284277e9118321439cb31c04560dcccfb26982f068",
+    "reason": "Pinned Definition accepts a null optional hf_id but rejects an empty string."
+  },
+  "evaluation_scope": "metadata-adapted native evaluation: optional hf_id normalized from empty string to null",
+  "archived_run": "results/2026-09-06/218/20260906T181956.072932Z-fp16-gemm-library-metadata-adapted-77dc66487fff"
+}

@@ -1,0 +1,118 @@
+[
+  {
+    "index": 5,
+    "seed": 913,
+    "variant": "strong_q_norm",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 2048
+    },
+    "passed": true,
+    "matched_ratio": 0.9999997615814209,
+    "correctness": {
+      "max_relative_error": 0.9628822207450867,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "attention_variants": {
+      "(64, 64, 1, False, 4)": {
+        "passed": true,
+        "matched_ratio": 0.9962383508682251,
+        "correctness": {
+          "max_relative_error": 4.639461040496826,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_us": 437.378
+      },
+      "(64, 64, 12, False, 4)": {
+        "passed": true,
+        "matched_ratio": 0.9962383508682251,
+        "correctness": {
+          "max_relative_error": 4.639461040496826,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_us": 470.07106666666664
+      },
+      "(64, 64, 1, True, 4)": {
+        "passed": true,
+        "matched_ratio": 0.9999997615814209,
+        "correctness": {
+          "max_relative_error": 0.9628822207450867,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_us": 765.568
+      },
+      "(64, 64, 12, True, 4)": {
+        "passed": true,
+        "matched_ratio": 0.9999997615814209,
+        "correctness": {
+          "max_relative_error": 0.9628822207450867,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_us": 753.4486
+      },
+      "(64, 128, 1, True, 4)": {
+        "passed": true,
+        "matched_ratio": 0.9999997615814209,
+        "correctness": {
+          "max_relative_error": 0.9628822207450867,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_us": 677.3703999999999
+      },
+      "(64, 128, 12, True, 4)": {
+        "passed": true,
+        "matched_ratio": 0.9999997615814209,
+        "correctness": {
+          "max_relative_error": 0.9628822207450867,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_us": 692.9400666666668
+      },
+      "(32, 256, 12, True, 4)": {
+        "passed": true,
+        "matched_ratio": 0.9999997615814209,
+        "correctness": {
+          "max_relative_error": 0.9628822207450867,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_us": 1157.5868666666668
+      },
+      "(32, 256, 1, True, 4)": {
+        "passed": true,
+        "matched_ratio": 0.9999997615814209,
+        "correctness": {
+          "max_relative_error": 0.9628822207450867,
+          "max_absolute_error": 0.03125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_us": 1093.2421333333334
+      }
+    }
+  }
+]

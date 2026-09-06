@@ -1,0 +1,9 @@
+{
+  "recorded_at": "2026-09-06T18:33:58.712041+00:00",
+  "run": "30-cute-extended",
+  "foreign_pid_reported": 140652,
+  "foreign_process": "/workspace/gpumode/venv/bin/python",
+  "current_compute_apps": "",
+  "timings_acceptable_for_final_validation": false,
+  "next_action": "Repeat selected configurations under exclusive GPU use."
+}

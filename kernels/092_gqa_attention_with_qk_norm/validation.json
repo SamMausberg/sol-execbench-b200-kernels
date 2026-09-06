@@ -1,0 +1,54 @@
+{
+  "problem_id": 92,
+  "problem_name": "092_gqa_attention_with_qk_norm",
+  "status": "experimental",
+  "passed": true,
+  "official_workloads": 16,
+  "full_harness_trials": 1,
+  "accepted_performance_trials": 0,
+  "timing_valid_for_ranking": false,
+  "clock_mode": "unlocked",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "contract_sha256": "19d4a32c411f2955feeb74479308831f911be3edbe5bef62a87d217c26bbdd0d",
+  "submission_sha256": "11905b1d6f2d5ce6e8acf9f7c5ce1f5620aaaebf98ae1b6181f2b0ee213a48b4",
+  "source_sha256": {
+    "kernel.py": "3b1632a25aab8607a0ab4ad4d6a69484679a1e72572c9bebf23562e028814886"
+  },
+  "local_sol_score": null,
+  "observed_contaminated_sol_score": 0.41038470774008406,
+  "timing_limitations": [
+    "Foreign GPU processes overlapped the evaluator despite its advisory file lock.",
+    "B200 clocks were unlocked."
+  ],
+  "gpu_process_monitor": {
+    "path": "kernels/092_gqa_attention_with_qk_norm/gpu_processes_full.json",
+    "sha256": "f436900a3ddc8f747412909d814f452ae5db6311ba411bed44546b86cf9d4114",
+    "foreign_process_samples_during_lock": 15
+  },
+  "summary_path": ".work/runs/92/20260906T183855.993912Z-rounded-exact-full-11905b1d6f2d/summary.json",
+  "summary_sha256": "4a8cc2086f65903d5995f788eca2463b5824da86152701b590370a3f16f4a6c1",
+  "trace_sha256": {
+    "trial-1.jsonl": "d3e89b7007a2dee7e6f317bbdbb013cf771a109455640dcc9025f6b3759316f3"
+  },
+  "local_lead": null,
+  "hosted_rank_confirmed": false,
+  "recommend_submission": false,
+  "reason": "Custom attention preserves BF16 logits and normalized probabilities, but isolated tuning was slower than the library alternatives. The full-run timing is contaminated and cannot establish a ranking.",
+  "additional_input_variations": {
+    "cases": 6,
+    "official_tolerance_passed": 6,
+    "reports": [
+      "validation_edges.json",
+      "tune_attention_long.json"
+    ],
+    "description": "Five edge cases at B1,S128 plus stronger Q normalization at B1,S2048. The latter report also records experimental online attention variants."
+  },
+  "rejected_library_variant": {
+    "source": "experimental_cudnn.py",
+    "source_sha256": "23e402912928852fefb00e3490485d68e7d48f722e69752734d69554815c9e91",
+    "report": "validation_edges_cudnn.json",
+    "failure": "Q normalization weight times four: matched ratio 0.9669399261, below required 0.99."
+  },
+  "archived_run": "results/2026-09-06/92/20260906T183855.993912Z-rounded-exact-full-11905b1d6f2d"
+}

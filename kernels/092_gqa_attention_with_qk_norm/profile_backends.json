@@ -1,0 +1,306 @@
+[
+  {
+    "index": 0,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 512
+    },
+    "passed": true,
+    "matched_ratio": 0.9986076354980469,
+    "correctness": {
+      "max_relative_error": 3.179931640625,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "profile": {
+      "flash_output_stride": [
+        6291456,
+        128,
+        12288,
+        1
+      ],
+      "merged_is_view": true,
+      "latency_us": {
+        "q_projection": 45.04953333333333,
+        "k_projection": 9.3334,
+        "v_projection": 9.1328,
+        "qk_preparation": 11.0058,
+        "flash_attention": 44.66093333333333,
+        "output_projection": 45.73213333333334,
+        "complete": 533.6737333333333
+      },
+      "attention_backends": {
+        "SDPBackend.FLASH_ATTENTION": {
+          "passed": true,
+          "matched_ratio": 0.9986076354980469,
+          "correctness": {
+            "max_relative_error": 3.179931640625,
+            "max_absolute_error": 0.03125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 44.68246666666666,
+          "stride": [
+            6291456,
+            128,
+            12288,
+            1
+          ],
+          "merge_is_view": true
+        },
+        "SDPBackend.CUDNN_ATTENTION": {
+          "passed": true,
+          "matched_ratio": 0.9986205101013184,
+          "correctness": {
+            "max_relative_error": 3.179931640625,
+            "max_absolute_error": 0.03125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 25.829933333333333,
+          "stride": [
+            6291456,
+            128,
+            12288,
+            1
+          ],
+          "merge_is_view": true
+        }
+      }
+    }
+  },
+  {
+    "index": 5,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 2048
+    },
+    "passed": true,
+    "matched_ratio": 0.9998228549957275,
+    "correctness": {
+      "max_relative_error": 2.7150120735168457,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "profile": {
+      "flash_output_stride": [
+        25165824,
+        128,
+        12288,
+        1
+      ],
+      "merged_is_view": true,
+      "latency_us": {
+        "q_projection": 119.08386666666667,
+        "k_projection": 15.882733333333332,
+        "v_projection": 15.923133333333332,
+        "qk_preparation": 36.60326666666667,
+        "flash_attention": 341.6191333333333,
+        "output_projection": 114.97906666666665,
+        "complete": 891.5476666666666
+      },
+      "attention_backends": {
+        "SDPBackend.FLASH_ATTENTION": {
+          "passed": true,
+          "matched_ratio": 0.9998228549957275,
+          "correctness": {
+            "max_relative_error": 2.7150120735168457,
+            "max_absolute_error": 0.03125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 344.01500000000004,
+          "stride": [
+            25165824,
+            128,
+            12288,
+            1
+          ],
+          "merge_is_view": true
+        },
+        "SDPBackend.CUDNN_ATTENTION": {
+          "passed": true,
+          "matched_ratio": 0.9998217821121216,
+          "correctness": {
+            "max_relative_error": 2.7150120735168457,
+            "max_absolute_error": 0.03125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 120.09713333333335,
+          "stride": [
+            25165824,
+            128,
+            12288,
+            1
+          ],
+          "merge_is_view": true
+        }
+      }
+    }
+  },
+  {
+    "index": 12,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 128
+    },
+    "passed": true,
+    "matched_ratio": 0.9986095428466797,
+    "correctness": {
+      "max_relative_error": 2.040863037109375,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "profile": {
+      "flash_output_stride": [
+        1572864,
+        128,
+        12288,
+        1
+      ],
+      "merged_is_view": true,
+      "latency_us": {
+        "q_projection": 24.8276,
+        "k_projection": 8.770066666666667,
+        "v_projection": 8.825733333333334,
+        "qk_preparation": 4.4352,
+        "flash_attention": 10.282533333333333,
+        "output_projection": 33.06,
+        "complete": 549.3075333333334
+      },
+      "attention_backends": {
+        "SDPBackend.FLASH_ATTENTION": {
+          "passed": true,
+          "matched_ratio": 0.9986095428466797,
+          "correctness": {
+            "max_relative_error": 2.040863037109375,
+            "max_absolute_error": 0.03125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 10.21,
+          "stride": [
+            1572864,
+            128,
+            12288,
+            1
+          ],
+          "merge_is_view": true
+        },
+        "SDPBackend.CUDNN_ATTENTION": {
+          "passed": true,
+          "matched_ratio": 0.9986228942871094,
+          "correctness": {
+            "max_relative_error": 2.040863037109375,
+            "max_absolute_error": 0.03125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 7.955199999999999,
+          "stride": [
+            1572864,
+            128,
+            12288,
+            1
+          ],
+          "merge_is_view": true
+        }
+      }
+    }
+  },
+  {
+    "index": 13,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 32,
+      "seq_len": 256
+    },
+    "passed": true,
+    "matched_ratio": 0.9998767375946045,
+    "correctness": {
+      "max_relative_error": 2.8213798999786377,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "profile": {
+      "flash_output_stride": [
+        3145728,
+        128,
+        12288,
+        1
+      ],
+      "merged_is_view": true,
+      "latency_us": {
+        "q_projection": 466.94519999999994,
+        "k_projection": 45.18146666666667,
+        "v_projection": 45.04293333333333,
+        "qk_preparation": 133.16406666666666,
+        "flash_attention": 384.9194,
+        "output_projection": 479.38033333333334,
+        "complete": 1582.7142000000001
+      },
+      "attention_backends": {
+        "SDPBackend.FLASH_ATTENTION": {
+          "passed": true,
+          "matched_ratio": 0.9998767375946045,
+          "correctness": {
+            "max_relative_error": 2.8213798999786377,
+            "max_absolute_error": 0.03125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 387.08093333333335,
+          "stride": [
+            3145728,
+            128,
+            12288,
+            1
+          ],
+          "merge_is_view": true
+        },
+        "SDPBackend.CUDNN_ATTENTION": {
+          "passed": true,
+          "matched_ratio": 0.9998763799667358,
+          "correctness": {
+            "max_relative_error": 2.8213798999786377,
+            "max_absolute_error": 0.03125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 161.83793333333335,
+          "stride": [
+            3145728,
+            128,
+            12288,
+            1
+          ],
+          "merge_is_view": true
+        }
+      }
+    }
+  }
+]

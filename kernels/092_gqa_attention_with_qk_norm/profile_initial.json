@@ -1,0 +1,146 @@
+[
+  {
+    "index": 0,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 512
+    },
+    "passed": true,
+    "matched_ratio": 0.9986076354980469,
+    "correctness": {
+      "max_relative_error": 3.179931640625,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "profile": {
+      "flash_output_stride": [
+        6291456,
+        128,
+        12288,
+        1
+      ],
+      "merged_is_view": true,
+      "latency_us": {
+        "q_projection": 44.5672,
+        "k_projection": 9.599866666666667,
+        "v_projection": 9.397400000000001,
+        "qk_preparation": 11.125133333333334,
+        "flash_attention": 46.07986666666666,
+        "output_projection": 45.97533333333333,
+        "complete": 320.26266666666663
+      }
+    }
+  },
+  {
+    "index": 5,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 2048
+    },
+    "passed": true,
+    "matched_ratio": 0.9998228549957275,
+    "correctness": {
+      "max_relative_error": 2.7150120735168457,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "profile": {
+      "flash_output_stride": [
+        25165824,
+        128,
+        12288,
+        1
+      ],
+      "merged_is_view": true,
+      "latency_us": {
+        "q_projection": 119.19086666666666,
+        "k_projection": 16.1322,
+        "v_projection": 16.334733333333332,
+        "qk_preparation": 36.99393333333333,
+        "flash_attention": 347.9343333333333,
+        "output_projection": 115.2462,
+        "complete": 654.5654666666666
+      }
+    }
+  },
+  {
+    "index": 12,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 128
+    },
+    "passed": true,
+    "matched_ratio": 0.9986095428466797,
+    "correctness": {
+      "max_relative_error": 2.040863037109375,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "profile": {
+      "flash_output_stride": [
+        1572864,
+        128,
+        12288,
+        1
+      ],
+      "merged_is_view": true,
+      "latency_us": {
+        "q_projection": 25.559266666666666,
+        "k_projection": 8.833933333333333,
+        "v_projection": 9.024000000000001,
+        "qk_preparation": 4.608066666666667,
+        "flash_attention": 12.737933333333332,
+        "output_projection": 32.770066666666665,
+        "complete": 95.22093333333333
+      }
+    }
+  },
+  {
+    "index": 13,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 32,
+      "seq_len": 256
+    },
+    "passed": true,
+    "matched_ratio": 0.9998767375946045,
+    "correctness": {
+      "max_relative_error": 2.8213798999786377,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "profile": {
+      "flash_output_stride": [
+        3145728,
+        128,
+        12288,
+        1
+      ],
+      "merged_is_view": true,
+      "latency_us": {
+        "q_projection": 464.4566666666667,
+        "k_projection": 45.64659999999999,
+        "v_projection": 45.53359999999999,
+        "qk_preparation": 134.156,
+        "flash_attention": 380.6422,
+        "output_projection": 476.59040000000005,
+        "complete": 1578.5388666666668
+      }
+    }
+  }
+]
