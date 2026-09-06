@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "049_attention_qk_matmul_with_gqa_repeat_and_scaling",
+  "description": "Share keys across grouped query heads and fuse scaling, using custom tiles for small or unaligned outputs and library GEMM for aligned outputs.",
+  "name": "049_grouped_qk_b200_v2",
+  "sources": [{"path": "dispatch.py"}, {"path": "kernel.py"}, {"path": "library.py"}, {"path": "tma.py"}],
+  "spec": {
+    "dependencies": ["torch", "triton"],
+    "destination_passing_style": true,
+    "entry_point": "dispatch.py::run",
+    "languages": ["triton"],
+    "target_hardware": ["B200"]
+  }
+}

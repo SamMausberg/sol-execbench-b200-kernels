@@ -9,6 +9,8 @@ The checkout, environment, toolchain, datasets, and caches live under `/workspac
 Run `bash tools/bootstrap_native.sh`, then `source tools/native_env.sh` in each shell.
 See [native setup](docs/native-runpod.md), [strategy](docs/strategy-2026-09-06.md),
 and [local validation results](results/2026-09-06/README.md).
+The active [ten-leaderboard goal](docs/ten-leaderboards.md) tracks local leads and
+confirmed hosted results separately.
 
 ```sh
 python tools/campaign.py fetch 25 53 84 85 88

@@ -1,0 +1,15 @@
+{
+  "name": "gaussian_sparse_fused_triton_b200_v1",
+  "definition": "053_gaussian_topk_sparse_activation",
+  "author": "sol-b200-kernel-team",
+  "description": "Fused FP32 row statistics, adaptive threshold and BF16 sparse activation. Short wide tensors use paired moments with a centered variance fallback, and scalar inverse CDF arithmetic preserves the reference operation order.",
+  "spec": {
+    "languages": ["triton"],
+    "target_hardware": ["B200"],
+    "entry_point": "kernel.py::run",
+    "destination_passing_style": true,
+    "dependencies": ["torch", "triton"],
+    "compile_options": {}
+  },
+  "sources": [{"path": "kernel.py"}]
+}

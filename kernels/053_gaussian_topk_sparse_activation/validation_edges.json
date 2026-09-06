@@ -1,0 +1,21 @@
+[
+  {
+    "index": 0,
+    "shape": [
+      1,
+      512,
+      12288
+    ],
+    "target_sparsity": 0.2,
+    "correctness": {
+      "max_relative_error": 0.011920928955078125,
+      "max_absolute_error": 0.00390625,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "timings_us": {
+      "current": 6.43324
+    }
+  }
+]

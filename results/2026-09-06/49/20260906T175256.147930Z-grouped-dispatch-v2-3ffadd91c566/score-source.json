@@ -1,0 +1,288 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "batch_size": {
+          "description": "Batch size",
+          "type": "var"
+        },
+        "head_dim": {
+          "description": "Dimension of each attention head",
+          "type": "const",
+          "value": 256
+        },
+        "num_attention_heads": {
+          "description": "Number of query attention heads",
+          "type": "const",
+          "value": 4
+        },
+        "num_key_value_groups": {
+          "description": "Number of times to repeat KV heads",
+          "type": "const",
+          "value": 4
+        },
+        "num_key_value_heads": {
+          "description": "Number of key/value heads for GQA",
+          "type": "const",
+          "value": 1
+        },
+        "seq_len": {
+          "description": "Sequence length",
+          "type": "var"
+        }
+      },
+      "baseline": "import torch\n\n@torch.no_grad()\ndef run(query: torch.Tensor, key: torch.Tensor, scaling: float) -> torch.Tensor:\n    \"\"\"\n    Fused attention Q@K^T computation with GQA key repetition and scaling.\n    \n    Args:\n        query: Query tensor of shape (batch, num_attention_heads, seq_len, head_dim)\n        key: Key tensor of shape (batch, num_key_value_heads, seq_len, head_dim)\n        scaling: Scaling factor (1/sqrt(query_pre_attn_scalar))\n    \n    Returns:\n        attn_scores: Attention scores of shape (batch, num_attention_heads, seq_len, seq_len)\n    \"\"\"\n    batch, num_key_value_heads, slen, head_dim = key.shape\n    num_attention_heads = query.shape[1]\n    n_rep = num_attention_heads // num_key_value_heads  # 8\n    \n    # Step 1: Repeat key heads to match query heads (GQA)\n    # Expand: (batch, num_kv_heads, 1, seq_len, head_dim) -> (batch, num_kv_heads, n_rep, seq_len, head_dim)\n    key_expanded = key[:, :, None, :, :].expand(\n        batch, num_key_value_heads, n_rep, slen, head_dim\n    )\n    # Reshape: (batch, num_kv_heads * n_rep, seq_len, head_dim)\n    key_states = key_expanded.reshape(batch, num_key_value_heads * n_rep, slen, head_dim)\n    \n    # Step 2: Compute attention scores Q@K^T\n    # query: (batch, num_attention_heads, seq_len, head_dim)\n    # key_states.transpose(2, 3): (batch, num_attention_heads, head_dim, seq_len)\n    # Result: (batch, num_attention_heads, seq_len, seq_len)\n    attn_weights = torch.matmul(query.to(torch.float32), key_states.transpose(2, 3).to(torch.float32))\n    \n    # Step 3: Apply scaling\n    attn_weights = attn_weights * scaling\n    \n    return attn_weights.to(query.dtype)\n",
+      "baseline_latency_ms": 0.003065,
+      "description": "Fused attention Q@K^T computation with GQA key repetition and scaling. Takes query (batch, num_heads=4, seq_len, head_dim=256) and key (batch, num_kv_heads=1, seq_len, head_dim=256), repeats KV heads 4x to match query heads, computes Q@K^T, and applies scaling (1/sqrt(256)=0.0625).",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 49,
+      "inputs": {
+        "key": {
+          "description": "Key tensor",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "num_key_value_heads",
+            "seq_len",
+            "head_dim"
+          ]
+        },
+        "query": {
+          "description": "Query tensor",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "num_attention_heads",
+            "seq_len",
+            "head_dim"
+          ]
+        },
+        "scaling": {
+          "description": "Scaling factor (1/sqrt(query_pre_attn_scalar))",
+          "dtype": "float32",
+          "shape": null
+        }
+      },
+      "latency_unit": "ms",
+      "name": "049_attention_qk_matmul_with_gqa_repeat_and_scaling",
+      "outputs": {
+        "attn_scores": {
+          "description": "Scaled attention scores",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "num_attention_heads",
+            "seq_len",
+            "seq_len"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "other",
+        "L1",
+        "model:gemma-3-270m"
+      ],
+      "title": "049_attention_qk_matmul_with_gqa_repeat_and_scaling",
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 2,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 773
+          },
+          "baseline_latency_ms": 0.058864,
+          "sol_ms": 0.0022
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 293
+          },
+          "baseline_latency_ms": 0.014208,
+          "sol_ms": 0.0006
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.0257435,
+          "sol_ms": 0.0119
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 8192
+          },
+          "baseline_latency_ms": 0.168608,
+          "sol_ms": 0.0763
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.007456,
+          "sol_ms": 0.0018
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.00384,
+          "sol_ms": 0.0005
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.0041445,
+          "sol_ms": 0.0005
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 1657
+          },
+          "baseline_latency_ms": 0.0867355,
+          "sol_ms": 0.0038
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 0.01592,
+          "sol_ms": 0.0055
+        },
+        {
+          "axes": {
+            "batch_size": 32,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.011744,
+          "sol_ms": 0.0053
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 4096
+          },
+          "baseline_latency_ms": 0.0463839999999999,
+          "sol_ms": 0.0194
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.004704,
+          "sol_ms": 0.0008
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.004096,
+          "sol_ms": 0.0006
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.0103525,
+          "sol_ms": 0.0033
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 0.0464964999999999,
+          "sol_ms": 0.0206
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "head_dim": 256,
+            "num_attention_heads": 4,
+            "num_key_value_groups": 4,
+            "num_key_value_heads": 1,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.006336,
+          "sol_ms": 0.0016
+        }
+      ]
+    }
+  },
+  "response_sha256": "4253ff6cadccabe763124b16f9f5661c16430bdf3799a778bf29a6245058fdbc",
+  "retrieved_at": "2026-09-06T17:52:56.146520+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/49"
+}

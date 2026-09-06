@@ -1,0 +1,38 @@
+{
+  "author": "SamMausberg",
+  "definition": "049_attention_qk_matmul_with_gqa_repeat_and_scaling",
+  "description": "Share keys across grouped query heads and fuse scaling, using custom tiles for small or unaligned outputs and library GEMM for aligned outputs.",
+  "name": "049_grouped_qk_b200_v2",
+  "sources": [
+    {
+      "content": "# SPDX-License-Identifier: Apache-2.0\n\"\"\"Choose grouped GEMM implementations by output alignment and launch size.\"\"\"\n\nimport triton\nfrom triton.tools.tensor_descriptor import TensorDescriptor\n\nfrom kernel import _grouped_qk\nfrom library import run as library_run\nfrom tma import grouped_qk_tma\n\n\ndef run(query, key, scaling, attn_scores):\n    batch, heads, seq, dim = query.shape\n    kv_heads = key.shape[1]\n    group = heads // kv_heads\n    if batch * seq <= 256 or (seq < 512 and seq % 8):\n        bm = 16 if seq <= 128 else 32\n        bn, bk = 32, 64\n        _grouped_qk[(triton.cdiv(group * seq, bm), triton.cdiv(seq, bn), batch * kv_heads)](\n            query, key, attn_scores, scaling, seq, dim, group, kv_heads,\n            *query.stride(), *key.stride(), bm, bn, bk,\n            num_warps=4, num_stages=3,\n        )\n    elif seq % 8 and query.is_contiguous() and key.is_contiguous():\n        # Odd output row strides prevent an efficient aligned library epilogue.\n        bm, bn, bk = 128, 128, 64\n        qdesc = TensorDescriptor(query, [batch * heads * seq, dim], [dim, 1], [bm, bk])\n        kdesc = TensorDescriptor(key, [batch * kv_heads * seq, dim], [dim, 1], [bn, bk])\n        tiles = triton.cdiv(group * seq, bm) * triton.cdiv(seq, bn) * batch * kv_heads\n        programs = min(296, tiles)\n        grouped_qk_tma[(programs,)](\n            qdesc, kdesc, attn_scores, scaling, seq, dim, group, kv_heads, batch,\n            bm, bn, bk, programs, True, num_warps=4, num_stages=3,\n        )\n    else:\n        library_run(query, key, scaling, attn_scores)\n",
+      "path": "dispatch.py"
+    },
+    {
+      "content": "# SPDX-License-Identifier: Apache-2.0\n\"\"\"Grouped attention scores without materializing repeated key heads.\"\"\"\n\nimport triton\nimport triton.language as tl\n\n\n@triton.jit\ndef _grouped_qk(\n    Q, K, O, SCALE: tl.constexpr,\n    SEQ: tl.constexpr, DIM: tl.constexpr, GROUP: tl.constexpr,\n    KV_HEADS: tl.constexpr,\n    QB: tl.constexpr, QH: tl.constexpr, QS: tl.constexpr, QD: tl.constexpr,\n    KB: tl.constexpr, KH: tl.constexpr, KS: tl.constexpr, KD: tl.constexpr,\n    BM: tl.constexpr, BN: tl.constexpr, BK: tl.constexpr,\n):\n    # A group's consecutive query heads form one tall matrix sharing the same K.\n    group_id = tl.program_id(2)\n    batch = group_id // KV_HEADS\n    kv_head = group_id % KV_HEADS\n    m = tl.program_id(0) * BM + tl.arange(0, BM)\n    n = tl.program_id(1) * BN + tl.arange(0, BN)\n    d = tl.arange(0, BK)\n    q_head = kv_head * GROUP + m // SEQ\n    q_row = m % SEQ\n    q_base = Q + batch * QB + q_head[:, None] * QH + q_row[:, None] * QS\n    k_base = K + batch * KB + kv_head * KH + n[None, :] * KS\n    acc = tl.full((BM, BN), 0, tl.float32)\n    for start in range(triton.cdiv(DIM, BK)):\n        col = start * BK + d\n        q = tl.load(\n            q_base + col[None, :] * QD,\n            (m[:, None] < GROUP * SEQ) & (col[None, :] < DIM), 0,\n        )\n        k = tl.load(\n            k_base + col[:, None] * KD,\n            (n[None, :] < SEQ) & (col[:, None] < DIM), 0,\n        )\n        acc = tl.dot(q, k, acc)\n    value = acc * SCALE\n    out_offset = (group_id * GROUP * SEQ + m[:, None]) * SEQ + n[None, :]\n    tl.store(O + out_offset, value, (m[:, None] < GROUP * SEQ) & (n[None, :] < SEQ))\n\n\ndef run(query, key, scaling, attn_scores):\n    batch, heads, seq, dim = query.shape\n    kv_heads = key.shape[1]\n    group = heads // kv_heads\n    bm, bn, bk = 64, 64, 64\n    _grouped_qk[(triton.cdiv(group * seq, bm), triton.cdiv(seq, bn), batch * kv_heads)](\n        query, key, attn_scores, scaling, seq, dim, group, kv_heads,\n        *query.stride(), *key.stride(), bm, bn, bk,\n        num_warps=4, num_stages=3,\n    )\n",
+      "path": "kernel.py"
+    },
+    {
+      "content": "# SPDX-License-Identifier: Apache-2.0\n\"\"\"Grouped library GEMM with scaling passed directly to its epilogue.\"\"\"\n\nimport torch\n\n\n@torch.no_grad()\ndef run(query, key, scaling, attn_scores):\n    batch, heads, seq, dim = query.shape\n    kv_heads = key.shape[1]\n    group = heads // kv_heads\n    q = query.reshape(batch * kv_heads, group * seq, dim)\n    k = key.reshape(batch * kv_heads, seq, dim).transpose(1, 2)\n    out = attn_scores.view(batch * kv_heads, group * seq, seq)\n    torch.baddbmm(out, q, k, beta=0, alpha=scaling, out=out)\n",
+      "path": "library.py"
+    },
+    {
+      "content": "# SPDX-License-Identifier: Apache-2.0\n\"\"\"Experimental tensor-map loads with grouped, persistent attention-score tiles.\"\"\"\n\nimport triton\nimport triton.language as tl\n\n\n@triton.jit\ndef grouped_qk_tma(\n    Q, K, O, SCALE: tl.constexpr,\n    SEQ: tl.constexpr, DIM: tl.constexpr, GROUP: tl.constexpr,\n    KV_HEADS: tl.constexpr, BATCH: tl.constexpr,\n    BM: tl.constexpr, BN: tl.constexpr, BK: tl.constexpr,\n    PROGRAMS: tl.constexpr, STREAM: tl.constexpr,\n    WARP_SPECIALIZE: tl.constexpr = False,\n):\n    mt: tl.constexpr = triton.cdiv(GROUP * SEQ, BM)\n    nt: tl.constexpr = triton.cdiv(SEQ, BN)\n    for tile in tl.range(tl.program_id(0), BATCH * KV_HEADS * mt * nt, PROGRAMS,\n                         warp_specialize=WARP_SPECIALIZE):\n        group_id = tile // (mt * nt)\n        tile_m = tile % mt\n        tile_n = (tile // mt) % nt\n        q_row = group_id * GROUP * SEQ + tile_m * BM\n        k_row = group_id * SEQ + tile_n * BN\n        acc = tl.full((BM, BN), 0, tl.float32)\n        for start in range(triton.cdiv(DIM, BK)):\n            q = Q.load([q_row, start * BK])\n            k = K.load([k_row, start * BK])\n            acc = tl.dot(q, k.T, acc)\n        m = tile_m * BM + tl.arange(0, BM)\n        n = tile_n * BN + tl.arange(0, BN)\n        out_offset = (group_id * GROUP * SEQ + m[:, None]) * SEQ + n[None, :]\n        tl.store(\n            O + out_offset, acc * SCALE,\n            (m[:, None] < GROUP * SEQ) & (n[None, :] < SEQ),\n            cache_modifier=\".cs\" if STREAM else \"\",\n        )\n",
+      "path": "tma.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "dispatch.py::run",
+    "languages": [
+      "triton"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

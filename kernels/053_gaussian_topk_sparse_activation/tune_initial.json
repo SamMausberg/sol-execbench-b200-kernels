@@ -1,0 +1,156 @@
+[
+  {
+    "index": 0,
+    "shape": [
+      1,
+      512,
+      12288
+    ],
+    "target_sparsity": 0.2,
+    "correctness": {
+      "max_relative_error": 0.011920928955078125,
+      "max_absolute_error": 0.00390625,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "timings_us": {
+      "warps_4": 7.26792,
+      "warps_8": 6.87748,
+      "warps_16": 7.12308,
+      "warps_32": 8.64508
+    }
+  },
+  {
+    "index": 1,
+    "shape": [
+      4,
+      2048,
+      12288
+    ],
+    "target_sparsity": 0.1,
+    "correctness": {
+      "max_relative_error": 0.011920928955078125,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "timings_us": {
+      "warps_4": 62.57116,
+      "warps_8": 61.200359999999996,
+      "warps_16": 65.25396,
+      "warps_32": 88.95712
+    }
+  },
+  {
+    "index": 3,
+    "shape": [
+      2,
+      211,
+      8192
+    ],
+    "target_sparsity": 0.2,
+    "correctness": {
+      "max_relative_error": 0.007462686393409967,
+      "max_absolute_error": 0.0001220703125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "timings_us": {
+      "warps_4": 5.13656,
+      "warps_8": 4.99336,
+      "warps_16": 5.189160000000001,
+      "warps_32": 6.68672
+    }
+  },
+  {
+    "index": 4,
+    "shape": [
+      1,
+      8192,
+      4096
+    ],
+    "target_sparsity": 0.3,
+    "correctness": {
+      "max_relative_error": 0.007751937955617905,
+      "max_absolute_error": 0.00390625,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "timings_us": {
+      "warps_4": 22.076,
+      "warps_8": 22.7378,
+      "warps_16": 32.94564,
+      "warps_32": 59.96652
+    }
+  },
+  {
+    "index": 5,
+    "shape": [
+      1,
+      1024,
+      16384
+    ],
+    "target_sparsity": 0.3,
+    "correctness": {
+      "max_relative_error": 0.007633587811142206,
+      "max_absolute_error": 0.00390625,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "timings_us": {
+      "warps_4": 14.99384,
+      "warps_8": 12.75272,
+      "warps_16": 12.847439999999999,
+      "warps_32": 16.16384
+    }
+  },
+  {
+    "index": 9,
+    "shape": [
+      64,
+      1024,
+      8192
+    ],
+    "target_sparsity": 0.3,
+    "correctness": {
+      "max_relative_error": 0.014492753893136978,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "timings_us": {
+      "warps_4": 311.22648,
+      "warps_8": 310.87904,
+      "warps_16": 333.87467999999996,
+      "warps_32": 550.0899999999999
+    }
+  },
+  {
+    "index": 10,
+    "shape": [
+      2,
+      131,
+      4096
+    ],
+    "target_sparsity": 0.1,
+    "correctness": {
+      "max_relative_error": 0.011920928955078125,
+      "max_absolute_error": 0.0001220703125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "timings_us": {
+      "warps_4": 3.0797600000000003,
+      "warps_8": 3.1142799999999995,
+      "warps_16": 3.18224,
+      "warps_32": 3.56344
+    }
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "problem_id": 53,
+  "problem_name": "053_gaussian_topk_sparse_activation",
+  "passed": true,
+  "official_workloads": 12,
+  "full_harness_trials": 3,
+  "additional_edge_cases": 36,
+  "clock_mode": "unlocked",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "contract_sha256": "6988706bbcd447bcb631d3d3d37b6f7a292955c58697c573d1e1c246f6600f57",
+  "submission_sha256": "92d54b609389e51ab869afdd879cd26663032b9801db7b5073347089651fdeb1",
+  "source_sha256": {
+    "kernel.py": "8bda8ef89c8421a9ca9725d90314bd6a9db266eb8a8937a4a493d46c38ecc1e3"
+  },
+  "local_sol_score": 0.6387352397349223,
+  "trial_sol_scores": [
+    0.6377943912660119,
+    0.639500821619659,
+    0.6391650275316453
+  ],
+  "geometric_mean_latency_ms": 0.017684006550320663,
+  "max_workload_relative_spread": 0.023923444976076617,
+  "leader_snapshot_sol_score": 0.657158,
+  "recommend_submission": false,
+  "reason": "All workloads pass, but the local estimate is below the public leader; local clocks are unlocked.",
+  "archived_run": "results/2026-09-06/53/20260906T174720.558504Z-fused-v1-final-92d54b609389",
+  "summary_sha256": "61e2857da612c1289b1e931b491a8ca31072dffab4d5e6d9aadaf9de7520a27a",
+  "trace_sha256": {
+    "trial-1.jsonl": "c9c6ef37244214a6c33219eb30f2c1dbd1b9c36a0f9f892c69b77661260d3dfb",
+    "trial-2.jsonl": "9bc218fcf962b11cc1ead2f4427f1402a5a3d102fbbff595ad1de89b9a4991bd",
+    "trial-3.jsonl": "89e9d89621ce2245928127c6572e08c3ef22c45bf7b0cdc0ede03068dc9d5d69"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "problem_id": 49,
+  "problem_name": "049_attention_qk_matmul_with_gqa_repeat_and_scaling",
+  "passed": true,
+  "official_workloads": 16,
+  "full_harness_trials": 3,
+  "additional_input_variations": 30,
+  "clock_mode": "unlocked",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "contract_sha256": "dd2b3f35b6b68e3bbe12b003e0622ddfae36439c19df35267bf5de7e80c9fe0c",
+  "submission_sha256": "3ffadd91c5662a30467e596dbb356e1976a7dcb6106873234adc146ddde921b6",
+  "source_sha256": {
+    "dispatch.py": "a636b48bdba876e8e6b591106b445eea7db300fb776b0c3d11d1f49d2f54eac3",
+    "kernel.py": "c251c34f01c171139e90f41c5ba5569398bc9c405a18bed2ae98820b3de98a6c",
+    "library.py": "254de43d7a11ce84a7be6784bdc8407cc3da3cb02f512bab54e0aecdb036a1ba",
+    "tma.py": "601b83a3c64d9018e2ff88fc116d6201c22e05b23092a241ae6ea85d28fe86a3"
+  },
+  "local_sol_score": 0.6451045491564064,
+  "trial_sol_scores": [
+    0.6445898227151016,
+    0.64527423752947,
+    0.6452616780480195
+  ],
+  "geometric_mean_latency_ms": 0.009820242733062036,
+  "max_workload_relative_spread": 0.025641025641025685,
+  "leader_snapshot_sol_score": 0.579975,
+  "leader_snapshot_username": "RIAC as well",
+  "leader_snapshot_retrieved_at": "2026-09-06T17:55:17.281810+00:00",
+  "relative_local_score_lead": 0.11229716652684396,
+  "uniform_latency_slowdown_to_tie": 0.1980047353714678,
+  "local_lead": true,
+  "hosted_rank_confirmed": false,
+  "recommend_submission": false,
+  "reason": "A repeatable local lead, but the Runpod host denies matching the official 1500 MHz SM clock. Continue improving margin before recommending a quota-limited submission.",
+  "archived_run": "results/2026-09-06/49/20260906T175256.147930Z-grouped-dispatch-v2-3ffadd91c566",
+  "summary_sha256": "0a7063020bc7f91e8ffb70753830f73ed477e9ba7f6f76d212c3d4f27643ae2b",
+  "trace_sha256": {
+    "trial-1.jsonl": "2cda69eb2077cff0f231f496decf5c712213d66d767003222d029109ee6bc0b8",
+    "trial-2.jsonl": "daa0cc91db4158e558995c22d1a324b3a6ae3812071fcf635f445c21237d6e7a",
+    "trial-3.jsonl": "355b123742e1b5248c6360e57f64cb31c202309224e39a5b9f8451ae8ce85cce"
+  }
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "index": 0,
+    "shape": [
+      1,
+      512,
+      12288
+    ],
+    "target_sparsity": 0.2,
+    "correctness": {
+      "max_relative_error": 0.011920928955078125,
+      "max_absolute_error": 0.00390625,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "timings_us": {
+      "warps_8_moments_False_cache_default_store_default": 6.95345,
+      "warps_8_moments_False_cache_.cg_store_.cs": 6.89435,
+      "warps_8_moments_True_cache_default_store_default": 6.54395,
+      "warps_8_moments_True_cache_.cg_store_.cs": 6.6
+    }
+  },
+  {
+    "index": 4,
+    "shape": [
+      1,
+      8192,
+      4096
+    ],
+    "target_sparsity": 0.3,
+    "correctness": {
+      "max_relative_error": 0.007751937955617905,
+      "max_absolute_error": 0.00390625,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "timings_us": {
+      "warps_4_moments_False_cache_default_store_default": 21.97755,
+      "warps_4_moments_False_cache_.cg_store_.cs": 22.36315,
+      "warps_4_moments_True_cache_default_store_default": 22.078149999999997,
+      "warps_4_moments_True_cache_.cg_store_.cs": 22.265449999999998
+    }
+  },
+  {
+    "index": 5,
+    "shape": [
+      1,
+      1024,
+      16384
+    ],
+    "target_sparsity": 0.3,
+    "correctness": {
+      "max_relative_error": 0.007633587811142206,
+      "max_absolute_error": 0.00390625,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "timings_us": {
+      "warps_8_moments_False_cache_default_store_default": 12.8367,
+      "warps_8_moments_False_cache_.cg_store_.cs": 12.8958,
+      "warps_8_moments_True_cache_default_store_default": 13.137599999999999,
+      "warps_8_moments_True_cache_.cg_store_.cs": 13.300650000000001
+    }
+  },
+  {
+    "index": 9,
+    "shape": [
+      64,
+      1024,
+      8192
+    ],
+    "target_sparsity": 0.3,
+    "correctness": {
+      "max_relative_error": 0.014492753893136978,
+      "max_absolute_error": 0.03125,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "timings_us": {
+      "warps_8_moments_False_cache_default_store_default": 310.9366,
+      "warps_8_moments_False_cache_.cg_store_.cs": 310.31355,
+      "warps_8_moments_True_cache_default_store_default": 308.83315,
+      "warps_8_moments_True_cache_.cg_store_.cs": 308.6294
+    }
+  }
+]
