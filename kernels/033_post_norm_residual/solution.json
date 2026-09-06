@@ -1,0 +1,15 @@
+{
+  "name": "post_norm_residual_fused_triton_b200_v1",
+  "definition": "033_post_norm_residual",
+  "author": "sol-b200-kernel-team",
+  "description": "One-pass FP32 RMS normalization and weight scaling, with explicit BF16 rounding before residual addition and a preallocated BF16 output.",
+  "spec": {
+    "languages": ["triton"],
+    "target_hardware": ["B200"],
+    "entry_point": "kernel.py::run",
+    "destination_passing_style": true,
+    "dependencies": ["torch", "triton"],
+    "compile_options": {}
+  },
+  "sources": [{"path": "kernel.py"}]
+}

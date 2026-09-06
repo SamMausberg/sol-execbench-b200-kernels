@@ -1,0 +1,31 @@
+{
+  "author": "SamMausberg",
+  "definition": "031_repeat_kv_attention_matmul",
+  "description": "Fuse scaling into BF16 output using tensor-core tiles for short odd rows, persistent TMA tiles for longer odd rows, and a library GEMM epilogue for aligned rows.",
+  "name": "031_bf16_qk_b200_hybrid_v1",
+  "sources": [
+    {
+      "content": "# SPDX-License-Identifier: Apache-2.0\n\"\"\"Per-head BF16 QK scores with FP32 accumulation and fused scaling.\"\"\"\n\nimport triton\nimport triton.language as tl\nimport torch\nfrom triton.tools.tensor_descriptor import TensorDescriptor\n\nfrom tma import _qk_tma\n\n\n@triton.jit\ndef _qk_scores(\n    Q, K, O, SEQ: tl.constexpr,\n    BM: tl.constexpr, BN: tl.constexpr, BK: tl.constexpr,\n    STREAM: tl.constexpr = False,\n):\n    head = tl.program_id(2)\n    m = tl.program_id(0) * BM + tl.arange(0, BM)\n    n = tl.program_id(1) * BN + tl.arange(0, BN)\n    d = tl.arange(0, BK)\n    q_base = Q + head * SEQ * 128 + m[:, None] * 128\n    k_base = K + head * SEQ * 128 + n[None, :] * 128\n    acc = tl.full((BM, BN), 0, tl.float32)\n    for start in range(triton.cdiv(128, BK)):\n        col = start * BK + d\n        q = tl.load(\n            q_base + col[None, :],\n            (m[:, None] < SEQ) & (col[None, :] < 128), 0,\n            cache_modifier=\".cg\" if STREAM else \"\",\n        )\n        k = tl.load(\n            k_base + col[:, None],\n            (n[None, :] < SEQ) & (col[:, None] < 128), 0,\n            cache_modifier=\".cg\" if STREAM else \"\",\n        )\n        acc = tl.dot(q, k, acc)\n    result = acc * (128 ** -0.5)\n    offsets = head * SEQ * SEQ + m[:, None] * SEQ + n[None, :]\n    tl.store(\n        O + offsets, result,\n        (m[:, None] < SEQ) & (n[None, :] < SEQ),\n        cache_modifier=\".cs\" if STREAM else \"\",\n    )\n\n\n@torch.no_grad()\ndef run(query, key, attn_weights):\n    batch, heads, seq, _ = query.shape\n    if seq % 8 == 0:\n        q = query.view(batch * heads, seq, 128)\n        k = key.view(batch * heads, seq, 128).transpose(1, 2)\n        out = attn_weights.view(batch * heads, seq, seq)\n        torch.baddbmm(out, q, k, beta=0, alpha=128 ** -0.5, out=out)\n    elif seq <= 256:\n        bm, bn, bk = 32, 64, 128\n        _qk_scores[\n            (triton.cdiv(seq, bm), triton.cdiv(seq, bn), batch * heads)\n        ](\n            query, key, attn_weights, seq, bm, bn, bk,\n            num_warps=4, num_stages=2,\n        )\n    else:\n        bm, bn, bk = 128, 128, 128\n        programs = min(\n            148, batch * heads * triton.cdiv(seq, bm) * triton.cdiv(seq, bn),\n        )\n        shape = [batch * heads * seq, 128]\n        q_desc = TensorDescriptor(query, shape, [128, 1], [bm, bk])\n        k_desc = TensorDescriptor(key, shape, [128, 1], [bn, bk])\n        _qk_tma[(programs,)](\n            q_desc, k_desc, attn_weights, seq, batch * heads,\n            bm, bn, bk, programs, True, num_warps=4, num_stages=2,\n        )\n",
+      "path": "kernel.py"
+    },
+    {
+      "content": "# SPDX-License-Identifier: Apache-2.0\n\"\"\"Persistent QK tiles with tensor-map loads and ordinary masked stores.\"\"\"\n\nimport triton\nimport triton.language as tl\n\n\n@triton.jit\ndef _qk_tma(\n    Q, K, O, SEQ: tl.constexpr, HEADS: tl.constexpr,\n    BM: tl.constexpr, BN: tl.constexpr, BK: tl.constexpr,\n    PROGRAMS: tl.constexpr, STREAM: tl.constexpr,\n    WARP_SPECIALIZE: tl.constexpr = False,\n):\n    mt: tl.constexpr = triton.cdiv(SEQ, BM)\n    nt: tl.constexpr = triton.cdiv(SEQ, BN)\n    for tile in tl.range(\n        tl.program_id(0), HEADS * mt * nt, PROGRAMS,\n        warp_specialize=WARP_SPECIALIZE,\n    ):\n        head = tile // (mt * nt)\n        tile_m = tile % mt\n        tile_n = (tile // mt) % nt\n        q_row = head * SEQ + tile_m * BM\n        k_row = head * SEQ + tile_n * BN\n        acc = tl.full((BM, BN), 0, tl.float32)\n        for start in range(triton.cdiv(128, BK)):\n            q = Q.load([q_row, start * BK])\n            k = K.load([k_row, start * BK])\n            acc = tl.dot(q, k.T, acc)\n        m = tile_m * BM + tl.arange(0, BM)\n        n = tile_n * BN + tl.arange(0, BN)\n        offsets = (head * SEQ + m[:, None]) * SEQ + n[None, :]\n        tl.store(\n            O + offsets, acc * (128 ** -0.5),\n            (m[:, None] < SEQ) & (n[None, :] < SEQ),\n            cache_modifier=\".cs\" if STREAM else \"\",\n        )\n",
+      "path": "tma.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": [
+      "pytorch",
+      "triton"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

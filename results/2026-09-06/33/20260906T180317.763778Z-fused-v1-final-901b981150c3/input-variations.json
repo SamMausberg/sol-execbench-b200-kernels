@@ -1,0 +1,46 @@
+[
+  {
+    "case": "bf16_round_before_cancellation",
+    "passed": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    }
+  },
+  {
+    "case": "zero_input",
+    "passed": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    }
+  },
+  {
+    "case": "zero_weight",
+    "passed": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    }
+  },
+  {
+    "case": "strided_nondefault_epsilon",
+    "passed": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    }
+  }
+]

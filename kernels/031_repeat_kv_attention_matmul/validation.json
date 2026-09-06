@@ -1,0 +1,57 @@
+{
+  "problem_id": 31,
+  "problem_name": "031_repeat_kv_attention_matmul",
+  "passed": true,
+  "official_workloads": 16,
+  "full_harness_trials": 3,
+  "clock_mode": "unlocked",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "contract_sha256": "a69406006e02cb7c5a656cbb73ecb5cf06ce894b39425acbe848343989d593b3",
+  "submission_sha256": "ce09baae28bcf17c282a6c60d2339c492deb0761e63b12bccfc905a87cbd054b",
+  "source_sha256": {
+    "kernel.py": "b44c0fc5c3be7d599dc3bd4a475bf7abb85a61ca2ffc031192a3efcd6535f7bb",
+    "tma.py": "b261d38fe48c627ab094b192e1446fde0a89de6e002b3da90033222c68168cb9"
+  },
+  "local_sol_score": 0.6352784611490268,
+  "trial_sol_scores": [
+    0.6349764108485287,
+    0.6356924867370648,
+    0.632797828330382
+  ],
+  "geometric_mean_latency_ms": 0.023349121353990678,
+  "max_workload_relative_spread": 0.07639872521246467,
+  "local_lead": true,
+  "uniform_latency_slowdown_to_tie": 0.08108999697832964,
+  "hosted_rank_confirmed": false,
+  "recommend_submission": false,
+  "reason": "The local lead is smaller than the unresolved clock difference may permit. Continue improving margin.",
+  "summary_sha256": "ca50ba82be67e5ce72860c37d82bb388314d6db74a90fda5abdafe3ae0f75879",
+  "trace_sha256": {
+    "trial-1.jsonl": "c31e2d3f55b798462cae98d69295520b06bb638f48b71478ef3bb705d08b2fe3",
+    "trial-2.jsonl": "df2bd23ad890f13d353f83cb441f5ca4481061466686e9319550d2bdf6994eeb",
+    "trial-3.jsonl": "5d0af03ea5cbba6ae4d02c8e0aff007b31470925ab7a4891148b3018e84d5e7f"
+  },
+  "additional_input_variations": {
+    "cases": 30,
+    "official_tolerance_passed": 30,
+    "strict_allclose_passed": 27,
+    "minimum_matched_ratio": 0.999996185,
+    "note": "Three 16x amplitude cases contain one or two tiny near-zero deviations; all meet the pinned 99% required matching ratio."
+  },
+  "archived_runs": [
+    "results/2026-09-06/31/20260906T175740.379421Z-qk-bf16-hybrid-final-ce09baae28bc"
+  ],
+  "archived_input_variations": {
+    "path": "results/2026-09-06/31/20260906T175740.379421Z-qk-bf16-hybrid-final-ce09baae28bc/input-variations.json",
+    "sha256": "a705e75f6e880d0329dd953058bd61f5fb90d2713c049e32a0c2315c3672b6dd"
+  },
+  "checkpoint_leader_snapshot": {
+    "sol_score": 0.594534,
+    "username": "RIAC as well",
+    "retrieved_at": "2026-09-06T18:19:03.182839+00:00",
+    "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/leaderboard/kernel/31/B200?evaluation_stack_version=v1.1",
+    "path": "results/2026-09-06/31/20260906T175740.379421Z-qk-bf16-hybrid-final-ce09baae28bc/leaderboard-snapshot.json",
+    "sha256": "9f14c3fa1034c9ab16a47e63ef0e625022a53f8de1aafc82fe82c2415c75d78c"
+  }
+}

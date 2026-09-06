@@ -1,0 +1,425 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "seed": 41,
+      "batch": 1,
+      "sequence": 128,
+      "input_revision": 0,
+      "exact_match": true,
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 41,
+      "batch": 1,
+      "sequence": 128,
+      "input_revision": 1,
+      "exact_match": true,
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 41,
+      "batch": 2,
+      "sequence": 128,
+      "input_revision": 0,
+      "exact_match": true,
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 41,
+      "batch": 2,
+      "sequence": 128,
+      "input_revision": 1,
+      "exact_match": true,
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 41,
+      "batch": 4,
+      "sequence": 541,
+      "input_revision": 0,
+      "exact_match": true,
+      "output_strides": [
+        553984,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 41,
+      "batch": 4,
+      "sequence": 541,
+      "input_revision": 1,
+      "exact_match": true,
+      "output_strides": [
+        553984,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 41,
+      "batch": 1,
+      "sequence": 1571,
+      "input_revision": 0,
+      "exact_match": true,
+      "output_strides": [
+        1608704,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 41,
+      "batch": 1,
+      "sequence": 1571,
+      "input_revision": 1,
+      "exact_match": true,
+      "output_strides": [
+        1608704,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 41,
+      "batch": 1,
+      "sequence": 8192,
+      "input_revision": 0,
+      "exact_match": true,
+      "output_strides": [
+        8388608,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 41,
+      "batch": 1,
+      "sequence": 8192,
+      "input_revision": 1,
+      "exact_match": true,
+      "output_strides": [
+        8388608,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 733,
+      "batch": 1,
+      "sequence": 128,
+      "input_revision": 0,
+      "exact_match": true,
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 733,
+      "batch": 1,
+      "sequence": 128,
+      "input_revision": 1,
+      "exact_match": true,
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 733,
+      "batch": 2,
+      "sequence": 128,
+      "input_revision": 0,
+      "exact_match": true,
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 733,
+      "batch": 2,
+      "sequence": 128,
+      "input_revision": 1,
+      "exact_match": true,
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 733,
+      "batch": 4,
+      "sequence": 541,
+      "input_revision": 0,
+      "exact_match": true,
+      "output_strides": [
+        553984,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 733,
+      "batch": 4,
+      "sequence": 541,
+      "input_revision": 1,
+      "exact_match": true,
+      "output_strides": [
+        553984,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 733,
+      "batch": 1,
+      "sequence": 1571,
+      "input_revision": 0,
+      "exact_match": true,
+      "output_strides": [
+        1608704,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 733,
+      "batch": 1,
+      "sequence": 1571,
+      "input_revision": 1,
+      "exact_match": true,
+      "output_strides": [
+        1608704,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 733,
+      "batch": 1,
+      "sequence": 8192,
+      "input_revision": 0,
+      "exact_match": true,
+      "output_strides": [
+        8388608,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 733,
+      "batch": 1,
+      "sequence": 8192,
+      "input_revision": 1,
+      "exact_match": true,
+      "output_strides": [
+        8388608,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 8109,
+      "batch": 1,
+      "sequence": 128,
+      "input_revision": 0,
+      "exact_match": true,
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 8109,
+      "batch": 1,
+      "sequence": 128,
+      "input_revision": 1,
+      "exact_match": true,
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 8109,
+      "batch": 2,
+      "sequence": 128,
+      "input_revision": 0,
+      "exact_match": true,
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 8109,
+      "batch": 2,
+      "sequence": 128,
+      "input_revision": 1,
+      "exact_match": true,
+      "output_strides": [
+        131072,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 8109,
+      "batch": 4,
+      "sequence": 541,
+      "input_revision": 0,
+      "exact_match": true,
+      "output_strides": [
+        553984,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 8109,
+      "batch": 4,
+      "sequence": 541,
+      "input_revision": 1,
+      "exact_match": true,
+      "output_strides": [
+        553984,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 8109,
+      "batch": 1,
+      "sequence": 1571,
+      "input_revision": 0,
+      "exact_match": true,
+      "output_strides": [
+        1608704,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 8109,
+      "batch": 1,
+      "sequence": 1571,
+      "input_revision": 1,
+      "exact_match": true,
+      "output_strides": [
+        1608704,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 8109,
+      "batch": 1,
+      "sequence": 8192,
+      "input_revision": 0,
+      "exact_match": true,
+      "output_strides": [
+        8388608,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    },
+    {
+      "seed": 8109,
+      "batch": 1,
+      "sequence": 8192,
+      "input_revision": 1,
+      "exact_match": true,
+      "output_strides": [
+        8388608,
+        128,
+        1024,
+        1
+      ],
+      "output_type": "Tensor"
+    }
+  ]
+}

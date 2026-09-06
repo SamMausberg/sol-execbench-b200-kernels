@@ -1,0 +1,526 @@
+{
+  "source_sha256": {
+    "kernel.py": "b44c0fc5c3be7d599dc3bd4a475bf7abb85a61ca2ffc031192a3efcd6535f7bb",
+    "tma.py": "b261d38fe48c627ab094b192e1446fde0a89de6e002b3da90033222c68168cb9"
+  },
+  "reference_sha256": "dfccdb572a88ea12c815fcc99b1ec7a66d239a4f2e04b7b3158fa04546b799ef",
+  "tolerance": {
+    "max_atol": 1e-05,
+    "max_rtol": 0.05,
+    "required_matched_ratio": 0.99,
+    "max_error_cap": null,
+    "allow_negative_inf": false
+  },
+  "checks": [
+    {
+      "batch": 1,
+      "seq": 128,
+      "pattern": "seed0",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.007518797181546688,
+        "max_absolute_error": 0.0078125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 524288,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 128,
+      "pattern": "seed1",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.008940696716308594,
+        "max_absolute_error": 0.015625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 524288,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 128,
+      "pattern": "seed2",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.007633587811142206,
+        "max_absolute_error": 0.015625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 524288,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 128,
+      "pattern": "small",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0078125,
+        "max_absolute_error": 9.5367431640625e-07,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 524288,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 128,
+      "pattern": "large",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.20353981852531433,
+        "max_absolute_error": 4.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 2,
+      "total_elements": 524288,
+      "matched_ratio": 0.9999961853027344,
+      "strict_all_elements_passed": false
+    },
+    {
+      "batch": 1,
+      "seq": 128,
+      "pattern": "zero_query",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 524288,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 128,
+      "pattern": "ones",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 524288,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 128,
+      "pattern": "cancel",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 524288,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 128,
+      "pattern": "distinct_heads",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 524288,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 128,
+      "pattern": "equal_qk",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.007518797181546688,
+        "max_absolute_error": 0.0078125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 524288,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "seed0",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.00909090880304575,
+        "max_absolute_error": 0.0078125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 549152,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "seed1",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.007751937955617905,
+        "max_absolute_error": 0.015625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 549152,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "seed2",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.010416666977107525,
+        "max_absolute_error": 0.015625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 549152,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "small",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0078125,
+        "max_absolute_error": 9.5367431640625e-07,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 549152,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "large",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.20353981852531433,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 1,
+      "total_elements": 549152,
+      "matched_ratio": 0.9999981790105472,
+      "strict_all_elements_passed": false
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "zero_query",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 549152,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "ones",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 549152,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "cancel",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 549152,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "distinct_heads",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 549152,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "equal_qk",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.007246376946568489,
+        "max_absolute_error": 0.0078125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 549152,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 449,
+      "pattern": "seed0",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.017881393432617188,
+        "max_absolute_error": 0.015625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 6451232,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 449,
+      "pattern": "seed1",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.017881393432617188,
+        "max_absolute_error": 0.015625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 6451232,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 449,
+      "pattern": "seed2",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.017136335372924805,
+        "max_absolute_error": 0.015625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 6451232,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 449,
+      "pattern": "small",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.007751937955617905,
+        "max_absolute_error": 1.9073486328125e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 6451232,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 449,
+      "pattern": "large",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.09236947447061539,
+        "max_absolute_error": 4.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 1,
+      "total_elements": 6451232,
+      "matched_ratio": 0.9999998449908483,
+      "strict_all_elements_passed": false
+    },
+    {
+      "batch": 1,
+      "seq": 449,
+      "pattern": "zero_query",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 6451232,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 449,
+      "pattern": "ones",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 6451232,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 449,
+      "pattern": "cancel",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 6451232,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 449,
+      "pattern": "distinct_heads",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 6451232,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    },
+    {
+      "batch": 1,
+      "seq": 449,
+      "pattern": "equal_qk",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.017241379246115685,
+        "max_absolute_error": 0.015625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "mismatched_elements": 0,
+      "total_elements": 6451232,
+      "matched_ratio": 1.0,
+      "strict_all_elements_passed": true
+    }
+  ]
+}

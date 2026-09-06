@@ -1,0 +1,369 @@
+{
+  "problem_id": 10,
+  "problem_name": "010_attention_value_projection_with_transpose",
+  "status": "validated local leader candidate, clock sensitivity unresolved",
+  "passed": true,
+  "official_workloads": 16,
+  "full_harness_trials": 3,
+  "clock_mode": "unlocked",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "contract_sha256": "ab259e165a2818e5353b9959148e7d41397ed531e955f3b0dba8d29b2bb93421",
+  "submission_sha256": "923878a68f7a1af50fce919f8c7a525850b22f4c73c2f084d472f1f0d8f419bf",
+  "kernel_sha256": "9450e73e7056351c1f6c3d86aa644a8c46c42cae1862f03ddc556deb3f6132de",
+  "local_sol_score": 0.6355017031968052,
+  "trial_sol_scores": [
+    0.6358503415595471,
+    0.6350803371955629,
+    0.6355946084674949
+  ],
+  "geometric_mean_latency_ms": 0.020813045051107124,
+  "max_workload_relative_spread": 0.017322834645669374,
+  "leader_snapshot": {
+    "sol_score": 0.534899,
+    "username": "RIAC as well",
+    "submission_id": 40940,
+    "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/leaderboard/kernel/10/B200?evaluation_stack_version=v1.1",
+    "retrieved_at": "2026-09-06T18:05:53.714086+00:00",
+    "path": ".work/leaderboard-10-latest.json",
+    "sha256": "e2cf233db346a1b10f253a0facfda0a6b7643e10a2c8d274ae26f36e60da5ce5"
+  },
+  "uniform_latency_slowdown_buffer": 0.17543256147585784,
+  "hypothetical_uniform_1965_to_1500_clock_scaling_score": 0.4786461077954774,
+  "recommend_submission": false,
+  "reason": "All workloads and changed-input checks pass with a clear local lead. The Runpod host denies official clock locking, and the 17.54% uniform slowdown margin does not cover a hypothetical fully compute-bound 1965/1500 slowdown. Hosted ranking remains unverified.",
+  "output_layout": {
+    "concrete_tensor": true,
+    "shape": [
+      "batch_size",
+      8,
+      "seq_len",
+      128
+    ],
+    "stride": [
+      "seq_len * 1024",
+      128,
+      1024,
+      1
+    ],
+    "contiguous": false,
+    "contract_requires_contiguous": false,
+    "destination_passing_style": false
+  },
+  "source_runs": [
+    {
+      "directory": ".work/runs/10/20260906T180107.148286Z-concrete-view-initial-923878a68f7a",
+      "summary_sha256": "f03f5df8f811372b07affa9fcc7d0693394c8a5a81aa093443d1b50bed741881",
+      "environment_sha256": "90d70a8fca0b02504957f43f29a4571531cf700eb2350b8152ef7b55181075fe",
+      "trace_sha256": {
+        "trial-1.jsonl": "b343de39ae1d8d9e0e2f8c60a6e7bba5c334e54737bd1200c382d6ecb6d897fd"
+      }
+    },
+    {
+      "directory": ".work/runs/10/20260906T180440.730512Z-concrete-view-repeat-923878a68f7a",
+      "summary_sha256": "bd903b1ef7b9584b5221e8ed38bf397d92d5438a7a2b2c2dcf2469037e5af319",
+      "environment_sha256": "f8c1ddf9d6e4de7584e8965e292c5a79b174d0199e570ff362cdb77b9b3d2c50",
+      "trace_sha256": {
+        "trial-1.jsonl": "73519b886f98aa27de4a3d42ac83cf98373a1e9aab0c96a93c873f0dcaf67555",
+        "trial-2.jsonl": "968f05ebee252b15451ad53786b101ecd6a4da669eaece3a020f42616623531c"
+      }
+    }
+  ],
+  "changed_input_checks": {
+    "path": ".work/validation/10/values-20260906T180317Z.json",
+    "sha256": "801dc180989fb4dfb21e1b3b30517fc0824fcc9fb82beaa18e1e7f26443502ab",
+    "cases": 30,
+    "all_exact": true,
+    "checks_output_storage_ownership": true
+  },
+  "workloads": [
+    {
+      "uuid": "3aa8f76c-2f1e-5cd4-b081-c1ef756fad09",
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 128
+      },
+      "times": [
+        0.010159999999999999,
+        0.010224,
+        0.010048
+      ],
+      "median": 0.010159999999999999,
+      "spread": 0.017322834645669374,
+      "baseline": 0.012432,
+      "sol": 0.0022,
+      "score": 0.5624450307827616
+    },
+    {
+      "uuid": "63925da7-d895-52ac-bfaa-f8ed36192fd6",
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 541
+      },
+      "times": [
+        0.022415499999999998,
+        0.0223205,
+        0.022528
+      ],
+      "median": 0.022415499999999998,
+      "spread": 0.00925698735250159,
+      "baseline": 0.026752,
+      "sol": 0.0129,
+      "score": 0.5927891302022039
+    },
+    {
+      "uuid": "9275b9e5-5183-5189-9353-f10117c44fea",
+      "axes": {
+        "batch_size": 16,
+        "seq_len": 128
+      },
+      "times": [
+        0.019375999999999997,
+        0.019168,
+        0.019392
+      ],
+      "median": 0.019375999999999997,
+      "spread": 0.011560693641618422,
+      "baseline": 0.0232485,
+      "sol": 0.0123,
+      "score": 0.6074232294931898
+    },
+    {
+      "uuid": "8f7f7722-853a-53b4-8baa-bf24eca500ba",
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 512
+      },
+      "times": [
+        0.018976,
+        0.019135,
+        0.019136
+      ],
+      "median": 0.019135,
+      "spread": 0.008361640972040785,
+      "baseline": 0.023296,
+      "sol": 0.0123,
+      "score": 0.6166788177892436
+    },
+    {
+      "uuid": "7ae5f58c-2fbb-5998-8cec-b1c44f8eac56",
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 256
+      },
+      "times": [
+        0.01408,
+        0.014304,
+        0.014111499999999999
+      ],
+      "median": 0.014111499999999999,
+      "spread": 0.015873578287212576,
+      "baseline": 0.017168,
+      "sol": 0.0063,
+      "score": 0.5818142883910168
+    },
+    {
+      "uuid": "e71134c6-678c-5f5e-a160-4c6401e4d47d",
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 128
+      },
+      "times": [
+        0.031183500000000003,
+        0.031008,
+        0.0310075
+      ],
+      "median": 0.031008,
+      "spread": 0.005675954592363343,
+      "baseline": 0.040576,
+      "sol": 0.0241,
+      "score": 0.7045843311666095
+    },
+    {
+      "uuid": "833b707b-7847-516c-b12c-6eba17aa78c1",
+      "axes": {
+        "batch_size": 8,
+        "seq_len": 128
+      },
+      "times": [
+        0.013984,
+        0.0142075,
+        0.0140315
+      ],
+      "median": 0.0140315,
+      "spread": 0.015928446709190018,
+      "baseline": 0.0171045,
+      "sol": 0.0063,
+      "score": 0.5828927492447129
+    },
+    {
+      "uuid": "35c8c58f-8693-5a1d-b3d0-7b4a4068e41b",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 256
+      },
+      "times": [
+        0.010272,
+        0.010176,
+        0.010207500000000001
+      ],
+      "median": 0.010207500000000001,
+      "spread": 0.009404849375459278,
+      "baseline": 0.012416,
+      "sol": 0.0022,
+      "score": 0.5605948363376958
+    },
+    {
+      "uuid": "9f310f9d-30e1-5aa8-a469-8511cec3da90",
+      "axes": {
+        "batch_size": 64,
+        "seq_len": 128
+      },
+      "times": [
+        0.054784,
+        0.054816,
+        0.054816
+      ],
+      "median": 0.054816,
+      "spread": 0.0005837711617045627,
+      "baseline": 0.0719365,
+      "sol": 0.0478,
+      "score": 0.7747853302303189
+    },
+    {
+      "uuid": "b0eeae57-3064-5e87-9f4b-e60e7ff57432",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 8192
+      },
+      "times": [
+        0.0547835,
+        0.05488,
+        0.0547355
+      ],
+      "median": 0.0547835,
+      "spread": 0.0026376554984621063,
+      "baseline": 0.072208,
+      "sol": 0.0478,
+      "score": 0.7775353200707201
+    },
+    {
+      "uuid": "15ec2850-0959-565b-9b74-5c189e12d7e1",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 512
+      },
+      "times": [
+        0.0104,
+        0.010528,
+        0.010464
+      ],
+      "median": 0.010464,
+      "spread": 0.01223241590214064,
+      "baseline": 0.0130879999999999,
+      "sol": 0.0034,
+      "score": 0.5783190066857664
+    },
+    {
+      "uuid": "67c51f93-ea69-5b99-9614-b9ae0a149f6a",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "times": [
+        0.012608,
+        0.012576,
+        0.0126075
+      ],
+      "median": 0.0126075,
+      "spread": 0.00253817172318057,
+      "baseline": 0.015072,
+      "sol": 0.002,
+      "score": 0.552038683249224
+    },
+    {
+      "uuid": "e7c39430-0198-5271-a7cc-65440dc58c50",
+      "axes": {
+        "batch_size": 16,
+        "seq_len": 256
+      },
+      "times": [
+        0.030976,
+        0.0308155,
+        0.030976
+      ],
+      "median": 0.030976,
+      "spread": 0.005181430785123997,
+      "baseline": 0.0403675,
+      "sol": 0.0241,
+      "score": 0.7028971417460625
+    },
+    {
+      "uuid": "8459290b-23d9-5945-9a6b-47bfe9777643",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1571
+      },
+      "times": [
+        0.018127499999999998,
+        0.018176,
+        0.018208
+      ],
+      "median": 0.018176,
+      "spread": 0.004428917253521165,
+      "baseline": 0.0215995,
+      "sol": 0.0095,
+      "score": 0.5823927221968183
+    },
+    {
+      "uuid": "95e0233d-1c5d-5c47-abca-1683460eeb72",
+      "axes": {
+        "batch_size": 8,
+        "seq_len": 1024
+      },
+      "times": [
+        0.0547835,
+        0.054863999999999996,
+        0.0548
+      ],
+      "median": 0.0548,
+      "spread": 0.0014689781021897305,
+      "baseline": 0.0720965,
+      "sol": 0.0478,
+      "score": 0.7763328167686482
+    },
+    {
+      "uuid": "17a3d18e-355a-5d94-9d38-a3e8e7587939",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 2048
+      },
+      "times": [
+        0.019168,
+        0.0192645,
+        0.019136
+      ],
+      "median": 0.019168,
+      "spread": 0.006703881469115199,
+      "baseline": 0.0232479999999999,
+      "sol": 0.0123,
+      "score": 0.6145038167938911
+    }
+  ],
+  "archived_runs": [
+    "results/2026-09-06/10/20260906T180107.148286Z-concrete-view-initial-923878a68f7a",
+    "results/2026-09-06/10/20260906T180440.730512Z-concrete-view-repeat-923878a68f7a"
+  ],
+  "archived_input_variations": {
+    "path": "results/2026-09-06/10/20260906T180440.730512Z-concrete-view-repeat-923878a68f7a/input-variations.json",
+    "sha256": "801dc180989fb4dfb21e1b3b30517fc0824fcc9fb82beaa18e1e7f26443502ab"
+  },
+  "checkpoint_leader_snapshot": {
+    "sol_score": 0.534899,
+    "username": "RIAC as well",
+    "retrieved_at": "2026-09-06T18:19:03.267182+00:00",
+    "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/leaderboard/kernel/10/B200?evaluation_stack_version=v1.1",
+    "path": "results/2026-09-06/10/20260906T180440.730512Z-concrete-view-repeat-923878a68f7a/leaderboard-snapshot.json",
+    "sha256": "cda8d7d94f8e1b6446df30f7d5bf5599daa33b85f675a039c3fc508c2a4a52ce"
+  }
+}

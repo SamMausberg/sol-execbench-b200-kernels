@@ -1,0 +1,89 @@
+{
+  "clock_mode": "unlocked",
+  "contract": {
+    "collection": "L2",
+    "contract_sha256": "6dc4a07780908a1a3c36c34800931fbabc0c6f4bbe16b118fafab2c8b5009cad",
+    "dataset_metadata_url": "https://huggingface.co/api/datasets/nvidia/SOL-ExecBench/tree/63699402f003496acc3af4eb534a5304a8ac1ea9/data",
+    "dataset_repository": "nvidia/SOL-ExecBench",
+    "dataset_revision": "63699402f003496acc3af4eb534a5304a8ac1ea9",
+    "dataset_sha256": "4a55a4bfbe9a6f9b2ad4c5c5c680977e66926175643739530bf5a8ca3e87cd54",
+    "name": "027_grouped_query_attention_with_yarn_rope_and_qk_norm",
+    "website_id": 121,
+    "workload_count": 16
+  },
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "finished_at": "2026-09-06T18:01:40.967375+00:00",
+  "gpu_lock": "/workspace/sol-execbench-b200-kernels/.work/gpu.lock",
+  "requested_trials": 1,
+  "schema_version": 1,
+  "score_source_sha256": "47626403be4e06b0ad1ae46e24413cc1ea6e0f000917119567b3e12d2af0463b",
+  "source_sha256": {
+    "kernel.py": "35da29234747f54bfa5c47f567c7e4427439d580d1f72975c1d800ed848a4d0d"
+  },
+  "started_at": "2026-09-06T18:00:23.990838+00:00",
+  "submission_sha256": "480c8ebbc28b08d88edafa89a622706c57b7742d011d42d472ae4b92e99900a0",
+  "trials": [
+    {
+      "command": [
+        "/workspace/venvs/sol-execbench/bin/python",
+        "-m",
+        "sol_execbench.cli.main",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/121/20260906T180023.950832Z-grouped-fused-final-480c8ebbc28b",
+        "--solution",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/121/20260906T180023.950832Z-grouped-fused-final-480c8ebbc28b/solution.json",
+        "--compile-timeout",
+        "600",
+        "--timeout",
+        "3600",
+        "--verbose",
+        "-o",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/121/20260906T180023.950832Z-grouped-fused-final-480c8ebbc28b/trial-1.jsonl"
+      ],
+      "elapsed_seconds": 74.86788023996633,
+      "finished_at": "2026-09-06T18:01:40.822287+00:00",
+      "gpu_after": {
+        "command": [
+          "nvidia-smi",
+          "--query-gpu=uuid,name,driver_version,pstate,clocks.current.graphics,clocks.current.sm,clocks.current.memory,temperature.gpu,power.draw,power.limit,utilization.gpu,memory.used,memory.total",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "uuid, name, driver_version, pstate, clocks.current.graphics [MHz], clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], power.limit [W], utilization.gpu [%], memory.used [MiB], memory.total [MiB]\nGPU-b93d0ebe-03a8-bdde-60fe-024fb902497b, NVIDIA B200, 580.105.08, P0, 1965 MHz, 1965 MHz, 3996 MHz, 32, 238.50 W, 1000.00 W, 0 %, 0 MiB, 183359 MiB"
+      },
+      "gpu_before": {
+        "command": [
+          "nvidia-smi",
+          "--query-gpu=uuid,name,driver_version,pstate,clocks.current.graphics,clocks.current.sm,clocks.current.memory,temperature.gpu,power.draw,power.limit,utilization.gpu,memory.used,memory.total",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "uuid, name, driver_version, pstate, clocks.current.graphics [MHz], clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], power.limit [W], utilization.gpu [%], memory.used [MiB], memory.total [MiB]\nGPU-b93d0ebe-03a8-bdde-60fe-024fb902497b, NVIDIA B200, 580.105.08, P0, 1965 MHz, 1965 MHz, 3996 MHz, 33, 255.68 W, 1000.00 W, 100 %, 5648 MiB, 183359 MiB"
+      },
+      "returncode": 0,
+      "started_at": "2026-09-06T18:00:25.794059+00:00",
+      "trial": 1
+    }
+  ],
+  "website_id": 121,
+  "workload_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ]
+}

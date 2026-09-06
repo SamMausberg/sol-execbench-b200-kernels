@@ -1,0 +1,71 @@
+{
+  "tolerance": {
+    "max_atol": 0.01,
+    "max_rtol": 0.05,
+    "required_matched_ratio": 0.99,
+    "max_error_cap": null,
+    "allow_negative_inf": false
+  },
+  "cases": [
+    {
+      "case": "original values",
+      "passed": true,
+      "matched_ratio": 0.9999895691871643,
+      "errors": {
+        "max_relative_error": 1.1962890625,
+        "max_absolute_error": 0.03125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "case": "nonuniform normalization weights",
+      "passed": true,
+      "matched_ratio": 0.999991774559021,
+      "errors": {
+        "max_relative_error": 1.1810302734375,
+        "max_absolute_error": 0.03125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "case": "arbitrary finite additive mask",
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.6500244140625,
+        "max_absolute_error": 0.015625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "case": "changed positions frequencies and scalar inputs",
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.3173828125,
+        "max_absolute_error": 0.0078125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "case": "fresh values in reused storage",
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.347900390625,
+        "max_absolute_error": 0.0078125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    }
+  ]
+}

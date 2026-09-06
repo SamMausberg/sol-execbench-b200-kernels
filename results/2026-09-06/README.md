@@ -1,13 +1,16 @@
 # Local B200 validation, September 6, 2026
 
 These results use NVIDIA's unmodified, pinned v1.1 evaluator on the Runpod B200.
-Every listed candidate passed all its official workloads in three complete trials.
+Every candidate in the table passed all its official workloads in three complete trials.
 The host denies SM clock locking, so scores are local estimates and do not establish
 a hosted leaderboard rank. NVIDIA's hosted evaluations fix the SM clock at 1500 MHz.
 
 | Problem | Workloads | Local SOL score | Published leader snapshot | Submission recommendation |
 | --- | ---: | ---: | ---: | --- |
+| 010 value projection and transpose | 16 | 0.635502 | 0.534899 | Local lead; improve clock margin |
 | 025 video GELU | 16 | 0.630734 | 0.652275 | Continue optimizing |
+| 031 attention QK scores | 16 | 0.635278 | 0.594534 | Local lead; improve clock margin |
+| 033 post-norm residual | 16 | 0.782529 | 0.795472 | Retain for collection coverage |
 | 038 Q/K RMSNorm, Triton alternative | 16 | 0.596559 | 0.615074 | Retain as alternative |
 | 049 grouped QK scores | 16 | 0.645105 | 0.579975 | Local lead; improve clock margin |
 | 053 Gaussian sparse activation | 12 | 0.638735 | 0.657158 | Continue optimizing |
@@ -17,7 +20,7 @@ a hosted leaderboard rank. NVIDIA's hosted evaluations fix the SM clock at 1500 
 
 Scores use the arithmetic mean of workload scores, computed from each workload's
 median latency across trials and its stored scoring baseline and SOL bound.
-Problem 088 combines its initial complete trial and the two complete repeat trials.
+Problems 010 and 088 combine their initial complete trial and two complete repeat trials.
 Each kernel's `validation.json` records its exact package hash and result provenance.
 Run directories here preserve the embedded source package, evaluator traces, summary,
 contract hash, scoring snapshot, and environment for review after the pod is stopped.
@@ -25,16 +28,25 @@ Generated input definitions and workload files stay in `.work`, as required by t
 repository checks; `campaign.py fetch` reconstructs them from the pinned dataset.
 No hosted submissions were made.
 
+Problem 121 is archived separately as an experimental checkpoint: all 16 workloads
+passed in one complete trial, with local score 0.419214 versus leader 0.573023.
+It also passes five changed-input checks, but does not justify more full trials
+until its performance improves.
+
 To reproduce, run `bash tools/bootstrap_native.sh`, source `tools/native_env.sh`,
 then use `tools/campaign.py bench ID --solution PATH --trials 3`.
 GPU evaluations acquire `/workspace/sol-execbench-b200-kernels/.work/gpu.lock`.
 Other GPU jobs on the same pod should acquire that same lock.
 
 The leaderboard values are snapshots of the official problem boards:
+[010](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/10/B200),
 [025](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/25/B200),
+[031](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/31/B200),
+[033](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/33/B200),
 [038](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/38/B200),
 [049](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/49/B200),
 [053](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/53/B200),
 [084](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/84/B200),
 [085](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/85/B200),
-[088](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/88/B200).
+[088](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/88/B200),
+[121](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/121/B200).

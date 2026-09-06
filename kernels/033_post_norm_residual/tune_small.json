@@ -1,0 +1,174 @@
+[
+  {
+    "index": 6,
+    "shape": [
+      1,
+      131,
+      4096
+    ],
+    "variants": {
+      "warps_4_prefetch_True": {
+        "correctness": {
+          "max_relative_error": 0.006849315017461777,
+          "max_absolute_error": 0.0078125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "passed": true,
+        "latency_us": 3.5312000000000006
+      },
+      "warps_8_prefetch_True": {
+        "correctness": {
+          "max_relative_error": 0.006849315017461777,
+          "max_absolute_error": 0.015625,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "passed": true,
+        "latency_us": 3.36795
+      },
+      "warps_16_prefetch_True": {
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "passed": true,
+        "latency_us": 3.2512000000000003
+      }
+    }
+  },
+  {
+    "index": 10,
+    "shape": [
+      4,
+      128,
+      4096
+    ],
+    "variants": {
+      "warps_4_prefetch_True": {
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "passed": true,
+        "latency_us": 4.89285
+      },
+      "warps_8_prefetch_True": {
+        "correctness": {
+          "max_relative_error": 0.00671140942722559,
+          "max_absolute_error": 0.015625,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "passed": true,
+        "latency_us": 4.7599
+      },
+      "warps_16_prefetch_True": {
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "passed": true,
+        "latency_us": 4.6865499999999995
+      }
+    }
+  },
+  {
+    "index": 11,
+    "shape": [
+      1,
+      1024,
+      4096
+    ],
+    "variants": {
+      "warps_4_prefetch_True": {
+        "correctness": {
+          "max_relative_error": 0.007692307699471712,
+          "max_absolute_error": 0.015625,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "passed": true,
+        "latency_us": 6.412800000000001
+      },
+      "warps_8_prefetch_True": {
+        "correctness": {
+          "max_relative_error": 0.029411764815449715,
+          "max_absolute_error": 0.015625,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "passed": true,
+        "latency_us": 7.05745
+      },
+      "warps_16_prefetch_True": {
+        "correctness": {
+          "max_relative_error": 0.029411764815449715,
+          "max_absolute_error": 0.015625,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "passed": true,
+        "latency_us": 7.2208
+      }
+    }
+  },
+  {
+    "index": 14,
+    "shape": [
+      8,
+      256,
+      4096
+    ],
+    "variants": {
+      "warps_4_prefetch_True": {
+        "correctness": {
+          "max_relative_error": 0.0714285746216774,
+          "max_absolute_error": 0.015625,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "passed": true,
+        "latency_us": 10.891100000000002
+      },
+      "warps_8_prefetch_True": {
+        "correctness": {
+          "max_relative_error": 0.05263157933950424,
+          "max_absolute_error": 0.0078125,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "passed": true,
+        "latency_us": 10.9088
+      },
+      "warps_16_prefetch_True": {
+        "correctness": {
+          "max_relative_error": 0.0714285746216774,
+          "max_absolute_error": 0.015625,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "passed": true,
+        "latency_us": 11.747
+      }
+    }
+  }
+]

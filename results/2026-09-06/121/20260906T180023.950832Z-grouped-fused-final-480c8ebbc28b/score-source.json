@@ -1,0 +1,421 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "batch_size": {
+          "description": "Batch size",
+          "type": "var"
+        },
+        "half_head_dim": {
+          "description": "Half of head dimension for RoPE",
+          "expression": "head_dim // 2",
+          "type": "expr"
+        },
+        "head_dim": {
+          "description": "Dimension per attention head",
+          "type": "const",
+          "value": 128
+        },
+        "hidden_size": {
+          "description": "Hidden dimension",
+          "type": "const",
+          "value": 5120
+        },
+        "kv_hidden_size": {
+          "description": "KV projection output size",
+          "expression": "num_key_value_heads * head_dim",
+          "type": "expr"
+        },
+        "num_attention_heads": {
+          "description": "Number of query attention heads",
+          "type": "const",
+          "value": 40
+        },
+        "num_key_value_groups": {
+          "description": "GQA group ratio",
+          "expression": "num_attention_heads // num_key_value_heads",
+          "type": "expr"
+        },
+        "num_key_value_heads": {
+          "description": "Number of key-value heads for GQA",
+          "type": "const",
+          "value": 8
+        },
+        "seq_len": {
+          "description": "Sequence length",
+          "type": "var"
+        }
+      },
+      "baseline": "import torch\nimport math\n\ndef get_inputs(axes_and_scalars: dict, device: torch.device) -> dict:\n    batch_size = axes_and_scalars[\"batch_size\"]\n    seq_len = axes_and_scalars[\"seq_len\"]\n    hidden_size = 5120\n    num_attention_heads = 40\n    num_key_value_heads = 8\n    head_dim = 128\n    kv_hidden_size = num_key_value_heads * head_dim\n    half_head_dim = head_dim // 2\n    sliding_window = 4096\n    \n    dtype = torch.bfloat16\n    \n    hidden_states = torch.randn(batch_size, seq_len, hidden_size, dtype=dtype, device=device)\n    position_ids = torch.arange(seq_len, dtype=torch.int64, device=device).unsqueeze(0).expand(batch_size, -1)\n    \n    # Create sliding window causal mask\n    mask = torch.full((seq_len, seq_len), float(\"-inf\"), dtype=dtype, device=device)\n    mask = torch.triu(mask, diagonal=1)\n    # Apply sliding window\n    for i in range(seq_len):\n        start = max(0, i - sliding_window + 1)\n        if start > 0:\n            mask[i, :start] = float(\"-inf\")\n    attention_mask = mask.unsqueeze(0).unsqueeze(0).expand(batch_size, 1, seq_len, seq_len)\n    \n    q_proj_weight = torch.randn(hidden_size, hidden_size, dtype=dtype, device=device) * 0.02\n    k_proj_weight = torch.randn(kv_hidden_size, hidden_size, dtype=dtype, device=device) * 0.02\n    v_proj_weight = torch.randn(kv_hidden_size, hidden_size, dtype=dtype, device=device) * 0.02\n    o_proj_weight = torch.randn(hidden_size, hidden_size, dtype=dtype, device=device) * 0.02\n    \n    q_norm_weight = torch.ones(hidden_size, dtype=dtype, device=device)\n    k_norm_weight = torch.ones(kv_hidden_size, dtype=dtype, device=device)\n    \n    # Compute YARN RoPE inv_freq\n    rope_theta = 500000.0\n    rope_scaling_factor = 8.0\n    beta_fast = 32\n    beta_slow = 1\n    original_max_position_embeddings = 8192\n    \n    inv_freq_base = 1.0 / (rope_theta ** (torch.arange(0, head_dim, 2, dtype=torch.float32, device=device) / head_dim))\n    old_context_len = original_max_position_embeddings\n    low_freq_wavelen = old_context_len / beta_fast\n    high_freq_wavelen = old_context_len / beta_slow\n    wavelen = 2 * math.pi / inv_freq_base\n    smooth_factor = (old_context_len / wavelen - beta_fast) / (beta_slow - beta_fast)\n    smooth_factor = torch.clamp(smooth_factor, 0.0, 1.0)\n    inv_freq = (1 - smooth_factor) * (inv_freq_base / rope_scaling_factor) + smooth_factor * inv_freq_base\n    \n    rms_norm_eps = 1e-6\n    attention_factor_val = 1.2079441541679836\n    scaling_val = head_dim ** -0.5\n    \n    return {\n        \"hidden_states\": hidden_states,\n        \"position_ids\": position_ids,\n        \"attention_mask\": attention_mask,\n        \"q_proj_weight\": q_proj_weight,\n        \"k_proj_weight\": k_proj_weight,\n        \"v_proj_weight\": v_proj_weight,\n        \"o_proj_weight\": o_proj_weight,\n        \"q_norm_weight\": q_norm_weight,\n        \"k_norm_weight\": k_norm_weight,\n        \"inv_freq\": inv_freq,\n        \"rms_norm_eps\": rms_norm_eps,\n        \"attention_factor\": attention_factor_val,\n        \"scaling\": scaling_val,\n    }\n\n@torch.no_grad()\ndef run(\n    hidden_states: torch.Tensor,\n    position_ids: torch.Tensor,\n    attention_mask: torch.Tensor,\n    q_proj_weight: torch.Tensor,\n    k_proj_weight: torch.Tensor,\n    v_proj_weight: torch.Tensor,\n    o_proj_weight: torch.Tensor,\n    q_norm_weight: torch.Tensor,\n    k_norm_weight: torch.Tensor,\n    inv_freq: torch.Tensor,\n    rms_norm_eps: float,\n    attention_factor: float,\n    scaling: float,\n):\n    batch_size, seq_len, hidden_size = hidden_states.shape\n    num_attention_heads = 40\n    num_key_value_heads = 8\n    head_dim = 128\n    num_key_value_groups = 5\n    \n    # Project Q, K, V\n    query_states = torch.nn.functional.linear(hidden_states, q_proj_weight)\n    key_states = torch.nn.functional.linear(hidden_states, k_proj_weight)\n    value_states = torch.nn.functional.linear(hidden_states, v_proj_weight)\n    \n    # Apply Q normalization (RMS norm)\n    q_fp32 = query_states.to(torch.float32)\n    q_variance = q_fp32.pow(2).mean(-1, keepdim=True)\n    q_normed = q_fp32 * torch.rsqrt(q_variance + rms_norm_eps)\n    query_states = (q_norm_weight * q_normed).to(hidden_states.dtype)\n    \n    # Apply K normalization (RMS norm)\n    k_fp32 = key_states.to(torch.float32)\n    k_variance = k_fp32.pow(2).mean(-1, keepdim=True)\n    k_normed = k_fp32 * torch.rsqrt(k_variance + rms_norm_eps)\n    key_states = (k_norm_weight * k_normed).to(hidden_states.dtype)\n    \n    # Reshape to [batch, num_heads, seq_len, head_dim]\n    query_states = query_states.view(batch_size, seq_len, num_attention_heads, head_dim).transpose(1, 2)\n    key_states = key_states.view(batch_size, seq_len, num_key_value_heads, head_dim).transpose(1, 2)\n    value_states = value_states.view(batch_size, seq_len, num_key_value_heads, head_dim).transpose(1, 2)\n    \n    # Apply YARN RoPE\n    inv_freq_expanded = inv_freq[None, :, None].float().expand(batch_size, -1, 1)\n    position_ids_expanded = position_ids[:, None, :].float()\n    freqs = torch.matmul(inv_freq_expanded, position_ids_expanded).transpose(1, 2)\n    emb = torch.cat((freqs, freqs), dim=-1)\n    cos = (emb.cos() * attention_factor).unsqueeze(1).to(query_states.dtype)\n    sin = (emb.sin() * attention_factor).unsqueeze(1).to(query_states.dtype)\n    \n    # Rotate half helper inline\n    def rotate_half(x):\n        x1 = x[..., : x.shape[-1] // 2]\n        x2 = x[..., x.shape[-1] // 2 :]\n        return torch.cat((-x2, x1), dim=-1)\n    \n    query_states = (query_states * cos) + (rotate_half(query_states) * sin)\n    key_states = (key_states * cos) + (rotate_half(key_states) * sin)\n    \n    # Repeat KV for GQA\n    key_states = key_states[:, :, None, :, :].expand(\n        batch_size, num_key_value_heads, num_key_value_groups, seq_len, head_dim\n    ).reshape(batch_size, num_attention_heads, seq_len, head_dim)\n    value_states = value_states[:, :, None, :, :].expand(\n        batch_size, num_key_value_heads, num_key_value_groups, seq_len, head_dim\n    ).reshape(batch_size, num_attention_heads, seq_len, head_dim)\n    \n    # Compute attention scores\n    attn_weights = torch.matmul(query_states, key_states.transpose(2, 3)) * scaling\n    \n    # Apply attention mask (includes sliding window)\n    attn_weights = attn_weights + attention_mask\n    \n    # Softmax\n    attn_weights = torch.nn.functional.softmax(attn_weights, dim=-1, dtype=torch.float32).to(query_states.dtype)\n    \n    # Compute output\n    attn_output = torch.matmul(attn_weights, value_states)\n    attn_output = attn_output.transpose(1, 2).contiguous()\n    attn_output = attn_output.reshape(batch_size, seq_len, hidden_size)\n    \n    # Output projection\n    output = torch.nn.functional.linear(attn_output, o_proj_weight)\n    \n    return output\n",
+      "baseline_latency_ms": 0.139323,
+      "description": "Grouped Query Attention with YARN RoPE scaling and Q/K normalization. 40 query heads, 8 key-value heads (5:1 GQA ratio), head dimension 128, YARN RoPE with 8x scaling for 65536 max positions, sliding window attention 4096 tokens, RMS normalization on Q/K before attention.",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 121,
+      "inputs": {
+        "attention_factor": {
+          "description": "YARN attention scaling factor",
+          "dtype": "float32",
+          "shape": null
+        },
+        "attention_mask": {
+          "description": "Attention mask with sliding window",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "1",
+            "seq_len",
+            "seq_len"
+          ]
+        },
+        "hidden_states": {
+          "description": "Input hidden states",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "hidden_size"
+          ]
+        },
+        "inv_freq": {
+          "description": "Precomputed YARN RoPE inverse frequencies",
+          "dtype": "float32",
+          "shape": [
+            "half_head_dim"
+          ]
+        },
+        "k_norm_weight": {
+          "description": "Key RMS norm weight",
+          "dtype": "bfloat16",
+          "shape": [
+            "kv_hidden_size"
+          ]
+        },
+        "k_proj_weight": {
+          "description": "Key projection weight",
+          "dtype": "bfloat16",
+          "shape": [
+            "kv_hidden_size",
+            "hidden_size"
+          ]
+        },
+        "o_proj_weight": {
+          "description": "Output projection weight",
+          "dtype": "bfloat16",
+          "shape": [
+            "hidden_size",
+            "hidden_size"
+          ]
+        },
+        "position_ids": {
+          "description": "Position IDs for RoPE",
+          "dtype": "int64",
+          "shape": [
+            "batch_size",
+            "seq_len"
+          ]
+        },
+        "q_norm_weight": {
+          "description": "Query RMS norm weight",
+          "dtype": "bfloat16",
+          "shape": [
+            "hidden_size"
+          ]
+        },
+        "q_proj_weight": {
+          "description": "Query projection weight",
+          "dtype": "bfloat16",
+          "shape": [
+            "hidden_size",
+            "hidden_size"
+          ]
+        },
+        "rms_norm_eps": {
+          "description": "RMS normalization epsilon",
+          "dtype": "float32",
+          "shape": null
+        },
+        "scaling": {
+          "description": "Attention score scaling (1/sqrt(head_dim))",
+          "dtype": "float32",
+          "shape": null
+        },
+        "v_proj_weight": {
+          "description": "Value projection weight",
+          "dtype": "bfloat16",
+          "shape": [
+            "kv_hidden_size",
+            "hidden_size"
+          ]
+        }
+      },
+      "latency_unit": "ms",
+      "name": "027_grouped_query_attention_with_yarn_rope_and_qk_norm",
+      "outputs": {
+        "output": {
+          "description": "Attention output",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "hidden_size"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "normalization",
+        "rope",
+        "L2",
+        "model:Olmo-3-32B-Think"
+      ],
+      "title": "027_grouped_query_attention_with_yarn_rope_and_qk_norm",
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 64,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.9723865,
+          "sol_ms": 0.5814
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 1571
+          },
+          "baseline_latency_ms": 0.526722,
+          "sol_ms": 0.2745
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.3040159999999999,
+          "sol_ms": 0.1486
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 2131
+          },
+          "baseline_latency_ms": 1.2080675,
+          "sol_ms": 0.798
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 541
+          },
+          "baseline_latency_ms": 0.2241445,
+          "sol_ms": 0.0822
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 293
+          },
+          "baseline_latency_ms": 0.165873,
+          "sol_ms": 0.0217
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 131
+          },
+          "baseline_latency_ms": 0.146801,
+          "sol_ms": 0.0107
+        },
+        {
+          "axes": {
+            "batch_size": 32,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.541074,
+          "sol_ms": 0.2909
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.5325614999999999,
+          "sol_ms": 0.2968
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 997
+          },
+          "baseline_latency_ms": 0.205504,
+          "sol_ms": 0.0809
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 0.336929,
+          "sol_ms": 0.1901
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.1464484999999999,
+          "sol_ms": 0.0367
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.32464,
+          "sol_ms": 0.1664
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 131
+          },
+          "baseline_latency_ms": 0.218897,
+          "sol_ms": 0.0748
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 773
+          },
+          "baseline_latency_ms": 0.4787525,
+          "sol_ms": 0.2422
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "hidden_size": 5120,
+            "kv_hidden_size": 1024,
+            "num_attention_heads": 40,
+            "num_key_value_groups": 5,
+            "num_key_value_heads": 8,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 0.610833,
+          "sol_ms": 0.3798
+        }
+      ]
+    }
+  },
+  "response_sha256": "e8c719c0c55e527f81c2249b593a7f1c042a7e7816424eaf629f4cc7823557c3",
+  "retrieved_at": "2026-09-06T18:00:23.948851+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/121"
+}

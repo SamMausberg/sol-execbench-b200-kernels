@@ -1,0 +1,54 @@
+{
+  "problem_id": 33,
+  "problem_name": "033_post_norm_residual",
+  "passed": true,
+  "official_workloads": 16,
+  "full_harness_trials": 3,
+  "clock_mode": "unlocked",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "contract_sha256": "b8a2ae465eef0ac3c4fbb62bf3375a3dbad1de43997deb21a06ec5966ea0f113",
+  "submission_sha256": "901b981150c39d5b0140c1e648a413f345141ee922226f75be91c3d6f069e09a",
+  "source_sha256": {
+    "kernel.py": "717272822b5fe15ba572b42d3a9e0384f0e6f32c2f87d0cbd68d9a04c4e72872"
+  },
+  "local_sol_score": 0.7825291047364762,
+  "trial_sol_scores": [
+    0.7825175268929232,
+    0.7829150362208406,
+    0.782784692756928
+  ],
+  "geometric_mean_latency_ms": 0.015969081640680362,
+  "max_workload_relative_spread": 0.024875621890547327,
+  "local_lead": false,
+  "uniform_latency_slowdown_to_tie": null,
+  "hosted_rank_confirmed": false,
+  "recommend_submission": false,
+  "reason": "This candidate passes all workloads but remains below the public leader.",
+  "summary_sha256": "053c643b2049cb36ce705876576e96909524d2aa449e51ea4f8a450418f3a126",
+  "trace_sha256": {
+    "trial-1.jsonl": "1d6cc33a32e98ff3a6b1679ea6ed7c5aa9fb14bf05519c4944ed19b0629a8eca",
+    "trial-2.jsonl": "28212744868b35535b768350bd9552026f3579a889555fd47b956908293b087c",
+    "trial-3.jsonl": "74fc2527484032af9986c87ad30781a5384cce52e1041e6969c8005390769212"
+  },
+  "additional_input_variations": {
+    "cases": 4,
+    "official_tolerance_passed": 4,
+    "all_exact": true
+  },
+  "archived_runs": [
+    "results/2026-09-06/33/20260906T180317.763778Z-fused-v1-final-901b981150c3"
+  ],
+  "archived_input_variations": {
+    "path": "results/2026-09-06/33/20260906T180317.763778Z-fused-v1-final-901b981150c3/input-variations.json",
+    "sha256": "e05349b76880708fbc4638c1c9129790c1c97d97cd595735529ade238221ce64"
+  },
+  "checkpoint_leader_snapshot": {
+    "sol_score": 0.795472,
+    "username": "Amir M. Mir | SF Tensor",
+    "retrieved_at": "2026-09-06T18:19:03.092546+00:00",
+    "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/leaderboard/kernel/33/B200?evaluation_stack_version=v1.1",
+    "path": "results/2026-09-06/33/20260906T180317.763778Z-fused-v1-final-901b981150c3/leaderboard-snapshot.json",
+    "sha256": "6a4b3b6eab8566a37f63d34a350987b07f22b8379802ac40e67ae412824642cd"
+  }
+}

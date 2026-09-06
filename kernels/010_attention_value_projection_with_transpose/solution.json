@@ -1,0 +1,16 @@
+{
+  "author": "sol-b200-kernel-team",
+  "definition": "010_attention_value_projection_with_transpose",
+  "description": "Compute the BF16 value projection and return its concrete tensor view in the required batch, head, sequence, dimension order. The output contract does not constrain strides.",
+  "name": "value_projection_transposed_view_v1",
+  "sources": [{"path": "kernel.py"}],
+  "spec": {
+    "binding": null,
+    "compile_options": {},
+    "dependencies": ["torch"],
+    "destination_passing_style": false,
+    "entry_point": "kernel.py::run",
+    "languages": ["pytorch"],
+    "target_hardware": ["B200"]
+  }
+}

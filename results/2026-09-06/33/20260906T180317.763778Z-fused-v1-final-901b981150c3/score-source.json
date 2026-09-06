@@ -1,0 +1,229 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "batch_size": {
+          "description": "Batch size",
+          "type": "var"
+        },
+        "hidden_size": {
+          "description": "Hidden dimension size",
+          "type": "const",
+          "value": 4096
+        },
+        "seq_len": {
+          "description": "Sequence length",
+          "type": "var"
+        }
+      },
+      "baseline": "import torch\n\n@torch.no_grad()\ndef run(sublayer_output: torch.Tensor, residual: torch.Tensor, weight: torch.Tensor, eps: float) -> torch.Tensor:\n    \"\"\"\n    Post-normalization residual connection: output = residual + RMSNorm(sublayer_output)\n    \n    RMSNorm computation:\n    1. Compute variance: mean of squared values along hidden dimension\n    2. Normalize: x * rsqrt(variance + eps)\n    3. Apply learned scale (weight parameter)\n    4. Add residual connection\n    \n    Args:\n        sublayer_output: Output from attention or MLP sublayer [batch, seq_len, hidden_size]\n        residual: Residual connection input [batch, seq_len, hidden_size]\n        weight: Learned scale parameter [hidden_size]\n        eps: Epsilon for numerical stability\n    \n    Returns:\n        Output tensor with residual added [batch, seq_len, hidden_size]\n    \"\"\"\n    # Store input dtype for final conversion\n    input_dtype = sublayer_output.dtype\n    \n    # RMSNorm computation in float32 for numerical stability\n    normalized = sublayer_output.to(torch.float32)\n    \n    # Compute variance: mean of squared values along hidden dimension\n    # Shape: [batch, seq_len, 1]\n    variance = normalized.pow(2).mean(-1, keepdim=True)\n    \n    # Normalize: x * rsqrt(variance + eps)\n    # rsqrt is more efficient than 1/sqrt\n    normalized = normalized * torch.rsqrt(variance + eps)\n    \n    # Apply learned scale (weight parameter)\n    normalized = weight.to(torch.float32) * normalized\n    \n    # Convert back to input dtype\n    normalized = normalized.to(input_dtype)\n    \n    # Add residual connection\n    output = residual + normalized\n    \n    return output\n",
+      "baseline_latency_ms": 0.006913,
+      "description": "Post-normalization residual connection pattern: output = residual + RMSNorm(sublayer_output). RMSNorm applies learned weight scaling after normalization. Used after both attention and MLP blocks in Olmo3 architecture.",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 33,
+      "inputs": {
+        "eps": {
+          "description": "Epsilon for numerical stability in RMSNorm",
+          "dtype": "float32",
+          "shape": null
+        },
+        "residual": {
+          "description": "Residual connection input",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "hidden_size"
+          ]
+        },
+        "sublayer_output": {
+          "description": "Output from attention or MLP sublayer",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "hidden_size"
+          ]
+        },
+        "weight": {
+          "description": "Learned scale parameter for RMSNorm",
+          "dtype": "bfloat16",
+          "shape": [
+            "hidden_size"
+          ]
+        }
+      },
+      "latency_unit": "ms",
+      "name": "033_post_norm_residual",
+      "outputs": {
+        "output": {
+          "description": "Output with residual added after normalization",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "hidden_size"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "normalization",
+        "L1",
+        "model:Olmo-3-1025-7B"
+      ],
+      "title": "033_post_norm_residual",
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 16,
+            "hidden_size": 4096,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.1303525,
+          "sol_ms": 0.0354
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "hidden_size": 4096,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 0.13056,
+          "sol_ms": 0.0354
+        },
+        {
+          "axes": {
+            "batch_size": 32,
+            "hidden_size": 4096,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.0730085,
+          "sol_ms": 0.0179
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "hidden_size": 4096,
+            "seq_len": 997
+          },
+          "baseline_latency_ms": 0.070224,
+          "sol_ms": 0.0174
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "hidden_size": 4096,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.072848,
+          "sol_ms": 0.0179
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 4096,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 0.0730245,
+          "sol_ms": 0.0179
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 4096,
+            "seq_len": 131
+          },
+          "baseline_latency_ms": 0.012865,
+          "sol_ms": 0.0007
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "hidden_size": 4096,
+            "seq_len": 2053
+          },
+          "baseline_latency_ms": 0.0394879999999999,
+          "sol_ms": 0.0092
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "hidden_size": 4096,
+            "seq_len": 4096
+          },
+          "baseline_latency_ms": 0.0729435,
+          "sol_ms": 0.0179
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "hidden_size": 4096,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.039568,
+          "sol_ms": 0.0092
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 4096,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.014128,
+          "sol_ms": 0.0015
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 4096,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.0178565,
+          "sol_ms": 0.0026
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "hidden_size": 4096,
+            "seq_len": 293
+          },
+          "baseline_latency_ms": 0.0145595,
+          "sol_ms": 0.0017
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "hidden_size": 4096,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 0.03952,
+          "sol_ms": 0.0092
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "hidden_size": 4096,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.023184,
+          "sol_ms": 0.0048
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 4096,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.0128315,
+          "sol_ms": 0.0007
+        }
+      ]
+    }
+  },
+  "response_sha256": "c8f2c9c15731521ce928f6a6b7ef5266d166ca583297d880553758c2fa71741a",
+  "retrieved_at": "2026-09-06T18:03:17.762652+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/33"
+}

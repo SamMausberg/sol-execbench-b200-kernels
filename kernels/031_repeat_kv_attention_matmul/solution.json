@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "031_repeat_kv_attention_matmul",
+  "description": "Fuse scaling into BF16 output using tensor-core tiles for short odd rows, persistent TMA tiles for longer odd rows, and a library GEMM epilogue for aligned rows.",
+  "name": "031_bf16_qk_b200_hybrid_v1",
+  "sources": [{"path": "kernel.py"}, {"path": "tma.py"}],
+  "spec": {
+    "dependencies": ["torch", "triton"],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": ["pytorch", "triton"],
+    "target_hardware": ["B200"]
+  }
+}

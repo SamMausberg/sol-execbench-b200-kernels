@@ -1,0 +1,28 @@
+{
+  "author": "sol-b200-kernel-team",
+  "definition": "027_grouped_query_attention_with_yarn_rope_and_qk_norm",
+  "description": "Fused full-width Q/K RMSNorm and YARN rotation, followed by grouped BF16 attention that reads the actual additive mask and skips only mask tiles proven entirely disabled.",
+  "name": "yarn_qk_norm_grouped_attention_v2",
+  "sources": [
+    {
+      "path": "kernel.py"
+    }
+  ],
+  "spec": {
+    "binding": null,
+    "compile_options": {},
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": [
+      "triton",
+      "pytorch"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

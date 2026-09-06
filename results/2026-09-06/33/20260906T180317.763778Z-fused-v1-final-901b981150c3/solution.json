@@ -1,0 +1,27 @@
+{
+  "author": "sol-b200-kernel-team",
+  "definition": "033_post_norm_residual",
+  "description": "One-pass FP32 RMS normalization and weight scaling, with explicit BF16 rounding before residual addition and a preallocated BF16 output.",
+  "name": "post_norm_residual_fused_triton_b200_v1",
+  "sources": [
+    {
+      "content": "\"\"\"Fused RMS normalization preserving the BF16 rounding before residual add.\"\"\"\n\nimport triton\nimport triton.language as tl\n\n\n@triton.jit\ndef _post_norm(\n    X, R, W, Y,\n    EPS: tl.constexpr, N: tl.constexpr, S: tl.constexpr,\n    XS0: tl.constexpr, XS1: tl.constexpr, XS2: tl.constexpr,\n    RS0: tl.constexpr, RS1: tl.constexpr, RS2: tl.constexpr,\n    WS: tl.constexpr,\n    YS0: tl.constexpr, YS1: tl.constexpr, YS2: tl.constexpr,\n    BLOCK: tl.constexpr, PREFETCH_RESIDUAL: tl.constexpr = False,\n):\n    row = tl.program_id(0)\n    column = tl.arange(0, BLOCK)\n    valid = column < N\n    x_offset = row // S * XS0 + row % S * XS1 + column * XS2\n    r_offset = row // S * RS0 + row % S * RS1 + column * RS2\n    y_offset = row // S * YS0 + row % S * YS1 + column * YS2\n    x = tl.load(X + x_offset, valid, other=0).to(tl.float32)\n    if PREFETCH_RESIDUAL:\n        residual = tl.load(R + r_offset, valid, other=0).to(tl.float32)\n    variance = tl.sum(x * x, 0) / N\n    scaled = x * tl.rsqrt(variance + EPS)\n    weight = tl.load(W + column * WS, valid, other=0).to(tl.float32)\n    # The reference materializes normalization in BF16 before adding residual.\n    normalized = (weight * scaled).to(tl.bfloat16).to(tl.float32)\n    if not PREFETCH_RESIDUAL:\n        residual = tl.load(R + r_offset, valid, other=0).to(tl.float32)\n    tl.store(Y + y_offset, normalized + residual, valid)\n\n\ndef run(sublayer_output, residual, weight, eps, output):\n    batch, sequence, width = sublayer_output.shape\n    warps = 16 if batch * sequence <= 512 else 4\n    _post_norm[(batch * sequence,)](\n        sublayer_output, residual, weight, output, eps, width, sequence,\n        *sublayer_output.stride(), *residual.stride(), weight.stride(0),\n        *output.stride(), triton.next_power_of_2(width),\n        PREFETCH_RESIDUAL=True, num_warps=warps, enable_fp_fusion=False,\n    )\n",
+      "path": "kernel.py"
+    }
+  ],
+  "spec": {
+    "compile_options": {},
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": [
+      "triton"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

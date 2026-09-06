@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "031_repeat_kv_attention_matmul",
+  "description": "Library baseline: fuse FP32 scaling into the batched GEMM epilogue and write the supplied BF16 destination.",
+  "name": "031_bf16_qk_library_comparison",
+  "sources": [{"path": "library.py"}],
+  "spec": {
+    "dependencies": ["torch"],
+    "destination_passing_style": true,
+    "entry_point": "library.py::run",
+    "languages": ["pytorch"],
+    "target_hardware": ["B200"]
+  }
+}
