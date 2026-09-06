@@ -16,7 +16,9 @@ median latency across trials and its stored scoring baseline and SOL bound.
 Problem 088 combines its initial complete trial and the two complete repeat trials.
 Each kernel's `validation.json` records its exact package hash and result provenance.
 Run directories here preserve the embedded source package, evaluator traces, summary,
-contract, scoring snapshot, and environment for review after the pod is stopped.
+contract hash, scoring snapshot, and environment for review after the pod is stopped.
+Generated input definitions and workload files stay in `.work`, as required by the
+repository checks; `campaign.py fetch` reconstructs them from the pinned dataset.
 No hosted submissions were made.
 
 To reproduce, run `bash tools/bootstrap_native.sh`, source `tools/native_env.sh`,
