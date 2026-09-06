@@ -17,7 +17,9 @@ the official 1500 MHz SM clock setting, so local leads need additional margin.
 | 033 post-norm residual | 0.782529 | 0.795472 | 16 workloads x 3 trials; 4 exact edge cases | Below leader; retain for collection coverage |
 
 The remaining positions will be selected from measured opportunities. Work is
-underway on 050 grouped QKV projection, 119 MoE backward, and 173 vision attention.
+underway on 036 Flux output processing, 050 grouped QKV projection, and
+055 QKV projection with grouped-query reshape. Problems 119 and 173 remain
+partial investigations; neither establishes a lead.
 Problems 030 and 092 now pass all official workloads, but their experimental
 implementations do not establish leads. Problem 218's exact library comparison
 shows a large apparent score advantage under different clocks without a kernel improvement.

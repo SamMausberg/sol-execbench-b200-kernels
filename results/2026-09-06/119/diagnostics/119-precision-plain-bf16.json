@@ -1,0 +1,244 @@
+{
+  "scope": "full hidden dimensions with fewer experts; separate official validation required",
+  "source_sha256": "82164b3f4f837907bfc6cd705e231d670ad6dfe4ab1170cff06a017ca572df58",
+  "dependency_sha256": {
+    "kernel.py": "82164b3f4f837907bfc6cd705e231d670ad6dfe4ab1170cff06a017ca572df58"
+  },
+  "reference_sha256": "ae8535aaf37f272e23c97ccee2f3e5d99164756a10b2232c01f43e8437f8702e",
+  "config": {
+    "FORWARD_PRECISION": "bf16x3",
+    "BACKWARD_PRECISION": "bf16",
+    "PROJECT_TILE": [
+      64,
+      128,
+      64,
+      2
+    ],
+    "WEIGHT_TILE": [
+      128,
+      256,
+      32,
+      1
+    ],
+    "INPUT_TILE": [
+      64,
+      128,
+      64,
+      2
+    ]
+  },
+  "tolerance": {
+    "max_atol": 0.11,
+    "max_rtol": 1e-05,
+    "required_matched_ratio": 0.99
+  },
+  "records": [
+    {
+      "tokens": 64,
+      "experts": 8,
+      "concentrated": false,
+      "seed": 119321,
+      "outputs": [
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.07987361401319504,
+            "max_absolute_error": 0.008786097168922424,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 262144
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.004412911366671324,
+            "max_absolute_error": 0.00927734375,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 512
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.514370322227478,
+            "max_absolute_error": 0.094696044921875,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67108864
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.542105495929718,
+            "max_absolute_error": 0.09406280517578125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67108864
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.3414421081542969,
+            "max_absolute_error": 0.13044166564941406,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 7,
+          "elements": 67108864
+        }
+      ],
+      "passed": true
+    },
+    {
+      "tokens": 137,
+      "experts": 16,
+      "concentrated": false,
+      "seed": 119654,
+      "outputs": [
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.096418097615242,
+            "max_absolute_error": 0.010605990886688232,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 561152
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.010646473616361618,
+            "max_absolute_error": 0.0083465576171875,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1096
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.7163541316986084,
+            "max_absolute_error": 0.10996437072753906,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 134217728
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.5455599427223206,
+            "max_absolute_error": 0.12338447570800781,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 3,
+          "elements": 134217728
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.3909200131893158,
+            "max_absolute_error": 0.14402198791503906,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 15,
+          "elements": 134217728
+        }
+      ],
+      "passed": true
+    },
+    {
+      "tokens": 64,
+      "experts": 16,
+      "concentrated": true,
+      "seed": 119987,
+      "outputs": [
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.06684491783380508,
+            "max_absolute_error": 0.007352940738201141,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 262144
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.018171830102801323,
+            "max_absolute_error": 0.0106201171875,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 512
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.3451429307460785,
+            "max_absolute_error": 0.1301288604736328,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 14,
+          "elements": 134217728
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.3309897482395172,
+            "max_absolute_error": 0.11021614074707031,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 134217728
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.4660286605358124,
+            "max_absolute_error": 0.09369659423828125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 134217728
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

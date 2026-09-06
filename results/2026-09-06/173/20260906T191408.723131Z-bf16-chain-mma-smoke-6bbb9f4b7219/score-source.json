@@ -1,0 +1,395 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "batch_size": {
+          "description": "Batch size",
+          "type": "var"
+        },
+        "head_dim": {
+          "description": "Per-head dimension (64)",
+          "expression": "hidden_size // num_heads",
+          "type": "expr"
+        },
+        "hidden_size": {
+          "description": "Hidden dimension",
+          "type": "const",
+          "value": 768
+        },
+        "intermediate_size": {
+          "description": "MLP intermediate dimension",
+          "type": "const",
+          "value": 3072
+        },
+        "num_heads": {
+          "description": "Number of attention heads",
+          "type": "const",
+          "value": 12
+        },
+        "seq_len": {
+          "description": "Sequence length (number of patches + class token)",
+          "type": "var"
+        }
+      },
+      "baseline": "import torch\nimport torch.nn.functional as F\n\n@torch.no_grad()\ndef run(\n    hidden_states: torch.Tensor,\n    layer_norm1_weight: torch.Tensor,\n    layer_norm1_bias: torch.Tensor,\n    q_proj_weight: torch.Tensor,\n    q_proj_bias: torch.Tensor,\n    k_proj_weight: torch.Tensor,\n    k_proj_bias: torch.Tensor,\n    v_proj_weight: torch.Tensor,\n    v_proj_bias: torch.Tensor,\n    out_proj_weight: torch.Tensor,\n    out_proj_bias: torch.Tensor,\n    layer_norm2_weight: torch.Tensor,\n    layer_norm2_bias: torch.Tensor,\n    fc1_weight: torch.Tensor,\n    fc1_bias: torch.Tensor,\n    fc2_weight: torch.Tensor,\n    fc2_bias: torch.Tensor,\n    layer_norm_eps: float,\n):\n    batch_size, seq_len, hidden_size = hidden_states.shape\n    num_heads = 12\n    head_dim = hidden_size // num_heads\n    scale = head_dim ** -0.5\n    \n    # ===== Attention Block =====\n    residual = hidden_states\n    \n    # LayerNorm1\n    mean = hidden_states.mean(dim=-1, keepdim=True)\n    var = ((hidden_states - mean) ** 2).mean(dim=-1, keepdim=True)\n    hidden_states = (hidden_states - mean) / torch.sqrt(var + layer_norm_eps)\n    hidden_states = hidden_states * layer_norm1_weight + layer_norm1_bias\n    \n    # Q, K, V projections\n    queries = torch.matmul(hidden_states, q_proj_weight.t()) + q_proj_bias\n    keys = torch.matmul(hidden_states, k_proj_weight.t()) + k_proj_bias\n    values = torch.matmul(hidden_states, v_proj_weight.t()) + v_proj_bias\n    \n    # Reshape for multi-head attention\n    queries = queries.view(batch_size, seq_len, num_heads, head_dim).transpose(1, 2)\n    keys = keys.view(batch_size, seq_len, num_heads, head_dim).transpose(1, 2)\n    values = values.view(batch_size, seq_len, num_heads, head_dim).transpose(1, 2)\n    \n    # Attention computation\n    attn_weights = torch.matmul(queries, keys.transpose(-1, -2)) * scale\n    attn_weights = F.softmax(attn_weights, dim=-1, dtype=torch.float32)\n    \n    attn_output = torch.matmul(attn_weights, values)\n    attn_output = attn_output.transpose(1, 2).contiguous()\n    attn_output = attn_output.reshape(batch_size, seq_len, hidden_size)\n    \n    # Output projection\n    attn_output = torch.matmul(attn_output, out_proj_weight.t()) + out_proj_bias\n    hidden_states = residual + attn_output\n    \n    # ===== MLP Block =====\n    residual = hidden_states\n    \n    # LayerNorm2\n    mean = hidden_states.mean(dim=-1, keepdim=True)\n    var = ((hidden_states - mean) ** 2).mean(dim=-1, keepdim=True)\n    hidden_states = (hidden_states - mean) / torch.sqrt(var + layer_norm_eps)\n    hidden_states = hidden_states * layer_norm2_weight + layer_norm2_bias\n    \n    # MLP: fc1 -> quick_gelu -> fc2\n    hidden_states = torch.matmul(hidden_states, fc1_weight.t()) + fc1_bias\n    # Quick GELU: x * sigmoid(1.702 * x)\n    hidden_states = hidden_states * torch.sigmoid(1.702 * hidden_states)\n    hidden_states = torch.matmul(hidden_states, fc2_weight.t()) + fc2_bias\n    \n    # Residual connection\n    output = residual + hidden_states\n    \n    return output\n",
+      "baseline_latency_ms": 0.035996,
+      "description": "Complete vision encoder layer combining multi-head self-attention with pre-LayerNorm, MLP with GELU activation, and residual connections. Performs: pre-norm -> attention -> residual -> pre-norm -> MLP -> residual.",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 173,
+      "inputs": {
+        "fc1_bias": {
+          "description": "MLP fc1 bias",
+          "dtype": "float32",
+          "shape": [
+            "intermediate_size"
+          ]
+        },
+        "fc1_weight": {
+          "description": "MLP fc1 weight",
+          "dtype": "float32",
+          "shape": [
+            "intermediate_size",
+            "hidden_size"
+          ]
+        },
+        "fc2_bias": {
+          "description": "MLP fc2 bias",
+          "dtype": "float32",
+          "shape": [
+            "hidden_size"
+          ]
+        },
+        "fc2_weight": {
+          "description": "MLP fc2 weight",
+          "dtype": "float32",
+          "shape": [
+            "hidden_size",
+            "intermediate_size"
+          ]
+        },
+        "hidden_states": {
+          "description": "Input hidden states",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "hidden_size"
+          ]
+        },
+        "k_proj_bias": {
+          "description": "Key projection bias",
+          "dtype": "float32",
+          "shape": [
+            "hidden_size"
+          ]
+        },
+        "k_proj_weight": {
+          "description": "Key projection weight",
+          "dtype": "float32",
+          "shape": [
+            "hidden_size",
+            "hidden_size"
+          ]
+        },
+        "layer_norm1_bias": {
+          "description": "LayerNorm1 bias",
+          "dtype": "float32",
+          "shape": [
+            "hidden_size"
+          ]
+        },
+        "layer_norm1_weight": {
+          "description": "LayerNorm1 weight",
+          "dtype": "float32",
+          "shape": [
+            "hidden_size"
+          ]
+        },
+        "layer_norm2_bias": {
+          "description": "LayerNorm2 bias",
+          "dtype": "float32",
+          "shape": [
+            "hidden_size"
+          ]
+        },
+        "layer_norm2_weight": {
+          "description": "LayerNorm2 weight",
+          "dtype": "float32",
+          "shape": [
+            "hidden_size"
+          ]
+        },
+        "layer_norm_eps": {
+          "description": "LayerNorm epsilon",
+          "dtype": "float32",
+          "shape": null
+        },
+        "out_proj_bias": {
+          "description": "Output projection bias",
+          "dtype": "float32",
+          "shape": [
+            "hidden_size"
+          ]
+        },
+        "out_proj_weight": {
+          "description": "Output projection weight",
+          "dtype": "float32",
+          "shape": [
+            "hidden_size",
+            "hidden_size"
+          ]
+        },
+        "q_proj_bias": {
+          "description": "Query projection bias",
+          "dtype": "float32",
+          "shape": [
+            "hidden_size"
+          ]
+        },
+        "q_proj_weight": {
+          "description": "Query projection weight",
+          "dtype": "float32",
+          "shape": [
+            "hidden_size",
+            "hidden_size"
+          ]
+        },
+        "v_proj_bias": {
+          "description": "Value projection bias",
+          "dtype": "float32",
+          "shape": [
+            "hidden_size"
+          ]
+        },
+        "v_proj_weight": {
+          "description": "Value projection weight",
+          "dtype": "float32",
+          "shape": [
+            "hidden_size",
+            "hidden_size"
+          ]
+        }
+      },
+      "latency_unit": "ms",
+      "name": "079_git_vision_encoder_layer",
+      "outputs": {
+        "output": {
+          "description": "Output hidden states",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "hidden_size"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "vision",
+        "decoder",
+        "L2",
+        "model:maskgit-imagenet-soft-code-34k"
+      ],
+      "title": "079_git_vision_encoder_layer",
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 2,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 197
+          },
+          "baseline_latency_ms": 0.098496,
+          "sol_ms": 0.0036
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 197
+          },
+          "baseline_latency_ms": 0.095552,
+          "sol_ms": 0.0023
+        },
+        {
+          "axes": {
+            "batch_size": 64,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 197
+          },
+          "baseline_latency_ms": 0.389489,
+          "sol_ms": 0.1032
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.1354085,
+          "sol_ms": 0.0182
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 449
+          },
+          "baseline_latency_ms": 0.2663204999999999,
+          "sol_ms": 0.062
+        },
+        {
+          "axes": {
+            "batch_size": 32,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 1423
+          },
+          "baseline_latency_ms": 1.363586,
+          "sol_ms": 0.4662
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 919
+          },
+          "baseline_latency_ms": 0.288496,
+          "sol_ms": 0.0693
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 0.1612005,
+          "sol_ms": 0.0235
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 1249
+          },
+          "baseline_latency_ms": 0.369185,
+          "sol_ms": 0.0997
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 211
+          },
+          "baseline_latency_ms": 0.10056,
+          "sol_ms": 0.0038
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 197
+          },
+          "baseline_latency_ms": 0.12464,
+          "sol_ms": 0.0132
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 197
+          },
+          "baseline_latency_ms": 0.1668325,
+          "sol_ms": 0.0261
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 613
+          },
+          "baseline_latency_ms": 0.340817,
+          "sol_ms": 0.0873
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 4096
+          },
+          "baseline_latency_ms": 0.4361765,
+          "sol_ms": 0.1213
+        },
+        {
+          "axes": {
+            "batch_size": 32,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 541
+          },
+          "baseline_latency_ms": 0.5366085,
+          "sol_ms": 0.1516
+        },
+        {
+          "axes": {
+            "batch_size": 32,
+            "head_dim": 64,
+            "hidden_size": 768,
+            "intermediate_size": 3072,
+            "num_heads": 12,
+            "seq_len": 197
+          },
+          "baseline_latency_ms": 0.2474724999999999,
+          "sol_ms": 0.0518
+        }
+      ]
+    }
+  },
+  "response_sha256": "d53701ef8cab1d20e677148e0d34636c2b5488924ad9e79a977e709d52be6b3b",
+  "retrieved_at": "2026-09-06T19:14:08.721812+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/173"
+}

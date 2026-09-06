@@ -1,0 +1,117 @@
+{
+  "source_sha256": "696cea8fe4df675409df8e1a37b0ce909451844b8802e478ec97e51ddd82660d",
+  "source_path": "/workspace/cache/torch_extensions/sol_cublaslt_sources/696cea8fe4df675409df8e1a37b0ce909451844b8802e478ec97e51ddd82660d/emulated_bf16x9_bridge.cpp",
+  "cublaslt_version": 130000,
+  "compute_mode": "CUBLAS_COMPUTE_32F_EMULATED_16BFX9",
+  "weight_scale": 32.0,
+  "records": [
+    {
+      "workload": 0,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 293
+      },
+      "fast_modulation": true,
+      "fast_output": false,
+      "passed": true,
+      "matched_ratio": 0.9999999403953552,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 0,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 293
+      },
+      "fast_modulation": false,
+      "fast_output": true,
+      "passed": true,
+      "matched_ratio": 0.9999999403953552,
+      "errors": {
+        "max_relative_error": 0.020006531849503517,
+        "max_absolute_error": 0.00244140625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 0,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 293
+      },
+      "fast_modulation": true,
+      "fast_output": true,
+      "passed": true,
+      "matched_ratio": 0.9999999403953552,
+      "errors": {
+        "max_relative_error": 0.020006531849503517,
+        "max_absolute_error": 0.00244140625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 15,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1024
+      },
+      "fast_modulation": true,
+      "fast_output": false,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.014817492105066776,
+        "max_absolute_error": 0.00146484375,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 15,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1024
+      },
+      "fast_modulation": false,
+      "fast_output": true,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.015528758987784386,
+        "max_absolute_error": 0.001708984375,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 15,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1024
+      },
+      "fast_modulation": true,
+      "fast_output": true,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.024224411696195602,
+        "max_absolute_error": 0.0020751953125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    }
+  ]
+}

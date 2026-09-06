@@ -1,0 +1,405 @@
+{
+  "source_sha256": "696cea8fe4df675409df8e1a37b0ce909451844b8802e478ec97e51ddd82660d",
+  "source_path": "/workspace/cache/torch_extensions/sol_cublaslt_sources/696cea8fe4df675409df8e1a37b0ce909451844b8802e478ec97e51ddd82660d/emulated_bf16x9_bridge.cpp",
+  "cublaslt_version": 130000,
+  "compute_mode": "CUBLAS_COMPUTE_32F_EMULATED_16BFX9",
+  "weight_scale": 1.0,
+  "records": [
+    {
+      "workload": 0,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 293
+      },
+      "fast_modulation": true,
+      "fast_output": false,
+      "passed": true,
+      "matched_ratio": 0.9999999403953552,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 0,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 293
+      },
+      "fast_modulation": false,
+      "fast_output": true,
+      "passed": true,
+      "matched_ratio": 0.9999999403953552,
+      "errors": {
+        "max_relative_error": 0.0005599224241450429,
+        "max_absolute_error": 4.0531158447265625e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 0,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 293
+      },
+      "fast_modulation": true,
+      "fast_output": true,
+      "passed": true,
+      "matched_ratio": 0.9999999403953552,
+      "errors": {
+        "max_relative_error": 0.0005599224241450429,
+        "max_absolute_error": 4.0531158447265625e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 0,
+      "component": "modulation",
+      "shape_mnk": [
+        2,
+        6144,
+        3072
+      ],
+      "native_latency_ms": 0.041999499999999995,
+      "candidates": [
+        {
+          "index": 0,
+          "workspace_bytes": 0,
+          "estimated_waves": 0.3243243098258972,
+          "id": 11,
+          "tile": 0,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 0,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.0417755
+        },
+        {
+          "index": 1,
+          "workspace_bytes": 768,
+          "estimated_waves": 0.37837839126586914,
+          "id": 10,
+          "tile": 10,
+          "split_k": 7,
+          "reduction": 1,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 0,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.0580155
+        },
+        {
+          "index": 2,
+          "workspace_bytes": 0,
+          "estimated_waves": 1.0,
+          "id": 76,
+          "tile": 11,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 3,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.0863835
+        },
+        {
+          "index": 3,
+          "workspace_bytes": 1179648,
+          "estimated_waves": 1.2972972393035889,
+          "id": 20,
+          "tile": 16,
+          "split_k": 24,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 28,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.0841755
+        }
+      ]
+    },
+    {
+      "workload": 0,
+      "component": "output",
+      "shape_mnk": [
+        586,
+        64,
+        3072
+      ],
+      "native_latency_ms": 0.035248,
+      "candidates": [
+        {
+          "index": 0,
+          "workspace_bytes": 4800512,
+          "estimated_waves": 0.4324324429035187,
+          "id": 20,
+          "tile": 15,
+          "split_k": 38,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 28,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.0272
+        },
+        {
+          "index": 1,
+          "workspace_bytes": 3600384,
+          "estimated_waves": 0.3243243098258972,
+          "id": 20,
+          "tile": 15,
+          "split_k": 30,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 28,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.023887
+        },
+        {
+          "index": 2,
+          "workspace_bytes": 3600384,
+          "estimated_waves": 0.4054054021835327,
+          "id": 20,
+          "tile": 18,
+          "split_k": 25,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 28,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.029184
+        },
+        {
+          "index": 3,
+          "workspace_bytes": 4800512,
+          "estimated_waves": 0.5405405163764954,
+          "id": 20,
+          "tile": 18,
+          "split_k": 38,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 28,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.031551499999999996
+        }
+      ]
+    },
+    {
+      "workload": 15,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1024
+      },
+      "fast_modulation": true,
+      "fast_output": false,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0004087175475433469,
+        "max_absolute_error": 2.5033950805664062e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 15,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1024
+      },
+      "fast_modulation": false,
+      "fast_output": true,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0005790165159851313,
+        "max_absolute_error": 3.814697265625e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 15,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1024
+      },
+      "fast_modulation": true,
+      "fast_output": true,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0005607156199403107,
+        "max_absolute_error": 3.814697265625e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 15,
+      "component": "modulation",
+      "shape_mnk": [
+        1,
+        6144,
+        3072
+      ],
+      "native_latency_ms": 0.027232,
+      "candidates": [
+        {
+          "index": 0,
+          "workspace_bytes": 0,
+          "estimated_waves": 0.5765765905380249,
+          "id": 13,
+          "tile": 0,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 11,
+          "stages": 0,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.022671999999999998
+        },
+        {
+          "index": 1,
+          "workspace_bytes": 0,
+          "estimated_waves": 2.5945944786071777,
+          "id": 13,
+          "tile": 0,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 47,
+          "stages": 0,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.027376
+        },
+        {
+          "index": 2,
+          "workspace_bytes": 0,
+          "estimated_waves": 0.5765765905380249,
+          "id": 13,
+          "tile": 0,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 13,
+          "stages": 0,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.0249755
+        },
+        {
+          "index": 3,
+          "workspace_bytes": 0,
+          "estimated_waves": 2.5945944786071777,
+          "id": 13,
+          "tile": 0,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 37,
+          "stages": 0,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.027136
+        }
+      ]
+    },
+    {
+      "workload": 15,
+      "component": "output",
+      "shape_mnk": [
+        1024,
+        64,
+        3072
+      ],
+      "native_latency_ms": 0.052672,
+      "candidates": [
+        {
+          "index": 0,
+          "workspace_bytes": 5767296,
+          "estimated_waves": 1.0,
+          "id": 77,
+          "tile": 18,
+          "split_k": -2,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 34,
+          "inner_shape": 0,
+          "cluster_shape": 8,
+          "latency_ms": 0.039712
+        },
+        {
+          "index": 1,
+          "workspace_bytes": 8388608,
+          "estimated_waves": 0.8648648858070374,
+          "id": 20,
+          "tile": 20,
+          "split_k": 36,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 26,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.033743499999999996
+        },
+        {
+          "index": 2,
+          "workspace_bytes": 6291456,
+          "estimated_waves": 0.3243243098258972,
+          "id": 20,
+          "tile": 17,
+          "split_k": 25,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 28,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.0335035
+        },
+        {
+          "index": 3,
+          "workspace_bytes": 6291456,
+          "estimated_waves": 0.6486486196517944,
+          "id": 20,
+          "tile": 20,
+          "split_k": 30,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 26,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.0395355
+        }
+      ]
+    }
+  ]
+}

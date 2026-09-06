@@ -1,0 +1,72 @@
+{
+  "website_id": 119,
+  "status": "experimental; incomplete and uncompetitive",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "clock_mode": "unlocked",
+  "full_harness_trials": 0,
+  "official_case_count": 1,
+  "total_workloads": 16,
+  "official_case_passed": true,
+  "initial_submission_sha256": "d7f1816a1bc91d0cf534156a9241f59bf98e32c758cc39a08676fe9565dc0bd0",
+  "initial_archived_run": "results/2026-09-06/119/20260906T184506.803662Z-moe-grouped-initial-d7f1816a1bc9",
+  "initial_source_sha256": {
+    "kernel.py": "33d1c0db8cee9e4451186f40699917a015df3f5e65af592a0e6b0ffd94aa7166"
+  },
+  "current_source_sha256": {
+    "component_profile.py": "feb8bcec58c5cc1c00b22e73c2ec853a48ccd0ea35dd6755bce8be5791cbf629",
+    "verify_precision.py": "cd88dcd1a8c446a0cd5045da28b992c0f852680c4e1cd1b5470321d8d5001d01",
+    "tma.py": "0695dd18452f20bc27328c50f33cf53ac662cd92d065b4d796dcb79bb92ca341",
+    "verify_small.py": "37ec92e3f6dae5e4011ebd8da3333b3aa88a73671343454c11b9a41d856e537d",
+    "kernel.py": "0309429accd742d7bf2c0fe6fb75563d20c1b401de4c061b4a1a98f864aa8e98"
+  },
+  "timing_valid_for_ranking": false,
+  "local_sol_score": null,
+  "recommend_submission": false,
+  "reports": [
+    {
+      "path": "results/2026-09-06/119/diagnostics/119-precision-mma-bf16.json",
+      "sha256": "08eb69160e5c84b7f79c0b0642991fe946d53e8a4ac7e56b9823eecf20592c33"
+    },
+    {
+      "path": "results/2026-09-06/119/diagnostics/119-precision-plain-bf16.json",
+      "sha256": "bcb4379035cc9beff244e54c206e9698e93d1020f27ef9b6195019f971e94b61"
+    },
+    {
+      "path": "results/2026-09-06/119/diagnostics/119-precision-tma-tf32-forward.json",
+      "sha256": "64e782ea92997423a2e714f8706851d692509fba6d94f8bcc0b9caceb2b51823"
+    },
+    {
+      "path": "results/2026-09-06/119/diagnostics/119-profile-initial.json",
+      "sha256": "5d7468fe0f7f524bc37959b25fcbfc1a95628fd5e67c76354dcc74798f03f181"
+    },
+    {
+      "path": "results/2026-09-06/119/diagnostics/119-profile-mixed-large.json",
+      "sha256": "572c7cb4f83206905abf618a053d5f7953e7b6cab730b3fb27a1e01fce63202a"
+    },
+    {
+      "path": "results/2026-09-06/119/diagnostics/119-profile-mma-bf16.json",
+      "sha256": "ff87760caea53dad4abb9fd7ff77483d6371c65cb9414d1b91679b24a6b91129"
+    },
+    {
+      "path": "results/2026-09-06/119/diagnostics/119-profile-plain-bf16.json",
+      "sha256": "407f4c07169ca9e6b1261a59ec64402b1193f713a3ce7e8e8feb9c7a7600392f"
+    },
+    {
+      "path": "results/2026-09-06/119/diagnostics/119-profile-tma-initial.json",
+      "sha256": "c7952cc179e008b95bc12aa6ac0a8bddf68bf36edf272819f876eeb396783bf6"
+    },
+    {
+      "path": "results/2026-09-06/119/diagnostics/119-profile-tma-input-stage1.json",
+      "sha256": "95375fb0bb503f1693c3980d68580e3a7c92fbb8b4913df3a19bd9d6183c6f21"
+    },
+    {
+      "path": "results/2026-09-06/119/diagnostics/119-small-verification.json",
+      "sha256": "4d70b00651cfbe3613c4617ef2c297372f1531a1954ce950c9b6d893c28646ed"
+    }
+  ],
+  "notes": [
+    "Initial exact package differs from subsequent refactored experimental source; see both source hashes.",
+    "Reduced-expert precision checks retain real hidden and intermediate dimensions; they do not establish all16-workload correctness.",
+    "Foreign CUDA contexts and unlocked clocks prevent ranking qualification."
+  ]
+}

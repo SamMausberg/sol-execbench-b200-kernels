@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "025_moe_expert_parallel_execution_backward",
+  "description": "Experimental padded expert rows and tensor-map loads; performance and full-workload validation are incomplete.",
+  "name": "119_grouped_moe_backward_tma_experiment",
+  "sources": [{"path": "kernel.py"}, {"path": "tma.py"}],
+  "spec": {
+    "dependencies": ["torch", "triton"],
+    "destination_passing_style": true,
+    "entry_point": "tma.py::run",
+    "languages": ["triton"],
+    "target_hardware": ["B200"]
+  }
+}

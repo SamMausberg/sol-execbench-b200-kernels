@@ -71,3 +71,9 @@ The leaderboard values are snapshots of the official problem boards:
 [085](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/85/B200),
 [088](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/88/B200),
 [121](https://research.nvidia.com/benchmarks/sol-execbench/leaderboard/kernel/121/B200).
+
+The MoE backward (119) and GIT encoder (173) investigations are archived with
+partial evaluator runs and diagnostic hashes. Neither is a submission candidate.
+The encoder work also established a reusable numerical distinction for problem
+36: explicit FAST_TF32 fails 32× weight scaling, while BF16x9-emulated FP32
+passes those checks. These library measurements remain component experiments.

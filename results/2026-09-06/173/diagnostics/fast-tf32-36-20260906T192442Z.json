@@ -1,0 +1,404 @@
+{
+  "source_sha256": "e92c7129878c7c93cc4df7bd19ec8e6903bf799891444b94600d9a4376bad511",
+  "source_path": "/workspace/cache/torch_extensions/sol_cublaslt_sources/e92c7129878c7c93cc4df7bd19ec8e6903bf799891444b94600d9a4376bad511/fast_tf32_bridge.cpp",
+  "cublaslt_version": 130000,
+  "compute_mode": "CUBLAS_COMPUTE_32F_FAST_TF32",
+  "records": [
+    {
+      "workload": 0,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 293
+      },
+      "fast_modulation": true,
+      "fast_output": false,
+      "passed": true,
+      "matched_ratio": 0.9999999403953552,
+      "errors": {
+        "max_relative_error": 0.22705306112766266,
+        "max_absolute_error": 0.0010960102081298828,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 0,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 293
+      },
+      "fast_modulation": false,
+      "fast_output": true,
+      "passed": true,
+      "matched_ratio": 0.9999999403953552,
+      "errors": {
+        "max_relative_error": 0.4782971441745758,
+        "max_absolute_error": 0.002518892288208008,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 0,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 293
+      },
+      "fast_modulation": true,
+      "fast_output": true,
+      "passed": true,
+      "matched_ratio": 0.9999999403953552,
+      "errors": {
+        "max_relative_error": 0.49994298815727234,
+        "max_absolute_error": 0.002531379461288452,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 0,
+      "component": "modulation",
+      "shape_mnk": [
+        2,
+        6144,
+        3072
+      ],
+      "native_latency_ms": 0.041887999999999995,
+      "candidates": [
+        {
+          "index": 0,
+          "workspace_bytes": 0,
+          "estimated_waves": 1.0,
+          "id": 73,
+          "tile": 15,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 34,
+          "inner_shape": 0,
+          "cluster_shape": 4,
+          "latency_ms": 0.021808
+        },
+        {
+          "index": 1,
+          "workspace_bytes": 589824,
+          "estimated_waves": 3.8918919563293457,
+          "id": 21,
+          "tile": 15,
+          "split_k": 12,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 12,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.031408000000000005
+        },
+        {
+          "index": 2,
+          "workspace_bytes": 786432,
+          "estimated_waves": 5.1891889572143555,
+          "id": 21,
+          "tile": 15,
+          "split_k": 17,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 12,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.034927
+        },
+        {
+          "index": 3,
+          "workspace_bytes": 786432,
+          "estimated_waves": 5.1891889572143555,
+          "id": 21,
+          "tile": 15,
+          "split_k": 17,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 27,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.03504
+        }
+      ]
+    },
+    {
+      "workload": 0,
+      "component": "output",
+      "shape_mnk": [
+        586,
+        64,
+        3072
+      ],
+      "native_latency_ms": 0.035296,
+      "candidates": [
+        {
+          "index": 0,
+          "workspace_bytes": 2100224,
+          "estimated_waves": 0.47297295928001404,
+          "id": 21,
+          "tile": 15,
+          "split_k": 14,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 12,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.011152
+        },
+        {
+          "index": 1,
+          "workspace_bytes": 2400256,
+          "estimated_waves": 0.5405405163764954,
+          "id": 21,
+          "tile": 15,
+          "split_k": 18,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 11,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.010864
+        },
+        {
+          "index": 2,
+          "workspace_bytes": 3600384,
+          "estimated_waves": 0.8108108043670654,
+          "id": 21,
+          "tile": 15,
+          "split_k": 28,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 12,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.0110875
+        },
+        {
+          "index": 3,
+          "workspace_bytes": 1200128,
+          "estimated_waves": 0.2702702581882477,
+          "id": 21,
+          "tile": 15,
+          "split_k": 8,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 12,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.0122875
+        }
+      ]
+    },
+    {
+      "workload": 15,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1024
+      },
+      "fast_modulation": true,
+      "fast_output": false,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.00028525080415420234,
+        "max_absolute_error": 2.384185791015625e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 15,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1024
+      },
+      "fast_modulation": false,
+      "fast_output": true,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.5767400860786438,
+        "max_absolute_error": 0.0025489330291748047,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 15,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1024
+      },
+      "fast_modulation": true,
+      "fast_output": true,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.576603889465332,
+        "max_absolute_error": 0.002535581588745117,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 15,
+      "component": "modulation",
+      "shape_mnk": [
+        1,
+        6144,
+        3072
+      ],
+      "native_latency_ms": 0.02728,
+      "candidates": [
+        {
+          "index": 0,
+          "workspace_bytes": 0,
+          "estimated_waves": 0.5765765905380249,
+          "id": 13,
+          "tile": 0,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 11,
+          "stages": 0,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.02216
+        },
+        {
+          "index": 1,
+          "workspace_bytes": 0,
+          "estimated_waves": 1.0,
+          "id": 73,
+          "tile": 15,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 34,
+          "inner_shape": 0,
+          "cluster_shape": 11,
+          "latency_ms": 0.021103499999999997
+        },
+        {
+          "index": 2,
+          "workspace_bytes": 0,
+          "estimated_waves": 1.0,
+          "id": 73,
+          "tile": 15,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 34,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.02064
+        },
+        {
+          "index": 3,
+          "workspace_bytes": 0,
+          "estimated_waves": 1.2972972393035889,
+          "id": 13,
+          "tile": 0,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 35,
+          "stages": 0,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.0275995
+        }
+      ]
+    },
+    {
+      "workload": 15,
+      "component": "output",
+      "shape_mnk": [
+        1024,
+        64,
+        3072
+      ],
+      "native_latency_ms": 0.0524,
+      "candidates": [
+        {
+          "index": 0,
+          "workspace_bytes": 2359296,
+          "estimated_waves": 0.4864864945411682,
+          "id": 21,
+          "tile": 15,
+          "split_k": 9,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 12,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.012559500000000001
+        },
+        {
+          "index": 1,
+          "workspace_bytes": 2097152,
+          "estimated_waves": 0.4324324429035187,
+          "id": 21,
+          "tile": 15,
+          "split_k": 8,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 12,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.012192
+        },
+        {
+          "index": 2,
+          "workspace_bytes": 4194304,
+          "estimated_waves": 0.8648648858070374,
+          "id": 21,
+          "tile": 15,
+          "split_k": 18,
+          "reduction": 2,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 11,
+          "inner_shape": 0,
+          "cluster_shape": 0,
+          "latency_ms": 0.012543499999999999
+        },
+        {
+          "index": 3,
+          "workspace_bytes": 0,
+          "estimated_waves": 1.0,
+          "id": 73,
+          "tile": 15,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 34,
+          "inner_shape": 0,
+          "cluster_shape": 9,
+          "latency_ms": 0.0119685
+        }
+      ]
+    }
+  ]
+}

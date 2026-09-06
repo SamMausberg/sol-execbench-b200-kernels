@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "025_moe_expert_parallel_execution_backward",
+  "description": "Experimental compact routing and grouped expert backward; retained for numerical and compiler investigation, not a competitive selected candidate.",
+  "name": "119_grouped_moe_backward_b200_v1",
+  "sources": [{"path": "kernel.py"}],
+  "spec": {
+    "dependencies": ["torch", "triton"],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": ["triton"],
+    "target_hardware": ["B200"]
+  }
+}

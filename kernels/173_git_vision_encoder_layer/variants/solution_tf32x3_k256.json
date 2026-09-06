@@ -1,0 +1,28 @@
+{
+  "author": "sol-b200-kernel-team",
+  "definition": "079_git_vision_encoder_layer",
+  "description": "FP32 vision encoder using fused layer normalization, grouped QKV projection, online attention, and linear bias/activation/residual epilogues with TF32x3 products.",
+  "name": "git_vision_encoder_tf32x3_k256_v1",
+  "sources": [
+    {
+      "path": "kernel_tf32x3_k256.py"
+    }
+  ],
+  "spec": {
+    "binding": null,
+    "compile_options": {},
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "kernel_tf32x3_k256.py::run",
+    "languages": [
+      "triton",
+      "pytorch"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

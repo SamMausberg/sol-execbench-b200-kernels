@@ -1,0 +1,377 @@
+{
+  "scope": "diagnostic component profile; fixed addresses and unlocked GPU",
+  "tokens": 2048,
+  "source": "kernels/119_moe_expert_parallel_execution_backward/tma.py",
+  "source_sha256": "ff805c3f6d032c1944de2ac1375539c56eeb1cbfc985274e8c07cad36597ca49",
+  "config": {},
+  "reference_sha256": "ae8535aaf37f272e23c97ccee2f3e5d99164756a10b2232c01f43e8437f8702e",
+  "process_samples": [
+    {
+      "timestamp": "2026-09-06T19:03:45.338791+00:00",
+      "finished_at": "2026-09-06T19:03:46.196718+00:00",
+      "root_pid": 196152,
+      "contexts": [],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:03:46.696924+00:00",
+      "finished_at": "2026-09-06T19:03:47.047795+00:00",
+      "root_pid": 196152,
+      "contexts": [
+        {
+          "pid": 196152,
+          "process_name": "python",
+          "memory_mib": "14",
+          "start_ticks": 96644315,
+          "campaign_descendant": true
+        },
+        {
+          "pid": 196339,
+          "process_name": "python",
+          "memory_mib": "14",
+          "start_ticks": 96644632,
+          "campaign_descendant": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:03:47.548048+00:00",
+      "finished_at": "2026-09-06T19:03:47.678199+00:00",
+      "root_pid": 196152,
+      "contexts": [
+        {
+          "pid": 196152,
+          "process_name": "python",
+          "memory_mib": "24",
+          "start_ticks": 96644315,
+          "campaign_descendant": true
+        },
+        {
+          "pid": 196339,
+          "process_name": "python",
+          "memory_mib": "22",
+          "start_ticks": 96644632,
+          "campaign_descendant": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:03:48.178597+00:00",
+      "finished_at": "2026-09-06T19:03:48.291246+00:00",
+      "root_pid": 196152,
+      "contexts": [
+        {
+          "pid": 196152,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96644315,
+          "campaign_descendant": true
+        },
+        {
+          "pid": 196339,
+          "process_name": "python",
+          "memory_mib": "11226",
+          "start_ticks": 96644632,
+          "campaign_descendant": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:03:48.791497+00:00",
+      "finished_at": "2026-09-06T19:03:48.949085+00:00",
+      "root_pid": 196152,
+      "contexts": [
+        {
+          "pid": 196152,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96644315,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:03:49.449783+00:00",
+      "finished_at": "2026-09-06T19:03:49.546151+00:00",
+      "root_pid": 196152,
+      "contexts": [
+        {
+          "pid": 196152,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96644315,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:03:50.046430+00:00",
+      "finished_at": "2026-09-06T19:03:50.131863+00:00",
+      "root_pid": 196152,
+      "contexts": [
+        {
+          "pid": 196152,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96644315,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:03:50.632232+00:00",
+      "finished_at": "2026-09-06T19:03:50.704009+00:00",
+      "root_pid": 196152,
+      "contexts": [
+        {
+          "pid": 196152,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96644315,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:03:51.204280+00:00",
+      "finished_at": "2026-09-06T19:03:51.279655+00:00",
+      "root_pid": 196152,
+      "contexts": [
+        {
+          "pid": 196152,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96644315,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    }
+  ],
+  "trials": [
+    {
+      "trial": 0,
+      "span_ms": 88.470869,
+      "activities": [
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<int>, std::array<char*, 1ul>>(int, at::native::FillFunctor<int>, std::array<char*, 1ul>)",
+          "duration_ms": 0.00112
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<int>, std::array<char*, 1ul>>(int, at::native::FillFunctor<int>, std::array<char*, 1ul>)",
+          "duration_ms": 0.0016
+        },
+        {
+          "name": "_assign_routes",
+          "duration_ms": 0.005536
+        },
+        {
+          "name": "_padded_prefix",
+          "duration_ms": 0.00176
+        },
+        {
+          "name": "_compact_routes",
+          "duration_ms": 0.002144
+        },
+        {
+          "name": "_prepare",
+          "duration_ms": 0.216575
+        },
+        {
+          "name": "_project_tma",
+          "duration_ms": 7.961943
+        },
+        {
+          "name": "_project_tma",
+          "duration_ms": 7.964631
+        },
+        {
+          "name": "_project_tma",
+          "duration_ms": 19.005822
+        },
+        {
+          "name": "_activation",
+          "duration_ms": 0.146431
+        },
+        {
+          "name": "_weight_tma",
+          "duration_ms": 7.511417
+        },
+        {
+          "name": "_weight_tma",
+          "duration_ms": 7.507257
+        },
+        {
+          "name": "_weight_tma",
+          "duration_ms": 7.478777
+        },
+        {
+          "name": "_input_tma",
+          "duration_ms": 19.273116
+        },
+        {
+          "name": "_gather_hidden",
+          "duration_ms": 0.045504
+        }
+      ]
+    },
+    {
+      "trial": 1,
+      "span_ms": 85.462881,
+      "activities": [
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<int>, std::array<char*, 1ul>>(int, at::native::FillFunctor<int>, std::array<char*, 1ul>)",
+          "duration_ms": 0.001312
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<int>, std::array<char*, 1ul>>(int, at::native::FillFunctor<int>, std::array<char*, 1ul>)",
+          "duration_ms": 0.0016
+        },
+        {
+          "name": "_assign_routes",
+          "duration_ms": 0.00544
+        },
+        {
+          "name": "_padded_prefix",
+          "duration_ms": 0.00192
+        },
+        {
+          "name": "_compact_routes",
+          "duration_ms": 0.002112
+        },
+        {
+          "name": "_prepare",
+          "duration_ms": 0.216735
+        },
+        {
+          "name": "_project_tma",
+          "duration_ms": 7.966295
+        },
+        {
+          "name": "_project_tma",
+          "duration_ms": 7.965142
+        },
+        {
+          "name": "_project_tma",
+          "duration_ms": 19.000444
+        },
+        {
+          "name": "_activation",
+          "duration_ms": 0.146111
+        },
+        {
+          "name": "_weight_tma",
+          "duration_ms": 7.507768
+        },
+        {
+          "name": "_weight_tma",
+          "duration_ms": 7.50828
+        },
+        {
+          "name": "_weight_tma",
+          "duration_ms": 7.476953
+        },
+        {
+          "name": "_input_tma",
+          "duration_ms": 19.256699
+        },
+        {
+          "name": "_gather_hidden",
+          "duration_ms": 0.045184
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "span_ms": 78.598438,
+      "activities": [
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<int>, std::array<char*, 1ul>>(int, at::native::FillFunctor<int>, std::array<char*, 1ul>)",
+          "duration_ms": 0.001312
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<int>, std::array<char*, 1ul>>(int, at::native::FillFunctor<int>, std::array<char*, 1ul>)",
+          "duration_ms": 0.0016
+        },
+        {
+          "name": "_assign_routes",
+          "duration_ms": 0.005504
+        },
+        {
+          "name": "_padded_prefix",
+          "duration_ms": 0.001889
+        },
+        {
+          "name": "_compact_routes",
+          "duration_ms": 0.002112
+        },
+        {
+          "name": "_prepare",
+          "duration_ms": 0.217759
+        },
+        {
+          "name": "_project_tma",
+          "duration_ms": 7.961494
+        },
+        {
+          "name": "_project_tma",
+          "duration_ms": 7.964919
+        },
+        {
+          "name": "_project_tma",
+          "duration_ms": 19.001564
+        },
+        {
+          "name": "_activation",
+          "duration_ms": 0.146367
+        },
+        {
+          "name": "_weight_tma",
+          "duration_ms": 7.508889
+        },
+        {
+          "name": "_weight_tma",
+          "duration_ms": 7.508153
+        },
+        {
+          "name": "_weight_tma",
+          "duration_ms": 7.480217
+        },
+        {
+          "name": "_input_tma",
+          "duration_ms": 19.268251
+        },
+        {
+          "name": "_gather_hidden",
+          "duration_ms": 0.044799
+        }
+      ]
+    }
+  ],
+  "component_medians_ms": {
+    "void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<int>, std::array<char*, 1ul>>(int, at::native::FillFunctor<int>, std::array<char*, 1ul>):0": 0.001312,
+    "void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<int>, std::array<char*, 1ul>>(int, at::native::FillFunctor<int>, std::array<char*, 1ul>):1": 0.0016,
+    "_assign_routes:0": 0.005504,
+    "_padded_prefix:0": 0.001889,
+    "_compact_routes:0": 0.002112,
+    "_prepare:0": 0.216735,
+    "_project_tma:0": 7.961943,
+    "_project_tma:1": 7.964919,
+    "_project_tma:2": 19.001564,
+    "_activation:0": 0.146367,
+    "_weight_tma:0": 7.508889,
+    "_weight_tma:1": 7.508153,
+    "_weight_tma:2": 7.478777,
+    "_input_tma:0": 19.268251,
+    "_gather_hidden:0": 0.045184
+  },
+  "span_median_ms": 85.462881,
+  "max_allocated_bytes": 54695265792
+}

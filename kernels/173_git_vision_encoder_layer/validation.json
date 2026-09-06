@@ -1,0 +1,402 @@
+{
+  "problem_id": 173,
+  "problem_name": "079_git_vision_encoder_layer",
+  "status": "experimental; kernel schedules remain uncompetitive",
+  "full_workload_count": 16,
+  "full_harness_trials": 0,
+  "selected_workload_indices": [
+    0,
+    2
+  ],
+  "clock_mode": "unlocked",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "recommend_submission": false,
+  "scope": "Partial workload exploration only. Contention was observed during this session; timings do not establish uncontended performance or a full problem score.",
+  "runs": [
+    {
+      "run_directory": ".work/runs/173/20260906T185754.198411Z-tf32x3-smoke-a83c0679bc70",
+      "summary_sha256": "78acd32309fa7484d305ef26240ab0682fb0ff659b73f2ec7c45318db7ad60d3",
+      "source_sha256": {
+        "kernel.py": "7e175f69bed9aa1d0144fcac91701b079df91533d262f2147744d7d13378b0ea"
+      },
+      "submission_sha256": "a83c0679bc70e3ddaad37069559f994490884a1d9fe6c2e81e4420916e75adbb",
+      "trace_sha256": {
+        "trial-1.jsonl": "126ba4c71e0076a31b85c19435d89c17c1b275e6dadb5d087d8515ceb102bf29"
+      },
+      "environment_sha256": "a39c9df44dabeaf02106b6fba388fd4970b62ff21144b6228a32ee8cd7f5662e",
+      "passed": true,
+      "selected_workloads": 2,
+      "complete_problem": false,
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 2,
+            "seq_len": 197
+          },
+          "latency_ms": 0.5455975,
+          "baseline_ms": 0.098496,
+          "sol_ms": 0.0036,
+          "passed": true
+        },
+        {
+          "axes": {
+            "batch_size": 64,
+            "seq_len": 197
+          },
+          "latency_ms": 5.285253,
+          "baseline_ms": 0.389489,
+          "sol_ms": 0.1032,
+          "passed": true
+        }
+      ],
+      "correctness": [
+        {
+          "max_relative_error": 0.0020662944298237562,
+          "max_absolute_error": 1.2993812561035156e-05,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.002384185791015625,
+          "max_absolute_error": 1.5735626220703125e-05,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "archived_run": "results/2026-09-06/173/20260906T185754.198411Z-tf32x3-smoke-a83c0679bc70"
+    },
+    {
+      "run_directory": ".work/runs/173/20260906T190455.800845Z-bf16x3-smoke-2ecf1b88c374",
+      "summary_sha256": "04d85fdcdae69def83be6eb076964a040f2d568d2e414f828af4f52470daf826",
+      "source_sha256": {
+        "kernel_bf16x3.py": "44164913bf1991df573e59870cd5c4eb5bfd9acd82dd187935d6eced1144112c"
+      },
+      "submission_sha256": "2ecf1b88c374e8cad301398f49ef7f54c2689a10543420c37ad6c7617e7f63af",
+      "trace_sha256": {
+        "trial-1.jsonl": "44f0817897e2c89ac880078feefb65f94d49a4cc4da7c26fb0e36d66756836dd"
+      },
+      "environment_sha256": "b574befce930a8458b5d42cdc2510fc4f370a49ad83a566a738f4572e87cf944",
+      "passed": true,
+      "selected_workloads": 2,
+      "complete_problem": false,
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 2,
+            "seq_len": 197
+          },
+          "latency_ms": 0.5115015,
+          "baseline_ms": 0.098496,
+          "sol_ms": 0.0036,
+          "passed": true
+        },
+        {
+          "axes": {
+            "batch_size": 64,
+            "seq_len": 197
+          },
+          "latency_ms": 4.5344565,
+          "baseline_ms": 0.389489,
+          "sol_ms": 0.1032,
+          "passed": true
+        }
+      ],
+      "correctness": [
+        {
+          "max_relative_error": 0.007371107582002878,
+          "max_absolute_error": 3.8623809814453125e-05,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.01047596801072359,
+          "max_absolute_error": 4.6253204345703125e-05,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "archived_run": "results/2026-09-06/173/20260906T190455.800845Z-bf16x3-smoke-2ecf1b88c374"
+    },
+    {
+      "run_directory": ".work/runs/173/20260906T190640.606613Z-tf32x3-k256-smoke-fa7d23aa6b5f",
+      "summary_sha256": "6cd7c949fd7ed64da303db283b0a7fb1700ce3542eca4166978363471bf9d45e",
+      "source_sha256": {
+        "kernel_tf32x3_k256.py": "25e5d4a8f09f701f42a6fb017896c9d294551b9aa8220b77f0089b87dca2404b"
+      },
+      "submission_sha256": "fa7d23aa6b5f8ed5919ae44fcd24ed8ca466af7e1d9e8f9b2dca945083f4ea4b",
+      "trace_sha256": {
+        "trial-1.jsonl": "6f50686a1708fb709c8ca6ef2721a1a0e9514c58dc5712a2186e1b805847328b"
+      },
+      "environment_sha256": "407433223c94b7a1b931f7f55305e5247410686fcd414d9a3b57f7ccfb251d15",
+      "passed": true,
+      "selected_workloads": 2,
+      "complete_problem": false,
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 2,
+            "seq_len": 197
+          },
+          "latency_ms": 1.174458,
+          "baseline_ms": 0.098496,
+          "sol_ms": 0.0036,
+          "passed": true
+        },
+        {
+          "axes": {
+            "batch_size": 64,
+            "seq_len": 197
+          },
+          "latency_ms": 12.513938,
+          "baseline_ms": 0.389489,
+          "sol_ms": 0.1032,
+          "passed": true
+        }
+      ],
+      "correctness": [
+        {
+          "max_relative_error": 0.0019868214149028063,
+          "max_absolute_error": 1.5854835510253906e-05,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0024564338382333517,
+          "max_absolute_error": 1.9073486328125e-05,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "archived_run": "results/2026-09-06/173/20260906T190640.606613Z-tf32x3-k256-smoke-fa7d23aa6b5f"
+    },
+    {
+      "run_directory": ".work/runs/173/20260906T190835.913123Z-bf16-chain-smoke-3d540f3e3c51",
+      "summary_sha256": "a39fa7f585a3e58cdf4188ba51a480f5e0118e5e8d499bab9c8ee1da39d8a78d",
+      "source_sha256": {
+        "kernel_bf16_chain.py": "e59d89b9f59b53517d951f55825d6318b97ee6d67ce31bbbd1f7b704239db19b"
+      },
+      "submission_sha256": "3d540f3e3c51517e9d27428f6eaa8fd6beb532d8d3cf5657b2d8bee9889469ad",
+      "trace_sha256": {
+        "trial-1.jsonl": "30334f232cc693b56696ecdee17b438518586c8f433360185af8f8ec92aace41"
+      },
+      "environment_sha256": "caa4da2b5217b7b52c6b5d6e505082d0718ea63218060255304dd8e6506f9ffb",
+      "passed": true,
+      "selected_workloads": 2,
+      "complete_problem": false,
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 2,
+            "seq_len": 197
+          },
+          "latency_ms": 0.5002854999999999,
+          "baseline_ms": 0.098496,
+          "sol_ms": 0.0036,
+          "passed": true
+        },
+        {
+          "axes": {
+            "batch_size": 64,
+            "seq_len": 197
+          },
+          "latency_ms": 4.120235,
+          "baseline_ms": 0.389489,
+          "sol_ms": 0.1032,
+          "passed": true
+        }
+      ],
+      "correctness": [
+        {
+          "max_relative_error": 0.013113021850585938,
+          "max_absolute_error": 7.295608520507812e-05,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.016075192019343376,
+          "max_absolute_error": 8.7738037109375e-05,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "archived_run": "results/2026-09-06/173/20260906T190835.913123Z-bf16-chain-smoke-3d540f3e3c51"
+    },
+    {
+      "run_directory": ".work/runs/173/20260906T191206.566043Z-tf32-smoke-3b873a7ff86a",
+      "summary_sha256": "b7031559fa938574b556a953fc4545f383a2f75fc7f71d490432c83a2587b1a1",
+      "source_sha256": {
+        "kernel_tf32.py": "272ba8eae9ca50ccee6a02e67e06594324554478eeeddf1ed993f6208a0bde02"
+      },
+      "submission_sha256": "3b873a7ff86ab631ab6232c421ebc393b84bbe3343d694abf9472e5f383e9f46",
+      "trace_sha256": {
+        "trial-1.jsonl": "38c8e92cd87f0d2412872deb48ec106cf099b708e47b67a57bad9ec81eb8904e"
+      },
+      "environment_sha256": "bee8f0d2842b4f4517222e4e1e640d83d780381b969772f58c670c9a7e96c974",
+      "passed": false,
+      "selected_workloads": 2,
+      "complete_problem": false,
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 2,
+            "seq_len": 197
+          },
+          "latency_ms": null,
+          "baseline_ms": 0.098496,
+          "sol_ms": 0.0036,
+          "passed": false
+        },
+        {
+          "axes": {
+            "batch_size": 64,
+            "seq_len": 197
+          },
+          "latency_ms": null,
+          "baseline_ms": 0.389489,
+          "sol_ms": 0.1032,
+          "passed": false
+        }
+      ],
+      "correctness": [
+        {
+          "max_relative_error": 1.658424735069275,
+          "max_absolute_error": 0.00952291488647461,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 1.9532984495162964,
+          "max_absolute_error": 0.01064443588256836,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "archived_run": "results/2026-09-06/173/20260906T191206.566043Z-tf32-smoke-3b873a7ff86a"
+    },
+    {
+      "run_directory": ".work/runs/173/20260906T191408.723131Z-bf16-chain-mma-smoke-6bbb9f4b7219",
+      "summary_sha256": "8472297d2b49655bc1fdf13e493e0c4b8112625652a50adca5da2edc3854bf71",
+      "source_sha256": {
+        "kernel_bf16_chain_mma.py": "93454923a152c60ff7d4753884a67985ac403d74cfc5e8e0081a6f3bbe2e826e"
+      },
+      "submission_sha256": "6bbb9f4b72196583f712707ab107df18c37880f01182f304968f2ecfb391dc83",
+      "trace_sha256": {
+        "trial-1.jsonl": "7cd99bbbd1c92030d6589355f2fe2f18f3a9e55aad5c1f05d0ba3ef7bc633221"
+      },
+      "environment_sha256": "6385374d9c88b9cc26918dc316c4ac4e9087f7aa13e490b1557d148d69c508b9",
+      "passed": true,
+      "selected_workloads": 2,
+      "complete_problem": false,
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 2,
+            "seq_len": 197
+          },
+          "latency_ms": 0.4097585,
+          "baseline_ms": 0.098496,
+          "sol_ms": 0.0036,
+          "passed": true
+        },
+        {
+          "axes": {
+            "batch_size": 64,
+            "seq_len": 197
+          },
+          "latency_ms": 2.7394095,
+          "baseline_ms": 0.389489,
+          "sol_ms": 0.1032,
+          "passed": true
+        }
+      ],
+      "correctness": [
+        {
+          "max_relative_error": 0.013113021850585938,
+          "max_absolute_error": 7.295608520507812e-05,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.016075192019343376,
+          "max_absolute_error": 8.7738037109375e-05,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "archived_run": "results/2026-09-06/173/20260906T191408.723131Z-bf16-chain-mma-smoke-6bbb9f4b7219"
+    },
+    {
+      "run_directory": ".work/runs/173/20260906T191640.481925Z-tf32-rna-smoke-0d70e74ed239",
+      "summary_sha256": "6af91ee8d3d09a168c6e13e50f497e9d3f535855602c178dfa1661af3e77dd4f",
+      "source_sha256": {
+        "kernel_tf32_rna.py": "f4cdbd2aaa189569bbc9eb4271f9cf3e2846dfdff0dca05665569699701d27ae"
+      },
+      "submission_sha256": "0d70e74ed2392929347e8b115e747d0594a22084d82c55253fb9ed4e4cca4235",
+      "trace_sha256": {
+        "trial-1.jsonl": "1da46f2442cc8b9ba839102e119b3b93039bc3d3888d3f43103f3bab51e66a37"
+      },
+      "environment_sha256": "df887af02c3dd686c5977b3b0c42b30e7c336ce77a8e79cd278c13b7c0e10af5",
+      "passed": true,
+      "selected_workloads": 2,
+      "complete_problem": false,
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 2,
+            "seq_len": 197
+          },
+          "latency_ms": 0.36657399999999996,
+          "baseline_ms": 0.098496,
+          "sol_ms": 0.0036,
+          "passed": true
+        },
+        {
+          "axes": {
+            "batch_size": 64,
+            "seq_len": 197
+          },
+          "latency_ms": 1.936838,
+          "baseline_ms": 0.389489,
+          "sol_ms": 0.1032,
+          "passed": true
+        }
+      ],
+      "correctness": [
+        {
+          "max_relative_error": 0.45671898126602173,
+          "max_absolute_error": 0.0024648308753967285,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.6207914352416992,
+          "max_absolute_error": 0.003049999475479126,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "archived_run": "results/2026-09-06/173/20260906T191640.481925Z-tf32-rna-smoke-0d70e74ed239"
+    }
+  ],
+  "profile": {
+    "path": ".work/validation/173/profile-20260906T190334Z.json",
+    "sha256": "fd56b66cc080fa1ce4275397cc0b1f612ae9fa706b1fae52ab63cedafcc632c5",
+    "interpretation": "Individual TF32x3 GEMM kernels dominate execution time; the diagnostic CUPTI collector adds large launch gaps, so its end-to-end span is not a benchmark latency.",
+    "archived_path": "results/2026-09-06/173/diagnostics/profile-20260906T190334Z.json"
+  }
+}

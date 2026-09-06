@@ -1,0 +1,330 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "hidden_size": {
+          "type": "const",
+          "value": 4096
+        },
+        "moe_intermediate_size": {
+          "type": "const",
+          "value": 2048
+        },
+        "n_routed_experts": {
+          "type": "const",
+          "value": 256
+        },
+        "num_experts_per_tok": {
+          "type": "const",
+          "value": 8
+        },
+        "num_tokens": {
+          "type": "var"
+        }
+      },
+      "baseline": "import torch\nimport torch.nn.functional as F\n\n\ndef get_inputs(axes_and_scalars: dict, device: torch.device) -> dict:\n    \"\"\"Generate inputs for backward pass testing.\"\"\"\n    num_tokens = axes_and_scalars[\"num_tokens\"]\n    hidden_size = axes_and_scalars[\"hidden_size\"]\n    moe_intermediate_size = axes_and_scalars[\"moe_intermediate_size\"]\n    n_routed_experts = axes_and_scalars[\"n_routed_experts\"]\n    num_experts_per_tok = axes_and_scalars[\"num_experts_per_tok\"]\n    \n    # Gradient from downstream\n    grad_output = torch.randn(num_tokens, hidden_size, device=device, dtype=torch.float32)\n    \n    # Original forward pass inputs\n    hidden_states = torch.randn(num_tokens, hidden_size, device=device, dtype=torch.float32)\n    \n    # Generate valid topk_indices - each token selects num_experts_per_tok unique experts\n    topk_indices = torch.zeros(num_tokens, num_experts_per_tok, dtype=torch.int64, device=device)\n    for i in range(num_tokens):\n        perm = torch.randperm(n_routed_experts, device=device)[:num_experts_per_tok]\n        topk_indices[i] = perm\n    \n    # Routing weights (softmax normalized)\n    topk_weights = torch.randn(num_tokens, num_experts_per_tok, device=device, dtype=torch.float32)\n    topk_weights = F.softmax(topk_weights, dim=-1)\n    \n    # Expert weights\n    gate_weights = torch.randn(n_routed_experts, moe_intermediate_size, hidden_size, device=device, dtype=torch.float32) * 0.02\n    up_weights = torch.randn(n_routed_experts, moe_intermediate_size, hidden_size, device=device, dtype=torch.float32) * 0.02\n    down_weights = torch.randn(n_routed_experts, hidden_size, moe_intermediate_size, device=device, dtype=torch.float32) * 0.02\n    \n    return {\n        \"grad_output\": grad_output,\n        \"hidden_states\": hidden_states,\n        \"topk_indices\": topk_indices,\n        \"topk_weights\": topk_weights,\n        \"gate_weights\": gate_weights,\n        \"up_weights\": up_weights,\n        \"down_weights\": down_weights,\n    }\n\n\n@torch.no_grad()\ndef run(\n    grad_output: torch.Tensor,\n    hidden_states: torch.Tensor,\n    topk_indices: torch.Tensor,\n    topk_weights: torch.Tensor,\n    gate_weights: torch.Tensor,\n    up_weights: torch.Tensor,\n    down_weights: torch.Tensor,\n):\n    \"\"\"\n    Backward pass for MoE expert parallel execution.\n    \n    Computes gradients through:\n    1. Scatter-add aggregation (transpose = gather)\n    2. Weight multiplication\n    3. Down projection\n    4. SwiGLU activation (gate_output * up_output)\n    5. SiLU activation\n    6. Gate and up projections\n    7. Token gathering (transpose = scatter-add)\n    \"\"\"\n    num_tokens = hidden_states.shape[0]\n    hidden_size = hidden_states.shape[1]\n    n_routed_experts = gate_weights.shape[0]\n    moe_intermediate_size = gate_weights.shape[1]\n    num_experts_per_tok = topk_indices.shape[1]\n    device = hidden_states.device\n    \n    # Initialize output gradients\n    grad_hidden_states = torch.zeros_like(hidden_states)\n    grad_topk_weights = torch.zeros_like(topk_weights)\n    grad_gate_weights = torch.zeros_like(gate_weights)\n    grad_up_weights = torch.zeros_like(up_weights)\n    grad_down_weights = torch.zeros_like(down_weights)\n    \n    # Create expert mask: [n_experts, num_tokens, num_experts_per_tok]\n    expert_mask = F.one_hot(topk_indices, num_classes=n_routed_experts)\n    expert_mask = expert_mask.permute(2, 0, 1)  # [n_experts, num_tokens, k]\n    \n    # Process each expert\n    for expert_idx in range(n_routed_experts):\n        mask = expert_mask[expert_idx]  # [num_tokens, k]\n        token_indices, weight_indices = torch.where(mask)\n        \n        if token_indices.numel() == 0:\n            continue\n        \n        # Get data for this expert's tokens\n        expert_input = hidden_states[token_indices]  # [n_e, hidden_size]\n        expert_weights_vals = topk_weights[token_indices, weight_indices]  # [n_e]\n        \n        # Recompute forward pass activations for this expert\n        gate_pre_act = F.linear(expert_input, gate_weights[expert_idx])  # [n_e, intermediate]\n        gate_output = F.silu(gate_pre_act)  # [n_e, intermediate]\n        up_output = F.linear(expert_input, up_weights[expert_idx])  # [n_e, intermediate]\n        intermediate = gate_output * up_output  # [n_e, intermediate]\n        expert_output = F.linear(intermediate, down_weights[expert_idx])  # [n_e, hidden]\n        \n        # Gather gradient from output (reverse of scatter-add)\n        grad_weighted_output = grad_output[token_indices]  # [n_e, hidden]\n        \n        # Gradient through weight multiplication:\n        # weighted_output = expert_output * expert_weights.unsqueeze(-1)\n        grad_expert_output = grad_weighted_output * expert_weights_vals.unsqueeze(-1)  # [n_e, hidden]\n        grad_expert_weights = (grad_weighted_output * expert_output).sum(dim=-1)  # [n_e]\n        \n        # Accumulate gradient for topk_weights\n        grad_topk_weights[token_indices, weight_indices] += grad_expert_weights\n        \n        # Gradient through down projection: expert_output = intermediate @ down_weights.T\n        # grad_intermediate = grad_expert_output @ down_weights\n        # grad_down_weights += grad_expert_output.T @ intermediate\n        grad_intermediate = F.linear(grad_expert_output, down_weights[expert_idx].t())  # [n_e, intermediate]\n        grad_down_weights[expert_idx] += grad_expert_output.t() @ intermediate  # [hidden, intermediate]\n        \n        # Gradient through element-wise multiplication: intermediate = gate_output * up_output\n        grad_gate_output = grad_intermediate * up_output  # [n_e, intermediate]\n        grad_up_output = grad_intermediate * gate_output  # [n_e, intermediate]\n        \n        # Gradient through SiLU: gate_output = silu(gate_pre_act)\n        # silu(x) = x * sigmoid(x)\n        # d/dx silu(x) = sigmoid(x) * (1 + x * (1 - sigmoid(x)))\n        sigmoid_gate = torch.sigmoid(gate_pre_act)\n        silu_grad = sigmoid_gate * (1.0 + gate_pre_act * (1.0 - sigmoid_gate))\n        grad_gate_pre_act = grad_gate_output * silu_grad  # [n_e, intermediate]\n        \n        # Gradient through gate projection: gate_pre_act = expert_input @ gate_weights.T\n        grad_expert_input_gate = F.linear(grad_gate_pre_act, gate_weights[expert_idx].t())  # [n_e, hidden]\n        grad_gate_weights[expert_idx] += grad_gate_pre_act.t() @ expert_input  # [intermediate, hidden]\n        \n        # Gradient through up projection: up_output = expert_input @ up_weights.T\n        grad_expert_input_up = F.linear(grad_up_output, up_weights[expert_idx].t())  # [n_e, hidden]\n        grad_up_weights[expert_idx] += grad_up_output.t() @ expert_input  # [intermediate, hidden]\n        \n        # Combine gradients for expert input\n        grad_expert_input = grad_expert_input_gate + grad_expert_input_up  # [n_e, hidden]\n        \n        # Scatter gradient back to original token positions (reverse of gather)\n        grad_hidden_states.index_add_(0, token_indices, grad_expert_input)\n    \n    return grad_hidden_states, grad_topk_weights, grad_gate_weights, grad_up_weights, grad_down_weights\n",
+      "baseline_latency_ms": 1.863529,
+      "description": "Backward pass for MoE expert parallel execution. Computes gradients for hidden_states, topk_weights, gate_weights, up_weights, and down_weights through the SwiGLU MLP expert computation with token dispatch and weighted aggregation.",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 119,
+      "inputs": {
+        "down_weights": {
+          "description": "Down projection weights for all experts",
+          "dtype": "float32",
+          "shape": [
+            "n_routed_experts",
+            "hidden_size",
+            "moe_intermediate_size"
+          ]
+        },
+        "gate_weights": {
+          "description": "Gate projection weights for all experts",
+          "dtype": "float32",
+          "shape": [
+            "n_routed_experts",
+            "moe_intermediate_size",
+            "hidden_size"
+          ]
+        },
+        "grad_output": {
+          "description": "Gradient from downstream with respect to final output",
+          "dtype": "float32",
+          "shape": [
+            "num_tokens",
+            "hidden_size"
+          ]
+        },
+        "hidden_states": {
+          "description": "Original input hidden states from forward pass",
+          "dtype": "float32",
+          "shape": [
+            "num_tokens",
+            "hidden_size"
+          ]
+        },
+        "topk_indices": {
+          "description": "Selected expert indices per token",
+          "dtype": "int64",
+          "shape": [
+            "num_tokens",
+            "num_experts_per_tok"
+          ]
+        },
+        "topk_weights": {
+          "description": "Expert routing weights per token",
+          "dtype": "float32",
+          "shape": [
+            "num_tokens",
+            "num_experts_per_tok"
+          ]
+        },
+        "up_weights": {
+          "description": "Up projection weights for all experts",
+          "dtype": "float32",
+          "shape": [
+            "n_routed_experts",
+            "moe_intermediate_size",
+            "hidden_size"
+          ]
+        }
+      },
+      "latency_unit": "ms",
+      "name": "025_moe_expert_parallel_execution_backward",
+      "outputs": {
+        "grad_down_weights": {
+          "description": "Gradient with respect to down projection weights",
+          "dtype": "float32",
+          "shape": [
+            "n_routed_experts",
+            "hidden_size",
+            "moe_intermediate_size"
+          ]
+        },
+        "grad_gate_weights": {
+          "description": "Gradient with respect to gate projection weights",
+          "dtype": "float32",
+          "shape": [
+            "n_routed_experts",
+            "moe_intermediate_size",
+            "hidden_size"
+          ]
+        },
+        "grad_hidden_states": {
+          "description": "Gradient with respect to input hidden states",
+          "dtype": "float32",
+          "shape": [
+            "num_tokens",
+            "hidden_size"
+          ]
+        },
+        "grad_topk_weights": {
+          "description": "Gradient with respect to routing weights",
+          "dtype": "float32",
+          "shape": [
+            "num_tokens",
+            "num_experts_per_tok"
+          ]
+        },
+        "grad_up_weights": {
+          "description": "Gradient with respect to up projection weights",
+          "dtype": "float32",
+          "shape": [
+            "n_routed_experts",
+            "moe_intermediate_size",
+            "hidden_size"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "moe",
+        "L2",
+        "model:MiMo-V2-Flash"
+      ],
+      "title": "025_moe_expert_parallel_execution_backward",
+      "workloads": [
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 2080
+          },
+          "baseline_latency_ms": 13.6026765,
+          "sol_ms": 1.71189712
+        },
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 2112
+          },
+          "baseline_latency_ms": 13.652266,
+          "sol_ms": 1.71227334
+        },
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 4096
+          },
+          "baseline_latency_ms": 16.4692425,
+          "sol_ms": 2.73210289
+        },
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 2048
+          },
+          "baseline_latency_ms": 13.590977,
+          "sol_ms": 1.71152091
+        },
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 2144
+          },
+          "baseline_latency_ms": 13.6631395,
+          "sol_ms": 1.71264956
+        },
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 2176
+          },
+          "baseline_latency_ms": 13.610933,
+          "sol_ms": 1.71302578
+        },
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 2208
+          },
+          "baseline_latency_ms": 13.687559,
+          "sol_ms": 1.71340199
+        },
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 2560
+          },
+          "baseline_latency_ms": 14.08732,
+          "sol_ms": 1.71754038
+        },
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 6144
+          },
+          "baseline_latency_ms": 19.158055500000003,
+          "sol_ms": 4.09795434
+        },
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 2240
+          },
+          "baseline_latency_ms": 13.732298,
+          "sol_ms": 1.71377821
+        },
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 2272
+          },
+          "baseline_latency_ms": 13.7855155,
+          "sol_ms": 1.71415443
+        },
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 2304
+          },
+          "baseline_latency_ms": 13.9295965,
+          "sol_ms": 1.71453065
+        },
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 2336
+          },
+          "baseline_latency_ms": 13.783437,
+          "sol_ms": 1.71490686
+        },
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 2368
+          },
+          "baseline_latency_ms": 13.940877,
+          "sol_ms": 1.71528308
+        },
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 2400
+          },
+          "baseline_latency_ms": 13.987197,
+          "sol_ms": 1.7156593
+        },
+        {
+          "axes": {
+            "hidden_size": 4096,
+            "moe_intermediate_size": 2048,
+            "n_routed_experts": 256,
+            "num_experts_per_tok": 8,
+            "num_tokens": 2432
+          },
+          "baseline_latency_ms": 14.0026865,
+          "sol_ms": 1.71603551
+        }
+      ]
+    }
+  },
+  "response_sha256": "ddb60d8220c05009f60ece1342ece581abdf2ab4f4fcd80032f3a433388ec4ef",
+  "retrieved_at": "2026-09-06T18:45:06.801812+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/119"
+}

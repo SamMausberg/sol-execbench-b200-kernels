@@ -1,0 +1,61 @@
+{
+  "scope": "Standalone experimental bridge checks on actual and changed problem 36 inputs; no hosted evaluation or full problem score.",
+  "source_sha256": {
+    "fast_tf32_bridge.cpp": "e92c7129878c7c93cc4df7bd19ec8e6903bf799891444b94600d9a4376bad511",
+    "emulated_bf16x9_bridge.cpp": "696cea8fe4df675409df8e1a37b0ce909451844b8802e478ec97e51ddd82660d"
+  },
+  "reports": [
+    {
+      "path": ".work/tuning/cublaslt/fast-tf32-36-20260906T192442Z.json",
+      "sha256": "2438283231d6e89d30c203fdd3ead2fb2518792c4bbcbc234c965a46639401c4",
+      "source_sha256": "e92c7129878c7c93cc4df7bd19ec8e6903bf799891444b94600d9a4376bad511",
+      "compute_mode": "CUBLAS_COMPUTE_32F_FAST_TF32",
+      "weight_scale": 1,
+      "numerical_cases": 6,
+      "passed_cases": 6,
+      "minimum_matched_ratio": 0.9999999403953552,
+      "maximum_absolute_error": 0.0025489330291748047,
+      "archived_path": "results/2026-09-06/173/diagnostics/fast-tf32-36-20260906T192442Z.json"
+    },
+    {
+      "path": ".work/tuning/cublaslt/fast-fp32-36-scale32-20260906T193044Z.json",
+      "sha256": "0bf5cc36e383817bce8189c6c74dc65efa6d63d0e642585a6a8f52c9d6bb54f0",
+      "source_sha256": "e92c7129878c7c93cc4df7bd19ec8e6903bf799891444b94600d9a4376bad511",
+      "compute_mode": "CUBLAS_COMPUTE_32F_FAST_TF32",
+      "weight_scale": 32.0,
+      "numerical_cases": 6,
+      "passed_cases": 1,
+      "minimum_matched_ratio": 0.022130971774458885,
+      "maximum_absolute_error": 1.42962646484375,
+      "archived_path": "results/2026-09-06/173/diagnostics/fast-fp32-36-scale32-20260906T193044Z.json"
+    },
+    {
+      "path": ".work/tuning/cublaslt/emulated-fp32-36-scale1-20260906T193048Z.json",
+      "sha256": "991f70dc0af1a24e6d6bd0163fc6e560a36692f5c15696a996265079d30359c0",
+      "source_sha256": "696cea8fe4df675409df8e1a37b0ce909451844b8802e478ec97e51ddd82660d",
+      "compute_mode": "CUBLAS_COMPUTE_32F_EMULATED_16BFX9",
+      "weight_scale": 1.0,
+      "numerical_cases": 6,
+      "passed_cases": 6,
+      "minimum_matched_ratio": 0.9999999403953552,
+      "maximum_absolute_error": 4.0531158447265625e-06,
+      "archived_path": "results/2026-09-06/173/diagnostics/emulated-fp32-36-scale1-20260906T193048Z.json"
+    },
+    {
+      "path": ".work/tuning/cublaslt/emulated-fp32-36-scale32-20260906T193050Z.json",
+      "sha256": "d5014831dce92033325e1589c0c902778977f49cecc52238b4fff998e8888417",
+      "source_sha256": "696cea8fe4df675409df8e1a37b0ce909451844b8802e478ec97e51ddd82660d",
+      "compute_mode": "CUBLAS_COMPUTE_32F_EMULATED_16BFX9",
+      "weight_scale": 32.0,
+      "numerical_cases": 6,
+      "passed_cases": 6,
+      "minimum_matched_ratio": 0.9999999403953552,
+      "maximum_absolute_error": 0.00244140625,
+      "archived_path": "results/2026-09-06/173/diagnostics/emulated-fp32-36-scale32-20260906T193050Z.json"
+    }
+  ],
+  "findings": "FAST_TF32 passes the two sampled original workloads but fails most cases when both weight matrices are scaled by 32. Explicit EMULATED_16BFX9 passes original and scaled checks and gives a smaller speed improvement over default FP32 GEMMs.",
+  "timing": "Component timings use the pinned shifted-pointer time_runnable helper with three warmups and twenty repetitions. They were not qualified against continuous foreign GPU activity.",
+  "changes_framework_precision_settings": false,
+  "caches_tensor_values": false
+}

@@ -1,0 +1,222 @@
+{
+  "scope": "full hidden dimensions with fewer experts; separate official validation required",
+  "source_sha256": "ff805c3f6d032c1944de2ac1375539c56eeb1cbfc985274e8c07cad36597ca49",
+  "reference_sha256": "ae8535aaf37f272e23c97ccee2f3e5d99164756a10b2232c01f43e8437f8702e",
+  "config": {
+    "FORWARD_PRECISION": "tf32"
+  },
+  "tolerance": {
+    "max_atol": 0.11,
+    "max_rtol": 1e-05,
+    "required_matched_ratio": 0.99
+  },
+  "records": [
+    {
+      "tokens": 64,
+      "experts": 8,
+      "concentrated": false,
+      "seed": 119321,
+      "outputs": [
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.017878685146570206,
+            "max_absolute_error": 0.009405136108398438,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 262144
+        },
+        {
+          "passed": false,
+          "errors": {
+            "max_relative_error": 0.5347772240638733,
+            "max_absolute_error": 0.465057373046875,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 222,
+          "elements": 512
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.07916560024023056,
+            "max_absolute_error": 0.062343597412109375,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67108864
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.06918216496706009,
+            "max_absolute_error": 0.06367874145507812,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67108864
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.09349015355110168,
+            "max_absolute_error": 0.07933425903320312,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67108864
+        }
+      ],
+      "passed": false
+    },
+    {
+      "tokens": 137,
+      "experts": 16,
+      "concentrated": false,
+      "seed": 119654,
+      "outputs": [
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.020470505580306053,
+            "max_absolute_error": 0.009096860885620117,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 561152
+        },
+        {
+          "passed": false,
+          "errors": {
+            "max_relative_error": 0.18996165692806244,
+            "max_absolute_error": 0.430419921875,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 444,
+          "elements": 1096
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.08753599226474762,
+            "max_absolute_error": 0.07165718078613281,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 134217728
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.08107264339923859,
+            "max_absolute_error": 0.06698036193847656,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 134217728
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.07634914666414261,
+            "max_absolute_error": 0.08345413208007812,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 134217728
+        }
+      ],
+      "passed": false
+    },
+    {
+      "tokens": 64,
+      "experts": 16,
+      "concentrated": true,
+      "seed": 119987,
+      "outputs": [
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.01663985662162304,
+            "max_absolute_error": 0.0071735382080078125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 262144
+        },
+        {
+          "passed": false,
+          "errors": {
+            "max_relative_error": 0.48439720273017883,
+            "max_absolute_error": 0.5964813232421875,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 226,
+          "elements": 512
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.06976989656686783,
+            "max_absolute_error": 0.07486534118652344,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 134217728
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.07182996720075607,
+            "max_absolute_error": 0.06738662719726562,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 134217728
+        },
+        {
+          "passed": true,
+          "errors": {
+            "max_relative_error": 0.07593555748462677,
+            "max_absolute_error": 0.06167030334472656,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 134217728
+        }
+      ],
+      "passed": false
+    }
+  ]
+}

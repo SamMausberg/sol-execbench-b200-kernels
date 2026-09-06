@@ -1,0 +1,573 @@
+{
+  "scope": "diagnostic component profile; fixed addresses and unlocked GPU",
+  "tokens": 2048,
+  "source": "kernels/119_moe_expert_parallel_execution_backward/kernel.py",
+  "source_sha256": "0309429accd742d7bf2c0fe6fb75563d20c1b401de4c061b4a1a98f864aa8e98",
+  "dependency_sha256": {
+    "kernel.py": "0309429accd742d7bf2c0fe6fb75563d20c1b401de4c061b4a1a98f864aa8e98"
+  },
+  "config": {
+    "FORWARD_PRECISION": "bf16x3",
+    "BACKWARD_PRECISION": "bf16",
+    "PROJECT_TILE": [
+      64,
+      128,
+      32,
+      2
+    ],
+    "WEIGHT_TILE": [
+      64,
+      128,
+      32,
+      1
+    ],
+    "INPUT_TILE": [
+      32,
+      128,
+      32,
+      2
+    ],
+    "GEMM_ARCH": "sm80"
+  },
+  "reference_sha256": "ae8535aaf37f272e23c97ccee2f3e5d99164756a10b2232c01f43e8437f8702e",
+  "process_samples": [
+    {
+      "timestamp": "2026-09-06T19:10:14.073625+00:00",
+      "finished_at": "2026-09-06T19:10:14.169278+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:10:14.669693+00:00",
+      "finished_at": "2026-09-06T19:10:14.750474+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        },
+        {
+          "pid": 207281,
+          "process_name": "python",
+          "memory_mib": "30",
+          "start_ticks": 96683024,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:10:15.373155+00:00",
+      "finished_at": "2026-09-06T19:10:15.470345+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        },
+        {
+          "pid": 207281,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96683024,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:10:15.970829+00:00",
+      "finished_at": "2026-09-06T19:10:16.043812+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        },
+        {
+          "pid": 207281,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96683024,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:10:16.544087+00:00",
+      "finished_at": "2026-09-06T19:10:16.629303+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        },
+        {
+          "pid": 207281,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96683024,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:10:17.129636+00:00",
+      "finished_at": "2026-09-06T19:10:17.207447+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        },
+        {
+          "pid": 207281,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96683024,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:10:17.707695+00:00",
+      "finished_at": "2026-09-06T19:10:17.812609+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        },
+        {
+          "pid": 207281,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96683024,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:10:18.312889+00:00",
+      "finished_at": "2026-09-06T19:10:18.396464+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        },
+        {
+          "pid": 207281,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96683024,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:10:18.896894+00:00",
+      "finished_at": "2026-09-06T19:10:18.979223+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        },
+        {
+          "pid": 207281,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96683024,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:10:19.479581+00:00",
+      "finished_at": "2026-09-06T19:10:19.560294+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        },
+        {
+          "pid": 207281,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96683024,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:10:20.060553+00:00",
+      "finished_at": "2026-09-06T19:10:20.148880+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        },
+        {
+          "pid": 207281,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96683024,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:10:20.649145+00:00",
+      "finished_at": "2026-09-06T19:10:20.729122+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        },
+        {
+          "pid": 207281,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96683024,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:10:21.231403+00:00",
+      "finished_at": "2026-09-06T19:10:21.315470+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        },
+        {
+          "pid": 207281,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96683024,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:10:21.815807+00:00",
+      "finished_at": "2026-09-06T19:10:21.890313+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        },
+        {
+          "pid": 207281,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96683024,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:10:22.390804+00:00",
+      "finished_at": "2026-09-06T19:10:22.475988+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        },
+        {
+          "pid": 207281,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96683024,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:10:22.976267+00:00",
+      "finished_at": "2026-09-06T19:10:23.150695+00:00",
+      "root_pid": 207281,
+      "contexts": [
+        {
+          "pid": 200917,
+          "process_name": "python",
+          "memory_mib": "1394",
+          "start_ticks": 96660557,
+          "campaign_descendant": false
+        },
+        {
+          "pid": 207281,
+          "process_name": "python",
+          "memory_mib": "58116",
+          "start_ticks": 96683024,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    }
+  ],
+  "trials": [
+    {
+      "trial": 0,
+      "span_ms": 47.89875,
+      "activities": [
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<int>, std::array<char*, 1ul>>(int, at::native::FillFunctor<int>, std::array<char*, 1ul>)",
+          "duration_ms": 0.001537
+        },
+        {
+          "name": "_assign_routes",
+          "duration_ms": 0.005376
+        },
+        {
+          "name": "_prefix_counts",
+          "duration_ms": 0.001696
+        },
+        {
+          "name": "_compact_routes",
+          "duration_ms": 0.001984
+        },
+        {
+          "name": "_grouped_project",
+          "duration_ms": 5.127016
+        },
+        {
+          "name": "_grouped_project",
+          "duration_ms": 5.118696
+        },
+        {
+          "name": "_grouped_project",
+          "duration_ms": 4.893897
+        },
+        {
+          "name": "_activation_backward",
+          "duration_ms": 0.114176
+        },
+        {
+          "name": "_weight_gradient",
+          "duration_ms": 4.786089
+        },
+        {
+          "name": "_weight_gradient",
+          "duration_ms": 4.787945
+        },
+        {
+          "name": "_weight_gradient",
+          "duration_ms": 5.126728
+        },
+        {
+          "name": "_input_gradient",
+          "duration_ms": 6.532353
+        },
+        {
+          "name": "_gather_hidden",
+          "duration_ms": 0.044576
+        }
+      ]
+    },
+    {
+      "trial": 1,
+      "span_ms": 46.441239,
+      "activities": [
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<int>, std::array<char*, 1ul>>(int, at::native::FillFunctor<int>, std::array<char*, 1ul>)",
+          "duration_ms": 0.001312
+        },
+        {
+          "name": "_assign_routes",
+          "duration_ms": 0.005408
+        },
+        {
+          "name": "_prefix_counts",
+          "duration_ms": 0.001952
+        },
+        {
+          "name": "_compact_routes",
+          "duration_ms": 0.002144
+        },
+        {
+          "name": "_grouped_project",
+          "duration_ms": 5.128359
+        },
+        {
+          "name": "_grouped_project",
+          "duration_ms": 5.12023
+        },
+        {
+          "name": "_grouped_project",
+          "duration_ms": 4.880295
+        },
+        {
+          "name": "_activation_backward",
+          "duration_ms": 0.114528
+        },
+        {
+          "name": "_weight_gradient",
+          "duration_ms": 4.78244
+        },
+        {
+          "name": "_weight_gradient",
+          "duration_ms": 4.78516
+        },
+        {
+          "name": "_weight_gradient",
+          "duration_ms": 5.122375
+        },
+        {
+          "name": "_input_gradient",
+          "duration_ms": 6.527807
+        },
+        {
+          "name": "_gather_hidden",
+          "duration_ms": 0.044576
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "span_ms": 44.053703,
+      "activities": [
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<int>, std::array<char*, 1ul>>(int, at::native::FillFunctor<int>, std::array<char*, 1ul>)",
+          "duration_ms": 0.00128
+        },
+        {
+          "name": "_assign_routes",
+          "duration_ms": 0.005313
+        },
+        {
+          "name": "_prefix_counts",
+          "duration_ms": 0.001536
+        },
+        {
+          "name": "_compact_routes",
+          "duration_ms": 0.002144
+        },
+        {
+          "name": "_grouped_project",
+          "duration_ms": 5.128419
+        },
+        {
+          "name": "_grouped_project",
+          "duration_ms": 5.12749
+        },
+        {
+          "name": "_grouped_project",
+          "duration_ms": 4.887557
+        },
+        {
+          "name": "_activation_backward",
+          "duration_ms": 0.113951
+        },
+        {
+          "name": "_weight_gradient",
+          "duration_ms": 4.784453
+        },
+        {
+          "name": "_weight_gradient",
+          "duration_ms": 4.787621
+        },
+        {
+          "name": "_weight_gradient",
+          "duration_ms": 5.124995
+        },
+        {
+          "name": "_input_gradient",
+          "duration_ms": 6.525755
+        },
+        {
+          "name": "_gather_hidden",
+          "duration_ms": 0.044192
+        }
+      ]
+    }
+  ],
+  "component_medians_ms": {
+    "void at::native::vectorized_elementwise_kernel<4, at::native::FillFunctor<int>, std::array<char*, 1ul>>(int, at::native::FillFunctor<int>, std::array<char*, 1ul>):0": 0.001312,
+    "_assign_routes:0": 0.005376,
+    "_prefix_counts:0": 0.001696,
+    "_compact_routes:0": 0.002144,
+    "_grouped_project:0": 5.128359,
+    "_grouped_project:1": 5.12023,
+    "_grouped_project:2": 4.887557,
+    "_activation_backward:0": 0.114176,
+    "_weight_gradient:0": 4.784453,
+    "_weight_gradient:1": 4.787621,
+    "_weight_gradient:2": 5.124995,
+    "_input_gradient:0": 6.527807,
+    "_gather_hidden:0": 0.044576
+  },
+  "span_median_ms": 46.441239,
+  "max_allocated_bytes": 52979763712
+}

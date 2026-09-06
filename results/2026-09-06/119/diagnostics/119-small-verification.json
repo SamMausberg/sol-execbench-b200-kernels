@@ -1,0 +1,57 @@
+{
+  "scope": "reduced-shape audit; official workloads require separate validation",
+  "source_sha256": "33d1c0db8cee9e4451186f40699917a015df3f5e65af592a0e6b0ffd94aa7166",
+  "reference_sha256": "ae8535aaf37f272e23c97ccee2f3e5d99164756a10b2232c01f43e8437f8702e",
+  "records": [
+    {
+      "tokens": 17,
+      "hidden": 128,
+      "intermediate": 64,
+      "experts": 8,
+      "top": 2,
+      "concentrated": false,
+      "passed": true,
+      "max_absolute_errors": [
+        1.30385160446167e-08,
+        5.960464477539063e-08,
+        2.086162567138672e-07,
+        2.682209014892578e-07,
+        1.7881393432617188e-07
+      ]
+    },
+    {
+      "tokens": 37,
+      "hidden": 256,
+      "intermediate": 128,
+      "experts": 8,
+      "top": 4,
+      "concentrated": true,
+      "passed": true,
+      "max_absolute_errors": [
+        5.587935447692871e-08,
+        5.364418029785156e-07,
+        8.344650268554688e-07,
+        1.6093254089355469e-06,
+        9.5367431640625e-07
+      ]
+    },
+    {
+      "tokens": 97,
+      "hidden": 512,
+      "intermediate": 256,
+      "experts": 16,
+      "top": 4,
+      "concentrated": false,
+      "passed": true,
+      "max_absolute_errors": [
+        1.4901161193847656e-07,
+        2.5033950805664062e-06,
+        1.6689300537109375e-06,
+        2.0265579223632812e-06,
+        2.6226043701171875e-06
+      ]
+    }
+  ],
+  "gpu_processes_before": "pid, process_name, used_gpu_memory [MiB]\n",
+  "gpu_processes_after": "pid, process_name, used_gpu_memory [MiB]\n157159, python, 952 MiB\n"
+}
