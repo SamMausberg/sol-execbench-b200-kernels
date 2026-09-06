@@ -1,0 +1,28 @@
+{
+  "author": "sol-b200-kernel-team",
+  "definition": "088_rotary_position_embedding_application",
+  "description": "One Triton launch rotates FP32 query/key pairs and reuses shared cosine/sine coefficients while preserving separate multiply/add rounding.",
+  "name": "rope_qk_paired_fp32_v1",
+  "sources": [
+    {
+      "content": "\"\"\"Paired FP32 RoPE rotation with shared coefficients for query and key.\"\"\"\n\nimport triton\nimport triton.language as tl\n\n\n@triton.jit\ndef _rope_pairs(\n    query,\n    key,\n    cos,\n    sin,\n    query_out,\n    key_out,\n    Q_PAIRS: tl.constexpr,\n    K_PAIRS: tl.constexpr,\n    SEQ_LEN: tl.constexpr,\n    HALF_DIM: tl.constexpr,\n    BLOCK: tl.constexpr,\n):\n    pair = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)\n    row = pair // HALF_DIM\n    channel = pair % HALF_DIM\n    first = row * (2 * HALF_DIM) + channel\n    second = first + HALF_DIM\n    coefficient = (row % SEQ_LEN) * (2 * HALF_DIM) + channel\n    active = pair < Q_PAIRS\n\n    c0 = tl.load(cos + coefficient, active, other=0.0)\n    c1 = tl.load(cos + coefficient + HALF_DIM, active, other=0.0)\n    s0 = tl.load(sin + coefficient, active, other=0.0)\n    s1 = tl.load(sin + coefficient + HALF_DIM, active, other=0.0)\n\n    q0 = tl.load(query + first, active, other=0.0)\n    q1 = tl.load(query + second, active, other=0.0)\n    tl.store(query_out + first, q0 * c0 - q1 * s0, active)\n    tl.store(query_out + second, q1 * c1 + q0 * s1, active)\n\n    # Query and key have the same sequence/dimension layout. Their flattened\n    # offsets therefore use the same cosine/sine entries even with GQA heads.\n    if tl.program_id(0) * BLOCK < K_PAIRS:\n        k_active = pair < K_PAIRS\n        k0 = tl.load(key + first, k_active, other=0.0)\n        k1 = tl.load(key + second, k_active, other=0.0)\n        tl.store(key_out + first, k0 * c0 - k1 * s0, k_active)\n        tl.store(key_out + second, k1 * c1 + k0 * s1, k_active)\n\n\ndef run(query, key, cos, sin, query_rotated, key_rotated):\n    q_pairs = query.numel() // 2\n    k_pairs = key.numel() // 2\n    block = 256 if q_pairs < 262144 else 1024\n    _rope_pairs[(triton.cdiv(q_pairs, block),)](\n        query,\n        key,\n        cos,\n        sin,\n        query_rotated,\n        key_rotated,\n        q_pairs,\n        k_pairs,\n        query.shape[-2],\n        query.shape[-1] // 2,\n        block,\n        num_warps=4,\n        enable_fp_fusion=False,\n    )\n",
+      "path": "kernel.py"
+    }
+  ],
+  "spec": {
+    "binding": null,
+    "compile_options": {},
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": [
+      "triton"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

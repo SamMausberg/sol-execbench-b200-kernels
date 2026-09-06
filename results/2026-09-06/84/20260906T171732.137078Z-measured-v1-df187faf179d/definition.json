@@ -1,0 +1,45 @@
+{
+  "name": "084_silu_activation_backward",
+  "hf_id": "stabilityai/stable-diffusion-xl-base-1.0",
+  "description": "Backward pass for SiLU (Swish) activation function. Computes gradient with respect to input: grad_input = grad_output * sigmoid(x) * [1 + x * (1 - sigmoid(x))]",
+  "axes": {
+    "num_elements": {
+      "type": "var",
+      "description": "Total number of elements in the flattened tensor"
+    }
+  },
+  "custom_inputs_entrypoint": null,
+  "inputs": {
+    "grad_output": {
+      "shape": [
+        "num_elements"
+      ],
+      "dtype": "float32",
+      "description": "Upstream gradient from loss with respect to output"
+    },
+    "x": {
+      "shape": [
+        "num_elements"
+      ],
+      "dtype": "float32",
+      "description": "Original input tensor from forward pass"
+    },
+    "sigmoid_x": {
+      "shape": [
+        "num_elements"
+      ],
+      "dtype": "float32",
+      "description": "Cached sigmoid(x) from forward pass to avoid recomputation"
+    }
+  },
+  "outputs": {
+    "grad_input": {
+      "shape": [
+        "num_elements"
+      ],
+      "dtype": "float32",
+      "description": "Gradient with respect to input x"
+    }
+  },
+  "reference": "import torch\n\n@torch.no_grad()\ndef run(grad_output: torch.Tensor, x: torch.Tensor, sigmoid_x: torch.Tensor) -> torch.Tensor:\n    \"\"\"\n    Backward pass for SiLU activation.\n    \n    Gradient formula:\n        grad_input = grad_output * sigmoid(x) * [1 + x * (1 - sigmoid(x))]\n    \n    Args:\n        grad_output: Upstream gradient, shape [num_elements]\n        x: Original input from forward pass, shape [num_elements]\n        sigmoid_x: Cached sigmoid(x) from forward pass, shape [num_elements]\n    \n    Returns:\n        grad_input: Gradient with respect to input x, shape [num_elements]\n    \"\"\"\n    # Compute: 1 - sigmoid(x)\n    one_minus_sigmoid = 1.0 - sigmoid_x\n    \n    # Compute: x * (1 - sigmoid(x))\n    x_times_one_minus_sigmoid = x * one_minus_sigmoid\n    \n    # Compute: 1 + x * (1 - sigmoid(x))\n    bracket_term = 1.0 + x_times_one_minus_sigmoid\n    \n    # Compute: sigmoid(x) * [1 + x * (1 - sigmoid(x))]\n    local_grad = sigmoid_x * bracket_term\n    \n    # Apply chain rule: grad_output * local_gradient\n    grad_input = grad_output * local_grad\n    \n    return grad_input\n"
+}

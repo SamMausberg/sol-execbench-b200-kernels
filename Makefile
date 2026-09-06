@@ -253,3 +253,38 @@ extra-verify-package: extra-package
 ## make extra-status            Print the live #29 and #179 B200 leaderboards.
 extra-status: image
 	$(TOOL_RUN) /workspace/tools/extra_kernels.py status
+
+# Native Runpod workflow; all dependencies and caches default to /workspace.
+NATIVE_RUN = source "$(ROOT)/tools/native_env.sh" && python "$(ROOT)/tools/campaign.py"
+NATIVE_ARGS ?=
+TRIALS ?= 3
+
+.PHONY: native-setup native-info native-fetch native-package native-test native-bench
+
+## make native-setup          Install the pinned evaluator and CUDA compiler in /workspace.
+native-setup:
+	bash "$(ROOT)/tools/bootstrap_native.sh"
+
+## make native-info           Print native environment, GPU and clock state.
+native-info:
+	$(NATIVE_RUN) info --output "$(ROOT)/.work/native-environment.json"
+
+## make native-fetch KERNEL_ID="25 53 84 85 88"  Extract pinned contracts by website ID.
+native-fetch:
+	@test -n "$(KERNEL_ID)" || { echo "set KERNEL_ID to website problem IDs" >&2; exit 2; }
+	$(NATIVE_RUN) fetch $(KERNEL_ID)
+
+## make native-package KERNEL_ID=88 SOLUTION=path/to/solution.json  Build embedded B200 JSON.
+native-package:
+	@test -n "$(KERNEL_ID)" -a -n "$(SOLUTION)" || { echo "set KERNEL_ID and SOLUTION" >&2; exit 2; }
+	$(NATIVE_RUN) package "$(KERNEL_ID)" --solution "$(SOLUTION)" $(NATIVE_ARGS)
+
+## make native-test KERNEL_ID=88 SOLUTION=path/to/solution.json  Run one official trial.
+native-test:
+	@test -n "$(KERNEL_ID)" -a -n "$(SOLUTION)" || { echo "set KERNEL_ID and SOLUTION" >&2; exit 2; }
+	$(NATIVE_RUN) bench "$(KERNEL_ID)" --solution "$(SOLUTION)" --trials 1 $(NATIVE_ARGS)
+
+## make native-bench KERNEL_ID=88 SOLUTION=path/to/solution.json  Run three official trials.
+native-bench:
+	@test -n "$(KERNEL_ID)" -a -n "$(SOLUTION)" || { echo "set KERNEL_ID and SOLUTION" >&2; exit 2; }
+	$(NATIVE_RUN) bench "$(KERNEL_ID)" --solution "$(SOLUTION)" --trials "$(TRIALS)" $(NATIVE_ARGS)

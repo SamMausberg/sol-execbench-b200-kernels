@@ -1,0 +1,44 @@
+{
+  "name": "025_video_latent_gelu_activation",
+  "hf_id": "Wan-AI/Wan2.2-T2V-A14B",
+  "description": "GELU activation function using tanh approximation applied element-wise to video latent tensors. Formula: 0.5 * x * (1 + tanh(sqrt(2/pi) * (x + 0.044715 * x^3))). This is executed in transformer feedforward networks on intermediate tensors.",
+  "axes": {
+    "batch_size": {
+      "type": "var",
+      "description": "Batch size"
+    },
+    "seq_len": {
+      "type": "var",
+      "description": "Sequence length (video tokens)"
+    },
+    "intermediate_size": {
+      "type": "const",
+      "value": 4096,
+      "description": "Intermediate dimension in feedforward network"
+    }
+  },
+  "custom_inputs_entrypoint": null,
+  "inputs": {
+    "x": {
+      "shape": [
+        "batch_size",
+        "seq_len",
+        "intermediate_size"
+      ],
+      "dtype": "float32",
+      "description": "Input tensor from feedforward intermediate layer"
+    }
+  },
+  "outputs": {
+    "output": {
+      "shape": [
+        "batch_size",
+        "seq_len",
+        "intermediate_size"
+      ],
+      "dtype": "float32",
+      "description": "GELU activated output tensor"
+    }
+  },
+  "reference": "import torch\nimport math\n\n@torch.no_grad()\ndef run(x: torch.Tensor) -> torch.Tensor:\n    \"\"\"\n    GELU activation using tanh approximation.\n    Formula: 0.5 * x * (1 + tanh(sqrt(2/pi) * (x + 0.044715 * x^3)))\n    \"\"\"\n    sqrt_2_over_pi = math.sqrt(2.0 / math.pi)\n    coeff = 0.044715\n    \n    # Compute x^3\n    x_cubed = x * x * x\n    \n    # Compute inner term: sqrt(2/pi) * (x + 0.044715 * x^3)\n    inner = sqrt_2_over_pi * (x + coeff * x_cubed)\n    \n    # Apply tanh and compute final result\n    output = 0.5 * x * (1.0 + torch.tanh(inner))\n    \n    return output\n"
+}

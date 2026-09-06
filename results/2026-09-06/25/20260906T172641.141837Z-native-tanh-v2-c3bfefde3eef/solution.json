@@ -1,0 +1,26 @@
+{
+  "author": "SamMausberg",
+  "definition": "025_video_latent_gelu_activation",
+  "description": "Single-pass FP32 GELU with native tanh approximation and tuned launch geometry.",
+  "name": "025_video_latent_gelu_activation_triton_b200_v2",
+  "sources": [
+    {
+      "content": "# SPDX-License-Identifier: Apache-2.0\n\"\"\"FP32 tanh GELU using the GPU's native tanh approximation.\"\"\"\n\nimport triton\nimport triton.language as tl\n\n\n@triton.jit\ndef _gelu(X, Y, N: tl.constexpr, BLOCK: tl.constexpr, CACHE: tl.constexpr = \"\"):\n    offset = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)\n    valid = offset < N\n    x = tl.load(X + offset, valid, 0, cache_modifier=CACHE)\n    cube = x * x * x\n    inner = 0.7978845608028654 * (x + 0.044715 * cube)\n    tanh = tl.inline_asm_elementwise(\n        \"tanh.approx.f32 $0, $1;\", constraints=\"=f,f\", args=[inner],\n        dtype=tl.float32, is_pure=True, pack=1,\n    )\n    result = (0.5 * x) * (1.0 + tanh)\n    tl.store(Y + offset, result, valid)\n\n\ndef run(x, output):\n    n = x.numel()\n    block, warps = (2048, 4) if n <= 4194304 else (4096, 16)\n    _gelu[(triton.cdiv(n, block),)](\n        x, output, n, block, num_warps=warps, enable_fp_fusion=False,\n    )\n",
+      "path": "gelu_fast.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "gelu_fast.py::run",
+    "languages": [
+      "triton"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

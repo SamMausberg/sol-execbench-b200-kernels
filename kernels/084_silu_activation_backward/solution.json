@@ -1,0 +1,25 @@
+{
+  "author": "SamMausberg",
+  "definition": "084_silu_activation_backward",
+  "description": "Fused single-pass activation with contiguous vectorized memory access.",
+  "name": "084_silu_activation_backward_triton_b200_v1",
+  "sources": [
+    {
+      "path": "kernel.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": [
+      "triton"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

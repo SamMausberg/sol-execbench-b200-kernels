@@ -1,0 +1,33 @@
+{
+  "problem_id": 25,
+  "problem_name": "025_video_latent_gelu_activation",
+  "passed": true,
+  "official_workloads": 16,
+  "full_harness_trials": 3,
+  "clock_mode": "unlocked",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "contract_sha256": "511d85adb3385906434f8221c11ee42393b6c7575b10c39ee7eda0c3a9a7a1dc",
+  "submission_sha256": "c3bfefde3eef80a0ea5da7914ac178ea15e071e3b42d816e5e58f8a5f5b71881",
+  "source_sha256": {
+    "gelu_fast.py": "bc4cc8f8f8eb46b61f44b435c30ef6f2a36871fc93f83b31d25655d8f445281c"
+  },
+  "local_sol_score": 0.6307340273530245,
+  "trial_sol_scores": [
+    0.6314684107832852,
+    0.6309175115848078,
+    0.6279991400550673
+  ],
+  "geometric_mean_latency_ms": 0.01953216922897555,
+  "max_workload_relative_spread": 0.03435114503816795,
+  "leader_snapshot_sol_score": 0.652275,
+  "recommend_submission": false,
+  "reason": "All workloads pass, but the local estimate is below the public leader; local clocks are unlocked.",
+  "archived_run": "results/2026-09-06/25/20260906T172641.141837Z-native-tanh-v2-c3bfefde3eef",
+  "summary_sha256": "c24951f9be4d79ba19488d06004e1516c378fd17d6ae70ab71c2ec0f6c189ebc",
+  "trace_sha256": {
+    "trial-1.jsonl": "b2e4b17005a542583d348581d50b4d4cd9c4ff9bb7f8e34ac49453cf40314e2e",
+    "trial-2.jsonl": "121c40e521babea94db09f54746c8273186f19f071836c1250fe91bc6171acf4",
+    "trial-3.jsonl": "b3c34c6f76180d550ae6ec79a61ceea3153092c9398af957c54b59f41b9e9410"
+  }
+}

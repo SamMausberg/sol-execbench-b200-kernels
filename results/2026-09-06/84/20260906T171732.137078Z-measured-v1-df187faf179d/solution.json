@@ -1,0 +1,26 @@
+{
+  "author": "SamMausberg",
+  "definition": "084_silu_activation_backward",
+  "description": "Fused single-pass activation with contiguous vectorized memory access.",
+  "name": "084_silu_activation_backward_triton_b200_v1",
+  "sources": [
+    {
+      "content": "# SPDX-License-Identifier: Apache-2.0\n\"\"\"SiLU backward from the saved sigmoid, fused into one memory pass.\"\"\"\n\nimport triton\nimport triton.language as tl\n\n\n@triton.jit\ndef _silu_backward(DY, X, SIGMOID, DX, N: tl.constexpr, BLOCK: tl.constexpr):\n    offset = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)\n    valid = offset < N\n    dy = tl.load(DY + offset, valid, 0)\n    x = tl.load(X + offset, valid, 0)\n    sigmoid = tl.load(SIGMOID + offset, valid, 0)\n    bracket = 1.0 + x * (1.0 - sigmoid)\n    result = dy * (sigmoid * bracket)\n    tl.store(DX + offset, result, valid)\n\n\ndef run(grad_output, x, sigmoid_x, grad_input):\n    n = x.numel()\n    block = 256 if n < 65536 else 1024\n    _silu_backward[(triton.cdiv(n, block),)](\n        grad_output, x, sigmoid_x, grad_input, n, block,\n        num_warps=4, enable_fp_fusion=False,\n    )\n",
+      "path": "kernel.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": [
+      "triton"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

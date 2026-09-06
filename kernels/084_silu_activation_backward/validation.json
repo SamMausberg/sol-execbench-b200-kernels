@@ -1,0 +1,33 @@
+{
+  "problem_id": 84,
+  "problem_name": "084_silu_activation_backward",
+  "passed": true,
+  "official_workloads": 16,
+  "full_harness_trials": 3,
+  "clock_mode": "unlocked",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "contract_sha256": "59bf63791c36d158a7fb508a5e6ba7ed0dd5207e86aa46b77fc95bb24bb765e6",
+  "submission_sha256": "df187faf179d212f618102d4573ea56bbfdbf0cb7e33bf2bebc91a57958b1535",
+  "source_sha256": {
+    "kernel.py": "486e12770781cc476f5013a69b8e737ed784b120f96f44e13486c9c773abbde5"
+  },
+  "local_sol_score": 0.5279262170493623,
+  "trial_sol_scores": [
+    0.5278197970325985,
+    0.5282940965825577,
+    0.5277181026076811
+  ],
+  "geometric_mean_latency_ms": 0.00547407218311167,
+  "max_workload_relative_spread": 0.031005859374999882,
+  "leader_snapshot_sol_score": 0.560079,
+  "recommend_submission": false,
+  "reason": "All workloads pass, but the local estimate is below the public leader; local clocks are unlocked.",
+  "archived_run": "results/2026-09-06/84/20260906T171732.137078Z-measured-v1-df187faf179d",
+  "summary_sha256": "9f2600576e038046774fa0cf0412e712d0839aa0250c06f7717fa103c25f91a9",
+  "trace_sha256": {
+    "trial-1.jsonl": "0d582b0bc8bc3119b3a9c5198e49d4bc5146c8e883dd0184f1603467d2994fba",
+    "trial-2.jsonl": "00edee19decf91eebf77512a01ba18d2449762872b69fc5358c14d8d5ae9f30d",
+    "trial-3.jsonl": "cc4a76d3c29b19d264841103a2cadb3bbd266ecba6d1b54cfb9071b34b179fb2"
+  }
+}

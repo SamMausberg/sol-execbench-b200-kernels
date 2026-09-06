@@ -1,0 +1,307 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "batch_size": {
+          "description": "Batch size",
+          "type": "var"
+        },
+        "half_head_dim": {
+          "description": "Half of head dimension for rotation pairs",
+          "expression": "head_dim // 2",
+          "type": "expr"
+        },
+        "head_dim": {
+          "description": "Dimension of each attention head",
+          "type": "const",
+          "value": 128
+        },
+        "num_heads": {
+          "description": "Number of query attention heads",
+          "type": "var"
+        },
+        "num_kv_heads": {
+          "description": "Number of key/value attention heads",
+          "type": "var"
+        },
+        "seq_len": {
+          "description": "Sequence length",
+          "type": "var"
+        }
+      },
+      "baseline": "import torch\n\n@torch.no_grad()\ndef run(\n    query: torch.Tensor,\n    key: torch.Tensor,\n    cos: torch.Tensor,\n    sin: torch.Tensor,\n):\n    \"\"\"\n    Apply rotary position embeddings to query and key tensors.\n    \n    RoPE rotation formula: x_rotated = x * cos + rotate_half(x) * sin\n    where rotate_half([x0, x1, x2, x3, ...]) = [-x_{d/2}, ..., -x_{d-1}, x_0, ..., x_{d/2-1}]\n    \n    Args:\n        query: Query tensor of shape (batch_size, num_heads, seq_len, head_dim)\n        key: Key tensor of shape (batch_size, num_kv_heads, seq_len, head_dim)\n        cos: Cosine values of shape (seq_len, head_dim)\n        sin: Sine values of shape (seq_len, head_dim)\n    \n    Returns:\n        Tuple of (rotated_query, rotated_key) with same shapes as inputs\n    \"\"\"\n    head_dim = query.shape[-1]\n    half_dim = head_dim // 2\n    \n    # Reshape cos and sin for broadcasting: (1, 1, seq_len, head_dim)\n    cos = cos.unsqueeze(0).unsqueeze(0)\n    sin = sin.unsqueeze(0).unsqueeze(0)\n    \n    # Rotate half function: for input [x0, x1, ..., x_{d-1}]\n    # returns [-x_{d/2}, ..., -x_{d-1}, x_0, ..., x_{d/2-1}]\n    def rotate_half(x):\n        x1 = x[..., :half_dim]\n        x2 = x[..., half_dim:]\n        return torch.cat([-x2, x1], dim=-1)\n    \n    # Apply rotation: x * cos + rotate_half(x) * sin\n    query_rotated = query * cos + rotate_half(query) * sin\n    key_rotated = key * cos + rotate_half(key) * sin\n    \n    return query_rotated, key_rotated\n",
+      "baseline_latency_ms": 0.008779,
+      "description": "Rotary Position Embedding (RoPE) application that rotates query and key vectors in attention mechanisms based on their positions. Splits the feature dimension into pairs, applies rotation matrices derived from position indices and frequency bands. Critical for diffusion transformers as it provides position information without learned parameters.",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 88,
+      "inputs": {
+        "cos": {
+          "description": "Precomputed cosine values for positions",
+          "dtype": "float32",
+          "shape": [
+            "seq_len",
+            "head_dim"
+          ]
+        },
+        "key": {
+          "description": "Key tensor",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "num_kv_heads",
+            "seq_len",
+            "head_dim"
+          ]
+        },
+        "query": {
+          "description": "Query tensor",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "num_heads",
+            "seq_len",
+            "head_dim"
+          ]
+        },
+        "sin": {
+          "description": "Precomputed sine values for positions",
+          "dtype": "float32",
+          "shape": [
+            "seq_len",
+            "head_dim"
+          ]
+        }
+      },
+      "latency_unit": "ms",
+      "name": "088_rotary_position_embedding_application",
+      "outputs": {
+        "key_rotated": {
+          "description": "Rotated key tensor",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "num_kv_heads",
+            "seq_len",
+            "head_dim"
+          ]
+        },
+        "query_rotated": {
+          "description": "Rotated query tensor",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "num_heads",
+            "seq_len",
+            "head_dim"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "rope",
+        "L1",
+        "model:HunyuanImage-2.1"
+      ],
+      "title": "088_rotary_position_embedding_application",
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 4,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 24,
+            "num_kv_heads": 6,
+            "seq_len": 293
+          },
+          "baseline_latency_ms": 0.016704,
+          "sol_ms": 0.0028
+        },
+        {
+          "axes": {
+            "batch_size": 32,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "seq_len": 4096
+          },
+          "baseline_latency_ms": 0.626225,
+          "sol_ms": 0.1757
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 40,
+            "num_kv_heads": 8,
+            "seq_len": 4096
+          },
+          "baseline_latency_ms": 0.102464,
+          "sol_ms": 0.0269
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 24,
+            "num_kv_heads": 8,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.071264,
+          "sol_ms": 0.018
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "seq_len": 373
+          },
+          "baseline_latency_ms": 0.021632,
+          "sol_ms": 0.0044
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 48,
+            "num_kv_heads": 6,
+            "seq_len": 919
+          },
+          "baseline_latency_ms": 0.03392,
+          "sol_ms": 0.0071
+        },
+        {
+          "axes": {
+            "batch_size": 64,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 8,
+            "num_kv_heads": 8,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.02848,
+          "sol_ms": 0.0092
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 32,
+            "num_kv_heads": 4,
+            "seq_len": 1087
+          },
+          "baseline_latency_ms": 0.078528,
+          "sol_ms": 0.0214
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 40,
+            "num_kv_heads": 8,
+            "seq_len": 131
+          },
+          "baseline_latency_ms": 0.0085595,
+          "sol_ms": 0.0008
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 48,
+            "num_kv_heads": 12,
+            "seq_len": 1321
+          },
+          "baseline_latency_ms": 0.0792325,
+          "sol_ms": 0.0217
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 64,
+            "num_kv_heads": 8,
+            "seq_len": 8192
+          },
+          "baseline_latency_ms": 0.1496005,
+          "sol_ms": 0.0403
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 36,
+            "num_kv_heads": 6,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 0.091072,
+          "sol_ms": 0.0235
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 32,
+            "num_kv_heads": 4,
+            "seq_len": 211
+          },
+          "baseline_latency_ms": 0.010784,
+          "sol_ms": 0.0014
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 56,
+            "num_kv_heads": 8,
+            "seq_len": 853
+          },
+          "baseline_latency_ms": 0.020704,
+          "sol_ms": 0.0041
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 8,
+            "num_kv_heads": 8,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.0028645,
+          "sol_ms": 0.0005
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "half_head_dim": 64,
+            "head_dim": 128,
+            "num_heads": 28,
+            "num_kv_heads": 4,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.074272,
+          "sol_ms": 0.018
+        }
+      ]
+    }
+  },
+  "response_sha256": "7a0247cf44ec4f98d9f815df0842aebee463c375efeba791e38780465fe65a50",
+  "retrieved_at": "2026-09-06T17:15:46.400372+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/88"
+}

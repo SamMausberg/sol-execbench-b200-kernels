@@ -1,0 +1,25 @@
+{
+  "author": "SamMausberg",
+  "definition": "025_video_latent_gelu_activation",
+  "description": "Single-pass FP32 GELU with native tanh approximation and tuned launch geometry.",
+  "name": "025_video_latent_gelu_activation_triton_b200_v2",
+  "sources": [
+    {
+      "path": "gelu_fast.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "gelu_fast.py::run",
+    "languages": [
+      "triton"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

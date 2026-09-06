@@ -1,0 +1,20 @@
+{
+  "author": "sol-b200-kernel-team",
+  "definition": "088_rotary_position_embedding_application",
+  "description": "One Triton launch rotates FP32 query/key pairs and reuses shared cosine/sine coefficients while preserving separate multiply/add rounding.",
+  "name": "rope_qk_paired_fp32_v1",
+  "sources": [
+    {
+      "path": "kernel.py"
+    }
+  ],
+  "spec": {
+    "binding": null,
+    "compile_options": {},
+    "dependencies": ["torch", "triton"],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": ["triton"],
+    "target_hardware": ["B200"]
+  }
+}

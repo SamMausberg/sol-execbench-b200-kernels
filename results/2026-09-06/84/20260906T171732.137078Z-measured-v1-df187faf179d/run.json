@@ -1,0 +1,173 @@
+{
+  "clock_mode": "unlocked",
+  "contract": {
+    "collection": "L1",
+    "contract_sha256": "59bf63791c36d158a7fb508a5e6ba7ed0dd5207e86aa46b77fc95bb24bb765e6",
+    "dataset_metadata_url": "https://huggingface.co/api/datasets/nvidia/SOL-ExecBench/tree/63699402f003496acc3af4eb534a5304a8ac1ea9/data",
+    "dataset_repository": "nvidia/SOL-ExecBench",
+    "dataset_revision": "63699402f003496acc3af4eb534a5304a8ac1ea9",
+    "dataset_sha256": "dbaf8476812194920e405118cc5f4abc65035b79a4307b5ee88fb07666ceed48",
+    "name": "084_silu_activation_backward",
+    "website_id": 84,
+    "workload_count": 16
+  },
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "finished_at": "2026-09-06T17:21:03.119685+00:00",
+  "gpu_lock": "/workspace/sol-execbench-b200-kernels/.work/gpu.lock",
+  "requested_trials": 3,
+  "schema_version": 1,
+  "score_source_sha256": "e6a541fd25d4413c6107b323d034099fc4f4314101dc6b32f02953b1cf449a76",
+  "source_sha256": {
+    "kernel.py": "486e12770781cc476f5013a69b8e737ed784b120f96f44e13486c9c773abbde5"
+  },
+  "started_at": "2026-09-06T17:17:32.196198+00:00",
+  "submission_sha256": "df187faf179d212f618102d4573ea56bbfdbf0cb7e33bf2bebc91a57958b1535",
+  "trials": [
+    {
+      "command": [
+        "/workspace/venvs/sol-execbench/bin/python",
+        "-m",
+        "sol_execbench.cli.main",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/84/20260906T171732.137078Z-measured-v1-df187faf179d",
+        "--solution",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/84/20260906T171732.137078Z-measured-v1-df187faf179d/solution.json",
+        "--compile-timeout",
+        "600",
+        "--timeout",
+        "3600",
+        "--verbose",
+        "-o",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/84/20260906T171732.137078Z-measured-v1-df187faf179d/trial-1.jsonl"
+      ],
+      "elapsed_seconds": 31.38168340898119,
+      "finished_at": "2026-09-06T17:20:16.726241+00:00",
+      "gpu_after": {
+        "command": [
+          "nvidia-smi",
+          "--query-gpu=uuid,name,driver_version,pstate,clocks.current.graphics,clocks.current.sm,clocks.current.memory,temperature.gpu,power.draw,power.limit,utilization.gpu,memory.used,memory.total",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "uuid, name, driver_version, pstate, clocks.current.graphics [MHz], clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], power.limit [W], utilization.gpu [%], memory.used [MiB], memory.total [MiB]\nGPU-b93d0ebe-03a8-bdde-60fe-024fb902497b, NVIDIA B200, 580.105.08, P0, 1965 MHz, 1965 MHz, 3996 MHz, 31, 237.50 W, 1000.00 W, 0 %, 0 MiB, 183359 MiB"
+      },
+      "gpu_before": {
+        "command": [
+          "nvidia-smi",
+          "--query-gpu=uuid,name,driver_version,pstate,clocks.current.graphics,clocks.current.sm,clocks.current.memory,temperature.gpu,power.draw,power.limit,utilization.gpu,memory.used,memory.total",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "uuid, name, driver_version, pstate, clocks.current.graphics [MHz], clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], power.limit [W], utilization.gpu [%], memory.used [MiB], memory.total [MiB]\nGPU-b93d0ebe-03a8-bdde-60fe-024fb902497b, NVIDIA B200, 580.105.08, P0, 600 MHz, 600 MHz, 3996 MHz, 31, 191.49 W, 1000.00 W, 0 %, 4 MiB, 183359 MiB"
+      },
+      "returncode": 0,
+      "started_at": "2026-09-06T17:19:45.227644+00:00",
+      "trial": 1
+    },
+    {
+      "command": [
+        "/workspace/venvs/sol-execbench/bin/python",
+        "-m",
+        "sol_execbench.cli.main",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/84/20260906T171732.137078Z-measured-v1-df187faf179d",
+        "--solution",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/84/20260906T171732.137078Z-measured-v1-df187faf179d/solution.json",
+        "--compile-timeout",
+        "600",
+        "--timeout",
+        "3600",
+        "--verbose",
+        "-o",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/84/20260906T171732.137078Z-measured-v1-df187faf179d/trial-2.jsonl"
+      ],
+      "elapsed_seconds": 20.748548632953316,
+      "finished_at": "2026-09-06T17:20:37.789148+00:00",
+      "gpu_after": {
+        "command": [
+          "nvidia-smi",
+          "--query-gpu=uuid,name,driver_version,pstate,clocks.current.graphics,clocks.current.sm,clocks.current.memory,temperature.gpu,power.draw,power.limit,utilization.gpu,memory.used,memory.total",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "uuid, name, driver_version, pstate, clocks.current.graphics [MHz], clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], power.limit [W], utilization.gpu [%], memory.used [MiB], memory.total [MiB]\nGPU-b93d0ebe-03a8-bdde-60fe-024fb902497b, NVIDIA B200, 580.105.08, P0, 1965 MHz, 1965 MHz, 3996 MHz, 31, 237.14 W, 1000.00 W, 0 %, 0 MiB, 183359 MiB"
+      },
+      "gpu_before": {
+        "command": [
+          "nvidia-smi",
+          "--query-gpu=uuid,name,driver_version,pstate,clocks.current.graphics,clocks.current.sm,clocks.current.memory,temperature.gpu,power.draw,power.limit,utilization.gpu,memory.used,memory.total",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "uuid, name, driver_version, pstate, clocks.current.graphics [MHz], clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], power.limit [W], utilization.gpu [%], memory.used [MiB], memory.total [MiB]\nGPU-b93d0ebe-03a8-bdde-60fe-024fb902497b, NVIDIA B200, 580.105.08, P0, 1965 MHz, 1965 MHz, 3996 MHz, 31, 237.57 W, 1000.00 W, 0 %, 0 MiB, 183359 MiB"
+      },
+      "returncode": 0,
+      "started_at": "2026-09-06T17:20:16.880690+00:00",
+      "trial": 2
+    },
+    {
+      "command": [
+        "/workspace/venvs/sol-execbench/bin/python",
+        "-m",
+        "sol_execbench.cli.main",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/84/20260906T171732.137078Z-measured-v1-df187faf179d",
+        "--solution",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/84/20260906T171732.137078Z-measured-v1-df187faf179d/solution.json",
+        "--compile-timeout",
+        "600",
+        "--timeout",
+        "3600",
+        "--verbose",
+        "-o",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/84/20260906T171732.137078Z-measured-v1-df187faf179d/trial-3.jsonl"
+      ],
+      "elapsed_seconds": 24.959965983987786,
+      "finished_at": "2026-09-06T17:21:02.993686+00:00",
+      "gpu_after": {
+        "command": [
+          "nvidia-smi",
+          "--query-gpu=uuid,name,driver_version,pstate,clocks.current.graphics,clocks.current.sm,clocks.current.memory,temperature.gpu,power.draw,power.limit,utilization.gpu,memory.used,memory.total",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "uuid, name, driver_version, pstate, clocks.current.graphics [MHz], clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], power.limit [W], utilization.gpu [%], memory.used [MiB], memory.total [MiB]\nGPU-b93d0ebe-03a8-bdde-60fe-024fb902497b, NVIDIA B200, 580.105.08, P0, 1965 MHz, 1965 MHz, 3996 MHz, 31, 237.14 W, 1000.00 W, 0 %, 0 MiB, 183359 MiB"
+      },
+      "gpu_before": {
+        "command": [
+          "nvidia-smi",
+          "--query-gpu=uuid,name,driver_version,pstate,clocks.current.graphics,clocks.current.sm,clocks.current.memory,temperature.gpu,power.draw,power.limit,utilization.gpu,memory.used,memory.total",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "uuid, name, driver_version, pstate, clocks.current.graphics [MHz], clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], power.limit [W], utilization.gpu [%], memory.used [MiB], memory.total [MiB]\nGPU-b93d0ebe-03a8-bdde-60fe-024fb902497b, NVIDIA B200, 580.105.08, P0, 1965 MHz, 1965 MHz, 3996 MHz, 31, 237.36 W, 1000.00 W, 0 %, 0 MiB, 183359 MiB"
+      },
+      "returncode": 0,
+      "started_at": "2026-09-06T17:20:37.923655+00:00",
+      "trial": 3
+    }
+  ],
+  "website_id": 84,
+  "workload_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ]
+}

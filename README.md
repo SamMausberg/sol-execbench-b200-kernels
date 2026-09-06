@@ -1,31 +1,43 @@
 # SOL-ExecBench B200 kernels
 
-CUDA C++ and CuTe DSL solutions for:
+CUDA C++, CuTe DSL, and Triton solutions for:
 
 - `029_mamba_conv1d_with_gating`
 - `038_flux_multi_head_rmsnorm_qk`
 - `003_fp8_mlp_gate_up_projection` (SOL problem 179)
+- `001_attention_softmax_dropout_value_matmul_backward`
+- `025_video_latent_gelu_activation`
+- `084_silu_activation_backward`
+- `088_rotary_position_embedding_application`
 
 Each source submission lives under its matching `kernels/` subdirectory.
 
-## Requirements
+## Native Runpod setup
 
-- Git and Make
-- Docker with NVIDIA Container Toolkit
-- NVIDIA driver 580 or newer
-- NVIDIA GPU
+The checkout, environment, toolchain, datasets, and caches live under `/workspace`.
+Run `bash tools/bootstrap_native.sh`, then `source tools/native_env.sh` in each shell.
+See [native setup](docs/native-runpod.md), [strategy](docs/strategy-2026-09-06.md),
+and [local validation results](results/2026-09-06/README.md).
 
-## Setup
+```sh
+python tools/campaign.py fetch 25 53 84 85 88
+python tools/campaign.py bench 84 --solution kernels/084_silu_activation_backward/solution.json
+python tools/campaign.py package 84 --solution kernels/084_silu_activation_backward/solution.json
+```
+
+GPU work uses a shared file lock. Local scores are estimates; this Runpod host
+denies clock locking, and official evaluations fix B200 SM clocks at 1500 MHz.
+
+## Docker setup
+
+Requires Git, Make, Docker with NVIDIA Container Toolkit, and driver 580 or newer.
 
 ```sh
 git submodule update --init --recursive
 make setup
 ```
 
-`make setup` builds the pinned evaluator image and downloads problem #38. The
-benchmark data stays under `.work/` and is not committed.
-
-## Local
+`make setup` builds the pinned evaluator image and downloads problem #38 into `.work/`.
 
 ```sh
 make info
@@ -34,8 +46,6 @@ make test
 make bench
 make profile WORKLOAD=0
 ```
-
-Local timings are not official B200 SOL Scores.
 
 ## B200
 
