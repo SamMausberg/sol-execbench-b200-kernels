@@ -1,0 +1,245 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "batch_size": {
+          "description": "Batch size",
+          "type": "var"
+        },
+        "hidden_size": {
+          "description": "Input hidden dimension",
+          "type": "const",
+          "value": 3072
+        },
+        "intermediate_size": {
+          "description": "Intermediate MLP dimension",
+          "type": "const",
+          "value": 24576
+        },
+        "seq_len": {
+          "description": "Sequence length",
+          "type": "var"
+        }
+      },
+      "baseline": "import torch\nimport math\n\n@torch.no_grad()\ndef run(x: torch.Tensor, gate_proj: torch.Tensor, up_proj: torch.Tensor) -> torch.Tensor:\n    \"\"\"\n    Fused gate and up projection with GELU-tanh activation.\n    \n    Computes: gelu_tanh(x @ gate_proj.T) * (x @ up_proj.T)\n    \n    Args:\n        x: Input tensor of shape (batch_size, seq_len, hidden_size)\n        gate_proj: Gate projection weights of shape (intermediate_size, hidden_size)\n        up_proj: Up projection weights of shape (intermediate_size, hidden_size)\n    \n    Returns:\n        Output tensor of shape (batch_size, seq_len, intermediate_size)\n    \"\"\"\n    # Compute gate projection: x @ gate_proj.T\n    # x: (batch_size, seq_len, hidden_size)\n    # gate_proj: (intermediate_size, hidden_size)\n    # gate_output: (batch_size, seq_len, intermediate_size)\n    gate_output = torch.matmul(x, gate_proj.t())\n    \n    # Compute up projection: x @ up_proj.T\n    # up_output: (batch_size, seq_len, intermediate_size)\n    up_output = torch.matmul(x, up_proj.t())\n    \n    # Apply GELU with tanh approximation to gate output\n    # GELU_tanh(x) = 0.5 * x * (1 + tanh(sqrt(2/pi) * (x + 0.044715 * x^3)))\n    sqrt_2_over_pi = math.sqrt(2.0 / math.pi)\n    gate_float = gate_output.to(torch.float32)\n    inner = sqrt_2_over_pi * (gate_float + 0.044715 * gate_float.pow(3))\n    activated_gate = 0.5 * gate_float * (1.0 + torch.tanh(inner))\n    activated_gate = activated_gate.to(gate_output.dtype)\n    \n    # Element-wise multiplication: activated_gate * up_output\n    output = activated_gate * up_output\n    \n    return output\n",
+      "baseline_latency_ms": 0.253067,
+      "description": "Gemma3's fused gate and up projection followed by GELU-tanh activation and element-wise multiplication. Computes gelu_tanh(x @ gate_proj.T) * (x @ up_proj.T) where gate_proj and up_proj are weight matrices. This fuses two parallel linear projections from hidden_size=3072 to intermediate_size=24576, followed by GELU activation on gate output and element-wise multiplication with up output.",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 48,
+      "inputs": {
+        "gate_proj": {
+          "description": "Gate projection weight matrix",
+          "dtype": "bfloat16",
+          "shape": [
+            "intermediate_size",
+            "hidden_size"
+          ]
+        },
+        "up_proj": {
+          "description": "Up projection weight matrix",
+          "dtype": "bfloat16",
+          "shape": [
+            "intermediate_size",
+            "hidden_size"
+          ]
+        },
+        "x": {
+          "description": "Input hidden states",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "hidden_size"
+          ]
+        }
+      },
+      "latency_unit": "ms",
+      "name": "048_fused_gate_up_projection_with_swiglu",
+      "outputs": {
+        "output": {
+          "description": "Output after fused gate-up projection with GELU-tanh activation",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "intermediate_size"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "mlp",
+        "L1",
+        "model:gemma-3-12b-it"
+      ],
+      "title": "048_fused_gate_up_projection_with_swiglu",
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 2,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 1321
+          },
+          "baseline_latency_ms": 0.650529,
+          "sol_ms": 0.4409
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.0998085,
+          "sol_ms": 0.0431
+        },
+        {
+          "axes": {
+            "batch_size": 64,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 1.7731875,
+          "sol_ms": 1.3663
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 8192
+          },
+          "baseline_latency_ms": 1.778435,
+          "sol_ms": 1.3663
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.277441,
+          "sol_ms": 0.1711
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 449
+          },
+          "baseline_latency_ms": 0.4468165,
+          "sol_ms": 0.2998
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 131
+          },
+          "baseline_latency_ms": 0.0966404999999999,
+          "sol_ms": 0.0406
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.481969,
+          "sol_ms": 0.3419
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 1.7713315,
+          "sol_ms": 1.3663
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.1004645,
+          "sol_ms": 0.0431
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.159809,
+          "sol_ms": 0.0858
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.277841,
+          "sol_ms": 0.1711
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.4820175,
+          "sol_ms": 0.3419
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.086032,
+          "sol_ms": 0.0406
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 0.90381,
+          "sol_ms": 0.6833
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 3072,
+            "intermediate_size": 24576,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 1.7772195,
+          "sol_ms": 1.3663
+        }
+      ]
+    }
+  },
+  "response_sha256": "31d4c02e48ac8ccb3b4801edd91c0f631ed0a9f94f14fb416a56d3868f483dd5",
+  "retrieved_at": "2026-09-06T20:37:28.312804+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/48"
+}

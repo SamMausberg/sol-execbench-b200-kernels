@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "problem_id": 55,
+  "started_at": "2026-09-06T21:12:43.184835+00:00",
+  "requested_clean_trials": 1,
+  "max_attempts": 1,
+  "sampling_seconds": 0.5,
+  "tool_sha256": "e1d4072a48a2717921e96264ccf59a2eede71e40844e7ad716847f8a873578b7",
+  "scope": "local timing qualification from sampled CUDA process identities; no hosted evaluation",
+  "attempts": [
+    {
+      "attempt": 1,
+      "command": [
+        "/workspace/venvs/sol-execbench/bin/python",
+        "/workspace/sol-execbench-b200-kernels/tools/campaign.py",
+        "bench",
+        "55",
+        "--solution",
+        "/workspace/sol-execbench-b200-kernels/kernels/055_attention_qkv_projection_with_gqa_reshape/v2.solution.json",
+        "--trials",
+        "1",
+        "--label",
+        "v2-quiet-final-20260906T211243181486Z-a1",
+        "--timeout",
+        "600",
+        "--compile-timeout",
+        "600"
+      ],
+      "returncode": 0,
+      "campaign_root_pid": 413183,
+      "campaign_process_identities": {
+        "413183": 97419771,
+        "413186": 97419821,
+        "413265": 97420266,
+        "413269": 97420279,
+        "413274": 97420303,
+        "413279": 97420416,
+        "413294": 97420517,
+        "413301": 97420561,
+        "413309": 97420574,
+        "413317": 97420584,
+        "413392": 97420873,
+        "415282": 97429570,
+        "415296": 97429585
+      },
+      "log_path": ".work/qualification/55/20260906T211243181486Z-v2-quiet-final/attempt-1.log",
+      "log_sha256": "d9a99c7aa72c08072d5328949a0e5647e8d369474cf7b056652307a6d8362618",
+      "monitor_path": ".work/qualification/55/20260906T211243181486Z-v2-quiet-final/attempt-1-processes.jsonl",
+      "monitor_sha256": "f1c7f30453ef36437856b82428428554aeca534b8609317ec36410e8f402de27",
+      "run_directory": ".work/runs/55/20260906T211249.838998Z-v2-quiet-final-20260906T211243181486Z-a1-6e1a242602da",
+      "summary_sha256": "3db811738c92f46e0b1f2cb3c23b41636276b83dbdf1ac10c7f6eafeb60cda0d",
+      "submission_sha256": "6e1a242602da79feaa02ca7173f0aafae7c9cc8c964d3fd4918d0f80f3074d75",
+      "passed": true,
+      "local_sol_score": 0.7964799171655952,
+      "trial_started_at": "2026-09-06T21:12:54.716236+00:00",
+      "trial_finished_at": "2026-09-06T21:14:24.807475+00:00",
+      "audit": {
+        "clean": false,
+        "foreign_context_observations": [
+          {
+            "timestamp": "2026-09-06T21:13:18.318299+00:00",
+            "pid": 413624,
+            "process_name": "python",
+            "memory_mib": "14",
+            "start_ticks": 97421704,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T21:13:18.818223+00:00",
+            "pid": 413624,
+            "process_name": "python",
+            "memory_mib": "1568",
+            "start_ticks": 97421704,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T21:13:19.318299+00:00",
+            "pid": 413624,
+            "process_name": "python",
+            "memory_mib": "5538",
+            "start_ticks": 97421704,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T21:13:19.818296+00:00",
+            "pid": 413624,
+            "process_name": "[No data]",
+            "memory_mib": "5538",
+            "start_ticks": 97421704,
+            "campaign_descendant": false
+          }
+        ],
+        "monitor_errors": [],
+        "samples_in_window": 180,
+        "max_sample_gap_seconds": 0.9221541881561279,
+        "qualification": "Excluded from performance qualification."
+      },
+      "status": "contaminated"
+    }
+  ],
+  "complete": false,
+  "aggregate": null,
+  "stop_reason": "attempt limit reached",
+  "finished_at": "2026-09-06T21:14:25.453832+00:00"
+}

@@ -17,17 +17,21 @@ the official 1500 MHz SM clock setting, so local leads need additional margin.
 | 033 post-norm residual | 0.782529 | 0.795472 | 16 workloads x 3 trials; 4 exact edge cases | Below leader; retain for collection coverage |
 
 The remaining positions will be selected from measured opportunities. Problem
-055 passes five full correctness trials across two frozen versions. The current
-version also passes 38 layout and value checks with 114 exact outputs. Its raw
-score is promising, but every timing trial contains foreign CUDA contexts;
-three uncontended repeats remain pending. Problem 050 passes three full trials
+055 passes nine full correctness trials across two frozen versions. The current
+version also passes 38 layout and value checks with 114 exact outputs. Two
+timing trials qualify at a combined score of 0.796114 versus leader 0.684349,
+with a 25.47% uniform latency buffer. One further qualified repeat and stronger
+clock-margin evidence remain needed. Other timing trials contain foreign
+CUDA contexts and are excluded. Problem 050 passes three full trials
 and ten exact edge cases, also without a qualified timing trial.
 
 Problem 036 passes all official cases and 16 extra checks with explicit FP32
 emulation. Its six-product expansion passes 192 checks, but conversion overhead
 prevents a complete-path speedup. It is parked below the leader. Current work
 targets 003 vocabulary projection, 032 attention output layout, 035 modulation
-projection, and 048 paired gate/up projection. A bounded CuTe experiment for
+projection. Problem 048 passes all official workloads and 11 extra checks;
+its unqualified 0.770943 score has only a 3.76% uniform latency buffer and is
+parked. A bounded CuTe experiment for
 036 will generate FP32 fragments inside GEMM shared memory to reduce conversion
 traffic. Problems 119 and 173 remain partial investigations; neither establishes a lead.
 

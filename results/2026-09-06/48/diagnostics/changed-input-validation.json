@@ -1,0 +1,288 @@
+{
+  "scope": "changed inputs and noncontiguous fallback, original tolerance; no timing claims",
+  "started_at": "2026-09-06T20:58:14.439570+00:00",
+  "source_sha256": {
+    "cute_dual.py": "ebea292d5d9d715f80cc7638e3c0bd70c5f0a53e3f70bf24aac8a7ca5b66c5d2",
+    "dual_kernel.py": "e773f8e30587406015a309e4504dca1b732d8b3ce7c13f8c5acce5e958ca9721",
+    "validate_dual.py": "0b3fe1a7e221fd457db9be247328139f80166bf731ef703fff995ae834365c77"
+  },
+  "records": [
+    {
+      "workload": 6,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 131
+      },
+      "weight_scale": 1.0,
+      "layout": "dense",
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 3.2000000000000005e-05,
+        "max_rtol": 0.05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "workload": 6,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 131
+      },
+      "weight_scale": 0.03125,
+      "layout": "dense",
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 3.2000000000000005e-05,
+        "max_rtol": 0.05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "workload": 6,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 131
+      },
+      "weight_scale": 32.0,
+      "layout": "dense",
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 3.2000000000000005e-05,
+        "max_rtol": 0.05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "workload": 4,
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 256
+      },
+      "weight_scale": 1.0,
+      "layout": "dense",
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 3.3e-05,
+        "max_rtol": 0.05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "workload": 4,
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 256
+      },
+      "weight_scale": 0.03125,
+      "layout": "dense",
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 3.3e-05,
+        "max_rtol": 0.05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "workload": 4,
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 256
+      },
+      "weight_scale": 32.0,
+      "layout": "dense",
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 3.3e-05,
+        "max_rtol": 0.05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "workload": 2,
+      "axes": {
+        "batch_size": 64,
+        "seq_len": 128
+      },
+      "weight_scale": 1.0,
+      "layout": "dense",
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 8.400000000000001e-05,
+        "max_rtol": 0.05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "workload": 2,
+      "axes": {
+        "batch_size": 64,
+        "seq_len": 128
+      },
+      "weight_scale": 0.03125,
+      "layout": "dense",
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 8.400000000000001e-05,
+        "max_rtol": 0.05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "workload": 2,
+      "axes": {
+        "batch_size": 64,
+        "seq_len": 128
+      },
+      "weight_scale": 32.0,
+      "layout": "dense",
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 8.400000000000001e-05,
+        "max_rtol": 0.05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "workload": 13,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "weight_scale": 1.0,
+      "layout": "strided",
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 3.2000000000000005e-05,
+        "max_rtol": 0.05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "workload": 13,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "weight_scale": 1.0,
+      "layout": "zero_x",
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 3.2000000000000005e-05,
+        "max_rtol": 0.05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    }
+  ],
+  "passed": true,
+  "completed_at": "2026-09-06T20:58:48.267570+00:00"
+}

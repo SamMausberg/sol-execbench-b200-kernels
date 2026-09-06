@@ -91,6 +91,86 @@
       },
       "timing_valid_for_ranking": false,
       "observed_unqualified_sol_score": 0.7960824850970432
+    },
+    {
+      "run_directory": ".work/runs/55/20260906T210359.596551Z-v2-quiet-window-20260906T210343165123Z-a1-6e1a242602da",
+      "archived_run": "results/2026-09-06/55/20260906T210359.596551Z-v2-quiet-window-20260906T210343165123Z-a1-6e1a242602da",
+      "summary_sha256": "a4362de68f066cda5f7c146ce811306939a16abad91d5d91f8b29138c5f37165",
+      "submission_sha256": "6e1a242602da79feaa02ca7173f0aafae7c9cc8c964d3fd4918d0f80f3074d75",
+      "source_sha256": {
+        "cute_kernel.py": "dbd3c56cb9e95182d9aafa94a8fea9b704656aff6975ee7f41671272ddebba39",
+        "cute_kernel_v2.py": "045646eb480d3da7a6fe78c855d6f75da7767ccc12d8e75d512d8d343fee7645",
+        "cute_qkv.py": "c2b0080989041039c0d3e5e821b6eecb701fcb8700aebcb9ec1996c827eee49f"
+      },
+      "passed": true,
+      "selected_workloads": 16,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "944cea34524e1b1110350a7bb292a8d1a41fd9c13d21b9518bda831c741e3a2a"
+      },
+      "timing_valid_for_ranking": true,
+      "observed_unqualified_sol_score": 0.7961669339246267,
+      "qualification_status": "qualified"
+    },
+    {
+      "run_directory": ".work/runs/55/20260906T210639.936937Z-v2-quiet-repeats-20260906T210633006200Z-a1-6e1a242602da",
+      "archived_run": "results/2026-09-06/55/20260906T210639.936937Z-v2-quiet-repeats-20260906T210633006200Z-a1-6e1a242602da",
+      "summary_sha256": "5cebe2d3940e4b6aa3f770d860807ebdd003b6020d8cc022d2247d72c693ec17",
+      "submission_sha256": "6e1a242602da79feaa02ca7173f0aafae7c9cc8c964d3fd4918d0f80f3074d75",
+      "source_sha256": {
+        "cute_kernel.py": "dbd3c56cb9e95182d9aafa94a8fea9b704656aff6975ee7f41671272ddebba39",
+        "cute_kernel_v2.py": "045646eb480d3da7a6fe78c855d6f75da7767ccc12d8e75d512d8d343fee7645",
+        "cute_qkv.py": "c2b0080989041039c0d3e5e821b6eecb701fcb8700aebcb9ec1996c827eee49f"
+      },
+      "passed": true,
+      "selected_workloads": 16,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "731dfb418501a225ff9cdae692c6202e9e3db9fb721387f197b2eff6a89cb5d1"
+      },
+      "timing_valid_for_ranking": true,
+      "observed_unqualified_sol_score": 0.7960622392181677,
+      "qualification_status": "qualified"
+    },
+    {
+      "run_directory": ".work/runs/55/20260906T210831.426784Z-v2-quiet-repeats-20260906T210633006200Z-a2-6e1a242602da",
+      "archived_run": "results/2026-09-06/55/20260906T210831.426784Z-v2-quiet-repeats-20260906T210633006200Z-a2-6e1a242602da",
+      "summary_sha256": "e17945889f22a4e35bfd056189dabf8312ae99a7a46d928a061fb62b2f6239eb",
+      "submission_sha256": "6e1a242602da79feaa02ca7173f0aafae7c9cc8c964d3fd4918d0f80f3074d75",
+      "source_sha256": {
+        "cute_kernel.py": "dbd3c56cb9e95182d9aafa94a8fea9b704656aff6975ee7f41671272ddebba39",
+        "cute_kernel_v2.py": "045646eb480d3da7a6fe78c855d6f75da7767ccc12d8e75d512d8d343fee7645",
+        "cute_qkv.py": "c2b0080989041039c0d3e5e821b6eecb701fcb8700aebcb9ec1996c827eee49f"
+      },
+      "passed": true,
+      "selected_workloads": 16,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "ce86341136d222d3998a60ab91a62f38089f914c3528782097b0aacd9b690115"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": 0.7964247330221207,
+      "qualification_status": "contaminated"
+    },
+    {
+      "run_directory": ".work/runs/55/20260906T211249.838998Z-v2-quiet-final-20260906T211243181486Z-a1-6e1a242602da",
+      "archived_run": "results/2026-09-06/55/20260906T211249.838998Z-v2-quiet-final-20260906T211243181486Z-a1-6e1a242602da",
+      "summary_sha256": "3db811738c92f46e0b1f2cb3c23b41636276b83dbdf1ac10c7f6eafeb60cda0d",
+      "submission_sha256": "6e1a242602da79feaa02ca7173f0aafae7c9cc8c964d3fd4918d0f80f3074d75",
+      "source_sha256": {
+        "cute_kernel.py": "dbd3c56cb9e95182d9aafa94a8fea9b704656aff6975ee7f41671272ddebba39",
+        "cute_kernel_v2.py": "045646eb480d3da7a6fe78c855d6f75da7767ccc12d8e75d512d8d343fee7645",
+        "cute_qkv.py": "c2b0080989041039c0d3e5e821b6eecb701fcb8700aebcb9ec1996c827eee49f"
+      },
+      "passed": true,
+      "selected_workloads": 16,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "11e5d47db1badc9aa1b318701f68d35814f7a91956a258989055d6ec684415bd"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": 0.7964799171655952,
+      "qualification_status": "contaminated"
     }
   ],
   "reports": [
@@ -277,13 +357,125 @@
       "archived_sha256": "cf418bd440d0f88c515831b2e3070c8fd11c67e7cbe86590f8055b83f080f47c",
       "redaction": null,
       "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/55/20260906T210343165123Z-v2-quiet-window/attempt-1-processes.jsonl",
+      "original_sha256": "269983401635a6079504284910dae66aa79321647aa9822c6dd279a669a19f43",
+      "archived_path": "results/2026-09-06/55/qualification/20260906T210343165123Z-v2-quiet-window/attempt-1-processes.jsonl",
+      "archived_sha256": "269983401635a6079504284910dae66aa79321647aa9822c6dd279a669a19f43",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/55/20260906T210343165123Z-v2-quiet-window/attempt-1.log",
+      "original_sha256": "7fbbd1ec6a59172cc9bf74311d9c133af059a8b8f2e380e4ee374b6682e63754",
+      "archived_path": "results/2026-09-06/55/qualification/20260906T210343165123Z-v2-quiet-window/attempt-1.console.txt",
+      "archived_sha256": "7fbbd1ec6a59172cc9bf74311d9c133af059a8b8f2e380e4ee374b6682e63754",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/55/20260906T210343165123Z-v2-quiet-window/idle-processes.jsonl",
+      "original_sha256": "f1b734371cc4411e943d93ccf15edb2be673fe92d3de503216b281e65d6c95b2",
+      "archived_path": "results/2026-09-06/55/qualification/20260906T210343165123Z-v2-quiet-window/idle-processes.jsonl",
+      "archived_sha256": "f1b734371cc4411e943d93ccf15edb2be673fe92d3de503216b281e65d6c95b2",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/55/20260906T210343165123Z-v2-quiet-window/qualification.json",
+      "original_sha256": "166e8a6a64dec0be4edbd18dcb49633d558fdb03984006c0f09eb77e11848cf6",
+      "archived_path": "results/2026-09-06/55/qualification/20260906T210343165123Z-v2-quiet-window/qualification.json",
+      "archived_sha256": "166e8a6a64dec0be4edbd18dcb49633d558fdb03984006c0f09eb77e11848cf6",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/55/20260906T210633006200Z-v2-quiet-repeats/attempt-1-processes.jsonl",
+      "original_sha256": "fd455e25bc247ff3398ca6ccc3197cf96fe0d02f754071743cc455699f3b8214",
+      "archived_path": "results/2026-09-06/55/qualification/20260906T210633006200Z-v2-quiet-repeats/attempt-1-processes.jsonl",
+      "archived_sha256": "fd455e25bc247ff3398ca6ccc3197cf96fe0d02f754071743cc455699f3b8214",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/55/20260906T210633006200Z-v2-quiet-repeats/attempt-1.log",
+      "original_sha256": "aaaca17e86bf0b2ac48c89ab6742ef61c032486f8dd025bf6650cd204e7e0b1c",
+      "archived_path": "results/2026-09-06/55/qualification/20260906T210633006200Z-v2-quiet-repeats/attempt-1.console.txt",
+      "archived_sha256": "aaaca17e86bf0b2ac48c89ab6742ef61c032486f8dd025bf6650cd204e7e0b1c",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/55/20260906T210633006200Z-v2-quiet-repeats/attempt-2-processes.jsonl",
+      "original_sha256": "a58dab520faa96e51e233dc99483a7e16ed7ffed556e50e36e8c762d5c626a14",
+      "archived_path": "results/2026-09-06/55/qualification/20260906T210633006200Z-v2-quiet-repeats/attempt-2-processes.jsonl",
+      "archived_sha256": "a58dab520faa96e51e233dc99483a7e16ed7ffed556e50e36e8c762d5c626a14",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/55/20260906T210633006200Z-v2-quiet-repeats/attempt-2.log",
+      "original_sha256": "d8166cc990956343654e825a44cd9f687547f7f7bff42e2090d2fa6c644c6444",
+      "archived_path": "results/2026-09-06/55/qualification/20260906T210633006200Z-v2-quiet-repeats/attempt-2.console.txt",
+      "archived_sha256": "d8166cc990956343654e825a44cd9f687547f7f7bff42e2090d2fa6c644c6444",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/55/20260906T210633006200Z-v2-quiet-repeats/idle-processes.jsonl",
+      "original_sha256": "902d2097abcda9d0f788560f4d3975ef883a0c9571a77e5ab4ba2e4980ffc34a",
+      "archived_path": "results/2026-09-06/55/qualification/20260906T210633006200Z-v2-quiet-repeats/idle-processes.jsonl",
+      "archived_sha256": "902d2097abcda9d0f788560f4d3975ef883a0c9571a77e5ab4ba2e4980ffc34a",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/55/20260906T210633006200Z-v2-quiet-repeats/qualification.json",
+      "original_sha256": "e1dfd8620cc7d39b4f7a5b7ac432a797e167f938a8abce3ac9d0f51ad5becec2",
+      "archived_path": "results/2026-09-06/55/qualification/20260906T210633006200Z-v2-quiet-repeats/qualification.json",
+      "archived_sha256": "e1dfd8620cc7d39b4f7a5b7ac432a797e167f938a8abce3ac9d0f51ad5becec2",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/55/20260906T211243181486Z-v2-quiet-final/attempt-1-processes.jsonl",
+      "original_sha256": "f1c7f30453ef36437856b82428428554aeca534b8609317ec36410e8f402de27",
+      "archived_path": "results/2026-09-06/55/qualification/20260906T211243181486Z-v2-quiet-final/attempt-1-processes.jsonl",
+      "archived_sha256": "f1c7f30453ef36437856b82428428554aeca534b8609317ec36410e8f402de27",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/55/20260906T211243181486Z-v2-quiet-final/attempt-1.log",
+      "original_sha256": "d9a99c7aa72c08072d5328949a0e5647e8d369474cf7b056652307a6d8362618",
+      "archived_path": "results/2026-09-06/55/qualification/20260906T211243181486Z-v2-quiet-final/attempt-1.console.txt",
+      "archived_sha256": "d9a99c7aa72c08072d5328949a0e5647e8d369474cf7b056652307a6d8362618",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/55/20260906T211243181486Z-v2-quiet-final/idle-processes.jsonl",
+      "original_sha256": "0034487526bcf29f5488e5154d41989fe7fa50d25285d9f8050172e8d6424697",
+      "archived_path": "results/2026-09-06/55/qualification/20260906T211243181486Z-v2-quiet-final/idle-processes.jsonl",
+      "archived_sha256": "0034487526bcf29f5488e5154d41989fe7fa50d25285d9f8050172e8d6424697",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/55/20260906T211243181486Z-v2-quiet-final/qualification.json",
+      "original_sha256": "289120fb62276288524f4659a0a0cf33495577bf4afba66e68a725867b0568be",
+      "archived_path": "results/2026-09-06/55/qualification/20260906T211243181486Z-v2-quiet-final/qualification.json",
+      "archived_sha256": "289120fb62276288524f4659a0a0cf33495577bf4afba66e68a725867b0568be",
+      "redaction": null,
+      "normalized_process_name_fields": 0
     }
   ],
-  "timing_valid_for_ranking": false,
+  "timing_valid_for_ranking": "two qualified V2 trials; remaining trials are excluded",
   "notes": [
-    "Exact run artifacts retain their recorded hashes.",
-    "Monitor report copies normalize executable paths to basenames; both original and archived hashes are recorded.",
-    "Hash fields inside copied qualification reports still refer to original monitor files; use this index to locate normalized copies.",
-    "Foreign CUDA contexts and unlocked clocks exclude these timings from qualified ranking comparisons."
+    "Exact run artifacts retain recorded hashes.",
+    "The four quiet-window attempts include two qualified and two contaminated trials of the same V2 package.",
+    "A third qualified repeat and a stronger clock margin remain needed before a confident submission recommendation.",
+    "Older process-report copies may normalize executable paths; original and archived hashes identify transformations."
   ]
 }

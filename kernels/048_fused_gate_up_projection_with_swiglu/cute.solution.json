@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "048_fused_gate_up_projection_with_swiglu",
+  "description": "Paired persistent BF16 gate/up CTAs with reference rounding, GELU-tanh, and shared-memory exchange before the final multiply.",
+  "name": "048_cute_paired_gelu_b200_experiment",
+  "sources": [{"path": "cute_kernel.py"}, {"path": "cute_paired.py"}],
+  "spec": {
+    "dependencies": ["torch", "nvidia-cutlass-dsl", "cuda-python"],
+    "destination_passing_style": true,
+    "entry_point": "cute_kernel.py::run",
+    "languages": ["pytorch", "cute_dsl"],
+    "target_hardware": ["B200"]
+  }
+}

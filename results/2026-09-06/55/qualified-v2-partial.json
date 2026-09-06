@@ -1,0 +1,306 @@
+{
+  "qualified_trials": 2,
+  "submission_sha256": "6e1a242602da79feaa02ca7173f0aafae7c9cc8c964d3fd4918d0f80f3074d75",
+  "contract_sha256": "916aaca39f5e3d8a79f430704bb8f784d3c9d1519dd961ef574c33eb904f4d3d",
+  "clock_mode": "unlocked",
+  "local_sol_score": 0.7961143514966493,
+  "trial_sol_scores": [
+    0.7961669339246267,
+    0.7960622392181677
+  ],
+  "workloads": [
+    {
+      "uuid": "bd1867e7-53c0-50fc-9241-df18d334e239",
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 128
+      },
+      "latencies_ms": [
+        0.010816,
+        0.01088
+      ],
+      "median_latency_ms": 0.010848,
+      "baseline_latency_ms": 0.026608,
+      "sol_ms": 0.004,
+      "score": 0.7675176534492123,
+      "relative_spread": 0.005899705014749406
+    },
+    {
+      "uuid": "b1f4172c-111f-52dd-8ee3-9f666f87b5d1",
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 211
+      },
+      "latencies_ms": [
+        0.010784499999999999,
+        0.0107515
+      ],
+      "median_latency_ms": 0.010768,
+      "baseline_latency_ms": 0.025056,
+      "sol_ms": 0.0033,
+      "score": 0.7444566110046538,
+      "relative_spread": 0.003064635958395088
+    },
+    {
+      "uuid": "3c883778-3dd6-5a18-aed7-c85cc64167a2",
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 128
+      },
+      "latencies_ms": [
+        0.034976,
+        0.035024
+      ],
+      "median_latency_ms": 0.035,
+      "baseline_latency_ms": 0.063377,
+      "sol_ms": 0.0289,
+      "score": 0.8496685314340636,
+      "relative_spread": 0.0013714285714285551
+    },
+    {
+      "uuid": "fd58a3d8-a238-56ed-9757-e99b664b940f",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 449
+      },
+      "latencies_ms": [
+        0.010847,
+        0.01088
+      ],
+      "median_latency_ms": 0.010863500000000002,
+      "baseline_latency_ms": 0.026704,
+      "sol_ms": 0.0035,
+      "score": 0.7591068945775741,
+      "relative_spread": 0.00303769503382888
+    },
+    {
+      "uuid": "6617d544-0ca8-588a-9b94-82910b20da93",
+      "axes": {
+        "batch_size": 16,
+        "seq_len": 512
+      },
+      "latencies_ms": [
+        0.0648,
+        0.064831
+      ],
+      "median_latency_ms": 0.0648155,
+      "baseline_latency_ms": 0.100912,
+      "sol_ms": 0.0573,
+      "score": 0.8530047430443499,
+      "relative_spread": 0.0004782806581759494
+    },
+    {
+      "uuid": "fcf846e8-6874-5222-bf15-619bd4db21c0",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 131
+      },
+      "latencies_ms": [
+        0.00752,
+        0.00752
+      ],
+      "median_latency_ms": 0.00752,
+      "baseline_latency_ms": 0.023776,
+      "sol_ms": 0.0021,
+      "score": 0.7999704753469146,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "0f7a1e7e-5360-5130-8c38-bbfd2ca96036",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 4096
+      },
+      "latencies_ms": [
+        0.035104,
+        0.035135
+      ],
+      "median_latency_ms": 0.0351195,
+      "baseline_latency_ms": 0.063648,
+      "sol_ms": 0.0289,
+      "score": 0.8481845365228535,
+      "relative_spread": 0.0008827004940274295
+    },
+    {
+      "uuid": "e5dd4150-997d-5144-a760-1539b0294ce5",
+      "axes": {
+        "batch_size": 16,
+        "seq_len": 128
+      },
+      "latencies_ms": [
+        0.02464,
+        0.024672
+      ],
+      "median_latency_ms": 0.024655999999999997,
+      "baseline_latency_ms": 0.0437125,
+      "sol_ms": 0.0146,
+      "score": 0.7432630813025775,
+      "relative_spread": 0.0012978585334198888
+    },
+    {
+      "uuid": "d99dc9db-8654-58ae-96bc-d9e9617f4a08",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 512
+      },
+      "latencies_ms": [
+        0.010912,
+        0.01088
+      ],
+      "median_latency_ms": 0.010896,
+      "baseline_latency_ms": 0.026624,
+      "sol_ms": 0.004,
+      "score": 0.7663956639566396,
+      "relative_spread": 0.0029368575624081354
+    },
+    {
+      "uuid": "70f6f338-e7b2-5a60-a52e-a56fbc3ea580",
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 512
+      },
+      "latencies_ms": [
+        0.01504,
+        0.01504
+      ],
+      "median_latency_ms": 0.01504,
+      "baseline_latency_ms": 0.032577,
+      "sol_ms": 0.0075,
+      "score": 0.7688322040653648,
+      "relative_spread": 0.0
+    },
+    {
+      "uuid": "2918fc46-6c9e-535a-aff2-d400afcfed7d",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1024
+      },
+      "latencies_ms": [
+        0.01504,
+        0.015072
+      ],
+      "median_latency_ms": 0.015056,
+      "baseline_latency_ms": 0.032608,
+      "sol_ms": 0.0075,
+      "score": 0.7686749938770512,
+      "relative_spread": 0.002125398512221093
+    },
+    {
+      "uuid": "ef71c699-174c-5f6f-afc9-b9c22613b56c",
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 1024
+      },
+      "latencies_ms": [
+        0.0351675,
+        0.035136
+      ],
+      "median_latency_ms": 0.035151749999999995,
+      "baseline_latency_ms": 0.06352,
+      "sol_ms": 0.0289,
+      "score": 0.8470398257965467,
+      "relative_spread": 0.0008961147026818526
+    },
+    {
+      "uuid": "e2fcec04-3fc5-5b8d-bc4b-641a03bcb325",
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 2048
+      },
+      "latencies_ms": [
+        0.035008,
+        0.034991999999999995
+      ],
+      "median_latency_ms": 0.034999999999999996,
+      "baseline_latency_ms": 0.063568,
+      "sol_ms": 0.0289,
+      "score": 0.8503728414442703,
+      "relative_spread": 0.00045714285714291785
+    },
+    {
+      "uuid": "4937ec86-36ba-53a5-8982-1be8f00c1e4b",
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 2048
+      },
+      "latencies_ms": [
+        0.0246085,
+        0.02464
+      ],
+      "median_latency_ms": 0.02462425,
+      "baseline_latency_ms": 0.04368,
+      "sol_ms": 0.0146,
+      "score": 0.7436531834774992,
+      "relative_spread": 0.0012792267784805741
+    },
+    {
+      "uuid": "ebd8dec4-357b-593c-b4e7-c8cec40b6b41",
+      "axes": {
+        "batch_size": 64,
+        "seq_len": 128
+      },
+      "latencies_ms": [
+        0.0648155,
+        0.0647035
+      ],
+      "median_latency_ms": 0.0647595,
+      "baseline_latency_ms": 0.100656,
+      "sol_ms": 0.0573,
+      "score": 0.8532042388641261,
+      "relative_spread": 0.001729475984218547
+    },
+    {
+      "uuid": "e6139f6a-d4bd-57a7-837b-0a63d82d0c3d",
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 541
+      },
+      "latencies_ms": [
+        0.015168,
+        0.0151515
+      ],
+      "median_latency_ms": 0.01515975,
+      "baseline_latency_ms": 0.032832,
+      "sol_ms": 0.0079,
+      "score": 0.7744841457826928,
+      "relative_spread": 0.0010884084500073653
+    }
+  ],
+  "leaderboard_snapshot_score": 0.684349,
+  "leaderboard_snapshot": "results/2026-09-06/55/diagnostics/55-after-quiet-window.json",
+  "uniform_latency_buffer_percent": 25.465865329811123,
+  "hypothetical_uniform_1_31_latency_score": 0.66469260218256,
+  "sensitivity_scope": "uniform slowdown sensitivity, not a prediction of the clock difference",
+  "required_qualified_trials": 3,
+  "recommend_submission": false,
+  "attempts": [
+    {
+      "run_directory": ".work/runs/55/20260906T210359.596551Z-v2-quiet-window-20260906T210343165123Z-a1-6e1a242602da",
+      "status": "qualified",
+      "submission_sha256": "6e1a242602da79feaa02ca7173f0aafae7c9cc8c964d3fd4918d0f80f3074d75",
+      "local_sol_score": 0.7961669339246267,
+      "foreign_observations": 0
+    },
+    {
+      "run_directory": ".work/runs/55/20260906T210639.936937Z-v2-quiet-repeats-20260906T210633006200Z-a1-6e1a242602da",
+      "status": "qualified",
+      "submission_sha256": "6e1a242602da79feaa02ca7173f0aafae7c9cc8c964d3fd4918d0f80f3074d75",
+      "local_sol_score": 0.7960622392181677,
+      "foreign_observations": 0
+    },
+    {
+      "run_directory": ".work/runs/55/20260906T210831.426784Z-v2-quiet-repeats-20260906T210633006200Z-a2-6e1a242602da",
+      "status": "contaminated",
+      "submission_sha256": "6e1a242602da79feaa02ca7173f0aafae7c9cc8c964d3fd4918d0f80f3074d75",
+      "local_sol_score": 0.7964247330221207,
+      "foreign_observations": 3
+    },
+    {
+      "run_directory": ".work/runs/55/20260906T211249.838998Z-v2-quiet-final-20260906T211243181486Z-a1-6e1a242602da",
+      "status": "contaminated",
+      "submission_sha256": "6e1a242602da79feaa02ca7173f0aafae7c9cc8c964d3fd4918d0f80f3074d75",
+      "local_sol_score": 0.7964799171655952,
+      "foreign_observations": 4
+    }
+  ]
+}

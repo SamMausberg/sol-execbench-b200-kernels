@@ -1,0 +1,68 @@
+{
+  "clock_mode": "unlocked",
+  "complete_problem": false,
+  "contract_sha256": "2ab97fd185ac2d41a6a10421418c89d008106f2c0deca2bb9bb9fcdc1c675a3b",
+  "environment_file": "environment.json",
+  "environment_sha256": "a3865f9f7d808815d37de50f2ebe55902b9467314c27d881879bc27667f39115",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "geometric_mean_latency_ms": 0.077056,
+  "local_mean_sol_score": 0.5548065650644782,
+  "passed": true,
+  "problem_mean_sol_score": null,
+  "problem_name": "048_fused_gate_up_projection_with_swiglu",
+  "recorded_at": "2026-09-06T20:40:48.600354+00:00",
+  "requested_trials": 1,
+  "result_scope": "local estimate; official leaderboard requires server evaluation",
+  "schema_version": 1,
+  "score_aggregation": "arithmetic mean of per-workload SOL scores; per-workload latency is the median across trials",
+  "score_formula": "1 / (1 + (latency_ms - sol_ms) / (baseline_latency_ms - sol_ms))",
+  "score_source_retrieved_at": "2026-09-06T20:37:28.312804+00:00",
+  "score_source_sha256": "3def1f1c814326feca331689fad27e5954321e7d7d35f60045d827701b5bb1bf",
+  "score_source_url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/48",
+  "selected_workloads": 1,
+  "sol_is_dummy": false,
+  "submission_sha256": "030d3eb365ec1dda74f6c8b53820cb8a1ac5f0220af4171613f4ac321480bd8e",
+  "total_workloads": 16,
+  "trace_sha256": {
+    "trial-1.jsonl": "e3675cd9ee135e472dd6d2e5cba12efac30cac6a0a743b061a2399bbcb162669"
+  },
+  "trial_mean_sol_scores": [
+    0.5548065650644782
+  ],
+  "website_id": 48,
+  "workloads": [
+    {
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "baseline_latency_ms": 0.086032,
+      "below_sol_bound": false,
+      "latency_ms_median": 0.077056,
+      "median_latency_sol_score": 0.5548065650644782,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 0.077056,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.0406,
+      "trial_sol_scores": [
+        0.5548065650644782
+      ],
+      "uuid": "2f5ec70e-5498-5516-bf3f-20159665dcc8"
+    }
+  ]
+}

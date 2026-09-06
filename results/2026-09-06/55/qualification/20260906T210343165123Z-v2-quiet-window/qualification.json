@@ -1,0 +1,319 @@
+{
+  "schema_version": 1,
+  "problem_id": 55,
+  "started_at": "2026-09-06T21:03:43.167550+00:00",
+  "requested_clean_trials": 1,
+  "max_attempts": 1,
+  "sampling_seconds": 0.5,
+  "tool_sha256": "e1d4072a48a2717921e96264ccf59a2eede71e40844e7ad716847f8a873578b7",
+  "scope": "local timing qualification from sampled CUDA process identities; no hosted evaluation",
+  "attempts": [
+    {
+      "attempt": 1,
+      "command": [
+        "/workspace/venvs/sol-execbench/bin/python",
+        "/workspace/sol-execbench-b200-kernels/tools/campaign.py",
+        "bench",
+        "55",
+        "--solution",
+        "/workspace/sol-execbench-b200-kernels/kernels/055_attention_qkv_projection_with_gqa_reshape/v2.solution.json",
+        "--trials",
+        "1",
+        "--label",
+        "v2-quiet-window-20260906T210343165123Z-a1",
+        "--timeout",
+        "600",
+        "--compile-timeout",
+        "600"
+      ],
+      "returncode": 0,
+      "campaign_root_pid": 400360,
+      "campaign_process_identities": {
+        "400360": 97366748,
+        "400390": 97366794,
+        "400394": 97366801,
+        "400602": 97367294,
+        "400617": 97367415,
+        "400623": 97367524,
+        "400636": 97367593,
+        "400650": 97367604,
+        "400725": 97367904
+      },
+      "log_path": ".work/qualification/55/20260906T210343165123Z-v2-quiet-window/attempt-1.log",
+      "log_sha256": "7fbbd1ec6a59172cc9bf74311d9c133af059a8b8f2e380e4ee374b6682e63754",
+      "monitor_path": ".work/qualification/55/20260906T210343165123Z-v2-quiet-window/attempt-1-processes.jsonl",
+      "monitor_sha256": "269983401635a6079504284910dae66aa79321647aa9822c6dd279a669a19f43",
+      "run_directory": ".work/runs/55/20260906T210359.596551Z-v2-quiet-window-20260906T210343165123Z-a1-6e1a242602da",
+      "summary_sha256": "a4362de68f066cda5f7c146ce811306939a16abad91d5d91f8b29138c5f37165",
+      "submission_sha256": "6e1a242602da79feaa02ca7173f0aafae7c9cc8c964d3fd4918d0f80f3074d75",
+      "passed": true,
+      "local_sol_score": 0.7961669339246267,
+      "trial_started_at": "2026-09-06T21:04:04.905005+00:00",
+      "trial_finished_at": "2026-09-06T21:05:36.771434+00:00",
+      "audit": {
+        "clean": true,
+        "foreign_context_observations": [],
+        "monitor_errors": [],
+        "samples_in_window": 184,
+        "max_sample_gap_seconds": 1.155216932296753,
+        "qualification": "No foreign CUDA context observed in the sampled trial window. Sub-sample overlap cannot be excluded."
+      },
+      "status": "qualified"
+    }
+  ],
+  "complete": true,
+  "aggregate": {
+    "qualified_trials": 1,
+    "submission_sha256": "6e1a242602da79feaa02ca7173f0aafae7c9cc8c964d3fd4918d0f80f3074d75",
+    "contract_sha256": "916aaca39f5e3d8a79f430704bb8f784d3c9d1519dd961ef574c33eb904f4d3d",
+    "clock_mode": "unlocked",
+    "local_sol_score": 0.7961669339246267,
+    "trial_sol_scores": [
+      0.7961669339246267
+    ],
+    "workloads": [
+      {
+        "uuid": "bd1867e7-53c0-50fc-9241-df18d334e239",
+        "axes": {
+          "batch_size": 4,
+          "seq_len": 128
+        },
+        "latencies_ms": [
+          0.010816
+        ],
+        "median_latency_ms": 0.010816,
+        "baseline_latency_ms": 0.026608,
+        "sol_ms": 0.004,
+        "score": 0.768352365415987,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "b1f4172c-111f-52dd-8ee3-9f666f87b5d1",
+        "axes": {
+          "batch_size": 2,
+          "seq_len": 211
+        },
+        "latencies_ms": [
+          0.010784499999999999
+        ],
+        "median_latency_ms": 0.010784499999999999,
+        "baseline_latency_ms": 0.025056,
+        "sol_ms": 0.0033,
+        "score": 0.7440365246832304,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "3c883778-3dd6-5a18-aed7-c85cc64167a2",
+        "axes": {
+          "batch_size": 32,
+          "seq_len": 128
+        },
+        "latencies_ms": [
+          0.034976
+        ],
+        "median_latency_ms": 0.034976,
+        "baseline_latency_ms": 0.063377,
+        "sol_ms": 0.0289,
+        "score": 0.8501713806623433,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "fd58a3d8-a238-56ed-9757-e99b664b940f",
+        "axes": {
+          "batch_size": 1,
+          "seq_len": 449
+        },
+        "latencies_ms": [
+          0.010847
+        ],
+        "median_latency_ms": 0.010847,
+        "baseline_latency_ms": 0.026704,
+        "sol_ms": 0.0035,
+        "score": 0.759516873424765,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "6617d544-0ca8-588a-9b94-82910b20da93",
+        "axes": {
+          "batch_size": 16,
+          "seq_len": 512
+        },
+        "latencies_ms": [
+          0.0648
+        ],
+        "median_latency_ms": 0.0648,
+        "baseline_latency_ms": 0.100912,
+        "sol_ms": 0.0573,
+        "score": 0.853263421505713,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "fcf846e8-6874-5222-bf15-619bd4db21c0",
+        "axes": {
+          "batch_size": 1,
+          "seq_len": 131
+        },
+        "latencies_ms": [
+          0.00752
+        ],
+        "median_latency_ms": 0.00752,
+        "baseline_latency_ms": 0.023776,
+        "sol_ms": 0.0021,
+        "score": 0.7999704753469146,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "0f7a1e7e-5360-5130-8c38-bbfd2ca96036",
+        "axes": {
+          "batch_size": 1,
+          "seq_len": 4096
+        },
+        "latencies_ms": [
+          0.035104
+        ],
+        "median_latency_ms": 0.035104,
+        "baseline_latency_ms": 0.063648,
+        "sol_ms": 0.0289,
+        "score": 0.8485055674936509,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "e5dd4150-997d-5144-a760-1539b0294ce5",
+        "axes": {
+          "batch_size": 16,
+          "seq_len": 128
+        },
+        "latencies_ms": [
+          0.02464
+        ],
+        "median_latency_ms": 0.02464,
+        "baseline_latency_ms": 0.0437125,
+        "sol_ms": 0.0146,
+        "score": 0.7435668220420153,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "d99dc9db-8654-58ae-96bc-d9e9617f4a08",
+        "axes": {
+          "batch_size": 1,
+          "seq_len": 512
+        },
+        "latencies_ms": [
+          0.010912
+        ],
+        "median_latency_ms": 0.010912,
+        "baseline_latency_ms": 0.026624,
+        "sol_ms": 0.004,
+        "score": 0.7659804983748645,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "70f6f338-e7b2-5a60-a52e-a56fbc3ea580",
+        "axes": {
+          "batch_size": 2,
+          "seq_len": 512
+        },
+        "latencies_ms": [
+          0.01504
+        ],
+        "median_latency_ms": 0.01504,
+        "baseline_latency_ms": 0.032577,
+        "sol_ms": 0.0075,
+        "score": 0.7688322040653648,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "2918fc46-6c9e-535a-aff2-d400afcfed7d",
+        "axes": {
+          "batch_size": 1,
+          "seq_len": 1024
+        },
+        "latencies_ms": [
+          0.01504
+        ],
+        "median_latency_ms": 0.01504,
+        "baseline_latency_ms": 0.032608,
+        "sol_ms": 0.0075,
+        "score": 0.7690517030139672,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "ef71c699-174c-5f6f-afc9-b9c22613b56c",
+        "axes": {
+          "batch_size": 4,
+          "seq_len": 1024
+        },
+        "latencies_ms": [
+          0.0351675
+        ],
+        "median_latency_ms": 0.0351675,
+        "baseline_latency_ms": 0.06352,
+        "sol_ms": 0.0289,
+        "score": 0.8467135432589424,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "e2fcec04-3fc5-5b8d-bc4b-641a03bcb325",
+        "axes": {
+          "batch_size": 2,
+          "seq_len": 2048
+        },
+        "latencies_ms": [
+          0.035008
+        ],
+        "median_latency_ms": 0.035008,
+        "baseline_latency_ms": 0.063568,
+        "sol_ms": 0.0289,
+        "score": 0.8502060035314892,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "4937ec86-36ba-53a5-8982-1be8f00c1e4b",
+        "axes": {
+          "batch_size": 1,
+          "seq_len": 2048
+        },
+        "latencies_ms": [
+          0.0246085
+        ],
+        "median_latency_ms": 0.0246085,
+        "baseline_latency_ms": 0.04368,
+        "sol_ms": 0.0146,
+        "score": 0.7439528249996801,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "ebd8dec4-357b-593c-b4e7-c8cec40b6b41",
+        "axes": {
+          "batch_size": 64,
+          "seq_len": 128
+        },
+        "latencies_ms": [
+          0.0648155
+        ],
+        "median_latency_ms": 0.0648155,
+        "baseline_latency_ms": 0.100656,
+        "sol_ms": 0.0573,
+        "score": 0.852265020689384,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "e6139f6a-d4bd-57a7-837b-0a63d82d0c3d",
+        "axes": {
+          "batch_size": 2,
+          "seq_len": 541
+        },
+        "latencies_ms": [
+          0.015168
+        ],
+        "median_latency_ms": 0.015168,
+        "baseline_latency_ms": 0.032832,
+        "sol_ms": 0.0079,
+        "score": 0.7742857142857142,
+        "relative_spread": 0.0
+      }
+    ]
+  },
+  "stop_reason": "requested qualified trials complete",
+  "finished_at": "2026-09-06T21:05:37.240513+00:00"
+}

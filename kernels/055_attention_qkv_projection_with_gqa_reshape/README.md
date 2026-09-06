@@ -1,5 +1,10 @@
 # BF16 QKV projection with GQA views
 
+The current candidate is `v2.solution.json`: five full correctness trials,
+38 additional layout/value calls, and two qualified timing trials pass.
+One more qualified repeat and stronger evidence about the clock difference
+remain needed before a confident submission recommendation.
+
 The frozen v1 manifest is `solution.json`. It computes Q, K, and V in one
 persistent Blackwell kernel, then returns ordinary tensor views with the
 reference's batch/head/sequence/dimension layouts. The output contract specifies
@@ -38,7 +43,7 @@ excluded from any qualified comparison. The audit is
 A further bounded campaign completed three full passing trials, all rejected
 for foreign CUDA contexts. Its report is
 `.work/qualification/55/20260906T195228550858Z-qkv-cute-clean/qualification.json`.
-Three clean monitored trials remain pending; no qualified score is claimed.
+That campaign produced no qualified timing trial for V1.
 
 The frozen v1 evidence covers the official contiguous, aligned input layouts.
 `v2.solution.json` adds a guard for those TMA assumptions and uses ordinary
@@ -54,8 +59,22 @@ V2 also passes all 16 official workloads in
 `.work/runs/55/20260906T200624.854758Z-qkv-v2-initial-20260906T200622947830Z-a1-6e1a242602da`.
 Its timing is excluded for observed foreign CUDA contexts; the monitor report is
 `.work/qualification/55/20260906T200622947830Z-qkv-v2-initial/qualification.json`.
-V2 is the candidate for future qualification because it also supports the
-additional input layouts. Its three clean timing trials remain pending.
+V2 is the candidate for qualification because it also supports the additional
+input layouts.
+
+A later quiet window completed four more V2 trials, all passing correctness.
+Two qualify under the unchanged process-window audit, at scores 0.796167 and
+0.796062. The combined median-latency score is 0.796114 versus refreshed leader
+0.684349. The largest workload timing spread between those trials is 0.59%.
+Two other trials contain foreign CUDA contexts and are excluded. One further
+qualified repeat remains needed for the three-trial protocol.
+
+The two qualified trials give a 25.47% uniform latency buffer. This is a
+sensitivity calculation, not a prediction of the clock difference. A hypothetical
+uniform 31% slowdown would produce 0.664693, below the leader; no confident
+submission recommendation is made yet. The exact reports are linked from
+`validation.json` and the persistent
+[partial qualification](../../results/2026-09-06/55/qualified-v2-partial.json).
 
 `triton.experimental.solution.json` retains the earlier plain/TMA implementation.
 `library.py` is the exact three-matmul comparison. `tune.py` compares bounded

@@ -1,0 +1,16 @@
+{
+  "name": "048_triton_paired_gelu_b200_v1",
+  "definition": "048_fused_gate_up_projection_with_swiglu",
+  "author": "SamMausberg",
+  "description": "Paired BF16 tensor-core projections with shared input tiles, explicit reference rounding, and fused GELU-tanh multiplication.",
+  "spec": {
+    "languages": ["triton", "pytorch"],
+    "dependencies": ["torch", "triton"],
+    "target_hardware": ["B200"],
+    "entry_point": "kernel.py::run",
+    "destination_passing_style": true
+  },
+  "sources": [
+    {"path": "kernel.py"}
+  ]
+}

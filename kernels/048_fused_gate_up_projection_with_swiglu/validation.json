@@ -1,0 +1,112 @@
+{
+  "status": "frozen experiment; unqualified timing and limited uniform latency buffer",
+  "solution_manifest": "dual.solution.json",
+  "submission_sha256": "6837735b20ab162e42112cb789ce084cfee01e27930ecf00e4941e1b058a5f06",
+  "official_harness": {
+    "passed": true,
+    "workloads": 16,
+    "trials": 1,
+    "clock_mode": "unlocked",
+    "local_problem_score": 0.7709434733495487,
+    "run_directory": ".work/runs/48/20260906T205126.843376Z-dual-full-6837735b20ab",
+    "timing_qualification": "unqualified; attached monitor began after lock acquisition"
+  },
+  "changed_inputs": {
+    "passed": true,
+    "cases": 11,
+    "workloads": [
+      6,
+      4,
+      2,
+      13
+    ],
+    "weight_scales": [
+      1.0,
+      0.03125,
+      32.0
+    ],
+    "other_cases": [
+      "strided inputs",
+      "zero x"
+    ],
+    "original_tolerances": true
+  },
+  "leaderboard": {
+    "score": 0.719587,
+    "uniform_latency_buffer": 0.03763065914406982,
+    "hosted_submissions": 0,
+    "rank_claim": false
+  },
+  "source_sha256": {
+    "cute_dual.py": "ebea292d5d9d715f80cc7638e3c0bd70c5f0a53e3f70bf24aac8a7ca5b66c5d2",
+    "dual_kernel.py": "e773f8e30587406015a309e4504dca1b732d8b3ce7c13f8c5acce5e958ca9721",
+    "dual.solution.json": "1ed95710d85ee3d887ced58ec60c238fb6de65d687a14616ad075d65ecaa91de",
+    "tune_dual.py": "c55406b893a21b9311a6c697690082b64826ada0afe22c46a06e01a4e5badc7d",
+    "validate_dual.py": "0b3fe1a7e221fd457db9be247328139f80166bf731ef703fff995ae834365c77"
+  },
+  "report_sha256": {
+    "dual-initial-tuning.json": "1fa3729c039666913713fc5c58a2292d245a2e014dab4887c652d9110ab0a3be",
+    "dual-wide-tuning.json": "ee5642f986c29fc7f131d6ab20dde00da2133e71a960bb0ad75a7772bbe05e9a",
+    "changed-input-validation.json": "977fda3a22f0192d585f91ee70af3b1be8b44f64f79581253ea509bd8a20fb1d",
+    "full-process-monitor.json": "c92b6e254281db29e031341911d7ab25cf8eaa1fdee1aab9e0a717635e2c552a",
+    "leaderboard-20260906.json": "ffcae6cb8679a10f8ab447ee01af73ffb2345e7348e4923e342eb9c43f0eea23",
+    "full-summary.json": "bb9eb991430de91211ce8bd2bfd9afabc94506b713caa77011172ab3bec01445"
+  },
+  "failed_or_parked_paths": {
+    "kernel.py": "Paired Triton passed two cases but was slow.",
+    "cute_paired.py": "DSMEM prototype failed with illegal instruction and is not usable.",
+    "history/dual_initial": "Initial wide-tile stage cap called a helper that raises above 512 TMEM columns. Replaced with shape-based cap."
+  },
+  "archive_index": "results/2026-09-06/48/archive-index.json",
+  "archived_selected_run": "results/2026-09-06/48/20260906T205126.843376Z-dual-full-6837735b20ab",
+  "archived_reports": [
+    {
+      "original_path": "kernels/048_fused_gate_up_projection_with_swiglu/reports/changed-input-validation.json",
+      "original_sha256": "977fda3a22f0192d585f91ee70af3b1be8b44f64f79581253ea509bd8a20fb1d",
+      "archived_path": "results/2026-09-06/48/diagnostics/changed-input-validation.json",
+      "archived_sha256": "977fda3a22f0192d585f91ee70af3b1be8b44f64f79581253ea509bd8a20fb1d",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/048_fused_gate_up_projection_with_swiglu/reports/dual-initial-tuning.json",
+      "original_sha256": "1fa3729c039666913713fc5c58a2292d245a2e014dab4887c652d9110ab0a3be",
+      "archived_path": "results/2026-09-06/48/diagnostics/dual-initial-tuning.json",
+      "archived_sha256": "1fa3729c039666913713fc5c58a2292d245a2e014dab4887c652d9110ab0a3be",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/048_fused_gate_up_projection_with_swiglu/reports/dual-wide-tuning.json",
+      "original_sha256": "ee5642f986c29fc7f131d6ab20dde00da2133e71a960bb0ad75a7772bbe05e9a",
+      "archived_path": "results/2026-09-06/48/diagnostics/dual-wide-tuning.json",
+      "archived_sha256": "ee5642f986c29fc7f131d6ab20dde00da2133e71a960bb0ad75a7772bbe05e9a",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/048_fused_gate_up_projection_with_swiglu/reports/full-process-monitor.json",
+      "original_sha256": "c92b6e254281db29e031341911d7ab25cf8eaa1fdee1aab9e0a717635e2c552a",
+      "archived_path": "results/2026-09-06/48/diagnostics/full-process-monitor.json",
+      "archived_sha256": "c92b6e254281db29e031341911d7ab25cf8eaa1fdee1aab9e0a717635e2c552a",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/048_fused_gate_up_projection_with_swiglu/reports/full-summary.json",
+      "original_sha256": "bb9eb991430de91211ce8bd2bfd9afabc94506b713caa77011172ab3bec01445",
+      "archived_path": "results/2026-09-06/48/diagnostics/full-summary.json",
+      "archived_sha256": "bb9eb991430de91211ce8bd2bfd9afabc94506b713caa77011172ab3bec01445",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/048_fused_gate_up_projection_with_swiglu/reports/leaderboard-20260906.json",
+      "original_sha256": "ffcae6cb8679a10f8ab447ee01af73ffb2345e7348e4923e342eb9c43f0eea23",
+      "archived_path": "results/2026-09-06/48/diagnostics/leaderboard-20260906.json",
+      "archived_sha256": "ffcae6cb8679a10f8ab447ee01af73ffb2345e7348e4923e342eb9c43f0eea23",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    }
+  ]
+}

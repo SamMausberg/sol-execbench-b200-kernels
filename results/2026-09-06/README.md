@@ -116,3 +116,17 @@ The next checkpoint preserves three more complete candidates:
 All three are parked experiments with zero hosted submissions. Their archive
 indices retain exact packages, full and partial trials, input audits, and
 diagnostic source hashes.
+
+Problem 055 V2 now has two qualified timing trials at 0.796167 and 0.796062.
+Their combined median-latency score is 0.796114 versus refreshed leader 0.684349;
+the largest workload spread is 0.59%. Two further attempts were contaminated
+and are excluded. All nine full V1/V2 trials pass correctness. V2 still needs
+one more qualified repeat and a stronger clock margin before a confident
+submission recommendation; its uniform latency buffer is 25.47%.
+
+Problem 048's dual-accumulator CuTe kernel passes all 16 official workloads and
+11 changed-input/layout checks. It computes paired gate/up projections in TMEM,
+then preserves the reference's BF16 rounding around GELU and multiplication.
+Its unqualified 0.770943 score versus leader 0.719587 has only a 3.76% uniform
+latency buffer. The failed DSMEM prototype and successful replacement are both
+archived, with the selected candidate identified by its exact package hash.

@@ -1,0 +1,30 @@
+{
+  "author": "SamMausberg",
+  "definition": "048_fused_gate_up_projection_with_swiglu",
+  "description": "Paired BF16 GEMMs reuse each input tile and retain both projections in TMEM until a fused GELU-tanh multiplication epilogue.",
+  "name": "048_cute_dual_accumulator_gelu_b200_experiment",
+  "sources": [
+    {
+      "path": "dual_kernel.py"
+    },
+    {
+      "path": "cute_dual.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "nvidia-cutlass-dsl",
+      "cuda-python"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "dual_kernel.py::run",
+    "languages": [
+      "pytorch",
+      "cute_dsl"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

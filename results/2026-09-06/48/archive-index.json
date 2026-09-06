@@ -1,0 +1,131 @@
+{
+  "problem_id": 48,
+  "runs": [
+    {
+      "run_directory": ".work/runs/48/20260906T202432.111631Z-paired-triton-smoke-834afe8f626b",
+      "archived_run": "results/2026-09-06/48/20260906T202432.111631Z-paired-triton-smoke-834afe8f626b",
+      "summary_sha256": "81d0ad8fddbe4b71c1edb7d9f93b0679d52f0af9b13572c2c8e0ed775c24420f",
+      "submission_sha256": "834afe8f626b34b155595e4944d8aed82f0022f74da56b1dffa4a343d9b7e673",
+      "source_sha256": {
+        "kernel.py": "bcc94d68a12210f31792f6f9f7d272dbf380c9b8b3d815fc5b708e33f2736a73"
+      },
+      "passed": true,
+      "selected_workloads": 2,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "f3161b861b7be70d52aaabe0e6b9324f7ba7c4a4dffea3bd3e58a1e252d1490a"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    },
+    {
+      "run_directory": ".work/runs/48/20260906T202956.412977Z-cute-dsmem-smoke-9579da0a52a9",
+      "archived_run": "results/2026-09-06/48/20260906T202956.412977Z-cute-dsmem-smoke-9579da0a52a9",
+      "summary_sha256": "6b2b4c1128b02c0575b4b7521ae177481b359a5c63707fb851fe3ce24d1477d5",
+      "submission_sha256": "9579da0a52a9ed32ed0baa9ccbc049605e9bfa5cccae664f6858f6a83da471ca",
+      "source_sha256": {
+        "cute_kernel.py": "6a00e6ed889372b70546ff3fae2b1578df4a168f243170ca9af7f041064a6ac2",
+        "cute_paired.py": "a1d7ec38ed77efa83bfef1a47524e845d9f2586a5622edf2a33a5921ccf5fd13"
+      },
+      "passed": false,
+      "selected_workloads": 1,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "96036e51557da5e32b2b043041a2e70af1278cd834258b885103aa7d375158c0"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    },
+    {
+      "run_directory": ".work/runs/48/20260906T203728.313965Z-cute-dual-smoke-030d3eb365ec",
+      "archived_run": "results/2026-09-06/48/20260906T203728.313965Z-cute-dual-smoke-030d3eb365ec",
+      "summary_sha256": "0e7f51dabb8be56c2d181d54824eee7e8c0bfb90c0d42fc4dcedbabf96d82dc5",
+      "submission_sha256": "030d3eb365ec1dda74f6c8b53820cb8a1ac5f0220af4171613f4ac321480bd8e",
+      "source_sha256": {
+        "cute_dual.py": "05f142585c437bd0966e34c14b4d3702a06d06d49f32d42a2120d6d108205fba",
+        "dual_kernel.py": "f1f9b491b85ad2b6a19980a010570c9acb106f882725022a1614e933fccd3b64"
+      },
+      "passed": true,
+      "selected_workloads": 1,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "e3675cd9ee135e472dd6d2e5cba12efac30cac6a0a743b061a2399bbcb162669"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    },
+    {
+      "run_directory": ".work/runs/48/20260906T205126.843376Z-dual-full-6837735b20ab",
+      "archived_run": "results/2026-09-06/48/20260906T205126.843376Z-dual-full-6837735b20ab",
+      "summary_sha256": "bb9eb991430de91211ce8bd2bfd9afabc94506b713caa77011172ab3bec01445",
+      "submission_sha256": "6837735b20ab162e42112cb789ce084cfee01e27930ecf00e4941e1b058a5f06",
+      "source_sha256": {
+        "cute_dual.py": "ebea292d5d9d715f80cc7638e3c0bd70c5f0a53e3f70bf24aac8a7ca5b66c5d2",
+        "dual_kernel.py": "e773f8e30587406015a309e4504dca1b732d8b3ce7c13f8c5acce5e958ca9721"
+      },
+      "passed": true,
+      "selected_workloads": 16,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "286d953675b051344896184b1f7a9040776c1e2cd444b7630633228c0cc6c9d3"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": 0.7709434733495487
+    }
+  ],
+  "reports": [
+    {
+      "original_path": "kernels/048_fused_gate_up_projection_with_swiglu/reports/changed-input-validation.json",
+      "original_sha256": "977fda3a22f0192d585f91ee70af3b1be8b44f64f79581253ea509bd8a20fb1d",
+      "archived_path": "results/2026-09-06/48/diagnostics/changed-input-validation.json",
+      "archived_sha256": "977fda3a22f0192d585f91ee70af3b1be8b44f64f79581253ea509bd8a20fb1d",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/048_fused_gate_up_projection_with_swiglu/reports/dual-initial-tuning.json",
+      "original_sha256": "1fa3729c039666913713fc5c58a2292d245a2e014dab4887c652d9110ab0a3be",
+      "archived_path": "results/2026-09-06/48/diagnostics/dual-initial-tuning.json",
+      "archived_sha256": "1fa3729c039666913713fc5c58a2292d245a2e014dab4887c652d9110ab0a3be",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/048_fused_gate_up_projection_with_swiglu/reports/dual-wide-tuning.json",
+      "original_sha256": "ee5642f986c29fc7f131d6ab20dde00da2133e71a960bb0ad75a7772bbe05e9a",
+      "archived_path": "results/2026-09-06/48/diagnostics/dual-wide-tuning.json",
+      "archived_sha256": "ee5642f986c29fc7f131d6ab20dde00da2133e71a960bb0ad75a7772bbe05e9a",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/048_fused_gate_up_projection_with_swiglu/reports/full-process-monitor.json",
+      "original_sha256": "c92b6e254281db29e031341911d7ab25cf8eaa1fdee1aab9e0a717635e2c552a",
+      "archived_path": "results/2026-09-06/48/diagnostics/full-process-monitor.json",
+      "archived_sha256": "c92b6e254281db29e031341911d7ab25cf8eaa1fdee1aab9e0a717635e2c552a",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/048_fused_gate_up_projection_with_swiglu/reports/full-summary.json",
+      "original_sha256": "bb9eb991430de91211ce8bd2bfd9afabc94506b713caa77011172ab3bec01445",
+      "archived_path": "results/2026-09-06/48/diagnostics/full-summary.json",
+      "archived_sha256": "bb9eb991430de91211ce8bd2bfd9afabc94506b713caa77011172ab3bec01445",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/048_fused_gate_up_projection_with_swiglu/reports/leaderboard-20260906.json",
+      "original_sha256": "ffcae6cb8679a10f8ab447ee01af73ffb2345e7348e4923e342eb9c43f0eea23",
+      "archived_path": "results/2026-09-06/48/diagnostics/leaderboard-20260906.json",
+      "archived_sha256": "ffcae6cb8679a10f8ab447ee01af73ffb2345e7348e4923e342eb9c43f0eea23",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    }
+  ],
+  "timing_valid_for_ranking": false,
+  "notes": [
+    "The full dual-accumulator candidate passes all official workloads; other archived variants include partial trials and a failed DSMEM experiment.",
+    "The unqualified uniform latency buffer is a sensitivity calculation and does not predict a clock adjustment."
+  ]
+}
