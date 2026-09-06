@@ -1,0 +1,36 @@
+{
+  "problem_id": 36,
+  "status": "parked_numerical_failure",
+  "implementation_language": "CUDA_CPP",
+  "standalone_experiment": true,
+  "official_harness_trials": 0,
+  "hosted_submissions": 0,
+  "source_sha256": "a343bc13ca25dd111f901c9138fa59698ba3616de2856e0b7a79b1612b3a7e5b",
+  "source_files": {
+    "bridge.cpp": "55c8db99629a4b95230cddc1e0afffbd72d6d141e1a240b1b3f6b9e367c3d4ef",
+    "kernels.cu": "9e834295a5234ee796bd577ca2d12c0ff74c8e7dddd0762d6ac5834f38d1d8fc"
+  },
+  "cublaslt_version": 130000,
+  "baseline_compute_mode": "CUBLAS_COMPUTE_32F_EMULATED_16BFX9",
+  "expanded_compute_mode": "CUBLAS_COMPUTE_32F",
+  "report": {
+    "path": "reports/expansion-output-20260906T194804Z.json",
+    "sha256": "321969a131239117f9f27e40b8854898504b757714e5005fab2b5eef9c5ac240"
+  },
+  "checked_workloads": [0, 1, 3, 15],
+  "original_value_checks": {"passed": 24, "total": 24},
+  "weights_scaled_32_checks": {"passed": 0, "total": 24},
+  "minimum_matched_ratio_scaled_32": {
+    "three_products": 0.7933019995689392,
+    "four_products": 0.8577671051025391
+  },
+  "required_matched_ratio": 0.99,
+  "rejection_reason": "Both expansions fail the unchanged numerical tolerance on larger input values; complete conversion paths also lose to BF16x9 on all three measured output shapes.",
+  "timing_qualified": false,
+  "timing_caveats": [
+    "Unlocked B200 clocks differ from the hosted 1500 MHz evaluation.",
+    "Foreign CUDA context PID 260355 was visible before extension load and absent at process exit.",
+    "Only before/after GPU snapshots were collected, so transient contention cannot be excluded.",
+    "Two warmup and eight measured iterations per candidate; at most two heuristic configurations tested."
+  ]
+}

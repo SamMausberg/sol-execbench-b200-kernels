@@ -1,0 +1,26 @@
+{
+  "author": "SamMausberg",
+  "definition": "036_flux_output_norm_projection_chain",
+  "description": "FP32 TF32x3 fused SiLU modulation, normalization and projection with register MMA scheduling.",
+  "name": "flux_norm_projection_register_mma_v2",
+  "sources": [
+    {
+      "path": "kernel_sm80.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "kernel_sm80.py::run",
+    "languages": [
+      "triton",
+      "pytorch"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

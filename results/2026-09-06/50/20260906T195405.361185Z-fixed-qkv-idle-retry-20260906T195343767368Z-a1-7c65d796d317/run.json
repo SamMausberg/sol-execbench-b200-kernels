@@ -1,0 +1,111 @@
+{
+  "clock_mode": "unlocked",
+  "contract": {
+    "collection": "L1",
+    "contract_sha256": "9f752c290a4a219b57bf622f71d125425de28dcd41ae2fa56695d156547123dc",
+    "dataset_metadata_url": "https://huggingface.co/api/datasets/nvidia/SOL-ExecBench/tree/63699402f003496acc3af4eb534a5304a8ac1ea9/data",
+    "dataset_repository": "nvidia/SOL-ExecBench",
+    "dataset_revision": "63699402f003496acc3af4eb534a5304a8ac1ea9",
+    "dataset_sha256": "dbaf8476812194920e405118cc5f4abc65035b79a4307b5ee88fb07666ceed48",
+    "name": "050_attention_qkv_projection_with_bias_and_reshape",
+    "website_id": 50,
+    "workload_count": 16
+  },
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "finished_at": "2026-09-06T19:55:28.071513+00:00",
+  "gpu_lock": "/workspace/sol-execbench-b200-kernels/.work/gpu.lock",
+  "requested_trials": 1,
+  "schema_version": 1,
+  "score_source_sha256": "3ed42f8dbee3643fb79434ebe12619ff75266c909138820e404a47551c69429b",
+  "source_sha256": {
+    "cute_kernel.py": "956878de21e3bc36fe12f0ee0cd4b293640d9f2b5f33bf571c570c659a9f536d",
+    "cute_qkv.py": "78521802137e646835562487e2436f0aea9e5fbb35402d721396d2a8d92d33ad",
+    "kernel.py": "3e0b7385cf7b9399de03270288c56ee191f1b186f0364c5cc2eb9cf0f8ac0656"
+  },
+  "started_at": "2026-09-06T19:54:05.394375+00:00",
+  "submission_sha256": "7c65d796d317d2000c380f177ca36e31da6201a95d7e7048b10adf243c6e99e8",
+  "trials": [
+    {
+      "command": [
+        "/workspace/venvs/sol-execbench/bin/python",
+        "-m",
+        "sol_execbench.cli.main",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/50/20260906T195405.361185Z-fixed-qkv-idle-retry-20260906T195343767368Z-a1-7c65d796d317",
+        "--solution",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/50/20260906T195405.361185Z-fixed-qkv-idle-retry-20260906T195343767368Z-a1-7c65d796d317/solution.json",
+        "--compile-timeout",
+        "600",
+        "--timeout",
+        "600",
+        "--verbose",
+        "-o",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/50/20260906T195405.361185Z-fixed-qkv-idle-retry-20260906T195343767368Z-a1-7c65d796d317/trial-1.jsonl"
+      ],
+      "elapsed_seconds": 80.03843954706099,
+      "finished_at": "2026-09-06T19:55:27.868680+00:00",
+      "gpu_after": {
+        "command": [
+          "nvidia-smi",
+          "--query-gpu=uuid,name,driver_version,pstate,clocks.current.graphics,clocks.current.sm,clocks.current.memory,temperature.gpu,power.draw,power.limit,utilization.gpu,memory.used,memory.total",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "uuid, name, driver_version, pstate, clocks.current.graphics [MHz], clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], power.limit [W], utilization.gpu [%], memory.used [MiB], memory.total [MiB]\nGPU-b93d0ebe-03a8-bdde-60fe-024fb902497b, NVIDIA B200, 580.105.08, P0, 1965 MHz, 1965 MHz, 3996 MHz, 32, 237.84 W, 1000.00 W, 0 %, 0 MiB, 183359 MiB"
+      },
+      "gpu_before": {
+        "command": [
+          "nvidia-smi",
+          "--query-gpu=uuid,name,driver_version,pstate,clocks.current.graphics,clocks.current.sm,clocks.current.memory,temperature.gpu,power.draw,power.limit,utilization.gpu,memory.used,memory.total",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "uuid, name, driver_version, pstate, clocks.current.graphics [MHz], clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], power.limit [W], utilization.gpu [%], memory.used [MiB], memory.total [MiB]\nGPU-b93d0ebe-03a8-bdde-60fe-024fb902497b, NVIDIA B200, 580.105.08, P0, 120 MHz, 120 MHz, 3996 MHz, 30, 186.44 W, 1000.00 W, 0 %, 0 MiB, 183359 MiB"
+      },
+      "gpu_processes_after": {
+        "command": [
+          "nvidia-smi",
+          "--query-compute-apps=pid,process_name,used_memory",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "pid, process_name, used_gpu_memory [MiB]"
+      },
+      "gpu_processes_before": {
+        "command": [
+          "nvidia-smi",
+          "--query-compute-apps=pid,process_name,used_memory",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "pid, process_name, used_gpu_memory [MiB]"
+      },
+      "returncode": 0,
+      "started_at": "2026-09-06T19:54:07.629998+00:00",
+      "trial": 1
+    }
+  ],
+  "website_id": 50,
+  "workload_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ]
+}

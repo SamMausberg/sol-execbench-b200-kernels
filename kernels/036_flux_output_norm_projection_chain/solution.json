@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "036_flux_output_norm_projection_chain",
+  "description": "Two fused FP32 kernels: SiLU with modulation projection, followed by centered normalization, modulation and output projection using TF32x3 products.",
+  "name": "flux_norm_projection_fused_b200_v1",
+  "sources": [{"path": "kernel.py"}],
+  "spec": {
+    "dependencies": ["torch", "triton"],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": ["triton", "pytorch"],
+    "target_hardware": ["B200"]
+  }
+}

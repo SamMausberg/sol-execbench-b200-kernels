@@ -1,0 +1,2318 @@
+{
+  "scope": "geometry tuning with shifted inputs/outputs, cold cache, unlocked clocks",
+  "source_sha256": {
+    "kernel.py": "9aedb908fc4bb5aa3bee82140d3941b199941beb57a66a0c5020365af31d2918",
+    "tune.py": "235bca2d5d97d18d147b7fa8165e06486528704167af5bf3114bf9aaeffabbec"
+  },
+  "records": [
+    {
+      "rows": 131,
+      "config": {
+        "mode": "library",
+        "bm": 0,
+        "bn": 0,
+        "bk": 0,
+        "warps": 0,
+        "stages": 0,
+        "group": 0,
+        "persistent": false
+      },
+      "started_at": 1788722811.676869,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.055039,
+      "finished_at": 1788722812.233558
+    },
+    {
+      "rows": 131,
+      "config": {
+        "mode": "plain",
+        "bm": 16,
+        "bn": 64,
+        "bk": 128,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722812.244248,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.013952,
+      "finished_at": 1788722814.9501886
+    },
+    {
+      "rows": 131,
+      "config": {
+        "mode": "plain",
+        "bm": 32,
+        "bn": 64,
+        "bk": 128,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722814.9819486,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.013632,
+      "finished_at": 1788722815.1185582
+    },
+    {
+      "rows": 131,
+      "config": {
+        "mode": "plain",
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722815.1227696,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.019103,
+      "finished_at": 1788722816.1357863
+    },
+    {
+      "rows": 131,
+      "config": {
+        "mode": "plain",
+        "bm": 32,
+        "bn": 128,
+        "bk": 128,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722816.14224,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.01296,
+      "finished_at": 1788722817.381085
+    },
+    {
+      "rows": 131,
+      "config": {
+        "mode": "plain",
+        "bm": 64,
+        "bn": 64,
+        "bk": 128,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722817.4220617,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.012416,
+      "finished_at": 1788722818.4705226
+    },
+    {
+      "rows": 131,
+      "config": {
+        "mode": "plain",
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722818.482157,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.019008,
+      "finished_at": 1788722819.430388
+    },
+    {
+      "rows": 131,
+      "config": {
+        "mode": "tma",
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722819.4374323,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.019104,
+      "finished_at": 1788722820.0926442
+    },
+    {
+      "rows": 131,
+      "config": {
+        "mode": "tma",
+        "bm": 64,
+        "bn": 64,
+        "bk": 128,
+        "warps": 4,
+        "stages": 2,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722820.1031265,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.02,
+      "finished_at": 1788722820.850128
+    },
+    {
+      "rows": 131,
+      "config": {
+        "mode": "tma",
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722820.861799,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.019136,
+      "finished_at": 1788722821.8480294
+    },
+    {
+      "rows": 131,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722821.8823276,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.020351,
+      "finished_at": 1788722822.742376
+    },
+    {
+      "rows": 422,
+      "config": {
+        "mode": "library",
+        "bm": 0,
+        "bn": 0,
+        "bk": 0,
+        "warps": 0,
+        "stages": 0,
+        "group": 0,
+        "persistent": false
+      },
+      "started_at": 1788722822.7673814,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.063105,
+      "finished_at": 1788722822.9480329
+    },
+    {
+      "rows": 422,
+      "config": {
+        "mode": "plain",
+        "bm": 16,
+        "bn": 64,
+        "bk": 128,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722822.960501,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.03328,
+      "finished_at": 1788722824.1745164
+    },
+    {
+      "rows": 422,
+      "config": {
+        "mode": "plain",
+        "bm": 32,
+        "bn": 64,
+        "bk": 128,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722824.1999056,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.031584,
+      "finished_at": 1788722824.3559115
+    },
+    {
+      "rows": 422,
+      "config": {
+        "mode": "plain",
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722824.3661578,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.024929,
+      "finished_at": 1788722825.5583856
+    },
+    {
+      "rows": 422,
+      "config": {
+        "mode": "plain",
+        "bm": 32,
+        "bn": 128,
+        "bk": 128,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722825.612382,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.031968,
+      "finished_at": 1788722827.0110385
+    },
+    {
+      "rows": 422,
+      "config": {
+        "mode": "plain",
+        "bm": 64,
+        "bn": 64,
+        "bk": 128,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722827.049847,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.020064,
+      "finished_at": 1788722828.4521847
+    },
+    {
+      "rows": 422,
+      "config": {
+        "mode": "plain",
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722828.4654448,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.019616,
+      "finished_at": 1788722829.944736
+    },
+    {
+      "rows": 422,
+      "config": {
+        "mode": "tma",
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722829.9922278,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.024511,
+      "finished_at": 1788722830.8019917
+    },
+    {
+      "rows": 422,
+      "config": {
+        "mode": "tma",
+        "bm": 64,
+        "bn": 64,
+        "bk": 128,
+        "warps": 4,
+        "stages": 2,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722830.820655,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.020511,
+      "finished_at": 1788722831.75723
+    },
+    {
+      "rows": 422,
+      "config": {
+        "mode": "tma",
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722831.7697203,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.019424,
+      "finished_at": 1788722832.7499516
+    },
+    {
+      "rows": 422,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722832.7642918,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.020448,
+      "finished_at": 1788722833.8186786
+    },
+    {
+      "rows": 2048,
+      "config": {
+        "mode": "library",
+        "bm": 0,
+        "bn": 0,
+        "bk": 0,
+        "warps": 0,
+        "stages": 0,
+        "group": 0,
+        "persistent": false
+      },
+      "started_at": 1788722833.8500926,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.070527,
+      "finished_at": 1788722834.0832388
+    },
+    {
+      "rows": 2048,
+      "config": {
+        "mode": "tma",
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722834.096228,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.035839,
+      "finished_at": 1788722835.0245113
+    },
+    {
+      "rows": 2048,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722835.037797,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.031296,
+      "finished_at": 1788722835.905624
+    },
+    {
+      "rows": 2048,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 128,
+        "warps": 4,
+        "stages": 2,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722835.95761,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.056896,
+      "finished_at": 1788722836.7837896
+    },
+    {
+      "rows": 2048,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 256,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722836.7927487,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.034336,
+      "finished_at": 1788722837.7305868
+    },
+    {
+      "rows": 2048,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 256,
+        "bk": 64,
+        "warps": 8,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722837.7410212,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.034528,
+      "finished_at": 1788722838.5961866
+    },
+    {
+      "rows": 2048,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 128,
+        "warps": 4,
+        "stages": 1,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722838.6083338,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.037536,
+      "finished_at": 1788722839.501677
+    },
+    {
+      "rows": 2048,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 1,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722839.5179102,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.057663,
+      "finished_at": 1788722840.3397865
+    },
+    {
+      "rows": 2048,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 1,
+        "persistent": false
+      },
+      "started_at": 1788722840.3500373,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.03536,
+      "finished_at": 1788722841.1285427
+    },
+    {
+      "rows": 2048,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 8,
+        "persistent": false
+      },
+      "started_at": 1788722841.1523569,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.032479,
+      "finished_at": 1788722841.900971
+    },
+    {
+      "rows": 2048,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": true
+      },
+      "started_at": 1788722841.9125178,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.042751,
+      "finished_at": 1788722842.659709
+    },
+    {
+      "rows": 8192,
+      "config": {
+        "mode": "library",
+        "bm": 0,
+        "bn": 0,
+        "bk": 0,
+        "warps": 0,
+        "stages": 0,
+        "group": 0,
+        "persistent": false
+      },
+      "started_at": 1788722842.6725817,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.076064,
+      "finished_at": 1788722842.7920215
+    },
+    {
+      "rows": 8192,
+      "config": {
+        "mode": "tma",
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722842.8031888,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.118399,
+      "finished_at": 1788722843.6694505
+    },
+    {
+      "rows": 8192,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722843.687341,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.088256,
+      "finished_at": 1788722843.864974
+    },
+    {
+      "rows": 8192,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 128,
+        "warps": 4,
+        "stages": 2,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722843.8791904,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.177503,
+      "finished_at": 1788722844.7750378
+    },
+    {
+      "rows": 8192,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 256,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722844.790507,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.092255,
+      "finished_at": 1788722845.7963064
+    },
+    {
+      "rows": 8192,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 256,
+        "bk": 64,
+        "warps": 8,
+        "stages": 3,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722845.814152,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.092607,
+      "finished_at": 1788722846.6711388
+    },
+    {
+      "rows": 8192,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 128,
+        "warps": 4,
+        "stages": 1,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722846.6864421,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.124896,
+      "finished_at": 1788722847.525897
+    },
+    {
+      "rows": 8192,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 1,
+        "group": 4,
+        "persistent": false
+      },
+      "started_at": 1788722847.5408902,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.194878,
+      "finished_at": 1788722848.3578904
+    },
+    {
+      "rows": 8192,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 1,
+        "persistent": false
+      },
+      "started_at": 1788722848.3715625,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.095359,
+      "finished_at": 1788722849.3776016
+    },
+    {
+      "rows": 8192,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 8,
+        "persistent": false
+      },
+      "started_at": 1788722849.3914945,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.087328,
+      "finished_at": 1788722850.2260919
+    },
+    {
+      "rows": 8192,
+      "config": {
+        "mode": "tma",
+        "bm": 128,
+        "bn": 128,
+        "bk": 64,
+        "warps": 4,
+        "stages": 3,
+        "group": 4,
+        "persistent": true
+      },
+      "started_at": 1788722850.2401059,
+      "correctness": [
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      ],
+      "passed": true,
+      "latency_ms": 0.133344,
+      "finished_at": 1788722851.1495073
+    }
+  ],
+  "process_samples": [
+    {
+      "timestamp": "2026-09-06T19:26:50.222165+00:00",
+      "finished_at": "2026-09-06T19:26:50.916898+00:00",
+      "root_pid": 237556,
+      "contexts": [],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:26:51.917110+00:00",
+      "finished_at": "2026-09-06T19:26:52.009173+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "818",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:26:53.009424+00:00",
+      "finished_at": "2026-09-06T19:26:53.133036+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1074",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:26:54.133453+00:00",
+      "finished_at": "2026-09-06T19:26:54.222444+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1074",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:26:55.222824+00:00",
+      "finished_at": "2026-09-06T19:26:55.308392+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1076",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:26:56.308836+00:00",
+      "finished_at": "2026-09-06T19:26:56.413239+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1076",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:26:57.413654+00:00",
+      "finished_at": "2026-09-06T19:26:57.573138+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1078",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:26:58.573450+00:00",
+      "finished_at": "2026-09-06T19:26:58.698688+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1078",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:26:59.698974+00:00",
+      "finished_at": "2026-09-06T19:26:59.819498+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1080",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:00.833734+00:00",
+      "finished_at": "2026-09-06T19:27:00.962673+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1082",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:01.963045+00:00",
+      "finished_at": "2026-09-06T19:27:02.049644+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1082",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:03.050030+00:00",
+      "finished_at": "2026-09-06T19:27:03.243912+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1342",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:04.244254+00:00",
+      "finished_at": "2026-09-06T19:27:04.365458+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1356",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:05.365831+00:00",
+      "finished_at": "2026-09-06T19:27:05.486853+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1344",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:06.487164+00:00",
+      "finished_at": "2026-09-06T19:27:06.604134+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1346",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:07.610249+00:00",
+      "finished_at": "2026-09-06T19:27:07.740381+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1346",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:08.740775+00:00",
+      "finished_at": "2026-09-06T19:27:08.862819+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1348",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:09.863823+00:00",
+      "finished_at": "2026-09-06T19:27:09.980540+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1350",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:10.980895+00:00",
+      "finished_at": "2026-09-06T19:27:11.121444+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1352",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:12.121764+00:00",
+      "finished_at": "2026-09-06T19:27:12.241078+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1352",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:13.241333+00:00",
+      "finished_at": "2026-09-06T19:27:13.370303+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1354",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:14.370598+00:00",
+      "finished_at": "2026-09-06T19:27:14.490816+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1356",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:15.491193+00:00",
+      "finished_at": "2026-09-06T19:27:15.584834+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1356",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:16.585135+00:00",
+      "finished_at": "2026-09-06T19:27:16.687379+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1358",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:17.699626+00:00",
+      "finished_at": "2026-09-06T19:27:17.818673+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1360",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:18.819209+00:00",
+      "finished_at": "2026-09-06T19:27:18.914134+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1362",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:19.914849+00:00",
+      "finished_at": "2026-09-06T19:27:20.012291+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1364",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:21.012761+00:00",
+      "finished_at": "2026-09-06T19:27:21.138022+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1378",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:22.138334+00:00",
+      "finished_at": "2026-09-06T19:27:22.221141+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1366",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:23.221398+00:00",
+      "finished_at": "2026-09-06T19:27:23.301891+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1512",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:24.310104+00:00",
+      "finished_at": "2026-09-06T19:27:24.411133+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1514",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:25.411501+00:00",
+      "finished_at": "2026-09-06T19:27:25.507146+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1516",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:26.507566+00:00",
+      "finished_at": "2026-09-06T19:27:26.620452+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1516",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:27.649957+00:00",
+      "finished_at": "2026-09-06T19:27:27.759919+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1520",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:28.760357+00:00",
+      "finished_at": "2026-09-06T19:27:28.881563+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1522",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:29.881914+00:00",
+      "finished_at": "2026-09-06T19:27:29.976281+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1522",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T19:27:30.976592+00:00",
+      "finished_at": "2026-09-06T19:27:31.074044+00:00",
+      "root_pid": 237556,
+      "contexts": [
+        {
+          "pid": 237556,
+          "process_name": "python",
+          "memory_mib": "1528",
+          "start_ticks": 96778712,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    }
+  ]
+}

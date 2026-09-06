@@ -1,0 +1,279 @@
+{
+  "problem_id": 50,
+  "runs": [
+    {
+      "run_directory": ".work/runs/50/20260906T194338.049280Z-fixed-qkv-correctness-7c65d796d317",
+      "archived_run": "results/2026-09-06/50/20260906T194338.049280Z-fixed-qkv-correctness-7c65d796d317",
+      "summary_sha256": "6ad5fdff5332e88f310fe2ffb41b7fcd6a2de48e5aeebaea20282c48d1d34825",
+      "submission_sha256": "7c65d796d317d2000c380f177ca36e31da6201a95d7e7048b10adf243c6e99e8",
+      "source_sha256": {
+        "cute_kernel.py": "956878de21e3bc36fe12f0ee0cd4b293640d9f2b5f33bf571c570c659a9f536d",
+        "cute_qkv.py": "78521802137e646835562487e2436f0aea9e5fbb35402d721396d2a8d92d33ad",
+        "kernel.py": "3e0b7385cf7b9399de03270288c56ee191f1b186f0364c5cc2eb9cf0f8ac0656"
+      },
+      "passed": true,
+      "selected_workloads": 16,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "8afbe04dc109a1d9b2fd5d884772af0ba265c59f9bd64550fc2b7f2cc93fe929"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": 0.7018180943303854
+    },
+    {
+      "run_directory": ".work/runs/50/20260906T195405.361185Z-fixed-qkv-idle-retry-20260906T195343767368Z-a1-7c65d796d317",
+      "archived_run": "results/2026-09-06/50/20260906T195405.361185Z-fixed-qkv-idle-retry-20260906T195343767368Z-a1-7c65d796d317",
+      "summary_sha256": "2cba4580d2786fe10b5a01d28f3a9f2aedecd42402534d41badad1a2b5b26a16",
+      "submission_sha256": "7c65d796d317d2000c380f177ca36e31da6201a95d7e7048b10adf243c6e99e8",
+      "source_sha256": {
+        "cute_kernel.py": "956878de21e3bc36fe12f0ee0cd4b293640d9f2b5f33bf571c570c659a9f536d",
+        "cute_qkv.py": "78521802137e646835562487e2436f0aea9e5fbb35402d721396d2a8d92d33ad",
+        "kernel.py": "3e0b7385cf7b9399de03270288c56ee191f1b186f0364c5cc2eb9cf0f8ac0656"
+      },
+      "passed": true,
+      "selected_workloads": 16,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "823aa1e6f88062a754ff9446a6c469a43c754c9334cf37074a861228479f8a48"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": 0.7080753013096055
+    },
+    {
+      "run_directory": ".work/runs/50/20260906T195533.156817Z-fixed-qkv-idle-retry-20260906T195343767368Z-a2-7c65d796d317",
+      "archived_run": "results/2026-09-06/50/20260906T195533.156817Z-fixed-qkv-idle-retry-20260906T195343767368Z-a2-7c65d796d317",
+      "summary_sha256": "03da5b34d387e20210178db8b5faf3637cc10b475dd08bef7a51a4b48e452563",
+      "submission_sha256": "7c65d796d317d2000c380f177ca36e31da6201a95d7e7048b10adf243c6e99e8",
+      "source_sha256": {
+        "cute_kernel.py": "956878de21e3bc36fe12f0ee0cd4b293640d9f2b5f33bf571c570c659a9f536d",
+        "cute_qkv.py": "78521802137e646835562487e2436f0aea9e5fbb35402d721396d2a8d92d33ad",
+        "kernel.py": "3e0b7385cf7b9399de03270288c56ee191f1b186f0364c5cc2eb9cf0f8ac0656"
+      },
+      "passed": true,
+      "selected_workloads": 16,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "3a196ad6c678803307fd74df7eb12ae40d7766421a482ddf1cf5d72ae2753320"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": 0.7026947781026979
+    }
+  ],
+  "reports": [
+    {
+      "original_path": ".work/qualification/50/20260906T194018566597Z-fixed-qkv-final/idle-processes.jsonl",
+      "original_sha256": "d81cd9080f1dfb253961019b7c3a552c4c6bd6f10469741060ccf1c964697b5c",
+      "archived_path": "results/2026-09-06/50/qualification/20260906T194018566597Z-fixed-qkv-final/idle-processes.jsonl",
+      "archived_sha256": "d81cd9080f1dfb253961019b7c3a552c4c6bd6f10469741060ccf1c964697b5c",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/50/20260906T194018566597Z-fixed-qkv-final/qualification.json",
+      "original_sha256": "2b22d250656e49943e96dcd5877dd7a743381a4ef041b0aaf33bc792e1325fd7",
+      "archived_path": "results/2026-09-06/50/qualification/20260906T194018566597Z-fixed-qkv-final/qualification.json",
+      "archived_sha256": "2b22d250656e49943e96dcd5877dd7a743381a4ef041b0aaf33bc792e1325fd7",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/50/20260906T195343767368Z-fixed-qkv-idle-retry/attempt-1-processes.jsonl",
+      "original_sha256": "5689dbcd94b7e32e7759fb59cd86b77a18f601fb67f2e31e5aae5db018fcb36d",
+      "archived_path": "results/2026-09-06/50/qualification/20260906T195343767368Z-fixed-qkv-idle-retry/attempt-1-processes.jsonl",
+      "archived_sha256": "5689dbcd94b7e32e7759fb59cd86b77a18f601fb67f2e31e5aae5db018fcb36d",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/50/20260906T195343767368Z-fixed-qkv-idle-retry/attempt-1.log",
+      "original_sha256": "38185a7160ea9406868a8ddc63d8d60ce661eb55a2131d7a55146768cd277434",
+      "archived_path": "results/2026-09-06/50/qualification/20260906T195343767368Z-fixed-qkv-idle-retry/attempt-1.console.txt",
+      "archived_sha256": "38185a7160ea9406868a8ddc63d8d60ce661eb55a2131d7a55146768cd277434",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/50/20260906T195343767368Z-fixed-qkv-idle-retry/attempt-2-processes.jsonl",
+      "original_sha256": "1949b02ef3de2575a8f1f27467182f942e930657b2ad384b82972b5138ea586b",
+      "archived_path": "results/2026-09-06/50/qualification/20260906T195343767368Z-fixed-qkv-idle-retry/attempt-2-processes.jsonl",
+      "archived_sha256": "1949b02ef3de2575a8f1f27467182f942e930657b2ad384b82972b5138ea586b",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/50/20260906T195343767368Z-fixed-qkv-idle-retry/attempt-2.log",
+      "original_sha256": "bfde1fc96f71bb7d7b26b002f4e27926845dca244edcf9bd1e29bb326c0e5867",
+      "archived_path": "results/2026-09-06/50/qualification/20260906T195343767368Z-fixed-qkv-idle-retry/attempt-2.console.txt",
+      "archived_sha256": "bfde1fc96f71bb7d7b26b002f4e27926845dca244edcf9bd1e29bb326c0e5867",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/50/20260906T195343767368Z-fixed-qkv-idle-retry/idle-processes.jsonl",
+      "original_sha256": "d608831e41d617441d4abd7f4f7735f3a5189734e08e59ecce0e245c95534074",
+      "archived_path": "results/2026-09-06/50/qualification/20260906T195343767368Z-fixed-qkv-idle-retry/idle-processes.jsonl",
+      "archived_sha256": "9157c34d15b2c4e0b024768b966ba5103faf64f6877466db3a68bd478a24485a",
+      "redaction": "process_name reduced to executable basename",
+      "normalized_process_name_fields": 26
+    },
+    {
+      "original_path": ".work/qualification/50/20260906T195343767368Z-fixed-qkv-idle-retry/qualification.json",
+      "original_sha256": "5137c13c0b79757559ef42fa198ca071370e8cfafacea07bea78cff7ac1b342d",
+      "archived_path": "results/2026-09-06/50/qualification/20260906T195343767368Z-fixed-qkv-idle-retry/qualification.json",
+      "archived_sha256": "5137c13c0b79757559ef42fa198ca071370e8cfafacea07bea78cff7ac1b342d",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/gpu_processes_full.json",
+      "original_sha256": "9732134cdbfd3983ee49c45dde44380b643caf3afc6635632d9e0be2dbc188bc",
+      "archived_path": "results/2026-09-06/50/diagnostics/gpu_processes_full.json",
+      "archived_sha256": "9732134cdbfd3983ee49c45dde44380b643caf3afc6635632d9e0be2dbc188bc",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/gpu_idle_processes.jsonl",
+      "original_sha256": "d81cd9080f1dfb253961019b7c3a552c4c6bd6f10469741060ccf1c964697b5c",
+      "archived_path": "results/2026-09-06/50/diagnostics/gpu_idle_processes.jsonl",
+      "archived_sha256": "d81cd9080f1dfb253961019b7c3a552c4c6bd6f10469741060ccf1c964697b5c",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/qualification_blocked.json",
+      "original_sha256": "2b22d250656e49943e96dcd5877dd7a743381a4ef041b0aaf33bc792e1325fd7",
+      "archived_path": "results/2026-09-06/50/diagnostics/qualification_blocked.json",
+      "archived_sha256": "2b22d250656e49943e96dcd5877dd7a743381a4ef041b0aaf33bc792e1325fd7",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/qualification_retry.json",
+      "original_sha256": "5137c13c0b79757559ef42fa198ca071370e8cfafacea07bea78cff7ac1b342d",
+      "archived_path": "results/2026-09-06/50/diagnostics/qualification_retry.json",
+      "archived_sha256": "5137c13c0b79757559ef42fa198ca071370e8cfafacea07bea78cff7ac1b342d",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/validation_edges.json",
+      "original_sha256": "5effe9ed47cc2fab3ad92d5f03dc514fcd754268c48f013c37db872c31a23963",
+      "archived_path": "results/2026-09-06/50/diagnostics/validation_edges.json",
+      "archived_sha256": "5effe9ed47cc2fab3ad92d5f03dc514fcd754268c48f013c37db872c31a23963",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/tune_cute_direct.json",
+      "original_sha256": "3df7dc06b2e786882fbec825a019f6e306543a6437c95c3156ad6ca33b5c8980",
+      "archived_path": "results/2026-09-06/50/diagnostics/tune_cute_direct.json",
+      "archived_sha256": "3df7dc06b2e786882fbec825a019f6e306543a6437c95c3156ad6ca33b5c8980",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/tune_cute_initial.json",
+      "original_sha256": "639206fa8852b5d07261a89a21f98de20053aed44bb957e69ce14e52fcfb6cf6",
+      "archived_path": "results/2026-09-06/50/diagnostics/tune_cute_initial.json",
+      "archived_sha256": "639206fa8852b5d07261a89a21f98de20053aed44bb957e69ce14e52fcfb6cf6",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/tune_cute_middle.json",
+      "original_sha256": "84b2fde1281e67d4b1a396375ec2974bdf63c2718bcf9ad9d1b76d31cad816c1",
+      "archived_path": "results/2026-09-06/50/diagnostics/tune_cute_middle.json",
+      "archived_sha256": "84b2fde1281e67d4b1a396375ec2974bdf63c2718bcf9ad9d1b76d31cad816c1",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/tune_cute_occupancy.json",
+      "original_sha256": "7526fd9880dfbcf83f3943eb1f7444269b30c8c63209a5a480fe09eee300eddd",
+      "archived_path": "results/2026-09-06/50/diagnostics/tune_cute_occupancy.json",
+      "archived_sha256": "7526fd9880dfbcf83f3943eb1f7444269b30c8c63209a5a480fe09eee300eddd",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/tune_grouped_library.json",
+      "original_sha256": "84f4bbb7a850b8b5fcfb02a5f273fdb724ed22d06b90fc5735574148fc2f9779",
+      "archived_path": "results/2026-09-06/50/diagnostics/tune_grouped_library.json",
+      "archived_sha256": "84f4bbb7a850b8b5fcfb02a5f273fdb724ed22d06b90fc5735574148fc2f9779",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/tune_grouped_prepared.json",
+      "original_sha256": "f244a8cd7a846b0cc42baccc190e4428b9b52d5d0eff98aa05e31a05074f0853",
+      "archived_path": "results/2026-09-06/50/diagnostics/tune_grouped_prepared.json",
+      "archived_sha256": "f244a8cd7a846b0cc42baccc190e4428b9b52d5d0eff98aa05e31a05074f0853",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/tune_large.json",
+      "original_sha256": "54929e0eef6d4acf414e038e22e07eaa9ebec60928731d76088e80f7a08a31ab",
+      "archived_path": "results/2026-09-06/50/diagnostics/tune_large.json",
+      "archived_sha256": "54929e0eef6d4acf414e038e22e07eaa9ebec60928731d76088e80f7a08a31ab",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/tune_persistent_large.json",
+      "original_sha256": "595cebf10dbd68b67680e90ba222840cc66c903c06eb47725a0f09dcc83ec854",
+      "archived_path": "results/2026-09-06/50/diagnostics/tune_persistent_large.json",
+      "archived_sha256": "595cebf10dbd68b67680e90ba222840cc66c903c06eb47725a0f09dcc83ec854",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/tune_small.json",
+      "original_sha256": "9d9665217676da97a26bf361cf77d59df180b43b0b23ee794ce41c784b81f8a0",
+      "archived_path": "results/2026-09-06/50/diagnostics/tune_small.json",
+      "archived_sha256": "9d9665217676da97a26bf361cf77d59df180b43b0b23ee794ce41c784b81f8a0",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/tune_tma_large.json",
+      "original_sha256": "250edd9e23bf69199034cd2a6134b721100e7019b2c9d8470052fa3fbfd8e129",
+      "archived_path": "results/2026-09-06/50/diagnostics/tune_tma_large.json",
+      "archived_sha256": "250edd9e23bf69199034cd2a6134b721100e7019b2c9d8470052fa3fbfd8e129",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/tune_tma_store_stages.json",
+      "original_sha256": "0677a2cbd442b34c41dc4620f00b0f9df2089dfbd513d4ac969ee0434002e79d",
+      "archived_path": "results/2026-09-06/50/diagnostics/tune_tma_store_stages.json",
+      "archived_sha256": "0677a2cbd442b34c41dc4620f00b0f9df2089dfbd513d4ac969ee0434002e79d",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/050_attention_qkv_projection_with_bias_and_reshape/tune_warp_specialize.json",
+      "original_sha256": "c317e65649a1105863659f7dcb12e634345c3cf39581c8af3298aa1b51e2364f",
+      "archived_path": "results/2026-09-06/50/diagnostics/tune_warp_specialize.json",
+      "archived_sha256": "c317e65649a1105863659f7dcb12e634345c3cf39581c8af3298aa1b51e2364f",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/leaderboards/checkpoint7/50.json",
+      "original_sha256": "c5a36f164458fe11349e56d2ca1f3689357bc82802421b47f8314d158fd836ed",
+      "archived_path": "results/2026-09-06/50/diagnostics/50.json",
+      "archived_sha256": "c5a36f164458fe11349e56d2ca1f3689357bc82802421b47f8314d158fd836ed",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    }
+  ],
+  "timing_valid_for_ranking": false,
+  "notes": [
+    "Exact run artifacts retain their recorded hashes.",
+    "Monitor report copies normalize executable paths to basenames; both original and archived hashes are recorded.",
+    "Hash fields inside copied qualification reports still refer to original monitor files; use this index to locate normalized copies.",
+    "Foreign CUDA contexts and unlocked clocks exclude these timings from qualified ranking comparisons."
+  ]
+}

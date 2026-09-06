@@ -1,0 +1,26 @@
+{
+  "author": "SamMausberg",
+  "definition": "036_flux_output_norm_projection_chain",
+  "description": "Fused FP32 row normalization and modulation with library GEMMs.",
+  "name": "flux_norm_projection_split_library_v3",
+  "sources": [
+    {
+      "path": "split_kernel.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "split_kernel.py::run",
+    "languages": [
+      "triton",
+      "pytorch"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

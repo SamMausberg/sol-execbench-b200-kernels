@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "055_attention_qkv_projection_with_gqa_reshape",
+  "description": "Grouped persistent Blackwell Q/K/V projections with concrete output views and an ordinary linear fallback for other input strides or alignment.",
+  "name": "055_grouped_qkv_cute_views_b200_v2",
+  "sources": [{"path": "cute_kernel_v2.py"}, {"path": "cute_kernel.py"}, {"path": "cute_qkv.py"}],
+  "spec": {
+    "dependencies": ["torch", "nvidia-cutlass-dsl", "cuda-python"],
+    "destination_passing_style": false,
+    "entry_point": "cute_kernel_v2.py::run",
+    "languages": ["pytorch", "cute_dsl"],
+    "target_hardware": ["B200"]
+  }
+}

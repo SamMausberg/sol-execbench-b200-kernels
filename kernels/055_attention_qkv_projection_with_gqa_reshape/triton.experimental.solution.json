@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "055_attention_qkv_projection_with_gqa_reshape",
+  "description": "Grouped BF16 Q/K/V tensor-core projections in one launch, returning concrete batch/head/sequence/dimension views as the reference does.",
+  "name": "055_grouped_qkv_triton_experiment",
+  "sources": [{"path": "kernel.py"}],
+  "spec": {
+    "dependencies": ["torch", "triton"],
+    "destination_passing_style": false,
+    "entry_point": "kernel.py::run",
+    "languages": ["pytorch", "triton"],
+    "target_hardware": ["B200"]
+  }
+}

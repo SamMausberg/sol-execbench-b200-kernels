@@ -1,0 +1,55 @@
+{
+  "problem_id": 36,
+  "problem_name": "036_flux_output_norm_projection_chain",
+  "status": "experimental; complete correctness but below leader",
+  "current_candidate_manifest": "cuda/solution.json",
+  "submission_sha256": "2a4e8533c652f4c6eab1275d871fd293499a5c4ada4ad0e28205a02be7e7d593",
+  "source_sha256": {
+    "binding.cpp": "129e737a8e273270941eeb8087e3f71dd7564d1a24ebc327f4a128fbf2350e15",
+    "kernels.cu": "14a610377d2f1dca038ce207a970dca85d70ac8aa2958ff621af0f1e8c9ea9ce",
+    "kernels.h": "d30cb93dbf4b3e20b595b431edd96b03aaa6dee6fcca7d5cb9b6427916c9fe66"
+  },
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "full_harness_trials": 1,
+  "official_workloads": 16,
+  "passed": true,
+  "additional_input_checks_passed": 16,
+  "additional_inputs_unchanged": true,
+  "additional_input_report": "results/2026-09-06/36/diagnostics/36-native-inputs.json",
+  "additional_input_report_sha256": "3146923f53bd6942b14a0225ff36cd4c20de9bbd6bdafedf1d6694df08c5d506",
+  "selected_run": {
+    "run_directory": ".work/runs/36/20260906T200436.233012Z-native-emulated-full-2a4e8533c652",
+    "archived_run": "results/2026-09-06/36/20260906T200436.233012Z-native-emulated-full-2a4e8533c652",
+    "summary_sha256": "69bda35256c1a68b339e7cb162857eb90dbbf5d0c8b4f3f0330a21d6a270cc28",
+    "submission_sha256": "2a4e8533c652f4c6eab1275d871fd293499a5c4ada4ad0e28205a02be7e7d593",
+    "source_sha256": {
+      "binding.cpp": "129e737a8e273270941eeb8087e3f71dd7564d1a24ebc327f4a128fbf2350e15",
+      "kernels.cu": "14a610377d2f1dca038ce207a970dca85d70ac8aa2958ff621af0f1e8c9ea9ce",
+      "kernels.h": "d30cb93dbf4b3e20b595b431edd96b03aaa6dee6fcca7d5cb9b6427916c9fe66"
+    },
+    "passed": true,
+    "selected_workloads": 16,
+    "total_workloads": 16,
+    "trace_sha256": {
+      "trial-1.jsonl": "19f31da1bcab678888d6b67697e718a6cd6e9379a09737d333590b60106d8abe"
+    },
+    "timing_valid_for_ranking": false,
+    "observed_unqualified_sol_score": 0.3522347254560511
+  },
+  "archive_index": "results/2026-09-06/36/archive-index.json",
+  "clock_mode": "unlocked",
+  "timing_valid_for_ranking": false,
+  "local_sol_score": null,
+  "leaderboard_snapshot_score": 0.644426,
+  "leaderboard_snapshot": "results/2026-09-06/36/diagnostics/36.json",
+  "hosted_rank_confirmed": false,
+  "recommend_submission": false,
+  "notes": [
+    "The valid native candidate uses explicit CUBLAS_COMPUTE_32F_EMULATED_16BFX9 and separate CUDA pointwise kernels.",
+    "The eight extra cases at each of two shapes cover changed amplitudes, zeros, changed epsilon, near-constant rows, and strides.",
+    "Strided input coverage does not establish every possible pointer-alignment layout.",
+    "Other manifests are earlier experiments with only partial official coverage.",
+    "The six-product expansion experiment passes 192 checks but its conversion cost prevents a full-path speedup."
+  ]
+}

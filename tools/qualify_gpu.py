@@ -99,7 +99,7 @@ def snapshot(root_pid=None, family=None):
         identity = after.get(pid, before.get(pid, (None, None)))[1]
         belongs = (root_pid is not None and pid in family
                    and (identity is None or family[pid] == identity))
-        contexts.append({"pid": pid, "process_name": fields[1].strip() if len(fields) > 1 else "",
+        contexts.append({"pid": pid, "process_name": Path(fields[1].strip()).name if len(fields) > 1 else "",
                          "memory_mib": fields[2].strip() if len(fields) > 2 else "",
                          "start_ticks": identity, "campaign_descendant": belongs})
     return {"timestamp": started, "finished_at": now(), "root_pid": root_pid,

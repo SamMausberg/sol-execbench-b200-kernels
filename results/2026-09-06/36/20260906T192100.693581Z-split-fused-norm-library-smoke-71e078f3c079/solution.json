@@ -1,0 +1,27 @@
+{
+  "author": "SamMausberg",
+  "definition": "036_flux_output_norm_projection_chain",
+  "description": "Fused FP32 row normalization and modulation with library GEMMs.",
+  "name": "flux_norm_projection_split_library_v3",
+  "sources": [
+    {
+      "content": "# SPDX-License-Identifier: Apache-2.0\n\"\"\"Materialize fused normalization once, then use library projections.\"\"\"\n\nimport torch\nimport torch.nn.functional as F\nimport triton\nimport triton.language as tl\n\n\n@triton.jit\ndef _silu(X, Y, SIZE: tl.constexpr, BLOCK: tl.constexpr):\n    i = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)\n    x = tl.load(X + i, i < SIZE, 0)\n    tl.store(Y + i, x * tl.sigmoid(x), i < SIZE)\n\n\n@triton.jit\ndef _norm_mod(X, M, Y, EPS, SEQ: tl.constexpr, C: tl.constexpr, BLOCK: tl.constexpr):\n    row = tl.program_id(0)\n    k = tl.arange(0, BLOCK)\n    x = tl.load(X + row * C + k, k < C, 0)\n    mean = tl.sum(x, 0) / C\n    centered = tl.where(k < C, x - mean, 0.0)\n    variance = tl.sum(centered * centered, 0) / C\n    normalized = centered / tl.sqrt(variance + EPS)\n    batch = row // SEQ\n    shift = tl.load(M + batch * (2 * C) + k, k < C, 0)\n    scale = tl.load(M + batch * (2 * C) + C + k, k < C, 0)\n    adapted = normalized * (1.0 + scale) + shift\n    tl.store(Y + row * C + k, adapted, k < C)\n\n\n@torch.no_grad()\ndef run(hidden_states, temb, linear_weight, linear_bias,\n        proj_out_weight, proj_out_bias, eps, output):\n    tensors = (hidden_states, temb, linear_weight, linear_bias, proj_out_weight, proj_out_bias, output)\n    if not all(t.is_contiguous() for t in tensors):\n        mean = hidden_states.mean(-1, keepdim=True)\n        variance = hidden_states.var(-1, keepdim=True, unbiased=False)\n        normalized = (hidden_states - mean) / torch.sqrt(variance + eps)\n        mod = F.linear(temb * torch.sigmoid(temb), linear_weight, linear_bias)\n        shift, scale = mod.chunk(2, dim=-1)\n        adapted = normalized * (1.0 + scale[:, None, :]) + shift[:, None, :]\n        output.copy_(F.linear(adapted, proj_out_weight, proj_out_bias))\n        return\n    batch, seq, c = hidden_states.shape\n    silu = torch.empty_like(temb)\n    adapted = torch.empty_like(hidden_states)\n    _silu[(triton.cdiv(temb.numel(), 256),)](temb, silu, temb.numel(), 256,\n                                          enable_fp_fusion=False)\n    mod = F.linear(silu, linear_weight, linear_bias)\n    _norm_mod[(batch * seq,)](hidden_states, mod, adapted, eps, seq, c,\n                             triton.next_power_of_2(c), num_warps=4,\n                             enable_fp_fusion=False)\n    torch.addmm(proj_out_bias, adapted.view(-1, c), proj_out_weight.t(),\n                out=output.view(-1, proj_out_weight.shape[0]))\n",
+      "path": "split_kernel.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "split_kernel.py::run",
+    "languages": [
+      "triton",
+      "pytorch"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

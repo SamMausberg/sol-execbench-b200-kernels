@@ -1,0 +1,180 @@
+{
+  "problem_id": 36,
+  "runs": [
+    {
+      "run_directory": ".work/runs/36/20260906T185731.399394Z-fused-norm-projection-smoke-52a4f4b0bdc9",
+      "archived_run": "results/2026-09-06/36/20260906T185731.399394Z-fused-norm-projection-smoke-52a4f4b0bdc9",
+      "summary_sha256": "e6a166664247cbaf935edba266a10ac66b9a706448ff86d04f17699c3e90af34",
+      "submission_sha256": "52a4f4b0bdc9eb81df47c8f3fd6a1f44197d86b830744141eb6cbd2c29e2968d",
+      "source_sha256": {
+        "kernel.py": "2e247b17ba1d337d2610f9993db48ddc96b3fdb0acf96a51a5456c7677c91902"
+      },
+      "passed": true,
+      "selected_workloads": 2,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "c5399bf57fce8c97e7ce594b3f780f5351ed9e7e9e4e52a3bf7ff62ed26e7d7f"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    },
+    {
+      "run_directory": ".work/runs/36/20260906T191842.063769Z-register-mma-smoke-845a1c7b020b",
+      "archived_run": "results/2026-09-06/36/20260906T191842.063769Z-register-mma-smoke-845a1c7b020b",
+      "summary_sha256": "c5b4ddaa1fc8050823715d15e1b2e688b3cce75130cf7b0665ce88e45e3af36e",
+      "submission_sha256": "845a1c7b020b64d75601b6b8150a30bf90950aa82bd5f5618e4e7a83ec111560",
+      "source_sha256": {
+        "kernel_sm80.py": "43ca643c5355e4b21d6942de7e691327a9ff8762efc1021f381a8990c367c9bf"
+      },
+      "passed": true,
+      "selected_workloads": 2,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "e0cf959df8a837bfd019954fdf5dda5badafbb34706019c3e6786298c9e8d8b0"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    },
+    {
+      "run_directory": ".work/runs/36/20260906T192100.693581Z-split-fused-norm-library-smoke-71e078f3c079",
+      "archived_run": "results/2026-09-06/36/20260906T192100.693581Z-split-fused-norm-library-smoke-71e078f3c079",
+      "summary_sha256": "bfaaf7e7771757997a57118f59b97551bbcd63e732a7d7ad1b2fc9dc8cd9b66d",
+      "submission_sha256": "71e078f3c0795ba1248c6b828157b3d653f156d6e4bc2666b15c61578c73e32e",
+      "source_sha256": {
+        "split_kernel.py": "9a668d3ee78e5f3f9a3a35470b322e71f9c86ab41db129b753b7f0e9d83edce1"
+      },
+      "passed": true,
+      "selected_workloads": 3,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "54fa80d2c1b7388cbd2680e84f17cf5643dc030b07f2f343ae673cf10079c4bc"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    },
+    {
+      "run_directory": ".work/runs/36/20260906T192601.059594Z-rounded-tf32-smoke-6ae78bb34cbd",
+      "archived_run": "results/2026-09-06/36/20260906T192601.059594Z-rounded-tf32-smoke-6ae78bb34cbd",
+      "summary_sha256": "4aa0e8f900cf5363c7f9c5e4c0c308a75f9fe9a61aa87bca8d3835312d30d660",
+      "submission_sha256": "6ae78bb34cbdcf68b370682a2d37c0440a3e0bd3a96c2bb0e31a231c10dea314",
+      "source_sha256": {
+        "kernel_rna.py": "d162ea3b19cd2b5893b367d6bc350dbe2a658893ef1b39644576883be54b7942"
+      },
+      "passed": true,
+      "selected_workloads": 3,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "162fb14021f99c11f81d962bc76e71cc96aba8c85f0449b89d26998b59b0588a"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    },
+    {
+      "run_directory": ".work/runs/36/20260906T193437.299771Z-native-cuda-emulated-smoke-7716e667212b",
+      "archived_run": "results/2026-09-06/36/20260906T193437.299771Z-native-cuda-emulated-smoke-7716e667212b",
+      "summary_sha256": "3495aca81144507f3938eb38c2146c1b4a7992500a3588b11d271c15a0827fa6",
+      "submission_sha256": "7716e667212b8664a3b6a089df5aab9be94d1171849e92dda1090814862aacbe",
+      "source_sha256": {
+        "cuda/kernel.cu": "982ac6be89074856fafbc5930f2a7f4b9a9ee9a8ce352ad1ebd0d736189679ed"
+      },
+      "passed": false,
+      "selected_workloads": 3,
+      "total_workloads": 16,
+      "trace_sha256": {},
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    },
+    {
+      "run_directory": ".work/runs/36/20260906T193726.873623Z-native-cuda-emulated-flat-smoke-28be9b5e5d6f",
+      "archived_run": "results/2026-09-06/36/20260906T193726.873623Z-native-cuda-emulated-flat-smoke-28be9b5e5d6f",
+      "summary_sha256": "7f4ea6e16389875b93890f1079defba5b2053c17279cdd69e7d859fb1cd63049",
+      "submission_sha256": "28be9b5e5d6f994ea84f141e42cb75927374b8ef85dc1e732146e96d6650f6fb",
+      "source_sha256": {
+        "kernel.cu": "982ac6be89074856fafbc5930f2a7f4b9a9ee9a8ce352ad1ebd0d736189679ed"
+      },
+      "passed": false,
+      "selected_workloads": 3,
+      "total_workloads": 16,
+      "trace_sha256": {},
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    },
+    {
+      "run_directory": ".work/runs/36/20260906T194132.854467Z-native-cuda-emulated-headers-smoke-60e9daf92425",
+      "archived_run": "results/2026-09-06/36/20260906T194132.854467Z-native-cuda-emulated-headers-smoke-60e9daf92425",
+      "summary_sha256": "90c6ac42caccb788becbf9664b10044594eb113c6c56795c305a4290daab2ded",
+      "submission_sha256": "60e9daf924257c536fafe97c8a4cbedad7b532c03a449f347469ce02efb92b7a",
+      "source_sha256": {
+        "kernel.cu": "982ac6be89074856fafbc5930f2a7f4b9a9ee9a8ce352ad1ebd0d736189679ed"
+      },
+      "passed": true,
+      "selected_workloads": 3,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "83189f67473d5db3cb16885ecd1c72880b2d7ca3c815c8fccfca209ae2180d60"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    },
+    {
+      "run_directory": ".work/runs/36/20260906T200436.233012Z-native-emulated-full-2a4e8533c652",
+      "archived_run": "results/2026-09-06/36/20260906T200436.233012Z-native-emulated-full-2a4e8533c652",
+      "summary_sha256": "69bda35256c1a68b339e7cb162857eb90dbbf5d0c8b4f3f0330a21d6a270cc28",
+      "submission_sha256": "2a4e8533c652f4c6eab1275d871fd293499a5c4ada4ad0e28205a02be7e7d593",
+      "source_sha256": {
+        "binding.cpp": "129e737a8e273270941eeb8087e3f71dd7564d1a24ebc327f4a128fbf2350e15",
+        "kernels.cu": "14a610377d2f1dca038ce207a970dca85d70ac8aa2958ff621af0f1e8c9ea9ce",
+        "kernels.h": "d30cb93dbf4b3e20b595b431edd96b03aaa6dee6fcca7d5cb9b6427916c9fe66"
+      },
+      "passed": true,
+      "selected_workloads": 16,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "19f31da1bcab678888d6b67697e718a6cd6e9379a09737d333590b60106d8abe"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": 0.3522347254560511
+    }
+  ],
+  "reports": [
+    {
+      "original_path": ".work/validation/36-native-inputs.json",
+      "original_sha256": "3146923f53bd6942b14a0225ff36cd4c20de9bbd6bdafedf1d6694df08c5d506",
+      "archived_path": "results/2026-09-06/36/diagnostics/36-native-inputs.json",
+      "archived_sha256": "3146923f53bd6942b14a0225ff36cd4c20de9bbd6bdafedf1d6694df08c5d506",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/tuning/36-components.json",
+      "original_sha256": "98631a34fe2d90d961422d30e6672693d4124263151efcd7c266e7a6e663379c",
+      "archived_path": "results/2026-09-06/36/diagnostics/36-components.json",
+      "archived_sha256": "98631a34fe2d90d961422d30e6672693d4124263151efcd7c266e7a6e663379c",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/tuning/36-modulation.json",
+      "original_sha256": "8b51e2bed3fbcf3fbbd5ec4d64f807982eb819e9ddd4af5d2582d79dc9b03b30",
+      "archived_path": "results/2026-09-06/36/diagnostics/36-modulation.json",
+      "archived_sha256": "8b51e2bed3fbcf3fbbd5ec4d64f807982eb819e9ddd4af5d2582d79dc9b03b30",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/leaderboards/checkpoint7/36.json",
+      "original_sha256": "08ef0dbcd0c824f21544739491c58890e8109192fb77df5e704d054a1b6fb330",
+      "archived_path": "results/2026-09-06/36/diagnostics/36.json",
+      "archived_sha256": "08ef0dbcd0c824f21544739491c58890e8109192fb77df5e704d054a1b6fb330",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    }
+  ],
+  "timing_valid_for_ranking": false,
+  "notes": [
+    "Exact run artifacts retain their recorded hashes.",
+    "Monitor report copies normalize executable paths to basenames; both original and archived hashes are recorded.",
+    "Hash fields inside copied qualification reports still refer to original monitor files; use this index to locate normalized copies.",
+    "Foreign CUDA contexts and unlocked clocks exclude these timings from qualified ranking comparisons."
+  ]
+}

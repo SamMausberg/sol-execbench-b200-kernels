@@ -16,10 +16,19 @@ the official 1500 MHz SM clock setting, so local leads need additional margin.
 | 010 value projection and transpose | 0.635502 | 0.534899 | 16 workloads x 3 trials; 30 exact input variations | Tune GEMM algorithms; current latency buffer is 17.54% |
 | 033 post-norm residual | 0.782529 | 0.795472 | 16 workloads x 3 trials; 4 exact edge cases | Below leader; retain for collection coverage |
 
-The remaining positions will be selected from measured opportunities. Work is
-underway on 036 Flux output processing, 050 grouped QKV projection, and
-055 QKV projection with grouped-query reshape. Problems 119 and 173 remain
-partial investigations; neither establishes a lead.
+The remaining positions will be selected from measured opportunities. Problem
+055 passes five full correctness trials across two frozen versions. The current
+version also passes 38 layout and value checks with 114 exact outputs. Its raw
+score is promising, but every timing trial contains foreign CUDA contexts;
+three uncontended repeats remain pending. Problem 050 passes three full trials
+and ten exact edge cases, also without a qualified timing trial.
+
+Problem 036 passes all official cases and 16 extra checks with explicit FP32
+emulation. Its six-product expansion passes 192 checks, but conversion overhead
+prevents a complete-path speedup. It is parked below the leader. Current work
+targets 004 projection backward, 006 Hyena convolution, 043 MLA projection,
+and 048 paired gate/up projection. Problems 119 and 173 remain partial
+investigations; neither establishes a lead.
 Problems 030 and 092 now pass all official workloads, but their experimental
 implementations do not establish leads. Problem 218's exact library comparison
 shows a large apparent score advantage under different clocks without a kernel improvement.

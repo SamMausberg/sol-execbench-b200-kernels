@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "055_attention_qkv_projection_with_gqa_reshape",
+  "description": "Grouped persistent Blackwell Q/K/V matrix products, with two-CTA tiles for larger row counts and concrete output views matching the reference.",
+  "name": "055_grouped_qkv_cute_views_b200_v1",
+  "sources": [{"path": "cute_kernel.py"}, {"path": "cute_qkv.py"}],
+  "spec": {
+    "dependencies": ["torch", "nvidia-cutlass-dsl", "cuda-python"],
+    "destination_passing_style": false,
+    "entry_point": "cute_kernel.py::run",
+    "languages": ["pytorch", "cute_dsl"],
+    "target_hardware": ["B200"]
+  }
+}

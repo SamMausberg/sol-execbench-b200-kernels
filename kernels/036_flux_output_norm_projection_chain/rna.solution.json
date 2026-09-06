@@ -1,0 +1,26 @@
+{
+  "author": "SamMausberg",
+  "definition": "036_flux_output_norm_projection_chain",
+  "description": "Explicit TF32 operand rounding in fused modulation and output projection.",
+  "name": "flux_norm_projection_rounded_tf32_v4",
+  "sources": [
+    {
+      "path": "kernel_rna.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "kernel_rna.py::run",
+    "languages": [
+      "triton",
+      "pytorch"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

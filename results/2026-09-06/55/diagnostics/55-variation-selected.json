@@ -1,0 +1,1421 @@
+{
+  "source_sha256": {
+    "cute_kernel.py": "dbd3c56cb9e95182d9aafa94a8fea9b704656aff6975ee7f41671272ddebba39",
+    "cute_qkv.py": "c2b0080989041039c0d3e5e821b6eecb701fcb8700aebcb9ec1996c827eee49f",
+    "verify.py": "2461a02635be6fa97348ab85af78e086aa9de5b3a09fe5209d99d04d31202d2b"
+  },
+  "reference_sha256": "93e124c6effa69b75c4a54bb93c4de63f75640e557d267f0e6b05d913d2d3515",
+  "scope": "input-variation audit; separate official workloads and timing required",
+  "records": [
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "random",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 268288,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "zero_input",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 268288,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "ones",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 268288,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "negative",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 268288,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "alternating",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 268288,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "small",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 268288,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "large",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 268288,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "basis",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 268288,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "zero_q",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 268288,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "seq": 131,
+      "pattern": "changed_kv",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 268288,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 67072,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 211,
+      "pattern": "random",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 864256,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 211,
+      "pattern": "zero_input",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 864256,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 211,
+      "pattern": "ones",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 864256,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 211,
+      "pattern": "negative",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 864256,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 211,
+      "pattern": "alternating",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 864256,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 211,
+      "pattern": "small",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 864256,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 211,
+      "pattern": "large",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 864256,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 211,
+      "pattern": "basis",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 864256,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 211,
+      "pattern": "zero_q",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 864256,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 211,
+      "pattern": "changed_kv",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 864256,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 216064,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 1024,
+      "pattern": "random",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 4194304,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 1024,
+      "pattern": "zero_input",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 4194304,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 1024,
+      "pattern": "ones",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 4194304,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 1024,
+      "pattern": "negative",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 4194304,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 1024,
+      "pattern": "alternating",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 4194304,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 1024,
+      "pattern": "small",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 4194304,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 1024,
+      "pattern": "large",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 4194304,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 1024,
+      "pattern": "basis",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 4194304,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 1024,
+      "pattern": "zero_q",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 4194304,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "seq": 1024,
+      "pattern": "changed_kv",
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 4194304,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        },
+        {
+          "passed": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "unmatched": 0,
+          "elements": 1048576,
+          "bitwise_equal": true
+        }
+      ]
+    }
+  ]
+}

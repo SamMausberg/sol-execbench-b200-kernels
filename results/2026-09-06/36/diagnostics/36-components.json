@@ -1,0 +1,210 @@
+{
+  "clock_mode": "unlocked",
+  "torch_allow_tf32": false,
+  "sources": {
+    "kernel.py": "2e247b17ba1d337d2610f9993db48ddc96b3fdb0acf96a51a5456c7677c91902",
+    "kernel_sm80.py": "43ca643c5355e4b21d6942de7e691327a9ff8762efc1021f381a8990c367c9bf",
+    "split_kernel.py": "9a668d3ee78e5f3f9a3a35470b322e71f9c86ab41db129b753b7f0e9d83edce1",
+    "profile_components.py": "b3b122f6445bd77adc78c3bfb427c5e3786bca6b29d73be96dffcfe86bc646e4"
+  },
+  "records": [
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "kind": "fused",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0006537283188663423,
+        "max_absolute_error": 6.198883056640625e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.161471,
+      "cuda_events": []
+    },
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "kind": "register_mma",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0006537283188663423,
+        "max_absolute_error": 6.198883056640625e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.1759995,
+      "cuda_events": []
+    },
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "kind": "split_library",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.00023072764452081174,
+        "max_absolute_error": 2.1457672119140625e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.241358,
+      "cuda_events": []
+    },
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "kind": "mod_fused",
+      "latency_ms": 0.065104
+    },
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "kind": "mod_mma",
+      "latency_ms": 0.0653915
+    },
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "kind": "mod_library",
+      "latency_ms": 0.02808
+    },
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "kind": "norm",
+      "latency_ms": 0.0039355
+    },
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "kind": "output_library",
+      "latency_ms": 0.0357445
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "kind": "fused",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0024172994308173656,
+        "max_absolute_error": 2.1457672119140625e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.3753265,
+      "cuda_events": []
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "kind": "register_mma",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0024172994308173656,
+        "max_absolute_error": 2.1457672119140625e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.3926705,
+      "cuda_events": []
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "kind": "split_library",
+      "passed": true,
+      "errors": {
+        "max_relative_error": 0.0006953875417821109,
+        "max_absolute_error": 5.9604644775390625e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.38083,
+      "cuda_events": []
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "kind": "mod_fused",
+      "latency_ms": 0.0883835
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "kind": "mod_mma",
+      "latency_ms": 0.0887035
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "kind": "mod_library",
+      "latency_ms": 0.0919035
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "kind": "norm",
+      "latency_ms": 0.038975499999999996
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "kind": "output_library",
+      "latency_ms": 0.10553599999999999
+    }
+  ]
+}

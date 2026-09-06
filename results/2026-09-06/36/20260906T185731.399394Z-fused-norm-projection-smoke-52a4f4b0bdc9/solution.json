@@ -1,0 +1,27 @@
+{
+  "author": "SamMausberg",
+  "definition": "036_flux_output_norm_projection_chain",
+  "description": "Two fused FP32 kernels: SiLU with modulation projection, followed by centered normalization, modulation and output projection using TF32x3 products.",
+  "name": "flux_norm_projection_fused_b200_v1",
+  "sources": [
+    {
+      "content": "# SPDX-License-Identifier: Apache-2.0\n\"\"\"Fuse SiLU into modulation GEMM and normalization into output GEMM.\"\"\"\n\nimport torch\nimport torch.nn.functional as F\nimport triton\nimport triton.language as tl\n\n\n@triton.jit\ndef _modulation(T, W, Bias, O, BATCH: tl.constexpr, C: tl.constexpr,\n                BM: tl.constexpr, BN: tl.constexpr, BK: tl.constexpr):\n    m = tl.program_id(0) * BM + tl.arange(0, BM)\n    n = tl.program_id(1) * BN + tl.arange(0, BN)\n    k = tl.arange(0, BK)\n    acc = tl.full((BM, BN), 0, tl.float32)\n    for start in range(triton.cdiv(C, BK)):\n        kk = start * BK + k\n        x = tl.load(T + m[:, None] * C + kk[None, :],\n                    (m[:, None] < BATCH) & (kk[None, :] < C), 0)\n        silu = x * tl.sigmoid(x)\n        w = tl.load(W + n[None, :] * C + kk[:, None],\n                    (n[None, :] < 2 * C) & (kk[:, None] < C), 0)\n        acc = tl.dot(silu, w, acc, input_precision=\"tf32x3\")\n    bias = tl.load(Bias + n, n < 2 * C, 0)\n    tl.store(O + m[:, None] * (2 * C) + n[None, :], acc + bias[None, :],\n             (m[:, None] < BATCH) & (n[None, :] < 2 * C))\n\n\n@triton.jit\ndef _normalized_projection(X, Mod, W, Bias, O, EPS,\n                           ROWS: tl.constexpr, SEQ: tl.constexpr, C: tl.constexpr,\n                           N: tl.constexpr, BM: tl.constexpr, BN: tl.constexpr,\n                           BK: tl.constexpr, STATS: tl.constexpr):\n    rows = tl.program_id(0) * BM + tl.arange(0, BM)\n    stats_col = tl.arange(0, STATS)\n    total = tl.full((BM,), 0, tl.float32)\n    for step in range(triton.cdiv(C, STATS)):\n        k = step * STATS + stats_col\n        x = tl.load(X + rows[:, None] * C + k[None, :],\n                    (rows[:, None] < ROWS) & (k[None, :] < C), 0)\n        total += tl.sum(x, 1)\n    mean = total / C\n    squares = tl.full((BM,), 0, tl.float32)\n    for step in range(triton.cdiv(C, STATS)):\n        k = step * STATS + stats_col\n        x = tl.load(X + rows[:, None] * C + k[None, :],\n                    (rows[:, None] < ROWS) & (k[None, :] < C), 0)\n        centered = tl.where(k[None, :] < C, x - mean[:, None], 0)\n        squares += tl.sum(centered * centered, 1)\n    std = tl.sqrt(squares / C + EPS)\n    batch = rows // SEQ\n    columns = tl.program_id(1) * BN + tl.arange(0, BN)\n    inner = tl.arange(0, BK)\n    acc = tl.full((BM, BN), 0, tl.float32)\n    for step in range(triton.cdiv(C, BK)):\n        k = step * BK + inner\n        mask = (rows[:, None] < ROWS) & (k[None, :] < C)\n        x = tl.load(X + rows[:, None] * C + k[None, :], mask, 0)\n        shift = tl.load(Mod + batch[:, None] * (2 * C) + k[None, :], mask, 0)\n        scale = tl.load(Mod + batch[:, None] * (2 * C) + C + k[None, :], mask, 0)\n        normalized = (x - mean[:, None]) / std[:, None]\n        adapted = normalized * (1.0 + scale) + shift\n        w = tl.load(W + columns[None, :] * C + k[:, None],\n                    (columns[None, :] < N) & (k[:, None] < C), 0)\n        acc = tl.dot(adapted, w, acc, input_precision=\"tf32x3\")\n    bias = tl.load(Bias + columns, columns < N, 0)\n    tl.store(O + rows[:, None] * N + columns[None, :], acc + bias[None, :],\n             (rows[:, None] < ROWS) & (columns[None, :] < N))\n\n\n@torch.no_grad()\ndef run(hidden_states, temb, linear_weight, linear_bias,\n        proj_out_weight, proj_out_bias, eps, output):\n    inputs = (hidden_states, temb, linear_weight, linear_bias, proj_out_weight, proj_out_bias, output)\n    if not all(tensor.is_contiguous() for tensor in inputs):\n        mean = hidden_states.mean(-1, keepdim=True)\n        variance = hidden_states.var(-1, keepdim=True, unbiased=False)\n        normalized = (hidden_states - mean) / torch.sqrt(variance + eps)\n        mod = F.linear(temb * torch.sigmoid(temb), linear_weight, linear_bias)\n        shift, scale = mod.chunk(2, dim=-1)\n        adapted = normalized * (1.0 + scale[:, None, :]) + shift[:, None, :]\n        output.copy_(F.linear(adapted, proj_out_weight, proj_out_bias))\n        return\n    batch, seq, c = hidden_states.shape\n    n = proj_out_weight.shape[0]\n    mod = torch.empty((batch, 2 * c), device=hidden_states.device, dtype=hidden_states.dtype)\n    _modulation[(triton.cdiv(batch, 16), triton.cdiv(2 * c, 32))](\n        temb, linear_weight, linear_bias, mod, batch, c, 16, 32, 64,\n        num_warps=4, num_stages=3, enable_fp_fusion=False,\n    )\n    _normalized_projection[(triton.cdiv(batch * seq, 16), triton.cdiv(n, 64))](\n        hidden_states, mod, proj_out_weight, proj_out_bias, output, eps,\n        batch * seq, seq, c, n, 16, 64, 64, 256,\n        num_warps=4, num_stages=3, enable_fp_fusion=False,\n    )\n",
+      "path": "kernel.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": true,
+    "entry_point": "kernel.py::run",
+    "languages": [
+      "triton",
+      "pytorch"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

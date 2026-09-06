@@ -1,0 +1,36 @@
+{
+  "name": "fixed_qkv_bias_cute_b200_v1",
+  "definition": "050_attention_qkv_projection_with_bias_and_reshape",
+  "author": "SamMausberg",
+  "description": "One persistent Blackwell GEMM launch routes Q/K/V through separate weight and output descriptors, with explicit BF16 accumulator rounding before bias addition.",
+  "spec": {
+    "languages": [
+      "cute_dsl",
+      "triton",
+      "pytorch"
+    ],
+    "target_hardware": [
+      "B200"
+    ],
+    "entry_point": "cute_kernel.py::run",
+    "destination_passing_style": true,
+    "dependencies": [
+      "torch",
+      "triton",
+      "nvidia-cutlass-dsl",
+      "cuda-python"
+    ],
+    "compile_options": {}
+  },
+  "sources": [
+    {
+      "path": "cute_kernel.py"
+    },
+    {
+      "path": "cute_qkv.py"
+    },
+    {
+      "path": "kernel.py"
+    }
+  ]
+}

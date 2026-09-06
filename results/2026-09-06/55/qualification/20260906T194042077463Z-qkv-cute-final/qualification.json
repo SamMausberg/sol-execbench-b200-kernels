@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "problem_id": 55,
+  "started_at": "2026-09-06T19:40:42.082225+00:00",
+  "requested_clean_trials": 3,
+  "max_attempts": 3,
+  "sampling_seconds": 0.5,
+  "tool_sha256": "873a63f4bcd2bbc318c3efe3ee357c07fd8812695bdf7ce2ee18957deaa6728f",
+  "scope": "local timing qualification from sampled CUDA process identities; no hosted evaluation",
+  "attempts": [],
+  "complete": false,
+  "stop_reason": "idle wait or campaign deadline reached",
+  "finished_at": "2026-09-06T19:43:42.304743+00:00"
+}

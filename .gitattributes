@@ -1,2 +1,5 @@
 # Preserve the validated third-party source formatting and identify its origin.
 kernels/030_attention_output_projection_with_residual/cute_residual.py linguist-vendored whitespace=-blank-at-eof
+kernels/050_attention_qkv_projection_with_bias_and_reshape/cute_qkv.py linguist-vendored whitespace=-blank-at-eof
+kernels/050_attention_qkv_projection_with_bias_and_reshape/cute_qkv_direct.py linguist-vendored whitespace=-blank-at-eof
+kernels/055_attention_qkv_projection_with_gqa_reshape/cute_qkv.py linguist-vendored whitespace=-blank-at-eof

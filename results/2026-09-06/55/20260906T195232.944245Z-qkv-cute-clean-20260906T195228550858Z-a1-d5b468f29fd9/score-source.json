@@ -1,0 +1,358 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "batch_size": {
+          "description": "Batch size",
+          "type": "var"
+        },
+        "head_dim": {
+          "description": "Dimension per attention head",
+          "type": "const",
+          "value": 128
+        },
+        "hidden_size": {
+          "description": "Hidden dimension size",
+          "type": "const",
+          "value": 2048
+        },
+        "kv_size": {
+          "description": "Total key/value projection output size",
+          "expression": "num_kv_heads * head_dim",
+          "type": "expr"
+        },
+        "num_heads": {
+          "description": "Number of query attention heads",
+          "type": "const",
+          "value": 16
+        },
+        "num_kv_heads": {
+          "description": "Number of key-value attention heads",
+          "type": "const",
+          "value": 4
+        },
+        "q_size": {
+          "description": "Total query projection output size",
+          "expression": "num_heads * head_dim",
+          "type": "expr"
+        },
+        "seq_len": {
+          "description": "Sequence length",
+          "type": "var"
+        }
+      },
+      "baseline": "import torch\n\n@torch.no_grad()\ndef run(\n    hidden_states: torch.Tensor,\n    q_weight: torch.Tensor,\n    k_weight: torch.Tensor,\n    v_weight: torch.Tensor,\n):\n    \"\"\"\n    Fused QKV projection with GQA reshaping.\n    \n    Args:\n        hidden_states: [batch_size, seq_len, 2048]\n        q_weight: [2048, 2048] - Query projection weight\n        k_weight: [512, 2048] - Key projection weight\n        v_weight: [512, 2048] - Value projection weight\n    \n    Returns:\n        query_states: [batch_size, 16, seq_len, 128]\n        key_states: [batch_size, 4, seq_len, 128]\n        value_states: [batch_size, 4, seq_len, 128]\n    \"\"\"\n    # Constants\n    num_heads = 16\n    num_kv_heads = 4\n    head_dim = 128\n    \n    bsz, q_len, _ = hidden_states.size()\n    \n    # Three linear projections (no bias)\n    # Q: [bsz, q_len, 2048] @ [2048, 2048].T -> [bsz, q_len, 2048]\n    query_states = torch.matmul(hidden_states, q_weight.t())\n    \n    # K: [bsz, q_len, 2048] @ [512, 2048].T -> [bsz, q_len, 512]\n    key_states = torch.matmul(hidden_states, k_weight.t())\n    \n    # V: [bsz, q_len, 2048] @ [512, 2048].T -> [bsz, q_len, 512]\n    value_states = torch.matmul(hidden_states, v_weight.t())\n    \n    # Reshape and transpose for attention computation\n    # Query: [bsz, q_len, 2048] -> [bsz, q_len, 16, 128] -> [bsz, 16, q_len, 128]\n    query_states = query_states.view(bsz, q_len, num_heads, head_dim).transpose(1, 2)\n    \n    # Key: [bsz, q_len, 512] -> [bsz, q_len, 4, 128] -> [bsz, 4, q_len, 128]\n    key_states = key_states.view(bsz, q_len, num_kv_heads, head_dim).transpose(1, 2)\n    \n    # Value: [bsz, q_len, 512] -> [bsz, q_len, 4, 128] -> [bsz, 4, q_len, 128]\n    value_states = value_states.view(bsz, q_len, num_kv_heads, head_dim).transpose(1, 2)\n    \n    return query_states, key_states, value_states\n",
+      "baseline_latency_ms": 0.011424,
+      "description": "Fused QKV projection with Grouped Query Attention (GQA) reshaping. Performs three linear projections (Q: 2048->2048, K: 2048->512, V: 2048->512) followed by reshape and transpose to prepare tensors for attention computation. Uses GQA pattern with 16 query heads and 4 key-value heads (4x compression).",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 55,
+      "inputs": {
+        "hidden_states": {
+          "description": "Input hidden states",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "hidden_size"
+          ]
+        },
+        "k_weight": {
+          "description": "Key projection weight matrix",
+          "dtype": "bfloat16",
+          "shape": [
+            "kv_size",
+            "hidden_size"
+          ]
+        },
+        "q_weight": {
+          "description": "Query projection weight matrix",
+          "dtype": "bfloat16",
+          "shape": [
+            "q_size",
+            "hidden_size"
+          ]
+        },
+        "v_weight": {
+          "description": "Value projection weight matrix",
+          "dtype": "bfloat16",
+          "shape": [
+            "kv_size",
+            "hidden_size"
+          ]
+        }
+      },
+      "latency_unit": "ms",
+      "name": "055_attention_qkv_projection_with_gqa_reshape",
+      "outputs": {
+        "key_states": {
+          "description": "Key states reshaped for attention",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "num_kv_heads",
+            "seq_len",
+            "head_dim"
+          ]
+        },
+        "query_states": {
+          "description": "Query states reshaped for attention",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "num_heads",
+            "seq_len",
+            "head_dim"
+          ]
+        },
+        "value_states": {
+          "description": "Value states reshaped for attention",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "num_kv_heads",
+            "seq_len",
+            "head_dim"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "other",
+        "L1",
+        "model:granite-4.0-1b"
+      ],
+      "title": "055_attention_qkv_projection_with_gqa_reshape",
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 4,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.026608,
+          "sol_ms": 0.004
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 211
+          },
+          "baseline_latency_ms": 0.025056,
+          "sol_ms": 0.0033
+        },
+        {
+          "axes": {
+            "batch_size": 32,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.063377,
+          "sol_ms": 0.0289
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 449
+          },
+          "baseline_latency_ms": 0.026704,
+          "sol_ms": 0.0035
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.100912,
+          "sol_ms": 0.0573
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 131
+          },
+          "baseline_latency_ms": 0.023776,
+          "sol_ms": 0.0021
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 4096
+          },
+          "baseline_latency_ms": 0.063648,
+          "sol_ms": 0.0289
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.0437125,
+          "sol_ms": 0.0146
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.026624,
+          "sol_ms": 0.004
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.032577,
+          "sol_ms": 0.0075
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.032608,
+          "sol_ms": 0.0075
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.06352,
+          "sol_ms": 0.0289
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 0.063568,
+          "sol_ms": 0.0289
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 0.04368,
+          "sol_ms": 0.0146
+        },
+        {
+          "axes": {
+            "batch_size": 64,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.100656,
+          "sol_ms": 0.0573
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "head_dim": 128,
+            "hidden_size": 2048,
+            "kv_size": 512,
+            "num_heads": 16,
+            "num_kv_heads": 4,
+            "q_size": 2048,
+            "seq_len": 541
+          },
+          "baseline_latency_ms": 0.032832,
+          "sol_ms": 0.0079
+        }
+      ]
+    }
+  },
+  "response_sha256": "3ed3da1dbdaac181c4399ae700c5c72b151f816a93e693eac5c17fca2326d7eb",
+  "retrieved_at": "2026-09-06T19:52:32.942055+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/55"
+}

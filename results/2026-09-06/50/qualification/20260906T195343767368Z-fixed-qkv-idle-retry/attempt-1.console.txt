@@ -1,0 +1,6 @@
+Run artifacts: /workspace/sol-execbench-b200-kernels/.work/runs/50/20260906T195405.361185Z-fixed-qkv-idle-retry-20260906T195343767368Z-a1-7c65d796d317
+Waiting for exclusive GPU lock: /workspace/sol-execbench-b200-kernels/.work/gpu.lock
+GPU lock acquired
+Official evaluator trial 1/1; log: /workspace/sol-execbench-b200-kernels/.work/runs/50/20260906T195405.361185Z-fixed-qkv-idle-retry-20260906T195343767368Z-a1-7c65d796d317/trial-1.log
+Summary: /workspace/sol-execbench-b200-kernels/.work/runs/50/20260906T195405.361185Z-fixed-qkv-idle-retry-20260906T195343767368Z-a1-7c65d796d317/summary.json
+Passed: True; local mean SOL score: 0.7080753013096055; clock mode: unlocked

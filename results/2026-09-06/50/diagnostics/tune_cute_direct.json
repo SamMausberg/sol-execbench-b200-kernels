@@ -1,0 +1,548 @@
+[
+  {
+    "index": 4,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 512
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ],
+    "gpu_processes_before": [
+      {
+        "pid": 248116,
+        "process_basename": "python",
+        "memory_mib": "822 MiB",
+        "is_this_process": true
+      }
+    ],
+    "layouts": {
+      "[64, 64, 1, 1, False, True]": {
+        "passed": false,
+        "error": "DSLRuntimeError: \ud83e\uddca\ud83e\uddca\ud83e\uddca ICE IR Verification Failed \ud83e\uddca\ud83e\uddca\ud83e\uddca\n  Caused exception: Verification failed:\nerror: \"cute.copy(output_atom, tTR_rD, q_output[(None, None, None, subtile_idx)])\"(\"/workspace/sol-execbench-b200-kernels/kernels/050_attention_qkv_projection_with_bias_and_reshape/cute_qkv_direct.py\":1185:20): 'cute.copy' op '!cute_nvgpu.atom.universal_copy<bf16, 128 b>' cannot vectorize copy to 8 elements (static strides must be 1)\n note: \"cute.copy(output_atom, tTR_rD, q_output[(None, None, None, subtile_idx)])\"(\"/workspace/sol-execbench-b200-kernels/kernels/050_attention_qkv_projection_with_bias_and_reshape/cute_qkv_direct.py\":1185:20): see current operation: \"cute.copy\"(%637, %1158, %1170) <{operandSegmentSizes = array<i32: 1, 1, 1, 0>}> : (!cute_nvgpu.atom.universal_copy<bf16, 128 b>, !cute.memref<bf16, rmem, align<32>, \"(((2,2,4),1),(1,1)):(((1,2,4),0),(0,0))\">, !cute.memref<bf16, gmem, align<4>, \"(((2,2,4),1),(1,1)):(((1,8192,8),0),(0,0))\">) -> ()"
+      },
+      "[128, 128, 1, 1, False, True]": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 8.590866666666667
+      },
+      "[128, 256, 1, 1, False, True]": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 11.513333333333332
+      },
+      "[256, 256, 2, 1, True, True]": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 12.970666666666666
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 248116,
+        "process_basename": "python",
+        "memory_mib": "1080 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 249167,
+        "process_basename": "python",
+        "memory_mib": "3036 MiB",
+        "is_this_process": false
+      }
+    ]
+  },
+  {
+    "index": 5,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 4,
+      "seq_len": 512
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ],
+    "gpu_processes_before": [
+      {
+        "pid": 248116,
+        "process_basename": "python",
+        "memory_mib": "866 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 249167,
+        "process_basename": "python",
+        "memory_mib": "3036 MiB",
+        "is_this_process": false
+      }
+    ],
+    "layouts": {
+      "[64, 64, 1, 1, False, True]": {
+        "passed": false,
+        "error": "DSLRuntimeError: \ud83e\uddca\ud83e\uddca\ud83e\uddca ICE IR Verification Failed \ud83e\uddca\ud83e\uddca\ud83e\uddca\n  Caused exception: Verification failed:\nerror: \"cute.copy(output_atom, tTR_rD, q_output[(None, None, None, subtile_idx)])\"(\"/workspace/sol-execbench-b200-kernels/kernels/050_attention_qkv_projection_with_bias_and_reshape/cute_qkv_direct.py\":1185:20): 'cute.copy' op '!cute_nvgpu.atom.universal_copy<bf16, 128 b>' cannot vectorize copy to 8 elements (static strides must be 1)\n note: \"cute.copy(output_atom, tTR_rD, q_output[(None, None, None, subtile_idx)])\"(\"/workspace/sol-execbench-b200-kernels/kernels/050_attention_qkv_projection_with_bias_and_reshape/cute_qkv_direct.py\":1185:20): see current operation: \"cute.copy\"(%637, %1158, %1170) <{operandSegmentSizes = array<i32: 1, 1, 1, 0>}> : (!cute_nvgpu.atom.universal_copy<bf16, 128 b>, !cute.memref<bf16, rmem, align<32>, \"(((2,2,4),1),(1,1)):(((1,2,4),0),(0,0))\">, !cute.memref<bf16, gmem, align<4>, \"(((2,2,4),1),(1,1)):(((1,8192,8),0),(0,0))\">) -> ()"
+      },
+      "[128, 128, 1, 1, False, True]": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 12.503466666666666
+      },
+      "[128, 256, 1, 1, False, True]": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 12.2494
+      },
+      "[256, 256, 2, 1, True, True]": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 12.906533333333332
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 248116,
+        "process_basename": "python",
+        "memory_mib": "1122 MiB",
+        "is_this_process": true
+      }
+    ]
+  },
+  {
+    "index": 15,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 64,
+      "seq_len": 128
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ],
+    "gpu_processes_before": [
+      {
+        "pid": 248116,
+        "process_basename": "python",
+        "memory_mib": "1124 MiB",
+        "is_this_process": true
+      }
+    ],
+    "layouts": {
+      "[64, 64, 1, 1, False, True]": {
+        "passed": false,
+        "error": "DSLRuntimeError: \ud83e\uddca\ud83e\uddca\ud83e\uddca ICE IR Verification Failed \ud83e\uddca\ud83e\uddca\ud83e\uddca\n  Caused exception: Verification failed:\nerror: \"cute.copy(output_atom, tTR_rD, q_output[(None, None, None, subtile_idx)])\"(\"/workspace/sol-execbench-b200-kernels/kernels/050_attention_qkv_projection_with_bias_and_reshape/cute_qkv_direct.py\":1185:20): 'cute.copy' op '!cute_nvgpu.atom.universal_copy<bf16, 128 b>' cannot vectorize copy to 8 elements (static strides must be 1)\n note: \"cute.copy(output_atom, tTR_rD, q_output[(None, None, None, subtile_idx)])\"(\"/workspace/sol-execbench-b200-kernels/kernels/050_attention_qkv_projection_with_bias_and_reshape/cute_qkv_direct.py\":1185:20): see current operation: \"cute.copy\"(%637, %1158, %1170) <{operandSegmentSizes = array<i32: 1, 1, 1, 0>}> : (!cute_nvgpu.atom.universal_copy<bf16, 128 b>, !cute.memref<bf16, rmem, align<32>, \"(((2,2,4),1),(1,1)):(((1,2,4),0),(0,0))\">, !cute.memref<bf16, gmem, align<4>, \"(((2,2,4),1),(1,1)):(((1,8192,8),0),(0,0))\">) -> ()"
+      },
+      "[128, 128, 1, 1, False, True]": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 29.815333333333335
+      },
+      "[128, 256, 1, 1, False, True]": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 24.733799999999995
+      },
+      "[256, 256, 2, 1, True, True]": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 25.448333333333334
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 248116,
+        "process_basename": "python",
+        "memory_mib": "1382 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 250275,
+        "process_basename": "python",
+        "memory_mib": "824 MiB",
+        "is_this_process": false
+      }
+    ]
+  }
+]

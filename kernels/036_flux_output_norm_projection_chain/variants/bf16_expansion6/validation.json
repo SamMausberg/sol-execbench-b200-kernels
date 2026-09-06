@@ -1,0 +1,60 @@
+{
+  "problem_id": 36,
+  "status": "numerically_validated_experiment_no_complete_path_speedup",
+  "implementation_language": "CUDA_CPP",
+  "standalone_experiment": true,
+  "official_harness_trials": 0,
+  "hosted_submissions": 0,
+  "source_sha256": "a9d423d8aca1e22f81dc476568242cde37a51fa2dd9cb777f5698fa888c78f78",
+  "source_files": {
+    "bridge.cpp": "b8b7b7b01c8acf6cc3030f97e9e779487a75276765fe4c8975db8640cf117b85",
+    "kernels.cu": "c7f36ae7c70a9ad2fb6d36b9a6d9efc21a7f75ca5a866b197ad56da29c683797"
+  },
+  "cublaslt_version": 130000,
+  "compute_mode": "CUBLAS_COMPUTE_32F",
+  "baseline_compute_mode": "CUBLAS_COMPUTE_32F_EMULATED_16BFX9",
+  "fragments_per_operand": 3,
+  "products": 6,
+  "dominant_product_split_k": 4,
+  "numerical_lower_product_heuristic_index": 0,
+  "tested_workloads": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+  "original_weight_checks": {"passed": 96, "total": 96},
+  "scaled_32_weight_checks": {"passed": 96, "total": 96},
+  "minimum_matched_ratio": 0.9999313354492188,
+  "required_matched_ratio": 0.99,
+  "maximum_absolute_error": 0.01416015625,
+  "reports": [
+    {
+      "kind": "initial_unsplit_numerical_failure",
+      "path": "reports/expansion6-output-20260906T200311Z.json",
+      "sha256": "1995056c090fdb8fc223fbf5a5f41a69c7ee70a4fb6dbe9f94ed7db0b7215b74",
+      "source_sha256": "3273b001133331ea2a3906721d136bfdf2a27a509441eadbe94cd79e70823f95",
+      "source_archive": "history/initial",
+      "passed_checks": 23,
+      "total_checks": 24,
+      "minimum_matched_ratio": 0.98504638671875
+    },
+    {
+      "kind": "focused_split_k_4_correction",
+      "path": "reports/expansion6-none-20260906T201006Z.json",
+      "sha256": "e3693060a321cdac5f4b10ab6c9b4c77b1cd254a7740f0155f1d02f2d1bc48b1",
+      "passed_checks": 12,
+      "total_checks": 12
+    },
+    {
+      "kind": "all_workloads_and_bounded_output_timing",
+      "path": "reports/expansion6-output-20260906T201205Z.json",
+      "sha256": "a1346e54ef4e2d9da0e4bb0ca6cb815859b44092446468f472dddadb6991056b",
+      "passed_checks": 192,
+      "total_checks": 192
+    }
+  ],
+  "timing_qualified": false,
+  "timing_caveats": [
+    "Unlocked B200 clocks differ from hosted evaluation.",
+    "Only before/after context snapshots were recorded; transient external activity cannot be excluded.",
+    "At most two heuristic choices and eight measured iterations per component.",
+    "The alternate lower-product heuristic used in some fastest timings has component error checks but has not received all 192 end-to-end checks."
+  ],
+  "performance_conclusion": "Complete conversion paths lose to BF16x9 at M128, M1024, and M8192. Batched products alone offer about 20 microseconds of headroom only at M8192; normalization-to-fragment fusion is unmeasured."
+}

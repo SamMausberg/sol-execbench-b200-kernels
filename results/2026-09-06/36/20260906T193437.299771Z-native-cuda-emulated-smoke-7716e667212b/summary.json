@@ -1,0 +1,98 @@
+{
+  "clock_mode": "unlocked",
+  "complete_problem": false,
+  "contract_sha256": "fb8b14e3a85e0790367031c83894fae485f86c6662c87dcfdf42bea0d5f33564",
+  "environment_file": "environment.json",
+  "environment_sha256": "9f7b78b28b4ec7f351553df20f5ffa836d680265e8ee84c8b8a7dc2c1711cc99",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "geometric_mean_latency_ms": null,
+  "local_mean_sol_score": null,
+  "passed": false,
+  "problem_mean_sol_score": null,
+  "problem_name": "036_flux_output_norm_projection_chain",
+  "recorded_at": "2026-09-06T19:35:35.716500+00:00",
+  "requested_trials": 1,
+  "result_scope": "local estimate; official leaderboard requires server evaluation",
+  "schema_version": 1,
+  "score_aggregation": "arithmetic mean of per-workload SOL scores; per-workload latency is the median across trials",
+  "score_formula": "1 / (1 + (latency_ms - sol_ms) / (baseline_latency_ms - sol_ms))",
+  "score_source_retrieved_at": "2026-09-06T19:34:37.298101+00:00",
+  "score_source_sha256": "5726f89d573e731fd9e8c75374b7f7ca0f15a290adf97298624ece9569523979",
+  "score_source_url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/36",
+  "selected_workloads": 3,
+  "sol_is_dummy": false,
+  "submission_sha256": "7716e667212b8664a3b6a089df5aab9be94d1171849e92dda1090814862aacbe",
+  "total_workloads": 16,
+  "trace_sha256": {},
+  "trial_mean_sol_scores": [],
+  "website_id": 36,
+  "workloads": [
+    {
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "baseline_latency_ms": 0.1186885,
+      "below_sol_bound": false,
+      "latency_ms_median": null,
+      "median_latency_sol_score": null,
+      "observations": [
+        {
+          "latency_ms": null,
+          "status": "MISSING_TRACE",
+          "trial": 1
+        }
+      ],
+      "passed": false,
+      "relative_spread": null,
+      "sol_ms": 0.0269,
+      "trial_sol_scores": [],
+      "uuid": "6dd8ea53-8b5d-5e98-9fc5-793d0705f0cc"
+    },
+    {
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "baseline_latency_ms": 0.047616,
+      "below_sol_bound": false,
+      "latency_ms_median": null,
+      "median_latency_sol_score": null,
+      "observations": [
+        {
+          "latency_ms": null,
+          "status": "MISSING_TRACE",
+          "trial": 1
+        }
+      ],
+      "passed": false,
+      "relative_spread": null,
+      "sol_ms": 0.0008,
+      "trial_sol_scores": [],
+      "uuid": "59925f72-9fea-5320-a390-4f08addde268"
+    },
+    {
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1024
+      },
+      "baseline_latency_ms": 0.049728,
+      "below_sol_bound": false,
+      "latency_ms_median": null,
+      "median_latency_sol_score": null,
+      "observations": [
+        {
+          "latency_ms": null,
+          "status": "MISSING_TRACE",
+          "trial": 1
+        }
+      ],
+      "passed": false,
+      "relative_spread": null,
+      "sol_ms": 0.0037,
+      "trial_sol_scores": [],
+      "uuid": "9657f89f-d237-5812-994d-a3f8d763906f"
+    }
+  ]
+}

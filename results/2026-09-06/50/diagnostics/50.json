@@ -1,0 +1,288 @@
+{
+  "retrieved_at": "2026-09-06T20:23:07.562339+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/leaderboard/kernel/50/B200?evaluation_stack_version=v1.1",
+  "response": {
+    "data": {
+      "kernel_name": "050_attention_qkv_projection_with_bias_and_reshape",
+      "kernel_title": "050_attention_qkv_projection_with_bias_and_reshape",
+      "kernel_id": 50,
+      "gpu_type": "B200",
+      "evaluation_stack_version": "v1.1",
+      "latency_unit": "ms",
+      "sol_entry": {
+        "username": "SOL Bound",
+        "sol_score": 1.0,
+        "latency_ms": 0.002318,
+        "fast_1_count": 16,
+        "fast_1_total": 16,
+        "avg_speedup": 8.2157
+      },
+      "reference_entries": [
+        {
+          "username": "SOL Bound",
+          "sol_score": 1.0,
+          "latency_ms": 0.002318,
+          "fast_1_count": 16,
+          "fast_1_total": 16,
+          "avg_speedup": 8.2157
+        },
+        {
+          "username": "Scoring Baseline",
+          "sol_score": 0.5,
+          "latency_ms": 0.019041,
+          "fast_1_count": 0,
+          "fast_1_total": 16,
+          "avg_speedup": 1.0
+        },
+        {
+          "username": "Reference Implementation",
+          "sol_score": 0.274635,
+          "latency_ms": 0.045656,
+          "fast_1_count": 0,
+          "fast_1_total": 16,
+          "avg_speedup": 0.4171
+        }
+      ],
+      "rankings": [
+        {
+          "username": "SOL Bound",
+          "sol_score": 1.0,
+          "latency_ms": 0.002318,
+          "fast_1_count": 16,
+          "fast_1_total": 16,
+          "avg_speedup": 8.2157,
+          "rank": null,
+          "is_reference": true
+        },
+        {
+          "rank": 1,
+          "submission_id": 21905,
+          "user_id": 288,
+          "username": "ac4k",
+          "sol_score": 0.712744,
+          "sol_score_diff": null,
+          "latency_ms": 0.009069,
+          "fast_1_count": 16,
+          "fast_1_total": 16,
+          "avg_speedup": 2.0996,
+          "submitted_at": "2026-07-12T07:45:27.949183"
+        },
+        {
+          "rank": 2,
+          "submission_id": 41959,
+          "user_id": 167,
+          "username": "Amir M. Mir | SF Tensor",
+          "sol_score": 0.712303,
+          "sol_score_diff": -0.000441,
+          "latency_ms": 0.00911,
+          "fast_1_count": 16,
+          "fast_1_total": 16,
+          "avg_speedup": 2.0902,
+          "submitted_at": "2026-09-02T14:17:40.626485"
+        },
+        {
+          "rank": 3,
+          "submission_id": 41878,
+          "user_id": 489,
+          "username": "RIAC as well",
+          "sol_score": 0.707414,
+          "sol_score_diff": -0.004889,
+          "latency_ms": 0.009168,
+          "fast_1_count": 16,
+          "fast_1_total": 16,
+          "avg_speedup": 2.0769,
+          "submitted_at": "2026-09-02T04:58:07.022089"
+        },
+        {
+          "rank": 4,
+          "submission_id": 19929,
+          "user_id": 265,
+          "username": "Databricks",
+          "sol_score": 0.673339,
+          "sol_score_diff": -0.034075,
+          "latency_ms": 0.010405,
+          "fast_1_count": 16,
+          "fast_1_total": 16,
+          "avg_speedup": 1.83,
+          "submitted_at": "2026-07-10T03:35:40.743197"
+        },
+        {
+          "rank": 5,
+          "submission_id": 19676,
+          "user_id": 248,
+          "username": "Recursive",
+          "sol_score": 0.641764,
+          "sol_score_diff": -0.031575,
+          "latency_ms": 0.011617,
+          "fast_1_count": 16,
+          "fast_1_total": 16,
+          "avg_speedup": 1.6391,
+          "submitted_at": "2026-07-10T03:35:40.496999"
+        },
+        {
+          "rank": 6,
+          "submission_id": 24528,
+          "user_id": 299,
+          "username": "Hyra",
+          "sol_score": 0.617445,
+          "sol_score_diff": -0.024319,
+          "latency_ms": 0.012588,
+          "fast_1_count": 16,
+          "fast_1_total": 16,
+          "avg_speedup": 1.5126,
+          "submitted_at": "2026-07-16T04:18:35.191809"
+        },
+        {
+          "rank": 7,
+          "submission_id": 26964,
+          "user_id": 405,
+          "username": "TH3CHARLie | TileGym",
+          "sol_score": 0.616602,
+          "sol_score_diff": -0.000843,
+          "latency_ms": 0.012486,
+          "fast_1_count": 14,
+          "fast_1_total": 16,
+          "avg_speedup": 1.525,
+          "submitted_at": "2026-07-22T03:34:14.987732"
+        },
+        {
+          "rank": 8,
+          "submission_id": 39261,
+          "user_id": 353,
+          "username": "Geometric",
+          "sol_score": 0.616223,
+          "sol_score_diff": -0.000379,
+          "latency_ms": 0.012485,
+          "fast_1_count": 16,
+          "fast_1_total": 16,
+          "avg_speedup": 1.5251,
+          "submitted_at": "2026-08-24T21:04:02.390970"
+        },
+        {
+          "rank": 9,
+          "submission_id": 20075,
+          "user_id": 212,
+          "username": "doubleAI",
+          "sol_score": 0.585258,
+          "sol_score_diff": -0.030965,
+          "latency_ms": 0.014104,
+          "fast_1_count": 16,
+          "fast_1_total": 16,
+          "avg_speedup": 1.35,
+          "submitted_at": "2026-07-10T03:35:40.883902"
+        },
+        {
+          "rank": 10,
+          "submission_id": 42210,
+          "user_id": 324,
+          "username": "Qin Liu @ UCD",
+          "sol_score": 0.579114,
+          "sol_score_diff": -0.006144,
+          "latency_ms": 0.014149,
+          "fast_1_count": 14,
+          "fast_1_total": 16,
+          "avg_speedup": 1.3457,
+          "submitted_at": "2026-09-03T18:45:00.384776"
+        },
+        {
+          "rank": 11,
+          "submission_id": 36230,
+          "user_id": 441,
+          "username": "xuanzhengdu",
+          "sol_score": 0.573029,
+          "sol_score_diff": -0.006085,
+          "latency_ms": 0.014812,
+          "fast_1_count": 16,
+          "fast_1_total": 16,
+          "avg_speedup": 1.2855,
+          "submitted_at": "2026-08-12T02:38:50.043074"
+        },
+        {
+          "username": "Scoring Baseline",
+          "sol_score": 0.5,
+          "latency_ms": 0.019041,
+          "fast_1_count": 0,
+          "fast_1_total": 16,
+          "avg_speedup": 1.0,
+          "rank": null,
+          "is_reference": true
+        },
+        {
+          "rank": 12,
+          "submission_id": 33911,
+          "user_id": 453,
+          "username": "Iron Penguin",
+          "sol_score": 0.493604,
+          "sol_score_diff": -0.079425,
+          "latency_ms": 0.01911,
+          "fast_1_count": 6,
+          "fast_1_total": 16,
+          "avg_speedup": 0.9964,
+          "submitted_at": "2026-08-05T11:33:56.771170"
+        },
+        {
+          "rank": 13,
+          "submission_id": 19216,
+          "user_id": 156,
+          "username": "Cursor",
+          "sol_score": 0.32855,
+          "sol_score_diff": -0.165054,
+          "latency_ms": 0.036096,
+          "fast_1_count": 0,
+          "fast_1_total": 16,
+          "avg_speedup": 0.5275,
+          "submitted_at": "2026-07-10T03:35:40.045836"
+        },
+        {
+          "username": "Reference Implementation",
+          "sol_score": 0.274635,
+          "latency_ms": 0.045656,
+          "fast_1_count": 0,
+          "fast_1_total": 16,
+          "avg_speedup": 0.4171,
+          "rank": null,
+          "is_reference": true
+        },
+        {
+          "rank": 14,
+          "submission_id": 21427,
+          "user_id": 390,
+          "username": "Runic Kingfisher",
+          "sol_score": 0.26789,
+          "sol_score_diff": -0.06066,
+          "latency_ms": 0.047167,
+          "fast_1_count": 0,
+          "fast_1_total": 16,
+          "avg_speedup": 0.4037,
+          "submitted_at": "2026-07-11T16:55:00.361782"
+        },
+        {
+          "rank": 15,
+          "submission_id": 24008,
+          "user_id": 410,
+          "username": "Abhinav Gorrepati",
+          "sol_score": 0.26669,
+          "sol_score_diff": -0.0012,
+          "latency_ms": 0.047457,
+          "fast_1_count": 0,
+          "fast_1_total": 16,
+          "avg_speedup": 0.4012,
+          "submitted_at": "2026-07-15T06:05:35.270269"
+        },
+        {
+          "rank": 16,
+          "submission_id": 34974,
+          "user_id": 449,
+          "username": "Turbo Ermine",
+          "sol_score": 0.22117,
+          "sol_score_diff": -0.04552,
+          "latency_ms": 0.060249,
+          "fast_1_count": 0,
+          "fast_1_total": 16,
+          "avg_speedup": 0.316,
+          "submitted_at": "2026-08-07T02:34:51.034325"
+        }
+      ]
+    }
+  }
+}

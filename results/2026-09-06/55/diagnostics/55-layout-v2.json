@@ -1,0 +1,2558 @@
+{
+  "scope": "layout-changing value and ownership audit; no timing measurement",
+  "source_sha256": {
+    "cute_kernel_v2.py": "045646eb480d3da7a6fe78c855d6f75da7767ccc12d8e75d512d8d343fee7645",
+    "cute_kernel.py": "dbd3c56cb9e95182d9aafa94a8fea9b704656aff6975ee7f41671272ddebba39",
+    "cute_qkv.py": "c2b0080989041039c0d3e5e821b6eecb701fcb8700aebcb9ec1996c827eee49f",
+    "verify_layouts.py": "f741cd47eb23a97d52e23ff5cfdc7557fc87f3715b3edb004bff383f358410c9"
+  },
+  "reference_sha256": "93e124c6effa69b75c4a54bb93c4de63f75640e557d267f0e6b05d913d2d3515",
+  "records": [
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "dense_initial",
+      "uses_tma": true,
+      "strides": [
+        [
+          268288,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "column_stride_0",
+      "uses_tma": false,
+      "strides": [
+        [
+          536576,
+          4096,
+          2
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "column_stride_1",
+      "uses_tma": false,
+      "strides": [
+        [
+          268288,
+          2048,
+          1
+        ],
+        [
+          4096,
+          2
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "column_stride_2",
+      "uses_tma": false,
+      "strides": [
+        [
+          268288,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          4096,
+          2
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "column_stride_3",
+      "uses_tma": false,
+      "strides": [
+        [
+          268288,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          4096,
+          2
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "row_padding_0",
+      "uses_tma": false,
+      "strides": [
+        [
+          269336,
+          2056,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "row_padding_1",
+      "uses_tma": false,
+      "strides": [
+        [
+          268288,
+          2048,
+          1
+        ],
+        [
+          2056,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "row_padding_2",
+      "uses_tma": false,
+      "strides": [
+        [
+          268288,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2056,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "row_padding_3",
+      "uses_tma": false,
+      "strides": [
+        [
+          268288,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2056,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "transposed_0",
+      "uses_tma": false,
+      "strides": [
+        [
+          268288,
+          1,
+          131
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "transposed_1",
+      "uses_tma": false,
+      "strides": [
+        [
+          268288,
+          2048,
+          1
+        ],
+        [
+          1,
+          2048
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "transposed_2",
+      "uses_tma": false,
+      "strides": [
+        [
+          268288,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          1,
+          512
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "transposed_3",
+      "uses_tma": false,
+      "strides": [
+        [
+          268288,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          1,
+          512
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "unaligned_0",
+      "uses_tma": false,
+      "strides": [
+        [
+          268288,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "unaligned_1",
+      "uses_tma": false,
+      "strides": [
+        [
+          268288,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        2,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "unaligned_2",
+      "uses_tma": false,
+      "strides": [
+        [
+          268288,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "unaligned_3",
+      "uses_tma": false,
+      "strides": [
+        [
+          268288,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "dense_changed",
+      "uses_tma": true,
+      "strides": [
+        [
+          268288,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "case": "all_column_stride",
+      "uses_tma": false,
+      "strides": [
+        [
+          536576,
+          4096,
+          2
+        ],
+        [
+          4096,
+          2
+        ],
+        [
+          4096,
+          2
+        ],
+        [
+          4096,
+          2
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "dense_initial",
+      "uses_tma": true,
+      "strides": [
+        [
+          432128,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "column_stride_0",
+      "uses_tma": false,
+      "strides": [
+        [
+          864256,
+          4096,
+          2
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "column_stride_1",
+      "uses_tma": false,
+      "strides": [
+        [
+          432128,
+          2048,
+          1
+        ],
+        [
+          4096,
+          2
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "column_stride_2",
+      "uses_tma": false,
+      "strides": [
+        [
+          432128,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          4096,
+          2
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "column_stride_3",
+      "uses_tma": false,
+      "strides": [
+        [
+          432128,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          4096,
+          2
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "row_padding_0",
+      "uses_tma": false,
+      "strides": [
+        [
+          433816,
+          2056,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "row_padding_1",
+      "uses_tma": false,
+      "strides": [
+        [
+          432128,
+          2048,
+          1
+        ],
+        [
+          2056,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "row_padding_2",
+      "uses_tma": false,
+      "strides": [
+        [
+          432128,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2056,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "row_padding_3",
+      "uses_tma": false,
+      "strides": [
+        [
+          432128,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2056,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "transposed_0",
+      "uses_tma": false,
+      "strides": [
+        [
+          432128,
+          1,
+          211
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "transposed_1",
+      "uses_tma": false,
+      "strides": [
+        [
+          432128,
+          2048,
+          1
+        ],
+        [
+          1,
+          2048
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "transposed_2",
+      "uses_tma": false,
+      "strides": [
+        [
+          432128,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          1,
+          512
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "transposed_3",
+      "uses_tma": false,
+      "strides": [
+        [
+          432128,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          1,
+          512
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "unaligned_0",
+      "uses_tma": false,
+      "strides": [
+        [
+          432128,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "unaligned_1",
+      "uses_tma": false,
+      "strides": [
+        [
+          432128,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        2,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "unaligned_2",
+      "uses_tma": false,
+      "strides": [
+        [
+          432128,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "unaligned_3",
+      "uses_tma": false,
+      "strides": [
+        [
+          432128,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "dense_changed",
+      "uses_tma": true,
+      "strides": [
+        [
+          432128,
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ],
+        [
+          2048,
+          1
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 211,
+      "case": "all_column_stride",
+      "uses_tma": false,
+      "strides": [
+        [
+          864256,
+          4096,
+          2
+        ],
+        [
+          4096,
+          2
+        ],
+        [
+          4096,
+          2
+        ],
+        [
+          4096,
+          2
+        ]
+      ],
+      "alignment_mod16": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    }
+  ]
+}

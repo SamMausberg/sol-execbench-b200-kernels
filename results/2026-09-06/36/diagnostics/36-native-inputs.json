@@ -1,0 +1,279 @@
+{
+  "source_sha256": "7ddb051c26aeb2a9e5bf14bd9c0acbafe448be24258391137704fa634a7f6c2a",
+  "verification_source_sha256": "1374646b847504fc80fa29cbbf9356447fa9bb878b0c1d29f7242aca35841fe0",
+  "records": [
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "mode": "random",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 0.00046545156510546803,
+        "max_absolute_error": 4.0531158447265625e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "mode": "weights_32",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 0.005444327834993601,
+        "max_absolute_error": 0.001708984375,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "mode": "temb_4",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 0.0005672149709425867,
+        "max_absolute_error": 8.58306884765625e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "mode": "zero_weights",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "mode": "zero_hidden",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 1.2190438610559795e-05,
+        "max_absolute_error": 1.0728836059570312e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "mode": "strided",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 0.0006921829772181809,
+        "max_absolute_error": 5.4836273193359375e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "mode": "changed_eps",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 0.00041032626177184284,
+        "max_absolute_error": 4.380941390991211e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128
+      },
+      "mode": "near_constant",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 0.08380866050720215,
+        "max_absolute_error": 0.0005632638931274414,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "random",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 0.0018874804954975843,
+        "max_absolute_error": 1.9550323486328125e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "weights_32",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 0.5396372675895691,
+        "max_absolute_error": 0.010986328125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "temb_4",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 0.0054554808884859085,
+        "max_absolute_error": 4.57763671875e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "zero_weights",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "zero_hidden",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 0.0009934107074514031,
+        "max_absolute_error": 5.841255187988281e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "strided",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 0.0018874804954975843,
+        "max_absolute_error": 2.1457672119140625e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "changed_eps",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 0.0019868214149028063,
+        "max_absolute_error": 2.193450927734375e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    },
+    {
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "near_constant",
+      "passed": true,
+      "inputs_unchanged": true,
+      "errors": {
+        "max_relative_error": 0.1544753760099411,
+        "max_absolute_error": 0.0011217594146728516,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      }
+    }
+  ],
+  "passed": true
+}

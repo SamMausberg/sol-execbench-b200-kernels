@@ -1,0 +1,85 @@
+[
+  {
+    "index": 15,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 64,
+      "seq_len": 128
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ],
+    "gpu_processes_before": [
+      {
+        "pid": 217679,
+        "process_basename": "python",
+        "memory_mib": "1122 MiB",
+        "is_this_process": true
+      }
+    ],
+    "layouts": {
+      "(128, 128, 64, 4, 3, 4, False, 1, True)": {
+        "passed": false,
+        "error": "PassManager::run failed: 'arith.cmpi' op does not have expected attribute ttg.partition which is expected for ops whose parent has partitions"
+      },
+      "(128, 128, 128, 4, 3, 4, False, 1, True)": {
+        "passed": false,
+        "error": "PassManager::run failed: 'arith.cmpi' op does not have expected attribute ttg.partition which is expected for ops whose parent has partitions"
+      },
+      "(128, 256, 64, 4, 2, 4, False, 1, True)": {
+        "passed": false,
+        "error": "PassManager::run failed: 'arith.cmpi' op does not have expected attribute ttg.partition which is expected for ops whose parent has partitions"
+      },
+      "(128, 256, 64, 8, 3, 4, False, 1, True)": {
+        "passed": false,
+        "error": "PassManager::run failed: 'arith.cmpi' op does not have expected attribute ttg.partition which is expected for ops whose parent has partitions"
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 217679,
+        "process_basename": "python",
+        "memory_mib": "1122 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 217894,
+        "process_basename": "python",
+        "memory_mib": "2750 MiB",
+        "is_this_process": false
+      }
+    ]
+  }
+]

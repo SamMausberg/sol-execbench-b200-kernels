@@ -77,3 +77,23 @@ partial evaluator runs and diagnostic hashes. Neither is a submission candidate.
 The encoder work also established a reusable numerical distinction for problem
 36: explicit FAST_TF32 fails 32× weight scaling, while BF16x9-emulated FP32
 passes those checks. These library measurements remain component experiments.
+
+Further archived correctness checkpoints:
+
+- 050 grouped QKV with bias passes three full trials and ten exact edge cases.
+  All timings contain observed foreign CUDA contexts; no timing trial qualifies.
+- 055 grouped QKV with output views passes four full trials for V1 and one for
+  V2. V1 passes 30 additional value/view calls; V2 passes 38 calls covering strides,
+  pointer alignment, values, and output ownership. All 204 audited outputs are
+  exact. The five full timing trials contain foreign CUDA contexts. V2's raw
+  score of 0.796083 versus leader 0.684349 needs clean repeat measurements.
+- 036 Flux processing passes 16 official workloads and 16 additional input
+  checks using explicit BF16x9-emulated FP32. Its unqualified score of 0.352235
+  is below leader 0.644426. A six-product expansion passes 192 additional
+  numerical checks, but its full conversion path is slower than BF16x9.
+
+Each problem's `archive-index.json` connects exact run artifacts to diagnostic
+reports. Copies of older GPU process reports reduce executable paths to basenames
+and record both original and archived hashes. Process identities, timestamps, and
+qualification decisions remain intact. These checkpoints add no confirmed lead
+and use no hosted submission quota.

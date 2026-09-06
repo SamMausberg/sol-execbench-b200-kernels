@@ -1,0 +1,290 @@
+[
+  {
+    "index": 3,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 2,
+      "seq_len": 128
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ],
+    "gpu_processes_before": [
+      {
+        "pid": 192461,
+        "process_basename": "python",
+        "memory_mib": "804 MiB",
+        "is_this_process": true
+      }
+    ],
+    "grouped_library": {
+      "passed": true,
+      "exact": true,
+      "outputs": [
+        {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "latency_us": 108.73225000000001
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 192461,
+        "process_basename": "python",
+        "memory_mib": "1060 MiB",
+        "is_this_process": true
+      }
+    ]
+  },
+  {
+    "index": 5,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 4,
+      "seq_len": 512
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ],
+    "gpu_processes_before": [
+      {
+        "pid": 192461,
+        "process_basename": "python",
+        "memory_mib": "864 MiB",
+        "is_this_process": true
+      }
+    ],
+    "grouped_library": {
+      "passed": true,
+      "exact": true,
+      "outputs": [
+        {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "latency_us": 113.77224999999999
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 192461,
+        "process_basename": "python",
+        "memory_mib": "1118 MiB",
+        "is_this_process": true
+      }
+    ]
+  },
+  {
+    "index": 15,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 64,
+      "seq_len": 128
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ],
+    "gpu_processes_before": [
+      {
+        "pid": 192461,
+        "process_basename": "python",
+        "memory_mib": "1120 MiB",
+        "is_this_process": true
+      }
+    ],
+    "grouped_library": {
+      "passed": true,
+      "exact": true,
+      "outputs": [
+        {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "latency_us": 121.66655
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 192461,
+        "process_basename": "python",
+        "memory_mib": "1376 MiB",
+        "is_this_process": true
+      }
+    ]
+  }
+]

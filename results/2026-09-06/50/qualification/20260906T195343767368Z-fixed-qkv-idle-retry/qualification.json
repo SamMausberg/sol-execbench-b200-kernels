@@ -1,0 +1,883 @@
+{
+  "schema_version": 1,
+  "problem_id": 50,
+  "started_at": "2026-09-06T19:53:43.770874+00:00",
+  "requested_clean_trials": 3,
+  "max_attempts": 3,
+  "sampling_seconds": 0.5,
+  "tool_sha256": "873a63f4bcd2bbc318c3efe3ee357c07fd8812695bdf7ce2ee18957deaa6728f",
+  "scope": "local timing qualification from sampled CUDA process identities; no hosted evaluation",
+  "attempts": [
+    {
+      "attempt": 1,
+      "command": [
+        "/workspace/venvs/sol-execbench/bin/python",
+        "/workspace/sol-execbench-b200-kernels/tools/campaign.py",
+        "bench",
+        "50",
+        "--solution",
+        "/workspace/sol-execbench-b200-kernels/kernels/050_attention_qkv_projection_with_bias_and_reshape/solution.json",
+        "--trials",
+        "1",
+        "--label",
+        "fixed-qkv-idle-retry-20260906T195343767368Z-a1",
+        "--timeout",
+        "600",
+        "--compile-timeout",
+        "600"
+      ],
+      "returncode": 0,
+      "campaign_root_pid": 291572,
+      "campaign_process_identities": {
+        "291572": 96947424,
+        "291581": 96947470,
+        "291712": 96947775,
+        "291715": 96947780,
+        "291717": 96947784,
+        "291720": 96947813,
+        "291733": 96947873,
+        "291818": 96948083,
+        "295190": 96955877
+      },
+      "log_path": ".work/qualification/50/20260906T195343767368Z-fixed-qkv-idle-retry/attempt-1.log",
+      "log_sha256": "38185a7160ea9406868a8ddc63d8d60ce661eb55a2131d7a55146768cd277434",
+      "monitor_path": ".work/qualification/50/20260906T195343767368Z-fixed-qkv-idle-retry/attempt-1-processes.jsonl",
+      "monitor_sha256": "5689dbcd94b7e32e7759fb59cd86b77a18f601fb67f2e31e5aae5db018fcb36d",
+      "run_directory": ".work/runs/50/20260906T195405.361185Z-fixed-qkv-idle-retry-20260906T195343767368Z-a1-7c65d796d317",
+      "summary_sha256": "2cba4580d2786fe10b5a01d28f3a9f2aedecd42402534d41badad1a2b5b26a16",
+      "submission_sha256": "7c65d796d317d2000c380f177ca36e31da6201a95d7e7048b10adf243c6e99e8",
+      "passed": true,
+      "local_sol_score": 0.7080753013096055,
+      "trial_started_at": "2026-09-06T19:54:07.629998+00:00",
+      "trial_finished_at": "2026-09-06T19:55:27.868680+00:00",
+      "audit": {
+        "clean": false,
+        "foreign_context_observations": [
+          {
+            "timestamp": "2026-09-06T19:54:10.369509+00:00",
+            "pid": 291406,
+            "process_name": "python",
+            "memory_mib": "14",
+            "start_ticks": 96947134,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:54:10.852083+00:00",
+            "pid": 291406,
+            "process_name": "python",
+            "memory_mib": "14",
+            "start_ticks": 96947134,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:54:11.351971+00:00",
+            "pid": 291406,
+            "process_name": "python",
+            "memory_mib": "11226",
+            "start_ticks": 96947134,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:54:11.852044+00:00",
+            "pid": 291406,
+            "process_name": "python",
+            "memory_mib": "11226",
+            "start_ticks": 96947134,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:54:23.731940+00:00",
+            "pid": 291997,
+            "process_name": "python",
+            "memory_mib": "14",
+            "start_ticks": 96948398,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:54:23.869976+00:00",
+            "pid": 291997,
+            "process_name": "python",
+            "memory_mib": "14",
+            "start_ticks": 96948398,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:54:24.351982+00:00",
+            "pid": 291997,
+            "process_name": "python",
+            "memory_mib": "3012",
+            "start_ticks": 96948398,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:54:24.851951+00:00",
+            "pid": 291997,
+            "process_name": "python",
+            "memory_mib": "11226",
+            "start_ticks": 96948398,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:54:25.351953+00:00",
+            "pid": 291997,
+            "process_name": "[No data]",
+            "memory_mib": "11226",
+            "start_ticks": 96948398,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:54:37.352073+00:00",
+            "pid": 292734,
+            "process_name": "python",
+            "memory_mib": "14",
+            "start_ticks": 96949772,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:54:37.851952+00:00",
+            "pid": 292734,
+            "process_name": "python",
+            "memory_mib": "3012",
+            "start_ticks": 96949772,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:54:37.851952+00:00",
+            "pid": 292391,
+            "process_name": "python",
+            "memory_mib": "14",
+            "start_ticks": 96949275,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:54:38.351963+00:00",
+            "pid": 292734,
+            "process_name": "python",
+            "memory_mib": "11226",
+            "start_ticks": 96949772,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:54:38.351963+00:00",
+            "pid": 292391,
+            "process_name": "python",
+            "memory_mib": "612",
+            "start_ticks": 96949275,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:54:38.851968+00:00",
+            "pid": 292734,
+            "process_name": "[No data]",
+            "memory_mib": "11226",
+            "start_ticks": 96949772,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:54:38.851968+00:00",
+            "pid": 292391,
+            "process_name": "[No data]",
+            "memory_mib": "612",
+            "start_ticks": 96949275,
+            "campaign_descendant": false
+          }
+        ],
+        "monitor_errors": [],
+        "samples_in_window": 161,
+        "max_sample_gap_seconds": 0.8799400329589844,
+        "qualification": "Excluded from performance qualification."
+      },
+      "status": "contaminated"
+    },
+    {
+      "attempt": 2,
+      "command": [
+        "/workspace/venvs/sol-execbench/bin/python",
+        "/workspace/sol-execbench-b200-kernels/tools/campaign.py",
+        "bench",
+        "50",
+        "--solution",
+        "/workspace/sol-execbench-b200-kernels/kernels/050_attention_qkv_projection_with_bias_and_reshape/solution.json",
+        "--trials",
+        "1",
+        "--label",
+        "fixed-qkv-idle-retry-20260906T195343767368Z-a2",
+        "--timeout",
+        "600",
+        "--compile-timeout",
+        "600"
+      ],
+      "returncode": 0,
+      "campaign_root_pid": 295261,
+      "campaign_process_identities": {
+        "295261": 96956173,
+        "295293": 96956221,
+        "295295": 96956226,
+        "297662": 96963965,
+        "297668": 96963987,
+        "297670": 96963993,
+        "297671": 96964022,
+        "297677": 96964063,
+        "297720": 96964106,
+        "297783": 96964283
+      },
+      "log_path": ".work/qualification/50/20260906T195343767368Z-fixed-qkv-idle-retry/attempt-2.log",
+      "log_sha256": "bfde1fc96f71bb7d7b26b002f4e27926845dca244edcf9bd1e29bb326c0e5867",
+      "monitor_path": ".work/qualification/50/20260906T195343767368Z-fixed-qkv-idle-retry/attempt-2-processes.jsonl",
+      "monitor_sha256": "1949b02ef3de2575a8f1f27467182f942e930657b2ad384b82972b5138ea586b",
+      "run_directory": ".work/runs/50/20260906T195533.156817Z-fixed-qkv-idle-retry-20260906T195343767368Z-a2-7c65d796d317",
+      "summary_sha256": "03da5b34d387e20210178db8b5faf3637cc10b475dd08bef7a51a4b48e452563",
+      "submission_sha256": "7c65d796d317d2000c380f177ca36e31da6201a95d7e7048b10adf243c6e99e8",
+      "passed": true,
+      "local_sol_score": 0.7026947781026979,
+      "trial_started_at": "2026-09-06T19:56:49.967158+00:00",
+      "trial_finished_at": "2026-09-06T19:58:14.981800+00:00",
+      "audit": {
+        "clean": false,
+        "foreign_context_observations": [
+          {
+            "timestamp": "2026-09-06T19:57:35.835328+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "14",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:36.335314+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "14",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:36.835341+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:37.335390+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:37.835416+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:38.335311+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:38.835380+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:39.335307+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:39.835321+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:40.335327+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:40.835342+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:41.335340+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:41.835306+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:42.335340+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:42.835392+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:43.335389+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:43.835339+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:44.335343+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:44.835323+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:45.335343+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:45.835341+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:46.335322+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:46.835338+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:47.335379+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:47.835323+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:48.335445+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:48.835321+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:49.335322+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:49.835339+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:50.335451+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:50.835379+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:51.335448+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:51.835342+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:52.335340+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:52.835341+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:53.335341+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:53.835488+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:54.335419+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:54.835339+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:55.335361+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:55.835348+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:56.335395+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:56.835320+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:57.335522+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:57.835303+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:58.335342+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:58.835348+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:59.335396+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:57:59.835302+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:00.335389+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:00.835396+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:01.335346+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:01.835340+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:02.335377+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:02.835424+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:03.335511+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:03.835323+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:04.335339+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:04.835319+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:05.335390+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:05.835343+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:06.335354+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:06.835341+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:07.335437+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:07.835326+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:08.335340+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:08.835321+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:09.335361+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:09.835277+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:10.335304+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:10.835302+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:11.335303+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:11.835354+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:12.335348+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:12.835408+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:13.335323+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:13.835431+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:14.335323+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T19:58:14.835416+00:00",
+            "pid": 298927,
+            "process_name": "python",
+            "memory_mib": "614",
+            "start_ticks": 96967453,
+            "campaign_descendant": false
+          }
+        ],
+        "monitor_errors": [],
+        "samples_in_window": 170,
+        "max_sample_gap_seconds": 0.8518028259277344,
+        "qualification": "Excluded from performance qualification."
+      },
+      "status": "contaminated"
+    }
+  ],
+  "complete": false,
+  "aggregate": null,
+  "stop_reason": "idle wait or campaign deadline reached",
+  "finished_at": "2026-09-06T20:01:15.973599+00:00"
+}

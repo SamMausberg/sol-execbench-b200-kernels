@@ -24,3 +24,8 @@ The CPU replay checks cover process identity reuse, reparented descendants, comp
 ```bash
 python -m unittest discover -s tools -p test_qualify_gpu.py -v
 ```
+
+Process records store executable basenames. If an earlier monitor recorded full
+executable paths, archived copies retain the original file hash and separately
+identify basename redaction and the archived hash. Ownership and timestamps are
+preserved.

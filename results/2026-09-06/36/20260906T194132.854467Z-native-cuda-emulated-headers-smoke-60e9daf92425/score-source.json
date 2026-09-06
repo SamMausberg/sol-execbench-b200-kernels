@@ -1,0 +1,294 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "batch_size": {
+          "description": "Batch size",
+          "type": "var"
+        },
+        "inner_dim": {
+          "description": "Hidden dimension size",
+          "type": "const",
+          "value": 3072
+        },
+        "modulation_dim": {
+          "description": "Dimension for shift and scale combined",
+          "expression": "inner_dim * 2",
+          "type": "expr"
+        },
+        "output_dim": {
+          "description": "Output dimension (patch_size^2 * out_channels)",
+          "type": "const",
+          "value": 64
+        },
+        "seq_len": {
+          "description": "Sequence length (combined text + image tokens)",
+          "type": "var"
+        }
+      },
+      "baseline": "import torch\nimport torch.nn.functional as F\n\n@torch.no_grad()\ndef run(\n    hidden_states: torch.Tensor,\n    temb: torch.Tensor,\n    linear_weight: torch.Tensor,\n    linear_bias: torch.Tensor,\n    proj_out_weight: torch.Tensor,\n    proj_out_bias: torch.Tensor,\n    eps: float,\n):\n    \"\"\"\n    Flux output normalization and projection chain.\n    \n    Args:\n        hidden_states: Input tensor of shape (batch_size, seq_len, inner_dim)\n        temb: Timestep embeddings of shape (batch_size, inner_dim)\n        linear_weight: Weight for modulation projection (2*inner_dim, inner_dim)\n        linear_bias: Bias for modulation projection (2*inner_dim,)\n        proj_out_weight: Weight for output projection (output_dim, inner_dim)\n        proj_out_bias: Bias for output projection (output_dim,)\n        eps: Epsilon for LayerNorm numerical stability\n        \n    Returns:\n        Output tensor of shape (batch_size, seq_len, output_dim)\n    \"\"\"\n    # Step 1: Layer normalization without affine parameters\n    # Compute mean and variance along the last dimension\n    mean = hidden_states.mean(dim=-1, keepdim=True)\n    var = hidden_states.var(dim=-1, keepdim=True, unbiased=False)\n    hidden_states_norm = (hidden_states - mean) / torch.sqrt(var + eps)\n    \n    # Step 2: SiLU activation on temb followed by linear projection\n    # SiLU: x * sigmoid(x)\n    temb_silu = temb * torch.sigmoid(temb)\n    # Linear projection: (batch_size, inner_dim) @ (inner_dim, 2*inner_dim) + bias\n    modulation = F.linear(temb_silu, linear_weight, linear_bias)\n    \n    # Split into shift and scale\n    inner_dim = temb.shape[-1]\n    shift = modulation[:, :inner_dim]  # (batch_size, inner_dim)\n    scale = modulation[:, inner_dim:]  # (batch_size, inner_dim)\n    \n    # Step 3: Apply adaptive modulation\n    # Expand shift and scale to match hidden_states shape\n    shift = shift.unsqueeze(1)  # (batch_size, 1, inner_dim)\n    scale = scale.unsqueeze(1)  # (batch_size, 1, inner_dim)\n    hidden_states_mod = hidden_states_norm * (1.0 + scale) + shift\n    \n    # Step 4: Large output projection\n    # (batch_size, seq_len, inner_dim) @ (inner_dim, output_dim) + bias\n    output = F.linear(hidden_states_mod, proj_out_weight, proj_out_bias)\n    \n    return output\n",
+      "baseline_latency_ms": 0.007552,
+      "description": "Flux's final output processing chain combining AdaLayerNormContinuous normalization with output projection. Performs: (1) LayerNorm without affine parameters, (2) SiLU activation on temb followed by linear projection to extract shift/scale modulation parameters, (3) element-wise modulation (shift and scale), (4) large linear projection to output space.",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 36,
+      "inputs": {
+        "eps": {
+          "description": "Epsilon for numerical stability in LayerNorm",
+          "dtype": "float32",
+          "shape": null
+        },
+        "hidden_states": {
+          "description": "Input hidden states",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "inner_dim"
+          ]
+        },
+        "linear_bias": {
+          "description": "Bias for modulation linear projection",
+          "dtype": "float32",
+          "shape": [
+            "modulation_dim"
+          ]
+        },
+        "linear_weight": {
+          "description": "Weight for modulation linear projection",
+          "dtype": "float32",
+          "shape": [
+            "modulation_dim",
+            "inner_dim"
+          ]
+        },
+        "proj_out_bias": {
+          "description": "Bias for output projection",
+          "dtype": "float32",
+          "shape": [
+            "output_dim"
+          ]
+        },
+        "proj_out_weight": {
+          "description": "Weight for output projection",
+          "dtype": "float32",
+          "shape": [
+            "output_dim",
+            "inner_dim"
+          ]
+        },
+        "temb": {
+          "description": "Timestep embeddings",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "inner_dim"
+          ]
+        }
+      },
+      "latency_unit": "ms",
+      "name": "036_flux_output_norm_projection_chain",
+      "outputs": {
+        "output": {
+          "description": "Output tensor after normalization and projection",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "output_dim"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "normalization",
+        "diffusion",
+        "L1",
+        "model:FLUX.1-Kontext-dev"
+      ],
+      "title": "036_flux_output_norm_projection_chain",
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 2,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 293
+          },
+          "baseline_latency_ms": 0.05584,
+          "sol_ms": 0.0023
+        },
+        {
+          "axes": {
+            "batch_size": 32,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.1186885,
+          "sol_ms": 0.0269
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 2053
+          },
+          "baseline_latency_ms": 0.0562405,
+          "sol_ms": 0.007
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.047616,
+          "sol_ms": 0.0008
+        },
+        {
+          "axes": {
+            "batch_size": 32,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.0844485,
+          "sol_ms": 0.0137
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.064416,
+          "sol_ms": 0.007
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.066432,
+          "sol_ms": 0.007
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 1571
+          },
+          "baseline_latency_ms": 0.077248,
+          "sol_ms": 0.0105
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 2048
+          },
+          "baseline_latency_ms": 0.056224,
+          "sol_ms": 0.007
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 4096
+          },
+          "baseline_latency_ms": 0.1220485,
+          "sol_ms": 0.0268
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.064416,
+          "sol_ms": 0.007
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.06648,
+          "sol_ms": 0.007
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.057888,
+          "sol_ms": 0.0037
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.118432,
+          "sol_ms": 0.0268
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.086656,
+          "sol_ms": 0.0136
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "inner_dim": 3072,
+            "modulation_dim": 6144,
+            "output_dim": 64,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.049728,
+          "sol_ms": 0.0037
+        }
+      ]
+    }
+  },
+  "response_sha256": "ed459ea30f7c88df9ec6472608f602f5fee2b9e5f67861c3bd1d95d4e50ce101",
+  "retrieved_at": "2026-09-06T19:41:32.853408+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/36"
+}

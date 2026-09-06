@@ -1,0 +1,238 @@
+[
+  {
+    "index": 3,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 2,
+      "seq_len": 128
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ],
+    "gpu_processes_before": [
+      {
+        "pid": 213462,
+        "process_basename": "python",
+        "memory_mib": "804 MiB",
+        "is_this_process": true
+      }
+    ],
+    "grouped_library": {
+      "passed": true,
+      "exact": true,
+      "outputs": [
+        {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "latency_us": 106.84915,
+      "activity_us": [
+        {
+          "name": "_pack_pointers",
+          "gap_from_previous_us": 0.0,
+          "duration_us": 1.12
+        },
+        {
+          "name": "MEMCPY",
+          "gap_from_previous_us": 9746.31,
+          "duration_us": 1.824
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_bf16_grouped_128x64_64x3_align8>(cutlass_80_tensorop_bf16_s16816gemm_bf16_grouped_128x64_64x3_align8::Params)",
+          "gap_from_previous_us": 50.048,
+          "duration_us": 8.256
+        },
+        {
+          "name": "_bias",
+          "gap_from_previous_us": 202.175,
+          "duration_us": 2.431
+        }
+      ]
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 213462,
+        "process_basename": "python",
+        "memory_mib": "1060 MiB",
+        "is_this_process": true
+      }
+    ]
+  },
+  {
+    "index": 15,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 64,
+      "seq_len": 128
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ],
+    "gpu_processes_before": [
+      {
+        "pid": 213462,
+        "process_basename": "python",
+        "memory_mib": "1120 MiB",
+        "is_this_process": true
+      }
+    ],
+    "grouped_library": {
+      "passed": true,
+      "exact": true,
+      "outputs": [
+        {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "latency_us": 113.08255,
+      "activity_us": [
+        {
+          "name": "_pack_pointers",
+          "gap_from_previous_us": 0.0,
+          "duration_us": 1.696
+        },
+        {
+          "name": "MEMCPY",
+          "gap_from_previous_us": 1840.501,
+          "duration_us": 1.824
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_bf16_grouped_128x64_64x3_align8>(cutlass_80_tensorop_bf16_s16816gemm_bf16_grouped_128x64_64x3_align8::Params)",
+          "gap_from_previous_us": 50.816,
+          "duration_us": 52.256
+        },
+        {
+          "name": "_bias",
+          "gap_from_previous_us": 164.222,
+          "duration_us": 6.337
+        }
+      ]
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 213462,
+        "process_basename": "python",
+        "memory_mib": "1376 MiB",
+        "is_this_process": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,161 @@
+[
+  {
+    "index": 15,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 64,
+      "seq_len": 128
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ],
+    "gpu_processes_before": [
+      {
+        "pid": 180313,
+        "process_basename": "python",
+        "memory_mib": "1204 MiB",
+        "is_this_process": false
+      },
+      {
+        "pid": 180319,
+        "process_basename": "python",
+        "memory_mib": "1122 MiB",
+        "is_this_process": true
+      }
+    ],
+    "layouts": {
+      "(128, 128, 64, 4, 3, 4, True, 1)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 32.359899999999996
+      },
+      "(128, 256, 64, 8, 3, 4, True, 1)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 26.45565
+      },
+      "(256, 128, 64, 8, 3, 4, True, 2)": {
+        "passed": false,
+        "error": "PassManager::run failed: failed to find valid tcgen05.mma layout for operand B in shared memory '!ttg.memdesc<64x128xbf16, #ttg.nvmma_shared<{swizzlingByteWidth = 128, transposed = true, elementBitWidth = 16, CGALayout = [[0, 1]]}>, #ttg.shared_memory, mutable>' for MMAv5 instruction shape [16, 128]"
+      },
+      "(256, 256, 64, 8, 3, 4, True, 2)": {
+        "passed": false,
+        "error": "PassManager::run failed: failed to find valid tcgen05.mma layout for operand B in shared memory '!ttg.memdesc<64x256xbf16, #ttg.nvmma_shared<{swizzlingByteWidth = 128, transposed = true, elementBitWidth = 16, CGALayout = [[0, 1]]}>, #ttg.shared_memory, mutable>' for MMAv5 instruction shape [16, 256]"
+      },
+      "(128, 128, 64, 4, 3, 4, True, 2)": {
+        "passed": false,
+        "error": "PassManager::run failed: 'arith.select' op failed to verify that all of {true_value, false_value, result} have same type"
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 180313,
+        "process_basename": "python",
+        "memory_mib": "1552 MiB",
+        "is_this_process": false
+      },
+      {
+        "pid": 180319,
+        "process_basename": "python",
+        "memory_mib": "1378 MiB",
+        "is_this_process": true
+      }
+    ]
+  }
+]

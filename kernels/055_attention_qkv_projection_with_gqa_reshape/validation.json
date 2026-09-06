@@ -1,0 +1,154 @@
+{
+  "problem_id": 55,
+  "problem_name": "055_attention_qkv_projection_with_gqa_reshape",
+  "status": "awaiting uncontended timing qualification",
+  "candidate_for_qualification": "v2.solution.json",
+  "variants": [
+    {
+      "name": "v1",
+      "manifest": "solution.json",
+      "submission_sha256": "d5b468f29fd9ed221f2f4ff4483b9d6d28b92b5e63d60f8ce4e05ebea093c6e7",
+      "source_sha256": {
+        "cute_kernel.py": "dbd3c56cb9e95182d9aafa94a8fea9b704656aff6975ee7f41671272ddebba39",
+        "cute_qkv.py": "c2b0080989041039c0d3e5e821b6eecb701fcb8700aebcb9ec1996c827eee49f"
+      },
+      "full_harness_trials": 4,
+      "official_workloads": 16,
+      "accepted_performance_trials": 0,
+      "runs": [
+        {
+          "run_directory": ".work/runs/55/20260906T194527.947495Z-qkv-cute-queued-20260906T194525497646Z-a1-d5b468f29fd9",
+          "archived_run": "results/2026-09-06/55/20260906T194527.947495Z-qkv-cute-queued-20260906T194525497646Z-a1-d5b468f29fd9",
+          "summary_sha256": "dd449bef436ec2c21d0fcd6a55861367881cf1a432c99f0e088324aa8bbbcb48",
+          "submission_sha256": "d5b468f29fd9ed221f2f4ff4483b9d6d28b92b5e63d60f8ce4e05ebea093c6e7",
+          "source_sha256": {
+            "cute_kernel.py": "dbd3c56cb9e95182d9aafa94a8fea9b704656aff6975ee7f41671272ddebba39",
+            "cute_qkv.py": "c2b0080989041039c0d3e5e821b6eecb701fcb8700aebcb9ec1996c827eee49f"
+          },
+          "passed": true,
+          "selected_workloads": 16,
+          "total_workloads": 16,
+          "trace_sha256": {
+            "trial-1.jsonl": "4271ef3ec1f3052050698edda73849581d8c311df7314e884be48ed665871c09"
+          },
+          "timing_valid_for_ranking": false,
+          "observed_unqualified_sol_score": 0.7915005872316644
+        },
+        {
+          "run_directory": ".work/runs/55/20260906T195232.944245Z-qkv-cute-clean-20260906T195228550858Z-a1-d5b468f29fd9",
+          "archived_run": "results/2026-09-06/55/20260906T195232.944245Z-qkv-cute-clean-20260906T195228550858Z-a1-d5b468f29fd9",
+          "summary_sha256": "4613e6a10d1527cb100540909ba0be46ecaa2528426a60f43f017aa2a9466e36",
+          "submission_sha256": "d5b468f29fd9ed221f2f4ff4483b9d6d28b92b5e63d60f8ce4e05ebea093c6e7",
+          "source_sha256": {
+            "cute_kernel.py": "dbd3c56cb9e95182d9aafa94a8fea9b704656aff6975ee7f41671272ddebba39",
+            "cute_qkv.py": "c2b0080989041039c0d3e5e821b6eecb701fcb8700aebcb9ec1996c827eee49f"
+          },
+          "passed": true,
+          "selected_workloads": 16,
+          "total_workloads": 16,
+          "trace_sha256": {
+            "trial-1.jsonl": "435efb7af4f9f7e8b98087af659f90d421daf409083964f89a1ea8c7883441e4"
+          },
+          "timing_valid_for_ranking": false,
+          "observed_unqualified_sol_score": 0.7960580302624348
+        },
+        {
+          "run_directory": ".work/runs/55/20260906T195405.775476Z-qkv-cute-clean-20260906T195228550858Z-a2-d5b468f29fd9",
+          "archived_run": "results/2026-09-06/55/20260906T195405.775476Z-qkv-cute-clean-20260906T195228550858Z-a2-d5b468f29fd9",
+          "summary_sha256": "5a1a5f7103997a6bf61658b76dcedc94231b0b89397bb2a1cc7b05fad6864fb9",
+          "submission_sha256": "d5b468f29fd9ed221f2f4ff4483b9d6d28b92b5e63d60f8ce4e05ebea093c6e7",
+          "source_sha256": {
+            "cute_kernel.py": "dbd3c56cb9e95182d9aafa94a8fea9b704656aff6975ee7f41671272ddebba39",
+            "cute_qkv.py": "c2b0080989041039c0d3e5e821b6eecb701fcb8700aebcb9ec1996c827eee49f"
+          },
+          "passed": true,
+          "selected_workloads": 16,
+          "total_workloads": 16,
+          "trace_sha256": {
+            "trial-1.jsonl": "b9e1ae35b4b46dc4c42b72aa171fc40b63a1cb9a5e2bc0ec4aadc4abe9722264"
+          },
+          "timing_valid_for_ranking": false,
+          "observed_unqualified_sol_score": 0.7958574957430868
+        },
+        {
+          "run_directory": ".work/runs/55/20260906T195652.481191Z-qkv-cute-clean-20260906T195228550858Z-a3-d5b468f29fd9",
+          "archived_run": "results/2026-09-06/55/20260906T195652.481191Z-qkv-cute-clean-20260906T195228550858Z-a3-d5b468f29fd9",
+          "summary_sha256": "a36c0e8897f659f20b6ce244b256406b98efda6756e1ce987e463e5a48cdd661",
+          "submission_sha256": "d5b468f29fd9ed221f2f4ff4483b9d6d28b92b5e63d60f8ce4e05ebea093c6e7",
+          "source_sha256": {
+            "cute_kernel.py": "dbd3c56cb9e95182d9aafa94a8fea9b704656aff6975ee7f41671272ddebba39",
+            "cute_qkv.py": "c2b0080989041039c0d3e5e821b6eecb701fcb8700aebcb9ec1996c827eee49f"
+          },
+          "passed": true,
+          "selected_workloads": 16,
+          "total_workloads": 16,
+          "trace_sha256": {
+            "trial-1.jsonl": "fe66755ff1cc3f49a32baf257d7bdbf5673a1d2ed2fcfa1fa8da8ed83e5b6ef6"
+          },
+          "timing_valid_for_ranking": false,
+          "observed_unqualified_sol_score": 0.7911465315985735
+        }
+      ],
+      "additional_calls_passed": 30,
+      "additional_outputs_bitwise_equal": 90,
+      "variation_report": "results/2026-09-06/55/diagnostics/55-variation-selected.json",
+      "variation_report_sha256": "640287c0e4889b11473b9801e8fcd5e6c06f030132ff4d2445de0d40f1ac5a9b",
+      "input_layout_scope": "official contiguous/aligned inputs"
+    },
+    {
+      "name": "v2",
+      "manifest": "v2.solution.json",
+      "submission_sha256": "6e1a242602da79feaa02ca7173f0aafae7c9cc8c964d3fd4918d0f80f3074d75",
+      "source_sha256": {
+        "cute_kernel.py": "dbd3c56cb9e95182d9aafa94a8fea9b704656aff6975ee7f41671272ddebba39",
+        "cute_kernel_v2.py": "045646eb480d3da7a6fe78c855d6f75da7767ccc12d8e75d512d8d343fee7645",
+        "cute_qkv.py": "c2b0080989041039c0d3e5e821b6eecb701fcb8700aebcb9ec1996c827eee49f"
+      },
+      "full_harness_trials": 1,
+      "official_workloads": 16,
+      "accepted_performance_trials": 0,
+      "runs": [
+        {
+          "run_directory": ".work/runs/55/20260906T200624.854758Z-qkv-v2-initial-20260906T200622947830Z-a1-6e1a242602da",
+          "archived_run": "results/2026-09-06/55/20260906T200624.854758Z-qkv-v2-initial-20260906T200622947830Z-a1-6e1a242602da",
+          "summary_sha256": "0bb4d001fed0ba69196b068e2ebe5d645154aa3e52c76cc5e21fb46aad527a05",
+          "submission_sha256": "6e1a242602da79feaa02ca7173f0aafae7c9cc8c964d3fd4918d0f80f3074d75",
+          "source_sha256": {
+            "cute_kernel.py": "dbd3c56cb9e95182d9aafa94a8fea9b704656aff6975ee7f41671272ddebba39",
+            "cute_kernel_v2.py": "045646eb480d3da7a6fe78c855d6f75da7767ccc12d8e75d512d8d343fee7645",
+            "cute_qkv.py": "c2b0080989041039c0d3e5e821b6eecb701fcb8700aebcb9ec1996c827eee49f"
+          },
+          "passed": true,
+          "selected_workloads": 16,
+          "total_workloads": 16,
+          "trace_sha256": {
+            "trial-1.jsonl": "6a65f96d243e0f49aa8a65c63063e296e5c3a5c8ae068737e16b8911746a612f"
+          },
+          "timing_valid_for_ranking": false,
+          "observed_unqualified_sol_score": 0.7960824850970432
+        }
+      ],
+      "additional_calls_passed": 38,
+      "additional_outputs_bitwise_equal": 114,
+      "variation_report": "results/2026-09-06/55/diagnostics/55-layout-v2.json",
+      "variation_report_sha256": "6e2f134e4a3f476259014e326585f8477a7b41743add2343d1c244f6cc7df619",
+      "input_layout_scope": "official inputs plus changed strides and unaligned storage; fallback returns fresh concrete views"
+    }
+  ],
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "clock_mode": "unlocked",
+  "timing_valid_for_ranking": false,
+  "local_sol_score": null,
+  "leaderboard_snapshot_score": 0.684349,
+  "leaderboard_snapshot": "results/2026-09-06/55/diagnostics/55.json",
+  "archive_index": "results/2026-09-06/55/archive-index.json",
+  "hosted_rank_confirmed": false,
+  "hosted_submissions": 0,
+  "recommend_submission": false,
+  "notes": [
+    "All five full evaluator trials pass correctness. Each timing trial contains observed foreign CUDA contexts.",
+    "Three qualified repeats of the exact V2 package remain required.",
+    "Local clocks differ from the hosted 1500 MHz setup."
+  ]
+}
