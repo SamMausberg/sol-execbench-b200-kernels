@@ -1,0 +1,128 @@
+{
+  "problem_id": 6,
+  "problem_name": "006_hyena_depthwise_conv1d_split_gate",
+  "status": "experimental",
+  "passed": true,
+  "official_workloads": 16,
+  "full_harness_trials": 1,
+  "accepted_performance_trials": 0,
+  "timing_valid_for_ranking": false,
+  "clock_mode": "unlocked",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "contract_sha256": "637e9525e98d3de0ee978405f18f10def56f3e4870aed3f3a3f348ce8de6338d",
+  "submission_sha256": "b8def70a5bf12632bceea7dc9b33b434b56174e76804273037d5b33a5ee6a03d",
+  "source_sha256": {
+    "kernel.cu": "43f337482d14cedf7d41d5a631407d38b2fc1fa15ffbe9f173ba231a96fc95fc",
+    "main.cpp": "5895bd93a3e05241f5294081eae239e00df5790ddb13163348aaaca79e5aacfa"
+  },
+  "local_sol_score": null,
+  "observed_contaminated_sol_score": 0.7728506720126949,
+  "observed_contaminated_geometric_mean_latency_us": 6.553751448835426,
+  "timing_limitations": [
+    "Foreign CUDA contexts were observed while the campaign held the advisory GPU lock.",
+    "The B200 clocks were unlocked and differ from the hosted 1500 MHz setup."
+  ],
+  "gpu_process_monitor": {
+    "path": "kernels/006_hyena_depthwise_conv1d_split_gate/gpu_processes_full.json",
+    "sha256": "ca82bc6fd43c0b5e646780c05a62d0a777ea72b0deefa9fdff4daa44cab4fbef",
+    "foreign_process_samples_during_lock": 10
+  },
+  "summary_path": ".work/runs/6/20260906T205100.594513Z-hyena-final-b8def70a5bf1/summary.json",
+  "summary_sha256": "f5950def5b601c670c44d858f893334cbd833a1131dd2fe2154b4d5f995ebf3a",
+  "trace_sha256": {
+    "trial-1.jsonl": "161c172a9abcd38b7b045ab76919fee7f3df40ba9e29691f66b8d3c5a2189817"
+  },
+  "leaderboard_snapshot_score": 0.785398,
+  "local_lead": null,
+  "hosted_rank_confirmed": false,
+  "recommend_submission": false,
+  "reason": "All 16 official workloads and 30 additional input cases passed. The single observed score is below the leaderboard snapshot and was not qualified because competing CUDA contexts were observed.",
+  "additional_input_variations": {
+    "cases": 30,
+    "official_tolerance_passed": 30,
+    "exact_equal_cases": 30,
+    "reports": [
+      "variation.json"
+    ],
+    "report_sha256": "bd629e9f2565eac4e6efd82503b7472a19a9a113e6e75bbe981ea5524a1a5aca",
+    "description": "Two seeds at B1/S256, B2/S293 and B4/S4096; random, zero input, boundary impulses, cancellation and strided input/output cases."
+  },
+  "exploratory_tuning": {
+    "final_sweep": "tune_compare_full.json",
+    "sha256": "72ac44af79b263a2fef5248d3004a039d661e84b64b22ed77db517d2140b2b03",
+    "candidate_workload_combinations": 64,
+    "all_passed": true,
+    "all_bitwise_equal": true,
+    "performance_qualified": false,
+    "description": "Four candidates across all 16 official workloads; some process snapshots contained a competing CUDA context."
+  },
+  "archive_index": "results/2026-09-06/6/archive-index.json",
+  "archived_selected_run": "results/2026-09-06/6/20260906T205100.594513Z-hyena-final-b8def70a5bf1",
+  "archived_reports": [
+    {
+      "original_path": "kernels/006_hyena_depthwise_conv1d_split_gate/tune_compare.json",
+      "original_sha256": "31f04f0590351ab417ba63ba8508c012fed995dc7ecdba3239eddc8858770c90",
+      "archived_path": "results/2026-09-06/6/diagnostics/tune_compare.json",
+      "archived_sha256": "31f04f0590351ab417ba63ba8508c012fed995dc7ecdba3239eddc8858770c90",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/006_hyena_depthwise_conv1d_split_gate/tune_compare_full.json",
+      "original_sha256": "72ac44af79b263a2fef5248d3004a039d661e84b64b22ed77db517d2140b2b03",
+      "archived_path": "results/2026-09-06/6/diagnostics/tune_compare_full.json",
+      "archived_sha256": "72ac44af79b263a2fef5248d3004a039d661e84b64b22ed77db517d2140b2b03",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/006_hyena_depthwise_conv1d_split_gate/tune_cuda.json",
+      "original_sha256": "98af71aaedb8921b03f154a231dedbc5279fe8bcb9235dc8a1c26d2348befb11",
+      "archived_path": "results/2026-09-06/6/diagnostics/tune_cuda.json",
+      "archived_sha256": "98af71aaedb8921b03f154a231dedbc5279fe8bcb9235dc8a1c26d2348befb11",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/006_hyena_depthwise_conv1d_split_gate/tune_cuda_scalar.json",
+      "original_sha256": "9614aa34863f8a50182c8abf394f20e5cfbed34ba92b199acc82bdd1dfc42b8d",
+      "archived_path": "results/2026-09-06/6/diagnostics/tune_cuda_scalar.json",
+      "archived_sha256": "9614aa34863f8a50182c8abf394f20e5cfbed34ba92b199acc82bdd1dfc42b8d",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/006_hyena_depthwise_conv1d_split_gate/tune_initial.json",
+      "original_sha256": "6b0c3806aa75064e2e0891e7051cc373579cacf985ae729013c43f8fb12dbf1d",
+      "archived_path": "results/2026-09-06/6/diagnostics/tune_initial.json",
+      "archived_sha256": "6b0c3806aa75064e2e0891e7051cc373579cacf985ae729013c43f8fb12dbf1d",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/006_hyena_depthwise_conv1d_split_gate/variation.json",
+      "original_sha256": "bd629e9f2565eac4e6efd82503b7472a19a9a113e6e75bbe981ea5524a1a5aca",
+      "archived_path": "results/2026-09-06/6/diagnostics/variation.json",
+      "archived_sha256": "bd629e9f2565eac4e6efd82503b7472a19a9a113e6e75bbe981ea5524a1a5aca",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/006_hyena_depthwise_conv1d_split_gate/gpu_processes_full.json",
+      "original_sha256": "ca82bc6fd43c0b5e646780c05a62d0a777ea72b0deefa9fdff4daa44cab4fbef",
+      "archived_path": "results/2026-09-06/6/diagnostics/gpu_processes_full.json",
+      "archived_sha256": "ca82bc6fd43c0b5e646780c05a62d0a777ea72b0deefa9fdff4daa44cab4fbef",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/006_hyena_depthwise_conv1d_split_gate/leaderboard_snapshot.json",
+      "original_sha256": "e01b2651a232569d698497db46ca0a37e9e3a9d996a4ea6dcfe6cf99b711cd1c",
+      "archived_path": "results/2026-09-06/6/diagnostics/leaderboard_snapshot.json",
+      "archived_sha256": "e01b2651a232569d698497db46ca0a37e9e3a9d996a4ea6dcfe6cf99b711cd1c",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    }
+  ]
+}

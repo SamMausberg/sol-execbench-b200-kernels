@@ -1,0 +1,62 @@
+{
+  "problem_id": 4,
+  "problem_name": "004_attention_output_projection_with_reshape_backward",
+  "status": "parked; insufficient qualified margin",
+  "selected_manifest": "variants/cublaslt/solution.json",
+  "submission_sha256": "ba1d1e73cc9148adb99a08cb47771decd1670b3aef7982318d2b6ad3c3e0f1e1",
+  "source_sha256": {
+    "binding.cpp": "e406730756a4c60b0f9bdd3b9cfc0d9452559b07839e765448d97b54b15634fc"
+  },
+  "selected_run": {
+    "run_directory": ".work/runs/4/20260906T205043.383949Z-cublaslt-selected-20260906T205040565516-a1-ba1d1e73cc91",
+    "archived_run": "results/2026-09-06/4/20260906T205043.383949Z-cublaslt-selected-20260906T205040565516-a1-ba1d1e73cc91",
+    "summary_sha256": "b4f0ca87e910631d8f8ff42a6ce8f20d313997280d4b7943553c59124ea4125b",
+    "submission_sha256": "ba1d1e73cc9148adb99a08cb47771decd1670b3aef7982318d2b6ad3c3e0f1e1",
+    "source_sha256": {
+      "binding.cpp": "e406730756a4c60b0f9bdd3b9cfc0d9452559b07839e765448d97b54b15634fc"
+    },
+    "passed": true,
+    "selected_workloads": 16,
+    "total_workloads": 16,
+    "trace_sha256": {
+      "trial-1.jsonl": "cb6028ef623b83e40da5ad745c35ee8e8d905103c46c81d7e6ec0cbd1950aa52"
+    },
+    "timing_valid_for_ranking": false,
+    "observed_unqualified_sol_score": 0.7995230393618491
+  },
+  "official_workloads": 16,
+  "full_harness_trials": 1,
+  "passed": true,
+  "additional_input_audit": {
+    "path": "results/2026-09-06/4/diagnostics/4-cublaslt-selected-inputs.json",
+    "sha256": "b230e365f24e3e309ad5f3e2111d5c54e8dbefd200b55317421726de8f6de691",
+    "calls": 40,
+    "passed_calls": 40,
+    "outputs": 80,
+    "bitwise_equal_outputs": 32,
+    "inputs_unchanged": true,
+    "previous_outputs_preserved": true
+  },
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "accepted_performance_trials": 0,
+  "timing_valid_for_ranking": false,
+  "clock_mode": "unlocked",
+  "local_sol_score": null,
+  "observed_unqualified_sol_score": 0.7995230393618491,
+  "leaderboard_snapshot_score": 0.753779,
+  "leaderboard_snapshot": "results/2026-09-06/4/diagnostics/4.json",
+  "unqualified_uniform_latency_buffer_percent": 9.43891892614066,
+  "foreign_context_observations": 14,
+  "archive_index": "results/2026-09-06/4/archive-index.json",
+  "hosted_submissions": 0,
+  "hosted_rank_confirmed": false,
+  "recommend_submission": false,
+  "notes": [
+    "The original native ATen implementation passes all official workloads but fails one of 30 additional checks with unaligned input pointers.",
+    "The selected candidate uses explicit FP32 accumulation and creates aligned dense copies when required.",
+    "Only the 512-row algorithms are changed after the bounded search; other sampled gains were small.",
+    "The monitor rejects this full timing trial for observed foreign CUDA contexts.",
+    "The 9.44% uniform latency buffer is an unqualified sensitivity calculation, not a prediction of the clock difference."
+  ]
+}

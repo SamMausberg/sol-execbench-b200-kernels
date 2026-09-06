@@ -1,0 +1,32 @@
+{
+  "author": "SamMausberg",
+  "definition": "004_attention_output_projection_with_reshape_backward",
+  "description": "Native BF16 input and weight gradient GEMMs with FP32 accumulation and a concrete attention-layout output view.",
+  "name": "attention_backward_native_bf16_views_v1",
+  "sources": [
+    {
+      "content": "// SPDX-License-Identifier: Apache-2.0\n#include <torch/extension.h>\n#include <c10/cuda/CUDAGuard.h>\n#include <tuple>\n\n// BF16 operands are exactly representable in FP32. Both GEMMs accumulate in\n// FP32 and return the contract's BF16 gradients directly.\nstd::tuple<torch::Tensor, torch::Tensor> run(\n    torch::Tensor grad_output, torch::Tensor reshaped, torch::Tensor weight) {\n    c10::cuda::CUDAGuard guard(grad_output.device());\n    for (const auto& tensor : {grad_output, reshaped, weight}) {\n        TORCH_CHECK(tensor.is_cuda() && tensor.device() == grad_output.device() &&\n                    tensor.scalar_type() == at::kBFloat16,\n                    \"Expected BF16 tensors on the same CUDA device\");\n    }\n    TORCH_CHECK(grad_output.dim() == 3 && grad_output.size(2) == 2048 &&\n                reshaped.sizes() == grad_output.sizes() && weight.dim() == 2 &&\n                weight.size(0) == 2048 && weight.size(1) == 2048,\n                \"Unsupported gradient dimensions\");\n    const auto batch = grad_output.size(0), sequence = grad_output.size(1);\n    auto gradient = grad_output.reshape({batch * sequence, 2048});\n    auto saved = reshaped.reshape({batch * sequence, 2048});\n    auto grad_weight = at::mm(gradient.transpose(0, 1), saved);\n    auto grad_input = at::mm(gradient, weight);\n    return {grad_input.view({batch, sequence, 32, 64}).transpose(1, 2), grad_weight};\n}\n\nPYBIND11_MODULE(TORCH_EXTENSION_NAME, module) {\n    module.def(\"run\", &run, pybind11::call_guard<pybind11::gil_scoped_release>());\n}\n",
+      "path": "binding.cpp"
+    }
+  ],
+  "spec": {
+    "binding": "torch",
+    "compile_options": {
+      "cflags": [
+        "-O3",
+        "-std=c++17"
+      ]
+    },
+    "dependencies": [
+      "torch"
+    ],
+    "destination_passing_style": false,
+    "entry_point": "binding.cpp::run",
+    "languages": [
+      "cuda_cpp"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

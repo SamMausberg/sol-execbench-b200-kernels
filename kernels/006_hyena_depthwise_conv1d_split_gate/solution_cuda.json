@@ -1,0 +1,39 @@
+{
+  "name": "hyena_depthwise_gate_cuda_b200_v1",
+  "definition": "006_hyena_depthwise_conv1d_split_gate",
+  "author": "SamMausberg",
+  "description": "One fused CUDA launch computes three causal depthwise convolutions and the Hyena gate. FP32 bias-initialized ordered FMAs preserve the reference, with vector loads for contiguous tensors and a general strided fallback.",
+  "sources": [
+    {
+      "path": "kernel.cu"
+    },
+    {
+      "path": "main.cpp"
+    }
+  ],
+  "spec": {
+    "entry_point": "main.cpp::run",
+    "binding": "torch",
+    "languages": [
+      "cuda_cpp"
+    ],
+    "target_hardware": [
+      "B200"
+    ],
+    "destination_passing_style": true,
+    "dependencies": [
+      "torch"
+    ],
+    "compile_options": {
+      "cflags": [
+        "-O3",
+        "-std=c++17"
+      ],
+      "cuda_cflags": [
+        "-O3",
+        "-std=c++17",
+        "--ftz=false"
+      ]
+    }
+  }
+}

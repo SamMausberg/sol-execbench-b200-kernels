@@ -1,0 +1,2902 @@
+[
+  {
+    "index": 0,
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 512
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "730 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "956 MiB",
+        "is_this_process": false
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 3.2255499999999997
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 3.0624
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 3.0782000000000003
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 2.9791499999999997
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "992 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ]
+  },
+  {
+    "index": 1,
+    "axes": {
+      "batch_size": 4,
+      "seq_len": 2048
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "804 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 16.84155
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 10.497349999999999
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 10.49755
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 14.9199
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "1102 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "axes": {
+      "batch_size": 64,
+      "seq_len": 128
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "808 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 16.49905
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 10.4399
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 10.43345
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 14.398249999999997
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "1106 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 1024
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "746 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 4.3184000000000005
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 3.7230499999999997
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 3.70235
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 4.0801
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "1008 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "axes": {
+      "batch_size": 4,
+      "seq_len": 4096
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "888 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 31.239850000000004
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 18.818949999999997
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 18.34545
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 27.270200000000003
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "1252 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ]
+  },
+  {
+    "index": 5,
+    "axes": {
+      "batch_size": 32,
+      "seq_len": 256
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "822 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 16.670299999999997
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 10.53905
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 10.52145
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 14.5454
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "1120 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ]
+  },
+  {
+    "index": 6,
+    "axes": {
+      "batch_size": 32,
+      "seq_len": 512
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "898 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 30.820599999999995
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 18.3855
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 18.372549999999997
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 26.7407
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "1260 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ]
+  },
+  {
+    "index": 7,
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 2048
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "780 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 6.209549999999999
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 4.656
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 4.66235
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 5.7472
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "1042 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ]
+  },
+  {
+    "index": 8,
+    "axes": {
+      "batch_size": 16,
+      "seq_len": 1024
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "908 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 30.6956
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 18.2543
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 18.29105
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 26.8656
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "1270 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "axes": {
+      "batch_size": 2,
+      "seq_len": 293
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "772 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 3.3183
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 4.3521
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 4.35025
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 3.0848
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "1034 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ]
+  },
+  {
+    "index": 10,
+    "axes": {
+      "batch_size": 32,
+      "seq_len": 128
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "802 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "python",
+        "memory_mib": "1058 MiB",
+        "is_this_process": false
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 9.543899999999999
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 6.3024
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 6.278300000000001
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 8.62395
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "1084 MiB",
+        "is_this_process": true
+      },
+      {
+        "pid": 364743,
+        "process_basename": "[No data]",
+        "memory_mib": "1716 MiB",
+        "is_this_process": false
+      }
+    ]
+  },
+  {
+    "index": 11,
+    "axes": {
+      "batch_size": 8,
+      "seq_len": 512
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "806 MiB",
+        "is_this_process": true
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 9.6927
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 6.395099999999999
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 6.372800000000001
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 8.6686
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "1088 MiB",
+        "is_this_process": true
+      }
+    ]
+  },
+  {
+    "index": 12,
+    "axes": {
+      "batch_size": 16,
+      "seq_len": 256
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "810 MiB",
+        "is_this_process": true
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 9.6511
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 6.2608
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 6.201650000000001
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 8.537600000000001
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "1092 MiB",
+        "is_this_process": true
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 256
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "770 MiB",
+        "is_this_process": true
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 3.07215
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 2.91355
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 2.92475
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 2.31695
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "1028 MiB",
+        "is_this_process": true
+      }
+    ]
+  },
+  {
+    "index": 14,
+    "axes": {
+      "batch_size": 8,
+      "seq_len": 256
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "812 MiB",
+        "is_this_process": true
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 6.1183499999999995
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 4.61435
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 4.66395
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 5.627249999999999
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "1072 MiB",
+        "is_this_process": true
+      }
+    ]
+  },
+  {
+    "index": 15,
+    "axes": {
+      "batch_size": 2,
+      "seq_len": 128
+    },
+    "gpu_processes_before": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "778 MiB",
+        "is_this_process": true
+      }
+    ],
+    "candidates": {
+      "plain_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 2.9616
+      },
+      "direct_4": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 2.91045
+      },
+      "direct_8": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 3.0159499999999997
+      },
+      "triton_512_16": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 2.28
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 362704,
+        "process_basename": "python",
+        "memory_mib": "1038 MiB",
+        "is_this_process": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,132 @@
+{
+  "clock_mode": "unlocked",
+  "complete_problem": false,
+  "contract_sha256": "e76e81f8f7a85f86a8bc66069c22d5fe44402454547527a188e3bf7aad3f0ea0",
+  "environment_file": "environment.json",
+  "environment_sha256": "f89493f2eeb1c8f1ccc1be8987d4e8ff0b17c527220712134f50a6ceaa44c62b",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "geometric_mean_latency_ms": 0.023294435830938025,
+  "local_mean_sol_score": 0.7095094525951747,
+  "passed": true,
+  "problem_mean_sol_score": null,
+  "problem_name": "004_attention_output_projection_with_reshape_backward",
+  "recorded_at": "2026-09-06T20:36:12.547751+00:00",
+  "requested_trials": 1,
+  "result_scope": "local estimate; official leaderboard requires server evaluation",
+  "schema_version": 1,
+  "score_aggregation": "arithmetic mean of per-workload SOL scores; per-workload latency is the median across trials",
+  "score_formula": "1 / (1 + (latency_ms - sol_ms) / (baseline_latency_ms - sol_ms))",
+  "score_source_retrieved_at": "2026-09-06T20:33:25.966152+00:00",
+  "score_source_sha256": "4702b6c71d066cc7cfb0885a0603d218ef438e4685e0b7793c22424bfc8c8327",
+  "score_source_url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/4",
+  "selected_workloads": 3,
+  "sol_is_dummy": false,
+  "submission_sha256": "1f134fc238903820278a1acb0d8df5e00286e32d862ccd54180e1fd730eff086",
+  "total_workloads": 16,
+  "trace_sha256": {
+    "trial-1.jsonl": "599022960823c6234ca689f8427cbe1cd213b4ecced7881a926977be3286ff3b"
+  },
+  "trial_mean_sol_scores": [
+    0.7095094525951747
+  ],
+  "website_id": 4,
+  "workloads": [
+    {
+      "axes": {
+        "batch_size": 16,
+        "seq_len": 128
+      },
+      "baseline_latency_ms": 0.059616,
+      "below_sol_bound": false,
+      "latency_ms_median": 0.030688,
+      "median_latency_sol_score": 0.7808325566946257,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 0.030688,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.0194,
+      "trial_sol_scores": [
+        0.7808325566946257
+      ],
+      "uuid": "e45aa60d-1d56-51d9-98cd-621399bddce3"
+    },
+    {
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 1024
+      },
+      "baseline_latency_ms": 0.038464,
+      "below_sol_bound": false,
+      "latency_ms_median": 0.0234245,
+      "median_latency_sol_score": 0.6786651935801942,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 0.0234245,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.0099,
+      "trial_sol_scores": [
+        0.6786651935801942
+      ],
+      "uuid": "0734a334-06cf-5308-b3b1-d2ee76017da0"
+    },
+    {
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 128
+      },
+      "baseline_latency_ms": 0.0303355,
+      "below_sol_bound": false,
+      "latency_ms_median": 0.017584000000000002,
+      "median_latency_sol_score": 0.6690306075107041,
+      "observations": [
+        {
+          "environment": {
+            "hardware": "NVIDIA B200",
+            "libs": {
+              "cuda": "13.0",
+              "torch": "2.9.0+cu130",
+              "triton": "3.7.0+fb.beta"
+            }
+          },
+          "latency_ms": 0.017584000000000002,
+          "status": "PASSED",
+          "trial": 1
+        }
+      ],
+      "passed": true,
+      "relative_spread": 0.0,
+      "sol_ms": 0.0051,
+      "trial_sol_scores": [
+        0.6690306075107041
+      ],
+      "uuid": "ff77df05-d579-50c3-bc6c-e1665235e15c"
+    }
+  ]
+}

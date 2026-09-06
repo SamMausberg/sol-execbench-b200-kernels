@@ -1,0 +1,1292 @@
+[
+  {
+    "index": 13,
+    "seed": 2027,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 256
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "seed": 2027,
+    "variant": "zero_input",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 256
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "seed": 2027,
+    "variant": "boundary_impulses",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 256
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "seed": 2027,
+    "variant": "cancellation",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 256
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "seed": 2027,
+    "variant": "strided",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 256
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "seed": 331,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 256
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "seed": 331,
+    "variant": "zero_input",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 256
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "seed": 331,
+    "variant": "boundary_impulses",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 256
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "seed": 331,
+    "variant": "cancellation",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 256
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "seed": 331,
+    "variant": "strided",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 256
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "seed": 2027,
+    "variant": "random",
+    "axes": {
+      "batch_size": 2,
+      "seq_len": 293
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "seed": 2027,
+    "variant": "zero_input",
+    "axes": {
+      "batch_size": 2,
+      "seq_len": 293
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "seed": 2027,
+    "variant": "boundary_impulses",
+    "axes": {
+      "batch_size": 2,
+      "seq_len": 293
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "seed": 2027,
+    "variant": "cancellation",
+    "axes": {
+      "batch_size": 2,
+      "seq_len": 293
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "seed": 2027,
+    "variant": "strided",
+    "axes": {
+      "batch_size": 2,
+      "seq_len": 293
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "seed": 331,
+    "variant": "random",
+    "axes": {
+      "batch_size": 2,
+      "seq_len": 293
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "seed": 331,
+    "variant": "zero_input",
+    "axes": {
+      "batch_size": 2,
+      "seq_len": 293
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "seed": 331,
+    "variant": "boundary_impulses",
+    "axes": {
+      "batch_size": 2,
+      "seq_len": 293
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "seed": 331,
+    "variant": "cancellation",
+    "axes": {
+      "batch_size": 2,
+      "seq_len": 293
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "seed": 331,
+    "variant": "strided",
+    "axes": {
+      "batch_size": 2,
+      "seq_len": 293
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "seed": 2027,
+    "variant": "random",
+    "axes": {
+      "batch_size": 4,
+      "seq_len": 4096
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "seed": 2027,
+    "variant": "zero_input",
+    "axes": {
+      "batch_size": 4,
+      "seq_len": 4096
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "seed": 2027,
+    "variant": "boundary_impulses",
+    "axes": {
+      "batch_size": 4,
+      "seq_len": 4096
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "seed": 2027,
+    "variant": "cancellation",
+    "axes": {
+      "batch_size": 4,
+      "seq_len": 4096
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "seed": 2027,
+    "variant": "strided",
+    "axes": {
+      "batch_size": 4,
+      "seq_len": 4096
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "seed": 331,
+    "variant": "random",
+    "axes": {
+      "batch_size": 4,
+      "seq_len": 4096
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "seed": 331,
+    "variant": "zero_input",
+    "axes": {
+      "batch_size": 4,
+      "seq_len": 4096
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "seed": 331,
+    "variant": "boundary_impulses",
+    "axes": {
+      "batch_size": 4,
+      "seq_len": 4096
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "seed": 331,
+    "variant": "cancellation",
+    "axes": {
+      "batch_size": 4,
+      "seq_len": 4096
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "seed": 331,
+    "variant": "strided",
+    "axes": {
+      "batch_size": 4,
+      "seq_len": 4096
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ]
+  }
+]

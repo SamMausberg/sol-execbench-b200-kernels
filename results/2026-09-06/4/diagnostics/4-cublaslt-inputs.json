@@ -1,0 +1,1662 @@
+{
+  "variant": "cublaslt",
+  "source_sha256": {
+    "binding.cpp": "4b07cd48f7efcd6b04daed7ad6cb380e7a1f54b63c7408930b10b83540579f3d"
+  },
+  "verification_source_sha256": "eb960291e45d702ffd40973757b65ddcfc2ffb290f8138f51d1763e4ec204a1b",
+  "reference_sha256": "8aee25476b1cf4c03f0dd68bdb51b996c1cbffc60c953897ea20980a344b1b03",
+  "scope": "numerical, input-layout, and fresh-output audit; no timing qualification",
+  "records": [
+    {
+      "workload": 8,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 256
+      },
+      "mode": "random",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            1,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.2291666716337204,
+            "max_absolute_error": 0.03125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.286102294921875,
+            "max_absolute_error": 0.25,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 8,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 256
+      },
+      "mode": "zero_weight",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            1,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.286102294921875,
+            "max_absolute_error": 0.25,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 8,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 256
+      },
+      "mode": "zero_gradient",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            1,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 8,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 256
+      },
+      "mode": "zero_saved",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            1,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.2291666716337204,
+            "max_absolute_error": 0.03125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 8,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 256
+      },
+      "mode": "basis",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            1,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 8,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 256
+      },
+      "mode": "signed",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            1,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 8,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 256
+      },
+      "mode": "scaled_32",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            1,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.2291666716337204,
+            "max_absolute_error": 32.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.5853658318519592,
+            "max_absolute_error": 256.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 8,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 256
+      },
+      "mode": "strided",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            1,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.2291666716337204,
+            "max_absolute_error": 0.03125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.286102294921875,
+            "max_absolute_error": 0.25,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 8,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 256
+      },
+      "mode": "padded",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            1,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.2291666716337204,
+            "max_absolute_error": 0.03125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.286102294921875,
+            "max_absolute_error": 0.25,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 8,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 256
+      },
+      "mode": "unaligned",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            1,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.2291666716337204,
+            "max_absolute_error": 0.03125,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.286102294921875,
+            "max_absolute_error": 0.25,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 14,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 1024
+      },
+      "mode": "random",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2,
+            32,
+            1024,
+            64
+          ],
+          "stride": [
+            2097152,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.014901161193847656,
+            "max_absolute_error": 0.015625,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.3086419701576233,
+            "max_absolute_error": 1.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 14,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 1024
+      },
+      "mode": "zero_weight",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2,
+            32,
+            1024,
+            64
+          ],
+          "stride": [
+            2097152,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.3086419701576233,
+            "max_absolute_error": 1.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 14,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 1024
+      },
+      "mode": "zero_gradient",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2,
+            32,
+            1024,
+            64
+          ],
+          "stride": [
+            2097152,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 14,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 1024
+      },
+      "mode": "zero_saved",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2,
+            32,
+            1024,
+            64
+          ],
+          "stride": [
+            2097152,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.014901161193847656,
+            "max_absolute_error": 0.015625,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 14,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 1024
+      },
+      "mode": "basis",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2,
+            32,
+            1024,
+            64
+          ],
+          "stride": [
+            2097152,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 14,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 1024
+      },
+      "mode": "signed",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2,
+            32,
+            1024,
+            64
+          ],
+          "stride": [
+            2097152,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 14,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 1024
+      },
+      "mode": "scaled_32",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2,
+            32,
+            1024,
+            64
+          ],
+          "stride": [
+            2097152,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 1.5897436141967773,
+            "max_absolute_error": 16.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 1.419753074645996,
+            "max_absolute_error": 1024.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 14,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 1024
+      },
+      "mode": "strided",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2,
+            32,
+            1024,
+            64
+          ],
+          "stride": [
+            2097152,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.014901161193847656,
+            "max_absolute_error": 0.015625,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.3086419701576233,
+            "max_absolute_error": 1.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 14,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 1024
+      },
+      "mode": "padded",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2,
+            32,
+            1024,
+            64
+          ],
+          "stride": [
+            2097152,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.014901161193847656,
+            "max_absolute_error": 0.015625,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.3086419701576233,
+            "max_absolute_error": 1.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 14,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 1024
+      },
+      "mode": "unaligned",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2,
+            32,
+            1024,
+            64
+          ],
+          "stride": [
+            2097152,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.014901161193847656,
+            "max_absolute_error": 0.015625,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.3086419701576233,
+            "max_absolute_error": 1.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 11,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "random",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            32,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0078125,
+            "max_absolute_error": 0.015625,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.4076957702636719,
+            "max_absolute_error": 2.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 11,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "zero_weight",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            32,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.4076957702636719,
+            "max_absolute_error": 2.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 11,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "zero_gradient",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            32,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 11,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "zero_saved",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            32,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0078125,
+            "max_absolute_error": 0.015625,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 11,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "basis",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            32,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 11,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "signed",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            32,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 11,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "scaled_32",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            32,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.7009506225585938,
+            "max_absolute_error": 16.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 6.961352825164795,
+            "max_absolute_error": 2048.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 11,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "strided",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            32,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0078125,
+            "max_absolute_error": 0.015625,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.4076957702636719,
+            "max_absolute_error": 2.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 11,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "padded",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            32,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0078125,
+            "max_absolute_error": 0.015625,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.4076957702636719,
+            "max_absolute_error": 2.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    },
+    {
+      "workload": 11,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "mode": "unaligned",
+      "inputs_unchanged": true,
+      "previous_outputs_preserved": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            32,
+            32,
+            256,
+            64
+          ],
+          "stride": [
+            524288,
+            64,
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0078125,
+            "max_absolute_error": 0.015625,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "shape": [
+            2048,
+            2048
+          ],
+          "stride": [
+            2048,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.4076957702636719,
+            "max_absolute_error": 2.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

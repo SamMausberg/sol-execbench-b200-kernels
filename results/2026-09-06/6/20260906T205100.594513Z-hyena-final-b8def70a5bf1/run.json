@@ -1,0 +1,110 @@
+{
+  "clock_mode": "unlocked",
+  "contract": {
+    "collection": "L1",
+    "contract_sha256": "637e9525e98d3de0ee978405f18f10def56f3e4870aed3f3a3f348ce8de6338d",
+    "dataset_metadata_url": "https://huggingface.co/api/datasets/nvidia/SOL-ExecBench/tree/63699402f003496acc3af4eb534a5304a8ac1ea9/data",
+    "dataset_repository": "nvidia/SOL-ExecBench",
+    "dataset_revision": "63699402f003496acc3af4eb534a5304a8ac1ea9",
+    "dataset_sha256": "dbaf8476812194920e405118cc5f4abc65035b79a4307b5ee88fb07666ceed48",
+    "name": "006_hyena_depthwise_conv1d_split_gate",
+    "website_id": 6,
+    "workload_count": 16
+  },
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "finished_at": "2026-09-06T20:55:54.087613+00:00",
+  "gpu_lock": "/workspace/sol-execbench-b200-kernels/.work/gpu.lock",
+  "requested_trials": 1,
+  "schema_version": 1,
+  "score_source_sha256": "4777d7c67e7769fdb15a39875ffd017d8834a13f4a702661176ea33c0c6f3b19",
+  "source_sha256": {
+    "kernel.cu": "43f337482d14cedf7d41d5a631407d38b2fc1fa15ffbe9f173ba231a96fc95fc",
+    "main.cpp": "5895bd93a3e05241f5294081eae239e00df5790ddb13163348aaaca79e5aacfa"
+  },
+  "started_at": "2026-09-06T20:51:00.656569+00:00",
+  "submission_sha256": "b8def70a5bf12632bceea7dc9b33b434b56174e76804273037d5b33a5ee6a03d",
+  "trials": [
+    {
+      "command": [
+        "/workspace/venvs/sol-execbench/bin/python",
+        "-m",
+        "sol_execbench.cli.main",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/6/20260906T205100.594513Z-hyena-final-b8def70a5bf1",
+        "--solution",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/6/20260906T205100.594513Z-hyena-final-b8def70a5bf1/solution.json",
+        "--compile-timeout",
+        "600",
+        "--timeout",
+        "3600",
+        "--verbose",
+        "-o",
+        "/workspace/sol-execbench-b200-kernels/.work/runs/6/20260906T205100.594513Z-hyena-final-b8def70a5bf1/trial-1.jsonl"
+      ],
+      "elapsed_seconds": 129.638029300957,
+      "finished_at": "2026-09-06T20:55:53.879815+00:00",
+      "gpu_after": {
+        "command": [
+          "nvidia-smi",
+          "--query-gpu=uuid,name,driver_version,pstate,clocks.current.graphics,clocks.current.sm,clocks.current.memory,temperature.gpu,power.draw,power.limit,utilization.gpu,memory.used,memory.total",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "uuid, name, driver_version, pstate, clocks.current.graphics [MHz], clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], power.limit [W], utilization.gpu [%], memory.used [MiB], memory.total [MiB]\nGPU-b93d0ebe-03a8-bdde-60fe-024fb902497b, NVIDIA B200, 580.105.08, P0, 1965 MHz, 1965 MHz, 3996 MHz, 31, 237.48 W, 1000.00 W, 0 %, 0 MiB, 183359 MiB"
+      },
+      "gpu_before": {
+        "command": [
+          "nvidia-smi",
+          "--query-gpu=uuid,name,driver_version,pstate,clocks.current.graphics,clocks.current.sm,clocks.current.memory,temperature.gpu,power.draw,power.limit,utilization.gpu,memory.used,memory.total",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "uuid, name, driver_version, pstate, clocks.current.graphics [MHz], clocks.current.sm [MHz], clocks.current.memory [MHz], temperature.gpu, power.draw [W], power.limit [W], utilization.gpu [%], memory.used [MiB], memory.total [MiB]\nGPU-b93d0ebe-03a8-bdde-60fe-024fb902497b, NVIDIA B200, 580.105.08, P0, 1965 MHz, 1965 MHz, 3996 MHz, 32, 238.20 W, 1000.00 W, 0 %, 0 MiB, 183359 MiB"
+      },
+      "gpu_processes_after": {
+        "command": [
+          "nvidia-smi",
+          "--query-compute-apps=pid,process_name,used_memory",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "pid, process_name, used_gpu_memory [MiB]"
+      },
+      "gpu_processes_before": {
+        "command": [
+          "nvidia-smi",
+          "--query-compute-apps=pid,process_name,used_memory",
+          "--format=csv"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "pid, process_name, used_gpu_memory [MiB]"
+      },
+      "returncode": 0,
+      "started_at": "2026-09-06T20:53:44.014153+00:00",
+      "trial": 1
+    }
+  ],
+  "website_id": 6,
+  "workload_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ]
+}

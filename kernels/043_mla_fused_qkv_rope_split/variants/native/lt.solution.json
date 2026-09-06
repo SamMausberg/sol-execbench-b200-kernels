@@ -1,0 +1,52 @@
+{
+  "author": "SamMausberg",
+  "definition": "043_mla_fused_qkv_rope_split",
+  "description": "Direct cuBLASLt BF16 projections and native CUDA RMSNorm, returning concrete split views from fresh output storage.",
+  "name": "043_mla_native_cublaslt_views_v1",
+  "sources": [
+    {
+      "path": "binding_lt.cpp"
+    },
+    {
+      "path": "norm.cu"
+    },
+    {
+      "path": "cublaslt_bridge.h"
+    }
+  ],
+  "spec": {
+    "binding": "torch",
+    "compile_options": {
+      "cflags": [
+        "-O3",
+        "-std=c++17",
+        "-I/venv/lib/python3.12/site-packages/nvidia/cu13/include",
+        "-I/usr/local/cuda/include"
+      ],
+      "cuda_cflags": [
+        "-O3",
+        "--fmad=false",
+        "-std=c++17"
+      ],
+      "ld_flags": [
+        "-lcuda",
+        "-L/venv/lib/python3.12/site-packages/nvidia/cu13/lib",
+        "-L/usr/local/cuda/lib64",
+        "-l:libcublasLt.so.13",
+        "-l:libcudart.so.13"
+      ]
+    },
+    "dependencies": [
+      "torch",
+      "cublas"
+    ],
+    "destination_passing_style": false,
+    "entry_point": "binding_lt.cpp::run",
+    "languages": [
+      "cuda_cpp"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

@@ -3,3 +3,4 @@ kernels/030_attention_output_projection_with_residual/cute_residual.py linguist-
 kernels/050_attention_qkv_projection_with_bias_and_reshape/cute_qkv.py linguist-vendored whitespace=-blank-at-eof
 kernels/050_attention_qkv_projection_with_bias_and_reshape/cute_qkv_direct.py linguist-vendored whitespace=-blank-at-eof
 kernels/055_attention_qkv_projection_with_gqa_reshape/cute_qkv.py linguist-vendored whitespace=-blank-at-eof
+kernels/043_mla_fused_qkv_rope_split/cute_mla.py linguist-vendored whitespace=-blank-at-eof

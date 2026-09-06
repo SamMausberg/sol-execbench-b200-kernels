@@ -26,9 +26,15 @@ and ten exact edge cases, also without a qualified timing trial.
 Problem 036 passes all official cases and 16 extra checks with explicit FP32
 emulation. Its six-product expansion passes 192 checks, but conversion overhead
 prevents a complete-path speedup. It is parked below the leader. Current work
-targets 004 projection backward, 006 Hyena convolution, 043 MLA projection,
-and 048 paired gate/up projection. Problems 119 and 173 remain partial
-investigations; neither establishes a lead.
+targets 003 vocabulary projection, 032 attention output layout, 035 modulation
+projection, and 048 paired gate/up projection. A bounded CuTe experiment for
+036 will generate FP32 fragments inside GEMM shared memory to reduce conversion
+traffic. Problems 119 and 173 remain partial investigations; neither establishes a lead.
+
+Problems 004, 006, and 043 now pass full official correctness and additional
+input checks. Problem 006 remains below its leader. Problems 004 and 043 have
+unqualified raw leads with only 9.44% and 6.87% uniform latency buffers, respectively;
+they remain parked and do not add to the three local leads in the table.
 Problems 030 and 092 now pass all official workloads, but their experimental
 implementations do not establish leads. Problem 218's exact library comparison
 shows a large apparent score advantage under different clocks without a kernel improvement.

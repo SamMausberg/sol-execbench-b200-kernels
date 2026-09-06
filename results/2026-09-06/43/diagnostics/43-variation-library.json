@@ -1,0 +1,3040 @@
+{
+  "scope": "changed input/scalar and output-ownership audit; separate timing evidence required",
+  "source_sha256": {
+    "verify.py": "e6868959ae0991699e7f0afb5347bd504e50af2f4998a280329447720a54ded9",
+    "cute_final_packed.py": "8a16320bec0c20d1bd3f3ca87c76df2bbe5d7fdb2965a3ce21c6e3009effc06d",
+    "cute_final.py": "af64f69c35e9c785f4a044ceb047683438fa722f80fd575fb2796979edc16cc9",
+    "tune_lt.py": "54d5cc063f627fd6439fd5d04cd1ee09af96471f18170331593d5dd0ad5054fc",
+    "tune.py": "d55517efc914df823492c24236e1a8800faa574aa00649af16fdecc75c4b9bd6",
+    "cute_kernel.py": "2185daeb014abd5a11df6c587201c2fa438d25ae527a4a286b5966a6f19d9549",
+    "cute_mla.py": "d6f7aad26094edaa8eae39b69e2280a626024f13aaa37b39c1ea4aa6ae4db1db",
+    "kernel.py": "d0b4a39d2f7255e0c6bacd69558718c68116668258955782d7641235b7c187ba"
+  },
+  "reference_sha256": "8a9fc82cf8600e80efe864029599ba6aeb72a507db3763cb5c5977062bb5c668",
+  "records": [
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "random",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2146304,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 1073152,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 67072,
+          "strides": [
+            75456,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8384,
+          "strides": [
+            75456,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "zero_input",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2146304,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 1073152,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 67072,
+          "strides": [
+            75456,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8384,
+          "strides": [
+            75456,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "ones",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2146304,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 1073152,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 67072,
+          "strides": [
+            75456,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8384,
+          "strides": [
+            75456,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "basis",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2146304,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 1073152,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 67072,
+          "strides": [
+            75456,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8384,
+          "strides": [
+            75456,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "negative",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2146304,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 1073152,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 67072,
+          "strides": [
+            75456,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8384,
+          "strides": [
+            75456,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "small",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2146304,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 1073152,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 67072,
+          "strides": [
+            75456,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8384,
+          "strides": [
+            75456,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "large",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2146304,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 1073152,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 67072,
+          "strides": [
+            75456,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8384,
+          "strides": [
+            75456,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "changed_qa",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2146304,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 1073152,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 67072,
+          "strides": [
+            75456,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8384,
+          "strides": [
+            75456,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "changed_norm",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2146304,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 1073152,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 67072,
+          "strides": [
+            75456,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8384,
+          "strides": [
+            75456,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "zero_qb",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2146304,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 1073152,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 67072,
+          "strides": [
+            75456,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8384,
+          "strides": [
+            75456,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "changed_kv",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2146304,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 1073152,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 67072,
+          "strides": [
+            75456,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8384,
+          "strides": [
+            75456,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "epsilon_and_strides",
+      "epsilon": 0.1,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2146304,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 1073152,
+          "strides": [
+            3219456,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 67072,
+          "strides": [
+            75456,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8384,
+          "strides": [
+            75456,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 149,
+      "pattern": "random",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 4882432,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2441216,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 152576,
+          "strides": [
+            85824,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 19072,
+          "strides": [
+            85824,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 149,
+      "pattern": "zero_input",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 4882432,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2441216,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 152576,
+          "strides": [
+            85824,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 19072,
+          "strides": [
+            85824,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 149,
+      "pattern": "ones",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 4882432,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2441216,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 152576,
+          "strides": [
+            85824,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 19072,
+          "strides": [
+            85824,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 149,
+      "pattern": "basis",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 4882432,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2441216,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 152576,
+          "strides": [
+            85824,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 19072,
+          "strides": [
+            85824,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 149,
+      "pattern": "negative",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 4882432,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2441216,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 152576,
+          "strides": [
+            85824,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 19072,
+          "strides": [
+            85824,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 149,
+      "pattern": "small",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 4882432,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2441216,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 152576,
+          "strides": [
+            85824,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 19072,
+          "strides": [
+            85824,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 149,
+      "pattern": "large",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 4882432,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2441216,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 152576,
+          "strides": [
+            85824,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 19072,
+          "strides": [
+            85824,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 149,
+      "pattern": "changed_qa",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 4882432,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2441216,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 152576,
+          "strides": [
+            85824,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 19072,
+          "strides": [
+            85824,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 149,
+      "pattern": "changed_norm",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 4882432,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2441216,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 152576,
+          "strides": [
+            85824,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 19072,
+          "strides": [
+            85824,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 149,
+      "pattern": "zero_qb",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 4882432,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2441216,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 152576,
+          "strides": [
+            85824,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 19072,
+          "strides": [
+            85824,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 149,
+      "pattern": "changed_kv",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 4882432,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2441216,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 152576,
+          "strides": [
+            85824,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 19072,
+          "strides": [
+            85824,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 149,
+      "pattern": "epsilon_and_strides",
+      "epsilon": 0.1,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 4882432,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 2441216,
+          "strides": [
+            3661824,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 152576,
+          "strides": [
+            85824,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 19072,
+          "strides": [
+            85824,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 512,
+      "pattern": "random",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "unmatched": 98,
+          "elements": 16777216,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 12.479452133178711,
+            "max_absolute_error": 1.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "unmatched": 56,
+          "elements": 8388608,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 5.742856979370117,
+            "max_absolute_error": 0.5,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 524288,
+          "strides": [
+            294912,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 65536,
+          "strides": [
+            294912,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 512,
+      "pattern": "zero_input",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 16777216,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8388608,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 524288,
+          "strides": [
+            294912,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 65536,
+          "strides": [
+            294912,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 512,
+      "pattern": "ones",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 16777216,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8388608,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 524288,
+          "strides": [
+            294912,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 65536,
+          "strides": [
+            294912,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 512,
+      "pattern": "basis",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 16777216,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8388608,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 524288,
+          "strides": [
+            294912,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 65536,
+          "strides": [
+            294912,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 512,
+      "pattern": "negative",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "unmatched": 129,
+          "elements": 16777216,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 3.7518796920776367,
+            "max_absolute_error": 1.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "unmatched": 74,
+          "elements": 8388608,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 1.0485490560531616,
+            "max_absolute_error": 1.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 524288,
+          "strides": [
+            294912,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 65536,
+          "strides": [
+            294912,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 512,
+      "pattern": "small",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "unmatched": 66,
+          "elements": 16777216,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 3.3897435665130615,
+            "max_absolute_error": 0.5,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "unmatched": 32,
+          "elements": 8388608,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 1.7538937330245972,
+            "max_absolute_error": 0.5,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 524288,
+          "strides": [
+            294912,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 65536,
+          "strides": [
+            294912,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 512,
+      "pattern": "large",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "unmatched": 98,
+          "elements": 16777216,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 12.479452133178711,
+            "max_absolute_error": 1.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "unmatched": 56,
+          "elements": 8388608,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 5.742856979370117,
+            "max_absolute_error": 0.5,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 524288,
+          "strides": [
+            294912,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 65536,
+          "strides": [
+            294912,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 512,
+      "pattern": "changed_qa",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "unmatched": 98,
+          "elements": 16777216,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 12.479452133178711,
+            "max_absolute_error": 1.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "unmatched": 56,
+          "elements": 8388608,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 5.742856979370117,
+            "max_absolute_error": 0.5,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 524288,
+          "strides": [
+            294912,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 65536,
+          "strides": [
+            294912,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 512,
+      "pattern": "changed_norm",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "unmatched": 118,
+          "elements": 16777216,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 21.198198318481445,
+            "max_absolute_error": 32.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "unmatched": 69,
+          "elements": 8388608,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 5.742856979370117,
+            "max_absolute_error": 16.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 524288,
+          "strides": [
+            294912,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 65536,
+          "strides": [
+            294912,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 512,
+      "pattern": "zero_qb",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 16777216,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8388608,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 524288,
+          "strides": [
+            294912,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 65536,
+          "strides": [
+            294912,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 512,
+      "pattern": "changed_kv",
+      "epsilon": 1e-06,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "unmatched": 98,
+          "elements": 16777216,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 12.479452133178711,
+            "max_absolute_error": 1.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": false,
+          "unmatched": 56,
+          "elements": 8388608,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 5.742856979370117,
+            "max_absolute_error": 0.5,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 524288,
+          "strides": [
+            294912,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 65536,
+          "strides": [
+            294912,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "sequence": 512,
+      "pattern": "epsilon_and_strides",
+      "epsilon": 0.1,
+      "passed": true,
+      "outputs": [
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 16777216,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 8388608,
+          "strides": [
+            12582912,
+            24576,
+            192,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 524288,
+          "strides": [
+            294912,
+            576,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        },
+        {
+          "passed": true,
+          "bitwise_equal": true,
+          "unmatched": 0,
+          "elements": 65536,
+          "strides": [
+            294912,
+            576,
+            64,
+            1
+          ],
+          "error": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          }
+        }
+      ]
+    }
+  ]
+}

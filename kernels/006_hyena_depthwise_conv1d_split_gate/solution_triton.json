@@ -1,0 +1,14 @@
+{
+  "name": "hyena_depthwise_gate_triton_b200_v1",
+  "definition": "006_hyena_depthwise_conv1d_split_gate",
+  "author": "SamMausberg",
+  "description": "One fused launch computes the three causal depthwise convolutions and initial Hyena gate, using ordered FP32 fused multiply-adds with bias initialization.",
+  "sources": [{"path": "kernel.py"}],
+  "spec": {
+    "entry_point": "kernel.py::run",
+    "languages": ["triton"],
+    "target_hardware": ["B200"],
+    "destination_passing_style": true,
+    "dependencies": ["torch", "triton"]
+  }
+}

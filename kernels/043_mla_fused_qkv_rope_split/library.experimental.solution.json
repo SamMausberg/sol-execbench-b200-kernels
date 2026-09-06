@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "043_mla_fused_qkv_rope_split",
+  "description": "MLA library projections with fused BF16 RMSNorm and concrete query/KV split views.",
+  "name": "043_mla_views_library_experiment",
+  "sources": [{"path": "kernel.py"}],
+  "spec": {
+    "dependencies": ["torch", "triton"],
+    "destination_passing_style": false,
+    "entry_point": "kernel.py::run",
+    "languages": ["pytorch", "triton"],
+    "target_hardware": ["B200"]
+  }
+}

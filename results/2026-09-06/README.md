@@ -97,3 +97,22 @@ reports. Copies of older GPU process reports reduce executable paths to basename
 and record both original and archived hashes. Process identities, timestamps, and
 qualification decisions remain intact. These checkpoints add no confirmed lead
 and use no hosted submission quota.
+
+The next checkpoint preserves three more complete candidates:
+
+- 004 attention projection backward: selected cuBLASLt version passes all 16
+  workloads and 40 value, layout, and ownership checks. Explicit alignment
+  handling fixes a failure found in the original ATen version's extra audit.
+  Its raw 0.799523 score versus leader 0.753779 has only a 9.44% uniform latency
+  buffer and contains 14 foreign CUDA context observations.
+- 006 Hyena depthwise convolution: all 16 workloads and 30 extra calls pass
+  bitwise. Its raw 0.772851 score remains below leader 0.785398. The full timing
+  run contains foreign contexts and is excluded from qualification.
+- 043 MLA projections: all 16 workloads, 36 value/scalar/layout/ownership calls,
+  and three additional unaligned calls pass. Its unqualified 0.769533 score
+  versus leader 0.719510 has only a 6.87% uniform latency buffer. Bounded native
+  and CuTe alternatives do not establish a useful further improvement.
+
+All three are parked experiments with zero hosted submissions. Their archive
+indices retain exact packages, full and partial trials, input audits, and
+diagnostic source hashes.

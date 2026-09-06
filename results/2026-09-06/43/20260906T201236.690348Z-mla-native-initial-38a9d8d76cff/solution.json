@@ -1,0 +1,44 @@
+{
+  "author": "SamMausberg",
+  "definition": "043_mla_fused_qkv_rope_split",
+  "description": "Native host chain of three ordinary BF16 matrix products and CUDA RMSNorm, returning concrete split views.",
+  "name": "043_mla_native_library_views_v1",
+  "sources": [
+    {
+      "content": "// SPDX-License-Identifier: Apache-2.0\n// Three ordinary matrix products and exact BF16 RMSNorm in one host call.\n#include <torch/extension.h>\n#include <c10/cuda/CUDAGuard.h>\n#include <c10/cuda/CUDAException.h>\n#include <c10/cuda/CUDAStream.h>\n\nvoid mla_normalize(const void* latent, const void* weight, void* output,\n                   int rows, float epsilon, cudaStream_t stream);\n\npybind11::tuple run(const torch::Tensor& hidden_states,\n                   const torch::Tensor& q_a_proj_weight,\n                   const torch::Tensor& q_a_layernorm_weight,\n                   const torch::Tensor& q_b_proj_weight,\n                   const torch::Tensor& kv_a_proj_weight,\n                   double rms_norm_eps) {\n    at::NoGradGuard no_grad;\n    TORCH_CHECK(hidden_states.is_cuda() && hidden_states.scalar_type() == at::kBFloat16,\n                \"expected CUDA BF16 hidden states\");\n    TORCH_CHECK(hidden_states.dim() == 3 && hidden_states.size(2) == 7168,\n                \"expected hidden states [batch, sequence, 7168]\");\n    TORCH_CHECK(q_a_layernorm_weight.device() == hidden_states.device() &&\n                q_a_layernorm_weight.scalar_type() == at::kBFloat16 &&\n                q_a_layernorm_weight.numel() == 1536, \"invalid norm weight\");\n    c10::cuda::CUDAGuard guard(hidden_states.device());\n    const auto batch = hidden_states.size(0), sequence = hidden_states.size(1);\n    const auto rows = batch * sequence;\n    auto x = hidden_states.reshape({rows, 7168});\n    auto weight = q_a_layernorm_weight.contiguous();\n    auto latent = torch::empty({rows, 1536}, hidden_states.options());\n    auto normalized = torch::empty_like(latent);\n    auto q = torch::empty({rows, 24576}, hidden_states.options());\n    auto kv = torch::empty({rows, 576}, hidden_states.options());\n    at::mm_out(latent, x, q_a_proj_weight.t());\n    mla_normalize(latent.data_ptr(), weight.data_ptr(), normalized.data_ptr(),\n                  static_cast<int>(rows), static_cast<float>(rms_norm_eps),\n                  c10::cuda::getCurrentCUDAStream(hidden_states.get_device()).stream());\n    C10_CUDA_KERNEL_LAUNCH_CHECK();\n    at::mm_out(q, normalized, q_b_proj_weight.t());\n    at::mm_out(kv, x, kv_a_proj_weight.t());\n    q = q.view({batch, sequence, 128, 192});\n    kv = kv.view({batch, sequence, 576});\n    return pybind11::make_tuple(q.slice(3, 0, 128), q.slice(3, 128, 192),\n                                kv.slice(2, 0, 512), kv.slice(2, 512, 576).unsqueeze(2));\n}\n\nPYBIND11_MODULE(TORCH_EXTENSION_NAME, module) {\n    module.def(\"run\", &run);\n}\n",
+      "path": "binding.cpp"
+    },
+    {
+      "content": "// SPDX-License-Identifier: Apache-2.0\n#include <cuda_runtime.h>\n#include <cuda_bf16.h>\n\n__global__ void normalize_rows(const __nv_bfloat16* latent,\n                               const __nv_bfloat16* weight,\n                               __nv_bfloat16* output, float epsilon) {\n    constexpr int width = 1536;\n    constexpr int threads = 256;\n    __shared__ float warp_sums[8];\n    const int row = blockIdx.x;\n    const int lane = threadIdx.x & 31;\n    const int warp = threadIdx.x >> 5;\n    float values[6];\n    float sum = 0.0f;\n    #pragma unroll\n    for (int i = 0; i < 6; ++i) {\n        values[i] = __bfloat162float(latent[row * width + threadIdx.x + i * threads]);\n        sum = __fadd_rn(sum, __fmul_rn(values[i], values[i]));\n    }\n    #pragma unroll\n    for (int delta = 16; delta; delta >>= 1)\n        sum = __fadd_rn(sum, __shfl_down_sync(0xffffffff, sum, delta));\n    if (lane == 0) warp_sums[warp] = sum;\n    __syncthreads();\n    if (warp == 0) {\n        sum = lane < 8 ? warp_sums[lane] : 0.0f;\n        #pragma unroll\n        for (int delta = 16; delta; delta >>= 1)\n            sum = __fadd_rn(sum, __shfl_down_sync(0xffffffff, sum, delta));\n        if (lane == 0) warp_sums[0] = sum;\n    }\n    __syncthreads();\n    const float inverse = rsqrtf(warp_sums[0] / float(width) + epsilon);\n    #pragma unroll\n    for (int i = 0; i < 6; ++i) {\n        const int column = threadIdx.x + i * threads;\n        const auto normalized = __float2bfloat16_rn(__fmul_rn(values[i], inverse));\n        const float result = __fmul_rn(__bfloat162float(normalized), __bfloat162float(weight[column]));\n        output[row * width + column] = __float2bfloat16_rn(result);\n    }\n}\n\nvoid mla_normalize(const void* latent, const void* weight, void* output,\n                   int rows, float epsilon, cudaStream_t stream) {\n    normalize_rows<<<rows, 256, 0, stream>>>(\n        static_cast<const __nv_bfloat16*>(latent),\n        static_cast<const __nv_bfloat16*>(weight),\n        static_cast<__nv_bfloat16*>(output), epsilon);\n}\n",
+      "path": "norm.cu"
+    }
+  ],
+  "spec": {
+    "binding": "torch",
+    "compile_options": {
+      "cflags": [
+        "-O3",
+        "-std=c++17"
+      ],
+      "cuda_cflags": [
+        "-O3",
+        "--fmad=false",
+        "-std=c++17"
+      ],
+      "ld_flags": [
+        "-lcuda"
+      ]
+    },
+    "dependencies": [
+      "torch"
+    ],
+    "destination_passing_style": false,
+    "entry_point": "binding.cpp::run",
+    "languages": [
+      "cuda_cpp"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

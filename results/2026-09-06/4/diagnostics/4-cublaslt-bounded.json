@@ -1,0 +1,2619 @@
+{
+  "source_sha256": {
+    "binding.cpp": "4b07cd48f7efcd6b04daed7ad6cb380e7a1f54b63c7408930b10b83540579f3d"
+  },
+  "scope": "bounded component tuning; no complete-problem ranking claim",
+  "records": [
+    {
+      "rows": 256,
+      "kind": "weight",
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727302.7090504,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.02421438694000244,
+        "max_absolute_error": 0.25,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.005824,
+      "finished_at": 1788727303.1373503
+    },
+    {
+      "rows": 256,
+      "kind": "weight",
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727303.1435912,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.02421438694000244,
+        "max_absolute_error": 0.25,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0058720000000000005,
+      "finished_at": 1788727303.232669
+    },
+    {
+      "rows": 256,
+      "kind": "weight",
+      "algorithm": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "waves": 0.9662162065505981,
+        "id": 66
+      },
+      "started_at": 1788727303.238782,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.02421438694000244,
+        "max_absolute_error": 0.25,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.006288,
+      "finished_at": 1788727303.3045921
+    },
+    {
+      "rows": 256,
+      "kind": "weight",
+      "algorithm": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727303.3099582,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.02421438694000244,
+        "max_absolute_error": 0.25,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.005856500000000001,
+      "finished_at": 1788727303.3960223
+    },
+    {
+      "rows": 256,
+      "kind": "weight",
+      "algorithm": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727303.4036028,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.02421438694000244,
+        "max_absolute_error": 0.25,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.006432,
+      "finished_at": 1788727303.4846103
+    },
+    {
+      "rows": 256,
+      "kind": "weight",
+      "algorithm": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727303.491242,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.02421438694000244,
+        "max_absolute_error": 0.25,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.00576,
+      "finished_at": 1788727303.5754035
+    },
+    {
+      "rows": 256,
+      "kind": "weight",
+      "algorithm": {
+        "index": 6,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727303.5809968,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.02421438694000244,
+        "max_absolute_error": 0.25,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0058405,
+      "finished_at": 1788727303.6465778
+    },
+    {
+      "rows": 256,
+      "kind": "weight",
+      "algorithm": {
+        "index": 7,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727303.6531694,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.02421438694000244,
+        "max_absolute_error": 0.25,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0058715,
+      "finished_at": 1788727303.7326157
+    },
+    {
+      "rows": 256,
+      "kind": "input",
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727303.7433887,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.22351741790771484,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.006752,
+      "finished_at": 1788727303.8075767
+    },
+    {
+      "rows": 256,
+      "kind": "input",
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727303.8136206,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.22351741790771484,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.006688,
+      "finished_at": 1788727303.894907
+    },
+    {
+      "rows": 256,
+      "kind": "input",
+      "algorithm": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727303.9034674,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.22351741790771484,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.00744,
+      "finished_at": 1788727303.9846666
+    },
+    {
+      "rows": 256,
+      "kind": "input",
+      "algorithm": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727303.99178,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.22351741790771484,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.007392,
+      "finished_at": 1788727304.0692682
+    },
+    {
+      "rows": 256,
+      "kind": "input",
+      "algorithm": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "waves": 0.5945945978164673,
+        "id": 66
+      },
+      "started_at": 1788727304.0768802,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.22351741790771484,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0070880000000000006,
+      "finished_at": 1788727304.1912017
+    },
+    {
+      "rows": 256,
+      "kind": "input",
+      "algorithm": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "waves": 0.7567567825317383,
+        "id": 66
+      },
+      "started_at": 1788727304.198793,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.22351741790771484,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.007568,
+      "finished_at": 1788727304.282258
+    },
+    {
+      "rows": 256,
+      "kind": "input",
+      "algorithm": {
+        "index": 6,
+        "workspace_bytes": 0,
+        "waves": 0.6486486196517944,
+        "id": 66
+      },
+      "started_at": 1788727304.2886474,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.22351741790771484,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.007472,
+      "finished_at": 1788727304.3618119
+    },
+    {
+      "rows": 256,
+      "kind": "input",
+      "algorithm": {
+        "index": 7,
+        "workspace_bytes": 0,
+        "waves": 0.6486486196517944,
+        "id": 66
+      },
+      "started_at": 1788727304.36824,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.22351741790771484,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0067355,
+      "finished_at": 1788727304.4302738
+    },
+    {
+      "rows": 512,
+      "kind": "weight",
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727304.4396272,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.07152557373046875,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0072475000000000005,
+      "finished_at": 1788727304.4979784
+    },
+    {
+      "rows": 512,
+      "kind": "weight",
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727304.506441,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.07152557373046875,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.007264,
+      "finished_at": 1788727304.5653753
+    },
+    {
+      "rows": 512,
+      "kind": "weight",
+      "algorithm": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "waves": 0.9662162065505981,
+        "id": 66
+      },
+      "started_at": 1788727304.5740092,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.07152557373046875,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.00792,
+      "finished_at": 1788727304.6316226
+    },
+    {
+      "rows": 512,
+      "kind": "weight",
+      "algorithm": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727304.638987,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.07152557373046875,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0068319999999999995,
+      "finished_at": 1788727304.6972587
+    },
+    {
+      "rows": 512,
+      "kind": "weight",
+      "algorithm": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727304.7059028,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.07152557373046875,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.008463499999999999,
+      "finished_at": 1788727304.7644322
+    },
+    {
+      "rows": 512,
+      "kind": "weight",
+      "algorithm": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727304.7729511,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.07152557373046875,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0072155,
+      "finished_at": 1788727304.8307178
+    },
+    {
+      "rows": 512,
+      "kind": "weight",
+      "algorithm": {
+        "index": 6,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727304.838303,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.07152557373046875,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.008624,
+      "finished_at": 1788727304.8946116
+    },
+    {
+      "rows": 512,
+      "kind": "weight",
+      "algorithm": {
+        "index": 7,
+        "workspace_bytes": 0,
+        "waves": 1.4054054021835327,
+        "id": 66
+      },
+      "started_at": 1788727304.9030938,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.07152557373046875,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0079515,
+      "finished_at": 1788727304.970855
+    },
+    {
+      "rows": 512,
+      "kind": "input",
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727304.9840252,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.16987323760986328,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0080155,
+      "finished_at": 1788727305.0471725
+    },
+    {
+      "rows": 512,
+      "kind": "input",
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727305.056101,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.16987323760986328,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.007183999999999999,
+      "finished_at": 1788727305.1215806
+    },
+    {
+      "rows": 512,
+      "kind": "input",
+      "algorithm": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "waves": 0.7567567825317383,
+        "id": 66
+      },
+      "started_at": 1788727305.128175,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.16987323760986328,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.008736,
+      "finished_at": 1788727305.2824214
+    },
+    {
+      "rows": 512,
+      "kind": "input",
+      "algorithm": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "waves": 0.7027027010917664,
+        "id": 66
+      },
+      "started_at": 1788727305.2928536,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.16987323760986328,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.008512,
+      "finished_at": 1788727305.4963293
+    },
+    {
+      "rows": 512,
+      "kind": "input",
+      "algorithm": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "waves": 0.5945945978164673,
+        "id": 66
+      },
+      "started_at": 1788727305.5059657,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.16987323760986328,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.008624,
+      "finished_at": 1788727305.601439
+    },
+    {
+      "rows": 512,
+      "kind": "input",
+      "algorithm": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "waves": 0.6486486196517944,
+        "id": 66
+      },
+      "started_at": 1788727305.6094546,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.16987323760986328,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.008351500000000001,
+      "finished_at": 1788727305.6729717
+    },
+    {
+      "rows": 512,
+      "kind": "input",
+      "algorithm": {
+        "index": 6,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727305.6810606,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.16987323760986328,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.01008,
+      "finished_at": 1788727305.754773
+    },
+    {
+      "rows": 512,
+      "kind": "input",
+      "algorithm": {
+        "index": 7,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727305.763197,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.16987323760986328,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.010976,
+      "finished_at": 1788727305.827914
+    },
+    {
+      "rows": 1024,
+      "kind": "weight",
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727305.8382897,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.13658536970615387,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0097915,
+      "finished_at": 1788727306.0407536
+    },
+    {
+      "rows": 1024,
+      "kind": "weight",
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727306.0491111,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.13658536970615387,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.009808,
+      "finished_at": 1788727306.1098468
+    },
+    {
+      "rows": 1024,
+      "kind": "weight",
+      "algorithm": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "waves": 0.9662162065505981,
+        "id": 66
+      },
+      "started_at": 1788727306.1185231,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.13658536970615387,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.010960000000000001,
+      "finished_at": 1788727306.178172
+    },
+    {
+      "rows": 1024,
+      "kind": "weight",
+      "algorithm": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727306.1884854,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.13658536970615387,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.010032,
+      "finished_at": 1788727306.3030164
+    },
+    {
+      "rows": 1024,
+      "kind": "weight",
+      "algorithm": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727306.3236084,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.13658536970615387,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.01248,
+      "finished_at": 1788727306.477858
+    },
+    {
+      "rows": 1024,
+      "kind": "weight",
+      "algorithm": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727306.4965086,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.13658536970615387,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0123205,
+      "finished_at": 1788727306.5809028
+    },
+    {
+      "rows": 1024,
+      "kind": "weight",
+      "algorithm": {
+        "index": 6,
+        "workspace_bytes": 0,
+        "waves": 1.4054054021835327,
+        "id": 66
+      },
+      "started_at": 1788727306.5880551,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.13658536970615387,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.011487500000000001,
+      "finished_at": 1788727306.6474307
+    },
+    {
+      "rows": 1024,
+      "kind": "weight",
+      "algorithm": {
+        "index": 7,
+        "workspace_bytes": 0,
+        "waves": 0.8175675868988037,
+        "id": 66
+      },
+      "started_at": 1788727306.6559565,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.13658536970615387,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.010592,
+      "finished_at": 1788727306.7199621
+    },
+    {
+      "rows": 1024,
+      "kind": "input",
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727306.728913,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3695487976074219,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.009552,
+      "finished_at": 1788727306.8063693
+    },
+    {
+      "rows": 1024,
+      "kind": "input",
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727306.815226,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3695487976074219,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.012032000000000001,
+      "finished_at": 1788727306.8960989
+    },
+    {
+      "rows": 1024,
+      "kind": "input",
+      "algorithm": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727306.9062004,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3695487976074219,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.009536,
+      "finished_at": 1788727306.9879997
+    },
+    {
+      "rows": 1024,
+      "kind": "input",
+      "algorithm": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "waves": 0.7567567825317383,
+        "id": 66
+      },
+      "started_at": 1788727306.9970493,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3695487976074219,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.011904,
+      "finished_at": 1788727307.076898
+    },
+    {
+      "rows": 1024,
+      "kind": "input",
+      "algorithm": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727307.087021,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3695487976074219,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.012480999999999999,
+      "finished_at": 1788727307.1639216
+    },
+    {
+      "rows": 1024,
+      "kind": "input",
+      "algorithm": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "waves": 0.5945945978164673,
+        "id": 66
+      },
+      "started_at": 1788727307.1731791,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3695487976074219,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.012336,
+      "finished_at": 1788727307.2534432
+    },
+    {
+      "rows": 1024,
+      "kind": "input",
+      "algorithm": {
+        "index": 6,
+        "workspace_bytes": 0,
+        "waves": 0.6486486196517944,
+        "id": 66
+      },
+      "started_at": 1788727307.26167,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3695487976074219,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.011807999999999999,
+      "finished_at": 1788727307.3416543
+    },
+    {
+      "rows": 1024,
+      "kind": "input",
+      "algorithm": {
+        "index": 7,
+        "workspace_bytes": 0,
+        "waves": 0.5945945978164673,
+        "id": 66
+      },
+      "started_at": 1788727307.3534098,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3695487976074219,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.012799999999999999,
+      "finished_at": 1788727307.5606303
+    },
+    {
+      "rows": 2048,
+      "kind": "weight",
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727307.5716023,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.2980232238769531,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.014784,
+      "finished_at": 1788727307.763784
+    },
+    {
+      "rows": 2048,
+      "kind": "weight",
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727307.7745855,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.2980232238769531,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.014848,
+      "finished_at": 1788727307.857968
+    },
+    {
+      "rows": 2048,
+      "kind": "weight",
+      "algorithm": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "waves": 0.9662162065505981,
+        "id": 66
+      },
+      "started_at": 1788727307.8686283,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.2980232238769531,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.017184,
+      "finished_at": 1788727307.9447265
+    },
+    {
+      "rows": 2048,
+      "kind": "weight",
+      "algorithm": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727307.9536495,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.2980232238769531,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.015408,
+      "finished_at": 1788727308.0186298
+    },
+    {
+      "rows": 2048,
+      "kind": "weight",
+      "algorithm": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727308.0277734,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.2980232238769531,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0204,
+      "finished_at": 1788727308.1031883
+    },
+    {
+      "rows": 2048,
+      "kind": "weight",
+      "algorithm": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727308.1130679,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.2980232238769531,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.020208,
+      "finished_at": 1788727308.191812
+    },
+    {
+      "rows": 2048,
+      "kind": "weight",
+      "algorithm": {
+        "index": 6,
+        "workspace_bytes": 0,
+        "waves": 1.4054054021835327,
+        "id": 66
+      },
+      "started_at": 1788727308.2003396,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.2980232238769531,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0178245,
+      "finished_at": 1788727308.2741199
+    },
+    {
+      "rows": 2048,
+      "kind": "weight",
+      "algorithm": {
+        "index": 7,
+        "workspace_bytes": 0,
+        "waves": 0.8175675868988037,
+        "id": 66
+      },
+      "started_at": 1788727308.2831912,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.2980232238769531,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0163675,
+      "finished_at": 1788727308.3612642
+    },
+    {
+      "rows": 2048,
+      "kind": "input",
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727308.3702838,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.25704503059387207,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.01512,
+      "finished_at": 1788727308.4526277
+    },
+    {
+      "rows": 2048,
+      "kind": "input",
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727308.4596443,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.25704503059387207,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.015151999999999999,
+      "finished_at": 1788727308.5431404
+    },
+    {
+      "rows": 2048,
+      "kind": "input",
+      "algorithm": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "waves": 0.9662162065505981,
+        "id": 66
+      },
+      "started_at": 1788727308.554351,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.25704503059387207,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.01728,
+      "finished_at": 1788727308.637148
+    },
+    {
+      "rows": 2048,
+      "kind": "input",
+      "algorithm": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727308.6582832,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.25704503059387207,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.015663999999999997,
+      "finished_at": 1788727308.737496
+    },
+    {
+      "rows": 2048,
+      "kind": "input",
+      "algorithm": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727308.7482367,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.25704503059387207,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.02064,
+      "finished_at": 1788727308.831143
+    },
+    {
+      "rows": 2048,
+      "kind": "input",
+      "algorithm": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727308.8416572,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.25704503059387207,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.020352,
+      "finished_at": 1788727308.9182355
+    },
+    {
+      "rows": 2048,
+      "kind": "input",
+      "algorithm": {
+        "index": 6,
+        "workspace_bytes": 0,
+        "waves": 1.4054054021835327,
+        "id": 66
+      },
+      "started_at": 1788727308.9282892,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.25704503059387207,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.017536,
+      "finished_at": 1788727309.0065753
+    },
+    {
+      "rows": 2048,
+      "kind": "input",
+      "algorithm": {
+        "index": 7,
+        "workspace_bytes": 0,
+        "waves": 2.8108108043670654,
+        "id": 66
+      },
+      "started_at": 1788727309.0161667,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.25704503059387207,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.018624,
+      "finished_at": 1788727309.0991945
+    },
+    {
+      "rows": 4096,
+      "kind": "weight",
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727309.1112256,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.7554888725280762,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.024239999999999998,
+      "finished_at": 1788727309.1923037
+    },
+    {
+      "rows": 4096,
+      "kind": "weight",
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727309.2052734,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.7554888725280762,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.024607999999999998,
+      "finished_at": 1788727309.2831283
+    },
+    {
+      "rows": 4096,
+      "kind": "weight",
+      "algorithm": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "waves": 0.9662162065505981,
+        "id": 66
+      },
+      "started_at": 1788727309.29264,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.7554888725280762,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.028927500000000002,
+      "finished_at": 1788727309.3700294
+    },
+    {
+      "rows": 4096,
+      "kind": "weight",
+      "algorithm": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727309.3806334,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.7554888725280762,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.025424000000000002,
+      "finished_at": 1788727309.4591763
+    },
+    {
+      "rows": 4096,
+      "kind": "weight",
+      "algorithm": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727309.4684825,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.7554888725280762,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0361755,
+      "finished_at": 1788727309.548025
+    },
+    {
+      "rows": 4096,
+      "kind": "weight",
+      "algorithm": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727309.5595446,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.7554888725280762,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0355675,
+      "finished_at": 1788727309.657951
+    },
+    {
+      "rows": 4096,
+      "kind": "weight",
+      "algorithm": {
+        "index": 6,
+        "workspace_bytes": 0,
+        "waves": 1.4054054021835327,
+        "id": 66
+      },
+      "started_at": 1788727309.6686757,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.7554888725280762,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0311355,
+      "finished_at": 1788727309.756343
+    },
+    {
+      "rows": 4096,
+      "kind": "weight",
+      "algorithm": {
+        "index": 7,
+        "workspace_bytes": 0,
+        "waves": 0.8175675868988037,
+        "id": 66
+      },
+      "started_at": 1788727309.7670634,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.7554888725280762,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.027312000000000003,
+      "finished_at": 1788727309.8442802
+    },
+    {
+      "rows": 4096,
+      "kind": "input",
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727309.8557954,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.36656856536865234,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0250395,
+      "finished_at": 1788727309.9383135
+    },
+    {
+      "rows": 4096,
+      "kind": "input",
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727309.9563692,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.36656856536865234,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.025664,
+      "finished_at": 1788727310.0496776
+    },
+    {
+      "rows": 4096,
+      "kind": "input",
+      "algorithm": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "waves": 1.9324324131011963,
+        "id": 66
+      },
+      "started_at": 1788727310.0610397,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.36656856536865234,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0254555,
+      "finished_at": 1788727310.146135
+    },
+    {
+      "rows": 4096,
+      "kind": "input",
+      "algorithm": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727310.1564138,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.36656856536865234,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.025904,
+      "finished_at": 1788727310.2459579
+    },
+    {
+      "rows": 4096,
+      "kind": "input",
+      "algorithm": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "waves": 2.8108108043670654,
+        "id": 66
+      },
+      "started_at": 1788727310.2582932,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.36656856536865234,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0244955,
+      "finished_at": 1788727310.3440304
+    },
+    {
+      "rows": 4096,
+      "kind": "input",
+      "algorithm": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727310.3545928,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.36656856536865234,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.025870999999999998,
+      "finished_at": 1788727310.4391322
+    },
+    {
+      "rows": 4096,
+      "kind": "input",
+      "algorithm": {
+        "index": 6,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727310.4503698,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.36656856536865234,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.032992,
+      "finished_at": 1788727310.5329463
+    },
+    {
+      "rows": 4096,
+      "kind": "input",
+      "algorithm": {
+        "index": 7,
+        "workspace_bytes": 0,
+        "waves": 3.4594595432281494,
+        "id": 66
+      },
+      "started_at": 1788727310.542008,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.36656856536865234,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.026816,
+      "finished_at": 1788727310.6149874
+    },
+    {
+      "rows": 8192,
+      "kind": "weight",
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727310.627513,
+      "passed": true,
+      "error": {
+        "max_relative_error": 2.1636486053466797,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.042544,
+      "finished_at": 1788727310.704935
+    },
+    {
+      "rows": 8192,
+      "kind": "weight",
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727310.716234,
+      "passed": true,
+      "error": {
+        "max_relative_error": 2.1636486053466797,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0442395,
+      "finished_at": 1788727310.7892926
+    },
+    {
+      "rows": 8192,
+      "kind": "weight",
+      "algorithm": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "waves": 0.9662162065505981,
+        "id": 66
+      },
+      "started_at": 1788727310.7995887,
+      "passed": true,
+      "error": {
+        "max_relative_error": 2.1636486053466797,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.052608,
+      "finished_at": 1788727311.103815
+    },
+    {
+      "rows": 8192,
+      "kind": "weight",
+      "algorithm": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727311.1147814,
+      "passed": true,
+      "error": {
+        "max_relative_error": 2.1636486053466797,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.046656,
+      "finished_at": 1788727311.215414
+    },
+    {
+      "rows": 8192,
+      "kind": "weight",
+      "algorithm": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "waves": 0.8648648858070374,
+        "id": 66
+      },
+      "started_at": 1788727311.2255573,
+      "passed": true,
+      "error": {
+        "max_relative_error": 2.1636486053466797,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.06916749999999999,
+      "finished_at": 1788727311.286635
+    },
+    {
+      "rows": 8192,
+      "kind": "weight",
+      "algorithm": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727311.2964866,
+      "passed": true,
+      "error": {
+        "max_relative_error": 2.1636486053466797,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0685275,
+      "finished_at": 1788727311.3583684
+    },
+    {
+      "rows": 8192,
+      "kind": "weight",
+      "algorithm": {
+        "index": 6,
+        "workspace_bytes": 0,
+        "waves": 1.4054054021835327,
+        "id": 66
+      },
+      "started_at": 1788727311.369532,
+      "passed": true,
+      "error": {
+        "max_relative_error": 2.1636486053466797,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0595195,
+      "finished_at": 1788727311.4303665
+    },
+    {
+      "rows": 8192,
+      "kind": "weight",
+      "algorithm": {
+        "index": 7,
+        "workspace_bytes": 0,
+        "waves": 0.8175675868988037,
+        "id": 66
+      },
+      "started_at": 1788727311.443198,
+      "passed": true,
+      "error": {
+        "max_relative_error": 2.1636486053466797,
+        "max_absolute_error": 2.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.048159999999999994,
+      "finished_at": 1788727311.503294
+    },
+    {
+      "rows": 8192,
+      "kind": "input",
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "waves": 3.4594595432281494,
+        "id": 66
+      },
+      "started_at": 1788727311.517087,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3461538553237915,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.044303499999999996,
+      "finished_at": 1788727311.5805821
+    },
+    {
+      "rows": 8192,
+      "kind": "input",
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "waves": 3.4594595432281494,
+        "id": 66
+      },
+      "started_at": 1788727311.5936794,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3461538553237915,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.046112,
+      "finished_at": 1788727311.6556242
+    },
+    {
+      "rows": 8192,
+      "kind": "input",
+      "algorithm": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "waves": 1.7297297716140747,
+        "id": 66
+      },
+      "started_at": 1788727311.666649,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3461538553237915,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.046752,
+      "finished_at": 1788727311.7304747
+    },
+    {
+      "rows": 8192,
+      "kind": "input",
+      "algorithm": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "waves": 4.648648738861084,
+        "id": 66
+      },
+      "started_at": 1788727311.7412908,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3461538553237915,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.043072,
+      "finished_at": 1788727311.8100257
+    },
+    {
+      "rows": 8192,
+      "kind": "input",
+      "algorithm": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "waves": 5.621621608734131,
+        "id": 66
+      },
+      "started_at": 1788727311.821933,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3461538553237915,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0434875,
+      "finished_at": 1788727311.8963664
+    },
+    {
+      "rows": 8192,
+      "kind": "input",
+      "algorithm": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "waves": 6.918919086456299,
+        "id": 66
+      },
+      "started_at": 1788727311.9080257,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3461538553237915,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0449435,
+      "finished_at": 1788727311.9759498
+    },
+    {
+      "rows": 8192,
+      "kind": "input",
+      "algorithm": {
+        "index": 6,
+        "workspace_bytes": 0,
+        "waves": 4.648648738861084,
+        "id": 66
+      },
+      "started_at": 1788727311.98652,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3461538553237915,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.0561435,
+      "finished_at": 1788727312.0962064
+    },
+    {
+      "rows": 8192,
+      "kind": "input",
+      "algorithm": {
+        "index": 7,
+        "workspace_bytes": 0,
+        "waves": 4.756756782531738,
+        "id": 66
+      },
+      "started_at": 1788727312.1082082,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3461538553237915,
+        "max_absolute_error": 1.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.053759,
+      "finished_at": 1788727312.1772907
+    }
+  ],
+  "process_samples": [
+    {
+      "timestamp": "2026-09-06T20:41:41.964516+00:00",
+      "finished_at": "2026-09-06T20:41:42.096610+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "14",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:42.597039+00:00",
+      "finished_at": "2026-09-06T20:41:42.685797+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "862",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:43.186104+00:00",
+      "finished_at": "2026-09-06T20:41:43.271468+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1242",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:43.771856+00:00",
+      "finished_at": "2026-09-06T20:41:43.846898+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1260",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:44.357576+00:00",
+      "finished_at": "2026-09-06T20:41:44.444375+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1260",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:44.944604+00:00",
+      "finished_at": "2026-09-06T20:41:45.022691+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1282",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:45.523025+00:00",
+      "finished_at": "2026-09-06T20:41:45.606429+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1288",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:46.106716+00:00",
+      "finished_at": "2026-09-06T20:41:46.192295+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1284",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:46.692529+00:00",
+      "finished_at": "2026-09-06T20:41:46.803866+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1304",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:47.304206+00:00",
+      "finished_at": "2026-09-06T20:41:47.404015+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1310",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:47.904247+00:00",
+      "finished_at": "2026-09-06T20:41:47.996239+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1314",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        },
+        {
+          "pid": 368125,
+          "process_name": "python",
+          "memory_mib": "956",
+          "start_ticks": 97232513,
+          "campaign_descendant": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:48.496473+00:00",
+      "finished_at": "2026-09-06T20:41:48.573149+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1308",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        },
+        {
+          "pid": 368125,
+          "process_name": "python",
+          "memory_mib": "1058",
+          "start_ticks": 97232513,
+          "campaign_descendant": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:49.073378+00:00",
+      "finished_at": "2026-09-06T20:41:49.173444+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1332",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        },
+        {
+          "pid": 368125,
+          "process_name": "python",
+          "memory_mib": "1058",
+          "start_ticks": 97232513,
+          "campaign_descendant": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:49.673743+00:00",
+      "finished_at": "2026-09-06T20:41:49.761437+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1338",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        },
+        {
+          "pid": 368125,
+          "process_name": "python",
+          "memory_mib": "1058",
+          "start_ticks": 97232513,
+          "campaign_descendant": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:50.261731+00:00",
+      "finished_at": "2026-09-06T20:41:50.351101+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1344",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        },
+        {
+          "pid": 368125,
+          "process_name": "python",
+          "memory_mib": "1058",
+          "start_ticks": 97232513,
+          "campaign_descendant": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:50.851374+00:00",
+      "finished_at": "2026-09-06T20:41:51.074522+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1592",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        },
+        {
+          "pid": 368125,
+          "process_name": "python",
+          "memory_mib": "1058",
+          "start_ticks": 97232513,
+          "campaign_descendant": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:51.574769+00:00",
+      "finished_at": "2026-09-06T20:41:51.680183+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1728",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        },
+        {
+          "pid": 368125,
+          "process_name": "python",
+          "memory_mib": "1058",
+          "start_ticks": 97232513,
+          "campaign_descendant": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T20:41:52.183335+00:00",
+      "finished_at": "2026-09-06T20:41:52.260343+00:00",
+      "root_pid": 366968,
+      "contexts": [
+        {
+          "pid": 366968,
+          "process_name": "python",
+          "memory_mib": "1736",
+          "start_ticks": 97227946,
+          "campaign_descendant": true
+        },
+        {
+          "pid": 368125,
+          "process_name": "python",
+          "memory_mib": "1058",
+          "start_ticks": 97232513,
+          "campaign_descendant": false
+        }
+      ],
+      "error": null
+    }
+  ],
+  "selected": {
+    "256": {
+      "weight": {
+        "rows": 256,
+        "kind": "weight",
+        "algorithm": {
+          "index": 5,
+          "workspace_bytes": 0,
+          "waves": 0.8648648858070374,
+          "id": 66
+        },
+        "started_at": 1788727303.491242,
+        "passed": true,
+        "error": {
+          "max_relative_error": 0.02421438694000244,
+          "max_absolute_error": 0.25,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_ms": 0.00576,
+        "finished_at": 1788727303.5754035
+      },
+      "input": {
+        "rows": 256,
+        "kind": "input",
+        "algorithm": {
+          "index": 1,
+          "workspace_bytes": 0,
+          "waves": 0.8648648858070374,
+          "id": 66
+        },
+        "started_at": 1788727303.8136206,
+        "passed": true,
+        "error": {
+          "max_relative_error": 0.22351741790771484,
+          "max_absolute_error": 1.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_ms": 0.006688,
+        "finished_at": 1788727303.894907
+      }
+    },
+    "512": {
+      "weight": {
+        "rows": 512,
+        "kind": "weight",
+        "algorithm": {
+          "index": 3,
+          "workspace_bytes": 0,
+          "waves": 1.7297297716140747,
+          "id": 66
+        },
+        "started_at": 1788727304.638987,
+        "passed": true,
+        "error": {
+          "max_relative_error": 0.07152557373046875,
+          "max_absolute_error": 0.5,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_ms": 0.0068319999999999995,
+        "finished_at": 1788727304.6972587
+      },
+      "input": {
+        "rows": 512,
+        "kind": "input",
+        "algorithm": {
+          "index": 1,
+          "workspace_bytes": 0,
+          "waves": 0.8648648858070374,
+          "id": 66
+        },
+        "started_at": 1788727305.056101,
+        "passed": true,
+        "error": {
+          "max_relative_error": 0.16987323760986328,
+          "max_absolute_error": 1.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_ms": 0.007183999999999999,
+        "finished_at": 1788727305.1215806
+      }
+    },
+    "1024": {
+      "weight": {
+        "rows": 1024,
+        "kind": "weight",
+        "algorithm": {
+          "index": 0,
+          "workspace_bytes": 0,
+          "waves": 0.8648648858070374,
+          "id": 66
+        },
+        "started_at": 1788727305.8382897,
+        "passed": true,
+        "error": {
+          "max_relative_error": 0.13658536970615387,
+          "max_absolute_error": 0.5,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_ms": 0.0097915,
+        "finished_at": 1788727306.0407536
+      },
+      "input": {
+        "rows": 1024,
+        "kind": "input",
+        "algorithm": {
+          "index": 2,
+          "workspace_bytes": 0,
+          "waves": 0.8648648858070374,
+          "id": 66
+        },
+        "started_at": 1788727306.9062004,
+        "passed": true,
+        "error": {
+          "max_relative_error": 0.3695487976074219,
+          "max_absolute_error": 1.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_ms": 0.009536,
+        "finished_at": 1788727306.9879997
+      }
+    },
+    "2048": {
+      "weight": {
+        "rows": 2048,
+        "kind": "weight",
+        "algorithm": {
+          "index": 0,
+          "workspace_bytes": 0,
+          "waves": 0.8648648858070374,
+          "id": 66
+        },
+        "started_at": 1788727307.5716023,
+        "passed": true,
+        "error": {
+          "max_relative_error": 0.2980232238769531,
+          "max_absolute_error": 1.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_ms": 0.014784,
+        "finished_at": 1788727307.763784
+      },
+      "input": {
+        "rows": 2048,
+        "kind": "input",
+        "algorithm": {
+          "index": 0,
+          "workspace_bytes": 0,
+          "waves": 0.8648648858070374,
+          "id": 66
+        },
+        "started_at": 1788727308.3702838,
+        "passed": true,
+        "error": {
+          "max_relative_error": 0.25704503059387207,
+          "max_absolute_error": 1.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_ms": 0.01512,
+        "finished_at": 1788727308.4526277
+      }
+    },
+    "4096": {
+      "weight": {
+        "rows": 4096,
+        "kind": "weight",
+        "algorithm": {
+          "index": 0,
+          "workspace_bytes": 0,
+          "waves": 0.8648648858070374,
+          "id": 66
+        },
+        "started_at": 1788727309.1112256,
+        "passed": true,
+        "error": {
+          "max_relative_error": 0.7554888725280762,
+          "max_absolute_error": 2.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_ms": 0.024239999999999998,
+        "finished_at": 1788727309.1923037
+      },
+      "input": {
+        "rows": 4096,
+        "kind": "input",
+        "algorithm": {
+          "index": 4,
+          "workspace_bytes": 0,
+          "waves": 2.8108108043670654,
+          "id": 66
+        },
+        "started_at": 1788727310.2582932,
+        "passed": true,
+        "error": {
+          "max_relative_error": 0.36656856536865234,
+          "max_absolute_error": 1.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_ms": 0.0244955,
+        "finished_at": 1788727310.3440304
+      }
+    },
+    "8192": {
+      "weight": {
+        "rows": 8192,
+        "kind": "weight",
+        "algorithm": {
+          "index": 0,
+          "workspace_bytes": 0,
+          "waves": 0.8648648858070374,
+          "id": 66
+        },
+        "started_at": 1788727310.627513,
+        "passed": true,
+        "error": {
+          "max_relative_error": 2.1636486053466797,
+          "max_absolute_error": 2.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_ms": 0.042544,
+        "finished_at": 1788727310.704935
+      },
+      "input": {
+        "rows": 8192,
+        "kind": "input",
+        "algorithm": {
+          "index": 3,
+          "workspace_bytes": 0,
+          "waves": 4.648648738861084,
+          "id": 66
+        },
+        "started_at": 1788727311.7412908,
+        "passed": true,
+        "error": {
+          "max_relative_error": 0.3461538553237915,
+          "max_absolute_error": 1.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        },
+        "latency_ms": 0.043072,
+        "finished_at": 1788727311.8100257
+      }
+    }
+  },
+  "foreign_samples": 8
+}

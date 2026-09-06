@@ -1,0 +1,444 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "batch_size": {
+          "description": "Batch size",
+          "type": "var"
+        },
+        "hidden_size": {
+          "description": "Hidden dimension",
+          "type": "const",
+          "value": 7168
+        },
+        "kv_lora_rank": {
+          "description": "KV LoRA rank",
+          "type": "const",
+          "value": 512
+        },
+        "kv_proj_out_dim": {
+          "description": "KV projection output dimension (kv_lora_rank + qk_rope_head_dim)",
+          "type": "const",
+          "value": 576
+        },
+        "num_heads": {
+          "description": "Number of attention heads",
+          "type": "const",
+          "value": 128
+        },
+        "q_head_dim": {
+          "description": "Total query head dimension (nope + rope)",
+          "type": "const",
+          "value": 192
+        },
+        "q_lora_rank": {
+          "description": "Query LoRA rank",
+          "type": "const",
+          "value": 1536
+        },
+        "q_proj_out_dim": {
+          "description": "Q projection output dimension (num_heads * q_head_dim)",
+          "type": "const",
+          "value": 24576
+        },
+        "qk_nope_head_dim": {
+          "description": "Query/Key non-positional head dimension",
+          "type": "const",
+          "value": 128
+        },
+        "qk_rope_head_dim": {
+          "description": "Query/Key RoPE head dimension",
+          "type": "const",
+          "value": 64
+        },
+        "seq_len": {
+          "description": "Sequence length",
+          "type": "var"
+        }
+      },
+      "baseline": "import torch\nimport torch.nn.functional as F\n\n@torch.no_grad()\ndef run(\n    hidden_states: torch.Tensor,\n    q_a_proj_weight: torch.Tensor,\n    q_a_layernorm_weight: torch.Tensor,\n    q_b_proj_weight: torch.Tensor,\n    kv_a_proj_weight: torch.Tensor,\n    rms_norm_eps: float,\n):\n    \"\"\"\n    Fused MLA QKV projection with RoPE split.\n    \n    Query path: hidden -> q_a_proj -> RMSNorm -> q_b_proj -> split(q_nope, q_pe)\n    KV path: hidden -> kv_a_proj -> split(compressed_kv, k_pe)\n    \"\"\"\n    # Constants\n    num_heads = 128\n    qk_nope_head_dim = 128\n    qk_rope_head_dim = 64\n    q_head_dim = 192  # qk_nope_head_dim + qk_rope_head_dim\n    kv_lora_rank = 512\n    \n    bsz, seq_len, _ = hidden_states.shape\n    \n    # Query pathway: hidden -> q_a_proj -> layernorm -> q_b_proj -> split\n    # q_a_proj: Linear(7168, 1536)\n    q_latent = F.linear(hidden_states, q_a_proj_weight)  # (bsz, seq_len, 1536)\n    \n    # RMSNorm on q_latent\n    input_dtype = q_latent.dtype\n    q_latent_fp32 = q_latent.to(torch.float32)\n    variance = q_latent_fp32.pow(2).mean(-1, keepdim=True)\n    q_latent_normed = q_latent_fp32 * torch.rsqrt(variance + rms_norm_eps)\n    q_latent = (q_a_layernorm_weight * q_latent_normed.to(input_dtype))\n    \n    # q_b_proj: Linear(1536, 24576)\n    q = F.linear(q_latent, q_b_proj_weight)  # (bsz, seq_len, 24576)\n    q = q.view(bsz, seq_len, num_heads, q_head_dim)  # (bsz, seq_len, 128, 192)\n    \n    # Split query into nope and pe components\n    q_nope = q[..., :qk_nope_head_dim].contiguous()  # (bsz, seq_len, 128, 128)\n    q_pe = q[..., qk_nope_head_dim:].contiguous()  # (bsz, seq_len, 128, 64)\n    \n    # KV pathway: hidden -> kv_a_proj -> split\n    # kv_a_proj: Linear(7168, 576)\n    kv_combined = F.linear(hidden_states, kv_a_proj_weight)  # (bsz, seq_len, 576)\n    \n    # Split into compressed_kv and k_pe\n    compressed_kv = kv_combined[..., :kv_lora_rank].contiguous()  # (bsz, seq_len, 512)\n    k_pe = kv_combined[..., kv_lora_rank:].contiguous()  # (bsz, seq_len, 64)\n    k_pe = k_pe.view(bsz, seq_len, 1, qk_rope_head_dim)  # (bsz, seq_len, 1, 64)\n    \n    return q_nope, q_pe, compressed_kv, k_pe\n",
+      "baseline_latency_ms": 0.09205,
+      "description": "Fused Multi-head Latent Attention (MLA) QKV projection with RoPE split. Combines query low-rank projection (q_a_proj -> RMSNorm -> q_b_proj) with tensor splitting and key-value joint projection with split into a single operation. Eliminates intermediate memory writes for the latent representations.",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 43,
+      "inputs": {
+        "hidden_states": {
+          "description": "Input hidden states",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "hidden_size"
+          ]
+        },
+        "kv_a_proj_weight": {
+          "description": "KV A projection weight",
+          "dtype": "bfloat16",
+          "shape": [
+            "kv_proj_out_dim",
+            "hidden_size"
+          ]
+        },
+        "q_a_layernorm_weight": {
+          "description": "Query A layernorm weight",
+          "dtype": "bfloat16",
+          "shape": [
+            "q_lora_rank"
+          ]
+        },
+        "q_a_proj_weight": {
+          "description": "Query A projection weight",
+          "dtype": "bfloat16",
+          "shape": [
+            "q_lora_rank",
+            "hidden_size"
+          ]
+        },
+        "q_b_proj_weight": {
+          "description": "Query B projection weight",
+          "dtype": "bfloat16",
+          "shape": [
+            "q_proj_out_dim",
+            "q_lora_rank"
+          ]
+        },
+        "rms_norm_eps": {
+          "description": "RMSNorm epsilon",
+          "dtype": "float32",
+          "shape": null
+        }
+      },
+      "latency_unit": "ms",
+      "name": "043_mla_fused_qkv_rope_split",
+      "outputs": {
+        "compressed_kv": {
+          "description": "Compressed KV latent",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "kv_lora_rank"
+          ]
+        },
+        "k_pe": {
+          "description": "Key positional component",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "1",
+            "qk_rope_head_dim"
+          ]
+        },
+        "q_nope": {
+          "description": "Query non-positional component",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "num_heads",
+            "qk_nope_head_dim"
+          ]
+        },
+        "q_pe": {
+          "description": "Query positional component",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "num_heads",
+            "qk_rope_head_dim"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "mla_paged_attention",
+        "rope",
+        "attention",
+        "L1",
+        "model:DeepSeek-V3"
+      ],
+      "title": "043_mla_fused_qkv_rope_split",
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 373
+          },
+          "baseline_latency_ms": 0.195008,
+          "sol_ms": 0.0875
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.1529599999999999,
+          "sol_ms": 0.0602
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 4096
+          },
+          "baseline_latency_ms": 0.751937,
+          "sol_ms": 0.4788
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.411889,
+          "sol_ms": 0.2396
+        },
+        {
+          "axes": {
+            "batch_size": 32,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.4118405,
+          "sol_ms": 0.2396
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.0840005,
+          "sol_ms": 0.0154
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.15624,
+          "sol_ms": 0.0602
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 4096
+          },
+          "baseline_latency_ms": 0.413984,
+          "sol_ms": 0.2396
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.240081,
+          "sol_ms": 0.12
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 1024
+          },
+          "baseline_latency_ms": 0.7523695,
+          "sol_ms": 0.4788
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 131
+          },
+          "baseline_latency_ms": 0.089728,
+          "sol_ms": 0.0081
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 293
+          },
+          "baseline_latency_ms": 0.09096,
+          "sol_ms": 0.0175
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 997
+          },
+          "baseline_latency_ms": 0.156032,
+          "sol_ms": 0.0586
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 128
+          },
+          "baseline_latency_ms": 0.2400005,
+          "sol_ms": 0.12
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 512
+          },
+          "baseline_latency_ms": 0.156112,
+          "sol_ms": 0.0602
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "hidden_size": 7168,
+            "kv_lora_rank": 512,
+            "kv_proj_out_dim": 576,
+            "num_heads": 128,
+            "q_head_dim": 192,
+            "q_lora_rank": 1536,
+            "q_proj_out_dim": 24576,
+            "qk_nope_head_dim": 128,
+            "qk_rope_head_dim": 64,
+            "seq_len": 256
+          },
+          "baseline_latency_ms": 0.410112,
+          "sol_ms": 0.2396
+        }
+      ]
+    }
+  },
+  "response_sha256": "5b26464223ef8ec591b7737945a1ce56b8925cda799060185a32dae547c26e23",
+  "retrieved_at": "2026-09-06T20:29:30.667067+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/43"
+}

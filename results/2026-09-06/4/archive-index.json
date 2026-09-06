@@ -1,0 +1,179 @@
+{
+  "problem_id": 4,
+  "runs": [
+    {
+      "run_directory": ".work/runs/4/20260906T202427.450995Z-native-bf16-views-smoke-18d6ae5a33d9",
+      "archived_run": "results/2026-09-06/4/20260906T202427.450995Z-native-bf16-views-smoke-18d6ae5a33d9",
+      "summary_sha256": "575a7e54bf9980ddd8ab9ddfc8306cc4a1965322486c2e48975187aa92476a30",
+      "submission_sha256": "18d6ae5a33d9d7654e1daaa452f9ac63bfdf3e57ccd532552f8c2078b9c330c9",
+      "source_sha256": {
+        "binding.cpp": "34a902c1127cbf33db3842621725e7ea37f2795656d41b4fb8cc779da96a3542"
+      },
+      "passed": true,
+      "selected_workloads": 3,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "ebe67254887beb29417d2a4f97f6f93860e28882d668ec47d4ca5c9e38f0481e"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    },
+    {
+      "run_directory": ".work/runs/4/20260906T202858.781890Z-native-bf16-views-full-18d6ae5a33d9",
+      "archived_run": "results/2026-09-06/4/20260906T202858.781890Z-native-bf16-views-full-18d6ae5a33d9",
+      "summary_sha256": "6548077f06294c49fbda4f9794da4a8e791377f8ecce706e5df22da9f7d506c8",
+      "submission_sha256": "18d6ae5a33d9d7654e1daaa452f9ac63bfdf3e57ccd532552f8c2078b9c330c9",
+      "source_sha256": {
+        "binding.cpp": "34a902c1127cbf33db3842621725e7ea37f2795656d41b4fb8cc779da96a3542"
+      },
+      "passed": true,
+      "selected_workloads": 16,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "3e6bbd885eac5d1d9954552d3331fba4567480bc56e79897fc6a89f15245ca0e"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": 0.7040525636669035
+    },
+    {
+      "run_directory": ".work/runs/4/20260906T203325.967465Z-native-preallocated-smoke-1f134fc23890",
+      "archived_run": "results/2026-09-06/4/20260906T203325.967465Z-native-preallocated-smoke-1f134fc23890",
+      "summary_sha256": "123bf840eacc1e585e095dadcc5803bd709ac19810e2faa29c4b816ececc0af7",
+      "submission_sha256": "1f134fc238903820278a1acb0d8df5e00286e32d862ccd54180e1fd730eff086",
+      "source_sha256": {
+        "binding_mmout.cpp": "4b9b6c0976f28e67d70ae4137499ae870ae48ff5f0c098dad6787efe7983c9a4"
+      },
+      "passed": true,
+      "selected_workloads": 3,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "599022960823c6234ca689f8427cbe1cd213b4ecced7881a926977be3286ff3b"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    },
+    {
+      "run_directory": ".work/runs/4/20260906T203614.846019Z-native-cublaslt-smoke-a3680e16ce57",
+      "archived_run": "results/2026-09-06/4/20260906T203614.846019Z-native-cublaslt-smoke-a3680e16ce57",
+      "summary_sha256": "7aa8ffe367cd27f3f0c214db492f975c0052c470e66ea175466a74de6d542a58",
+      "submission_sha256": "a3680e16ce57544744f3d3219421cf77176e64297da4056ca352c04665401cc2",
+      "source_sha256": {
+        "binding.cpp": "4b07cd48f7efcd6b04daed7ad6cb380e7a1f54b63c7408930b10b83540579f3d"
+      },
+      "passed": true,
+      "selected_workloads": 3,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "424e1d758002f126fb790f8fe7498bb2d9ee2c438cdbf1a1eff372bd183b78aa"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    },
+    {
+      "run_directory": ".work/runs/4/20260906T205043.383949Z-cublaslt-selected-20260906T205040565516-a1-ba1d1e73cc91",
+      "archived_run": "results/2026-09-06/4/20260906T205043.383949Z-cublaslt-selected-20260906T205040565516-a1-ba1d1e73cc91",
+      "summary_sha256": "b4f0ca87e910631d8f8ff42a6ce8f20d313997280d4b7943553c59124ea4125b",
+      "submission_sha256": "ba1d1e73cc9148adb99a08cb47771decd1670b3aef7982318d2b6ad3c3e0f1e1",
+      "source_sha256": {
+        "binding.cpp": "e406730756a4c60b0f9bdd3b9cfc0d9452559b07839e765448d97b54b15634fc"
+      },
+      "passed": true,
+      "selected_workloads": 16,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "cb6028ef623b83e40da5ad745c35ee8e8d905103c46c81d7e6ec0cbd1950aa52"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": 0.7995230393618491
+    }
+  ],
+  "reports": [
+    {
+      "original_path": ".work/qualification/4/20260906T205040565516-cublaslt-selected/attempt-1-processes.jsonl",
+      "original_sha256": "d003616af8b2a0f18161c2343ec37fe3aa7bf5192224aab31bf32e18b4c944e7",
+      "archived_path": "results/2026-09-06/4/qualification/20260906T205040565516-cublaslt-selected/attempt-1-processes.jsonl",
+      "archived_sha256": "d003616af8b2a0f18161c2343ec37fe3aa7bf5192224aab31bf32e18b4c944e7",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/4/20260906T205040565516-cublaslt-selected/attempt-1.log",
+      "original_sha256": "a17f084346db1a387bb27794b31082e97f9be4d20f3ca22ea354e1fe5b588557",
+      "archived_path": "results/2026-09-06/4/qualification/20260906T205040565516-cublaslt-selected/attempt-1.console.txt",
+      "archived_sha256": "a17f084346db1a387bb27794b31082e97f9be4d20f3ca22ea354e1fe5b588557",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/4/20260906T205040565516-cublaslt-selected/qualification.json",
+      "original_sha256": "a22c27785077fd16566ad290cb5a978b672eba1b972fceee03223fbb6791c2fd",
+      "archived_path": "results/2026-09-06/4/qualification/20260906T205040565516-cublaslt-selected/qualification.json",
+      "archived_sha256": "a22c27785077fd16566ad290cb5a978b672eba1b972fceee03223fbb6791c2fd",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/validation/4-cublaslt-inputs.json",
+      "original_sha256": "5393a5ec30629a1e5ef1b91e38fffede04064e0cbf83a849d3b346902d1eae82",
+      "archived_path": "results/2026-09-06/4/diagnostics/4-cublaslt-inputs.json",
+      "archived_sha256": "5393a5ec30629a1e5ef1b91e38fffede04064e0cbf83a849d3b346902d1eae82",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/validation/4-cublaslt-selected-inputs.json",
+      "original_sha256": "b230e365f24e3e309ad5f3e2111d5c54e8dbefd200b55317421726de8f6de691",
+      "archived_path": "results/2026-09-06/4/diagnostics/4-cublaslt-selected-inputs.json",
+      "archived_sha256": "b230e365f24e3e309ad5f3e2111d5c54e8dbefd200b55317421726de8f6de691",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/validation/4-native-views-inputs.json",
+      "original_sha256": "ba26aebac3e052ae1859fbd2ccf63bea872e53025e28f0c9e98129be4e9a0b30",
+      "archived_path": "results/2026-09-06/4/diagnostics/4-native-views-inputs.json",
+      "archived_sha256": "ba26aebac3e052ae1859fbd2ccf63bea872e53025e28f0c9e98129be4e9a0b30",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/validation/4-native-views-verify-v1.py",
+      "original_sha256": "4b01e5e4a5dfdbe0b24d91201777bf11a900c0f09b22d687b6b6bdc15059f96d",
+      "archived_path": "results/2026-09-06/4/diagnostics/4-native-views-verify-v1.py",
+      "archived_sha256": "4b01e5e4a5dfdbe0b24d91201777bf11a900c0f09b22d687b6b6bdc15059f96d",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/tuning/4-cublaslt-bounded.json",
+      "original_sha256": "303b195be7b0e64dfb9f0a9d7435b573824bfbb9211ab1d27e092da3e6a22f0e",
+      "archived_path": "results/2026-09-06/4/diagnostics/4-cublaslt-bounded.json",
+      "archived_sha256": "303b195be7b0e64dfb9f0a9d7435b573824bfbb9211ab1d27e092da3e6a22f0e",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/leaderboards/checkpoint7/4.json",
+      "original_sha256": "efa413fc1319379527ccc7d8b1ff69a5a8d07cad5127985ee47374f6ac6ba2c3",
+      "archived_path": "results/2026-09-06/4/diagnostics/4.json",
+      "archived_sha256": "efa413fc1319379527ccc7d8b1ff69a5a8d07cad5127985ee47374f6ac6ba2c3",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualify_once4.py",
+      "original_sha256": "52ba76997c46a7dfaa91423b8d0a741ab85f97cac280c26f9f6403dec7a9d431",
+      "archived_path": "results/2026-09-06/4/diagnostics/qualify_once4.py",
+      "archived_sha256": "52ba76997c46a7dfaa91423b8d0a741ab85f97cac280c26f9f6403dec7a9d431",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    }
+  ],
+  "timing_valid_for_ranking": false,
+  "notes": [
+    "Run packages, traces, and environment files retain exact recorded hashes.",
+    "Process-report copies normalize executable paths to basenames when necessary; both hashes are recorded.",
+    "Qualification reports retain hash references to the original monitor files; use this index to locate archived copies.",
+    "This checkpoint adds correctness evidence and no confirmed hosted or qualified local lead."
+  ]
+}

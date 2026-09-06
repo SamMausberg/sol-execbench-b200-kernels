@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "problem_id": 4,
+  "started_at": "2026-09-06T20:50:40.568253+00:00",
+  "requested_clean_trials": 1,
+  "max_attempts": 1,
+  "sampling_seconds": 0.5,
+  "scope": "one queued full correctness trial with unchanged process-window timing audit; no idle prefilter or retries",
+  "tool_sha256": "e1d4072a48a2717921e96264ccf59a2eede71e40844e7ad716847f8a873578b7",
+  "attempts": [
+    {
+      "attempt": 1,
+      "command": [
+        "/workspace/venvs/sol-execbench/bin/python",
+        "/workspace/sol-execbench-b200-kernels/tools/campaign.py",
+        "bench",
+        "4",
+        "--solution",
+        "/workspace/sol-execbench-b200-kernels/kernels/004_attention_output_projection_with_reshape_backward/variants/cublaslt/solution.json",
+        "--trials",
+        "1",
+        "--label",
+        "cublaslt-selected-20260906T205040565516-a1",
+        "--timeout",
+        "600",
+        "--compile-timeout",
+        "600"
+      ],
+      "returncode": 0,
+      "campaign_root_pid": 381665,
+      "campaign_process_identities": {
+        "381665": 97287149,
+        "384417": 97296193,
+        "384447": 97296205,
+        "384450": 97296215,
+        "384459": 97296304,
+        "384473": 97296407,
+        "384478": 97296433,
+        "384565": 97296756,
+        "385148": 97298352,
+        "385150": 97298355,
+        "385151": 97298356,
+        "385152": 97298358,
+        "386564": 97302558,
+        "386596": 97302596,
+        "386609": 97302599,
+        "386612": 97302605,
+        "386613": 97302608,
+        "386742": 97302809,
+        "387441": 97304995,
+        "387445": 97305006
+      },
+      "log_path": ".work/qualification/4/20260906T205040565516-cublaslt-selected/attempt-1.log",
+      "log_sha256": "a17f084346db1a387bb27794b31082e97f9be4d20f3ca22ea354e1fe5b588557",
+      "monitor_path": ".work/qualification/4/20260906T205040565516-cublaslt-selected/attempt-1-processes.jsonl",
+      "monitor_sha256": "d003616af8b2a0f18161c2343ec37fe3aa7bf5192224aab31bf32e18b4c944e7",
+      "run_directory": ".work/runs/4/20260906T205043.383949Z-cublaslt-selected-20260906T205040565516-a1-ba1d1e73cc91",
+      "summary_sha256": "b4f0ca87e910631d8f8ff42a6ce8f20d313997280d4b7943553c59124ea4125b",
+      "submission_sha256": "ba1d1e73cc9148adb99a08cb47771decd1670b3aef7982318d2b6ad3c3e0f1e1",
+      "passed": true,
+      "local_sol_score": 0.7995230393618491,
+      "trial_started_at": "2026-09-06T20:52:13.178042+00:00",
+      "trial_finished_at": "2026-09-06T20:53:39.053229+00:00",
+      "audit": {
+        "clean": false,
+        "foreign_context_observations": [
+          {
+            "timestamp": "2026-09-06T20:52:33.592083+00:00",
+            "pid": 384755,
+            "process_name": "python",
+            "memory_mib": "14",
+            "start_ticks": 97297447,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T20:52:34.092087+00:00",
+            "pid": 384755,
+            "process_name": "python",
+            "memory_mib": "3034",
+            "start_ticks": 97297447,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T20:52:43.092059+00:00",
+            "pid": 385178,
+            "process_name": "python",
+            "memory_mib": "14",
+            "start_ticks": 97298581,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T20:52:43.592085+00:00",
+            "pid": 385178,
+            "process_name": "python",
+            "memory_mib": "1508",
+            "start_ticks": 97298581,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T20:52:44.092080+00:00",
+            "pid": 385178,
+            "process_name": "python",
+            "memory_mib": "1508",
+            "start_ticks": 97298581,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T20:52:58.092086+00:00",
+            "pid": 385538,
+            "process_name": "python",
+            "memory_mib": "14",
+            "start_ticks": 97299576,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T20:52:58.592087+00:00",
+            "pid": 385538,
+            "process_name": "python",
+            "memory_mib": "1310",
+            "start_ticks": 97299576,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T20:52:59.092090+00:00",
+            "pid": 385538,
+            "process_name": "[No data]",
+            "memory_mib": "1310",
+            "start_ticks": 97299576,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T20:53:13.092036+00:00",
+            "pid": 386098,
+            "process_name": "python",
+            "memory_mib": "708",
+            "start_ticks": 97301069,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T20:53:13.592135+00:00",
+            "pid": 386098,
+            "process_name": "python",
+            "memory_mib": "780",
+            "start_ticks": 97301069,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T20:53:25.875555+00:00",
+            "pid": 386565,
+            "process_name": "python",
+            "memory_mib": "14",
+            "start_ticks": 97302564,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T20:53:26.092051+00:00",
+            "pid": 386565,
+            "process_name": "python",
+            "memory_mib": "28",
+            "start_ticks": 97302564,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T20:53:26.592091+00:00",
+            "pid": 386565,
+            "process_name": "python",
+            "memory_mib": "934",
+            "start_ticks": 97302564,
+            "campaign_descendant": false
+          },
+          {
+            "timestamp": "2026-09-06T20:53:27.092143+00:00",
+            "pid": 386565,
+            "process_name": "[No data]",
+            "memory_mib": "934",
+            "start_ticks": 97302564,
+            "campaign_descendant": false
+          }
+        ],
+        "monitor_errors": [],
+        "samples_in_window": 172,
+        "max_sample_gap_seconds": 0.8282849788665771,
+        "qualification": "Excluded from performance qualification."
+      },
+      "status": "contaminated"
+    }
+  ],
+  "aggregate": null,
+  "complete": false,
+  "finished_at": "2026-09-06T20:53:39.699140+00:00"
+}

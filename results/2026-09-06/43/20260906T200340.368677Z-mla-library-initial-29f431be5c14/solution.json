@@ -1,0 +1,27 @@
+{
+  "author": "SamMausberg",
+  "definition": "043_mla_fused_qkv_rope_split",
+  "description": "MLA library projections with fused BF16 RMSNorm and concrete query/KV split views.",
+  "name": "043_mla_views_library_experiment",
+  "sources": [
+    {
+      "content": "# SPDX-License-Identifier: Apache-2.0\n\"\"\"MLA projections with fused RMSNorm and concrete split views.\"\"\"\n\nimport torch\nimport triton\nimport triton.language as tl\n\n\n@triton.jit\ndef _rms_norm(X, W, Y, ROWS: tl.constexpr, EPS: tl.constexpr,\n              WIDTH: tl.constexpr = 1536, BLOCK: tl.constexpr = 2048):\n    row = tl.program_id(0)\n    columns = tl.arange(0, BLOCK)\n    values = tl.load(X + row * WIDTH + columns, columns < WIDTH, 0).to(tl.float32)\n    variance = tl.sum(values * values, 0) / WIDTH\n    normalized = (values * tl.rsqrt(variance + EPS)).to(Y.dtype.element_ty)\n    weight = tl.load(W + columns, columns < WIDTH, 0).to(tl.float32)\n    # The reference rounds the unweighted normalized value before multiplying\n    # the BF16 weight. Preserve both BF16 rounding points.\n    result = normalized.to(tl.float32) * weight\n    tl.store(Y + row * WIDTH + columns, result, columns < WIDTH)\n\n\n@torch.no_grad()\ndef normalize(latent, weight, output, epsilon):\n    weight = weight.contiguous()\n    _rms_norm[(latent.shape[0],)](\n        latent, weight, output, latent.shape[0], epsilon,\n        num_warps=4, enable_fp_fusion=False,\n    )\n\n\ndef split_views(q, kv, batch, sequence):\n    q = q.view(batch, sequence, 128, 192)\n    kv = kv.view(batch, sequence, 576)\n    return q[..., :128], q[..., 128:], kv[..., :512], kv[..., 512:].unsqueeze(2)\n\n\n@torch.no_grad()\ndef run(hidden_states, q_a_proj_weight, q_a_layernorm_weight,\n        q_b_proj_weight, kv_a_proj_weight, rms_norm_eps):\n    batch, sequence, hidden = hidden_states.shape\n    rows = batch * sequence\n    x = hidden_states.reshape(rows, hidden)\n    latent = torch.empty((rows, 1536), dtype=x.dtype, device=x.device)\n    normalized = torch.empty_like(latent)\n    q = torch.empty((rows, 24576), dtype=x.dtype, device=x.device)\n    kv = torch.empty((rows, 576), dtype=x.dtype, device=x.device)\n    torch.mm(x, q_a_proj_weight.T, out=latent)\n    normalize(latent, q_a_layernorm_weight, normalized, rms_norm_eps)\n    torch.mm(normalized, q_b_proj_weight.T, out=q)\n    torch.mm(x, kv_a_proj_weight.T, out=kv)\n    return split_views(q, kv, batch, sequence)\n",
+      "path": "kernel.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": false,
+    "entry_point": "kernel.py::run",
+    "languages": [
+      "pytorch",
+      "triton"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

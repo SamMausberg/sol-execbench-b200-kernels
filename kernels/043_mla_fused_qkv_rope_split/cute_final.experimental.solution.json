@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "043_mla_fused_qkv_rope_split",
+  "description": "MLA projections with a persistent Blackwell final GEMM, preconstructed descriptors, fused BF16 RMSNorm, and concrete split views.",
+  "name": "043_mla_cute_final_views_experiment",
+  "sources": [{"path": "kernel.py"}, {"path": "cute_kernel.py"}, {"path": "cute_mla.py"}, {"path": "cute_final.py"}],
+  "spec": {
+    "dependencies": ["torch", "triton", "nvidia-cutlass-dsl", "cuda-python"],
+    "destination_passing_style": false,
+    "entry_point": "cute_final.py::run",
+    "languages": ["pytorch", "triton", "cute_dsl"],
+    "target_hardware": ["B200"]
+  }
+}

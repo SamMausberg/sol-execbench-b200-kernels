@@ -1,0 +1,31 @@
+{
+  "author": "SamMausberg",
+  "definition": "004_attention_output_projection_with_reshape_backward",
+  "description": "Native BF16 gradient GEMMs with fresh output allocation before the first math launch and a concrete attention-layout view.",
+  "name": "attention_backward_native_bf16_preallocated_v2",
+  "sources": [
+    {
+      "path": "binding_mmout.cpp"
+    }
+  ],
+  "spec": {
+    "binding": "torch",
+    "compile_options": {
+      "cflags": [
+        "-O3",
+        "-std=c++17"
+      ]
+    },
+    "dependencies": [
+      "torch"
+    ],
+    "destination_passing_style": false,
+    "entry_point": "binding_mmout.cpp::run",
+    "languages": [
+      "cuda_cpp"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

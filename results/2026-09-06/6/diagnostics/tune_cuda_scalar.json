@@ -1,0 +1,1220 @@
+[
+  {
+    "index": 13,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 256
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ],
+    "gpu_processes_before": [
+      {
+        "pid": 337697,
+        "process_basename": "python",
+        "memory_mib": "3012 MiB",
+        "is_this_process": false
+      },
+      {
+        "pid": 339039,
+        "process_basename": "python",
+        "memory_mib": "712 MiB",
+        "is_this_process": true
+      }
+    ],
+    "layouts": {
+      "(4, 1)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 4.43695
+      },
+      "(4, 2)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 6.8576999999999995
+      },
+      "(4, 4)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 10.7614
+      },
+      "(8, 1)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 4.4177
+      },
+      "(8, 2)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 6.95205
+      },
+      "(8, 4)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 10.5792
+      },
+      "(16, 1)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 4.4626
+      },
+      "(16, 2)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 6.9281999999999995
+      },
+      "(16, 4)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 10.574349999999999
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 337697,
+        "process_basename": "python",
+        "memory_mib": "3012 MiB",
+        "is_this_process": false
+      },
+      {
+        "pid": 339039,
+        "process_basename": "python",
+        "memory_mib": "976 MiB",
+        "is_this_process": true
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 2,
+      "seq_len": 293
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ],
+    "gpu_processes_before": [
+      {
+        "pid": 337697,
+        "process_basename": "python",
+        "memory_mib": "3012 MiB",
+        "is_this_process": false
+      },
+      {
+        "pid": 339039,
+        "process_basename": "python",
+        "memory_mib": "744 MiB",
+        "is_this_process": true
+      }
+    ],
+    "layouts": {
+      "(4, 1)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 4.905600000000001
+      },
+      "(4, 2)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 6.3296
+      },
+      "(4, 4)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 10.09285
+      },
+      "(8, 1)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 4.92965
+      },
+      "(8, 2)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 6.30715
+      },
+      "(8, 4)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 10.1601
+      },
+      "(16, 1)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 4.90715
+      },
+      "(16, 2)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 6.374199999999999
+      },
+      "(16, 4)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 10.150549999999999
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 337697,
+        "process_basename": "python",
+        "memory_mib": "3012 MiB",
+        "is_this_process": false
+      },
+      {
+        "pid": 339039,
+        "process_basename": "python",
+        "memory_mib": "1008 MiB",
+        "is_this_process": true
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "seed": 913,
+    "variant": "random",
+    "axes": {
+      "batch_size": 4,
+      "seq_len": 4096
+    },
+    "passed": true,
+    "exact": true,
+    "outputs": [
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      },
+      {
+        "passed": true,
+        "correctness": {
+          "max_relative_error": 0.0,
+          "max_absolute_error": 0.0,
+          "has_nan": false,
+          "has_inf": false,
+          "extra": null
+        }
+      }
+    ],
+    "gpu_processes_before": [
+      {
+        "pid": 337697,
+        "process_basename": "python",
+        "memory_mib": "3012 MiB",
+        "is_this_process": false
+      },
+      {
+        "pid": 339039,
+        "process_basename": "python",
+        "memory_mib": "996 MiB",
+        "is_this_process": true
+      }
+    ],
+    "layouts": {
+      "(4, 1)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 47.642950000000006
+      },
+      "(4, 2)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 53.201299999999996
+      },
+      "(4, 4)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 58.82535
+      },
+      "(8, 1)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 49.82214999999999
+      },
+      "(8, 2)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 55.5486
+      },
+      "(8, 4)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 60.86835
+      },
+      "(16, 1)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 51.73415
+      },
+      "(16, 2)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 57.143699999999995
+      },
+      "(16, 4)": {
+        "passed": true,
+        "exact": true,
+        "outputs": [
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          },
+          {
+            "passed": true,
+            "correctness": {
+              "max_relative_error": 0.0,
+              "max_absolute_error": 0.0,
+              "has_nan": false,
+              "has_inf": false,
+              "extra": null
+            }
+          }
+        ],
+        "latency_us": 70.89715
+      }
+    },
+    "gpu_processes_after": [
+      {
+        "pid": 337697,
+        "process_basename": "python",
+        "memory_mib": "3012 MiB",
+        "is_this_process": false
+      },
+      {
+        "pid": 339039,
+        "process_basename": "python",
+        "memory_mib": "1260 MiB",
+        "is_this_process": true
+      }
+    ]
+  }
+]
