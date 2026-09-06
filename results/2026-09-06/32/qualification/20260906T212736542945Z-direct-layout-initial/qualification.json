@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "problem_id": 32,
+  "scope": "single full local trial; sampled context qualification; unlocked clocks",
+  "attempts": [
+    {
+      "attempt": 1,
+      "command": [
+        "/workspace/venvs/sol-execbench/bin/python",
+        "/workspace/sol-execbench-b200-kernels/tools/campaign.py",
+        "bench",
+        "32",
+        "--solution",
+        "/workspace/sol-execbench-b200-kernels/kernels/032_attention_weights_matmul_with_value_projection/solution.json",
+        "--trials",
+        "1",
+        "--label",
+        "direct-layout-initial-20260906T212736542945Z-a1",
+        "--timeout",
+        "600",
+        "--compile-timeout",
+        "600"
+      ],
+      "returncode": 0,
+      "campaign_root_pid": 432616,
+      "campaign_process_identities": {
+        "432616": 97508746,
+        "432638": 97508800,
+        "435297": 97516440,
+        "435303": 97516479,
+        "435331": 97516539,
+        "435345": 97516556,
+        "435350": 97516563,
+        "435451": 97516746,
+        "436908": 97521984,
+        "436949": 97522201
+      },
+      "log_path": ".work/qualification/32/20260906T212736542945Z-direct-layout-initial/attempt-1.log",
+      "log_sha256": "674e61989fc0bf7dc8a6f26899958ed1108fe80146f1989a8b0c89b04f81d6d0",
+      "monitor_path": ".work/qualification/32/20260906T212736542945Z-direct-layout-initial/attempt-1-processes.jsonl",
+      "monitor_sha256": "a80e0fde4da8c5be8a40989e30df35601c6fe66e90921239f08028d5d348f8f8",
+      "run_directory": ".work/runs/32/20260906T212739.877620Z-direct-layout-initial-20260906T212736542945Z-a1-ae6a44a926e2",
+      "summary_sha256": "da7de33951a8c12a79d2d9a8e017ab60a6b612d72a8e0544f625c0beaaca3488",
+      "submission_sha256": "ae6a44a926e27ecf82ad127ad8ffb73229884185cbee8ead5ef03aa41d30e6e7",
+      "passed": true,
+      "local_sol_score": 0.7273206658138093,
+      "trial_started_at": "2026-09-06T21:28:54.490621+00:00",
+      "trial_finished_at": "2026-09-06T21:29:51.111295+00:00",
+      "audit": {
+        "clean": true,
+        "foreign_context_observations": [],
+        "monitor_errors": [],
+        "samples_in_window": 114,
+        "max_sample_gap_seconds": 0.500190019607544,
+        "qualification": "No foreign CUDA context observed in the sampled trial window. Sub-sample overlap cannot be excluded."
+      },
+      "status": "qualified"
+    }
+  ],
+  "aggregate": {
+    "qualified_trials": 1,
+    "submission_sha256": "ae6a44a926e27ecf82ad127ad8ffb73229884185cbee8ead5ef03aa41d30e6e7",
+    "contract_sha256": "2dc4067f2c3ead4fd0f2e05b436bc08ada7d33b4cb28e387570b232856875a41",
+    "clock_mode": "unlocked",
+    "local_sol_score": 0.7273206658138093,
+    "trial_sol_scores": [
+      0.7273206658138093
+    ],
+    "workloads": [
+      {
+        "uuid": "20edee8f-3554-5cdd-92cc-423349a0256f",
+        "axes": {
+          "batch_size": 32,
+          "seq_len": 128
+        },
+        "latencies_ms": [
+          0.0230725
+        ],
+        "median_latency_ms": 0.0230725,
+        "baseline_latency_ms": 0.045792,
+        "sol_ms": 0.0168,
+        "score": 0.8221299040111161,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "97f335e4-c447-512a-8eaa-abb329e572ca",
+        "axes": {
+          "batch_size": 16,
+          "seq_len": 256
+        },
+        "latencies_ms": [
+          0.031327
+        ],
+        "median_latency_ms": 0.031327,
+        "baseline_latency_ms": 0.049152,
+        "sol_ms": 0.0223,
+        "score": 0.7484043590958501,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "19269b09-6e3e-5aac-82b9-30dff1472d92",
+        "axes": {
+          "batch_size": 1,
+          "seq_len": 256
+        },
+        "latencies_ms": [
+          0.005776
+        ],
+        "median_latency_ms": 0.005776,
+        "baseline_latency_ms": 0.006496,
+        "sol_ms": 0.0018,
+        "score": 0.5415129151291515,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "b064acab-d700-5e25-b6b6-4bb5ed40729a",
+        "axes": {
+          "batch_size": 64,
+          "seq_len": 128
+        },
+        "latencies_ms": [
+          0.043215500000000004
+        ],
+        "median_latency_ms": 0.043215500000000004,
+        "baseline_latency_ms": 0.0736479999999999,
+        "sol_ms": 0.0332,
+        "score": 0.8015298185817468,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "0ec6f0ed-260b-5ff5-a545-84f90665fbaf",
+        "axes": {
+          "batch_size": 4,
+          "seq_len": 512
+        },
+        "latencies_ms": [
+          0.027119499999999998
+        ],
+        "median_latency_ms": 0.027119499999999998,
+        "baseline_latency_ms": 0.0628005,
+        "sol_ms": 0.0168,
+        "score": 0.8167702414772727,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "37e85b7e-64ce-577d-9964-416a8ea107e4",
+        "axes": {
+          "batch_size": 2,
+          "seq_len": 541
+        },
+        "latencies_ms": [
+          0.039552
+        ],
+        "median_latency_ms": 0.039552,
+        "baseline_latency_ms": 0.097728,
+        "sol_ms": 0.0094,
+        "score": 0.7455097906819717,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "fdb128d3-472d-592a-94e4-9170f8a5c467",
+        "axes": {
+          "batch_size": 1,
+          "seq_len": 293
+        },
+        "latencies_ms": [
+          0.0104635
+        ],
+        "median_latency_ms": 0.0104635,
+        "baseline_latency_ms": 0.022752,
+        "sol_ms": 0.0021,
+        "score": 0.7117575089176474,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "caa4ff33-705b-5dfd-bc00-caefb98435be",
+        "axes": {
+          "batch_size": 1,
+          "seq_len": 131
+        },
+        "latencies_ms": [
+          0.005088
+        ],
+        "median_latency_ms": 0.005088,
+        "baseline_latency_ms": 0.01008,
+        "sol_ms": 0.0009,
+        "score": 0.6867145421903051,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "4ec9cae4-c9ef-5df1-ba65-9af2812fe985",
+        "axes": {
+          "batch_size": 1,
+          "seq_len": 853
+        },
+        "latencies_ms": [
+          0.039296
+        ],
+        "median_latency_ms": 0.039296,
+        "baseline_latency_ms": 0.0766565,
+        "sol_ms": 0.0103,
+        "score": 0.6959072913662462,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "e80894ee-61c3-568a-9285-e3b0a8bcc3a4",
+        "axes": {
+          "batch_size": 8,
+          "seq_len": 512
+        },
+        "latencies_ms": [
+          0.0474875
+        ],
+        "median_latency_ms": 0.0474875,
+        "baseline_latency_ms": 0.067872,
+        "sol_ms": 0.0332,
+        "score": 0.7081771668419816,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "0c2784dc-148e-5fe5-92fa-55d3e4c161b2",
+        "axes": {
+          "batch_size": 8,
+          "seq_len": 128
+        },
+        "latencies_ms": [
+          0.008912
+        ],
+        "median_latency_ms": 0.008912,
+        "baseline_latency_ms": 0.0298715,
+        "sol_ms": 0.0045,
+        "score": 0.8518642872731547,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "db6690c7-eea6-5b84-91e5-0e5dcd9ccf27",
+        "axes": {
+          "batch_size": 2,
+          "seq_len": 1024
+        },
+        "latencies_ms": [
+          0.04344
+        ],
+        "median_latency_ms": 0.04344,
+        "baseline_latency_ms": 0.05472,
+        "sol_ms": 0.0278,
+        "score": 0.6325187969924811,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "3f0e60d3-8a8f-56c4-bf41-c96c94ce7844",
+        "axes": {
+          "batch_size": 8,
+          "seq_len": 256
+        },
+        "latencies_ms": [
+          0.01848
+        ],
+        "median_latency_ms": 0.01848,
+        "baseline_latency_ms": 0.0527525,
+        "sol_ms": 0.0113,
+        "score": 0.8523621035315888,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "46275dad-3abd-51bb-a313-c9692d3cef8a",
+        "axes": {
+          "batch_size": 1,
+          "seq_len": 2048
+        },
+        "latencies_ms": [
+          0.0741915
+        ],
+        "median_latency_ms": 0.0741915,
+        "baseline_latency_ms": 0.0768165,
+        "sol_ms": 0.0496,
+        "score": 0.5253339252625079,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "6b586b26-3b05-57ab-ad54-d7dfc9885ee3",
+        "axes": {
+          "batch_size": 4,
+          "seq_len": 691
+        },
+        "latencies_ms": [
+          0.0927035
+        ],
+        "median_latency_ms": 0.0927035,
+        "baseline_latency_ms": 0.2333279999999999,
+        "sol_ms": 0.0277,
+        "score": 0.7598080785126637,
+        "relative_spread": 0.0
+      },
+      {
+        "uuid": "7ecd9c44-9022-5001-8736-e88141a9726f",
+        "axes": {
+          "batch_size": 1,
+          "seq_len": 997
+        },
+        "latencies_ms": [
+          0.05888
+        ],
+        "median_latency_ms": 0.05888,
+        "baseline_latency_ms": 0.140736,
+        "sol_ms": 0.0134,
+        "score": 0.7368299231552633,
+        "relative_spread": 0.0
+      }
+    ]
+  },
+  "complete": true
+}

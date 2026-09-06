@@ -1,0 +1,1937 @@
+{
+  "scope": "changed-input, current-value, shape/layout, and output-ownership checks; no timing claims",
+  "candidate_module": "selected.py",
+  "source_sha256": {
+    "selected.py": "bcc675bb185ce68949a9957dfef268dd3a00d6c81a06bdb1447d9d436be6fc83",
+    "padded_kernel.py": "9c5aa64e9608bef98031ece0c8aee6e4f72375acb1cc0fbbd25357e74b33afbe",
+    "tune_cute.py": "a8978cd9cf0a6f7901238c931b83f851dd2e19e64ef23044889d864bc37a06fa",
+    "cute_kernel.py": "ca4a1b5a17696514810c0bbdef3c5e3dbfaf4007b020dad96bd1f090eef431eb",
+    "cute_av.py": "97dd665d66ee27bfb33eeeb3fdb25d30cdc49326ae7ba81ffdb08d39570b8123",
+    "verify.py": "f2166de73f5de2e156914ccca2756f4275a4d2ca043b078d9ec4aa877c83fc2e",
+    "tune.py": "f57916ae01740165ab4738cab414f0ff9dcca40fbcef56f95ce055e71799224e",
+    "kernel.py": "5ef2dd288edb2eac7d24049007269f80f3701e2b618ca0a0a005df76fbca311b"
+  },
+  "reference_sha256": "85bdba7eb85440cb8f877f06ebf734febedeb829a0833e7663885b7581ae7a43",
+  "records": [
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "random",
+      "passed": true,
+      "bitwise_equal": false,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.008474576286971569,
+        "max_absolute_error": 0.125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          686440,
+          17161,
+          131,
+          1
+        ],
+        [
+          670720,
+          16768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "zero_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          686440,
+          17161,
+          131,
+          1
+        ],
+        [
+          670720,
+          16768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "zero_value",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          686440,
+          17161,
+          131,
+          1
+        ],
+        [
+          670720,
+          16768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "ones",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          686440,
+          17161,
+          131,
+          1
+        ],
+        [
+          670720,
+          16768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "identity_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          686440,
+          17161,
+          131,
+          1
+        ],
+        [
+          670720,
+          16768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "cancellation",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          686440,
+          17161,
+          131,
+          1
+        ],
+        [
+          670720,
+          16768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "large_attention",
+      "passed": true,
+      "bitwise_equal": false,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.008474576286971569,
+        "max_absolute_error": 4.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          686440,
+          17161,
+          131,
+          1
+        ],
+        [
+          670720,
+          16768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "large_value",
+      "passed": true,
+      "bitwise_equal": false,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.008474576286971569,
+        "max_absolute_error": 4.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          686440,
+          17161,
+          131,
+          1
+        ],
+        [
+          670720,
+          16768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "small",
+      "passed": true,
+      "bitwise_equal": false,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.007692307699471712,
+        "max_absolute_error": 1.9073486328125e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          686440,
+          17161,
+          131,
+          1
+        ],
+        [
+          670720,
+          16768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "distinct_heads",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          686440,
+          17161,
+          131,
+          1
+        ],
+        [
+          670720,
+          16768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "unaligned_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          686440,
+          17161,
+          131,
+          1
+        ],
+        [
+          670720,
+          16768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        2,
+        0
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "unaligned_value",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          686440,
+          17161,
+          131,
+          1
+        ],
+        [
+          670720,
+          16768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        2
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "strided_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          1372880,
+          34322,
+          262,
+          2
+        ],
+        [
+          670720,
+          16768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "strided_value",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          686440,
+          17161,
+          131,
+          1
+        ],
+        [
+          1341440,
+          33536,
+          256,
+          2
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "transposed_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          686440,
+          17161,
+          1,
+          131
+        ],
+        [
+          670720,
+          16768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 131,
+      "pattern": "dense_after_layouts",
+      "passed": true,
+      "bitwise_equal": false,
+      "unmatched": 0,
+      "elements": 670720,
+      "error": {
+        "max_relative_error": 0.008474576286971569,
+        "max_absolute_error": 0.125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          686440,
+          17161,
+          131,
+          1
+        ],
+        [
+          670720,
+          16768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        670720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "random",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          2621440,
+          65536,
+          256,
+          1
+        ],
+        [
+          1310720,
+          32768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "zero_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          2621440,
+          65536,
+          256,
+          1
+        ],
+        [
+          1310720,
+          32768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "zero_value",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          2621440,
+          65536,
+          256,
+          1
+        ],
+        [
+          1310720,
+          32768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "ones",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          2621440,
+          65536,
+          256,
+          1
+        ],
+        [
+          1310720,
+          32768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "identity_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          2621440,
+          65536,
+          256,
+          1
+        ],
+        [
+          1310720,
+          32768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "cancellation",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          2621440,
+          65536,
+          256,
+          1
+        ],
+        [
+          1310720,
+          32768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "large_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          2621440,
+          65536,
+          256,
+          1
+        ],
+        [
+          1310720,
+          32768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "large_value",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          2621440,
+          65536,
+          256,
+          1
+        ],
+        [
+          1310720,
+          32768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "small",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          2621440,
+          65536,
+          256,
+          1
+        ],
+        [
+          1310720,
+          32768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "distinct_heads",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          2621440,
+          65536,
+          256,
+          1
+        ],
+        [
+          1310720,
+          32768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "unaligned_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          2621440,
+          65536,
+          256,
+          1
+        ],
+        [
+          1310720,
+          32768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        2,
+        0
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "unaligned_value",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          2621440,
+          65536,
+          256,
+          1
+        ],
+        [
+          1310720,
+          32768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        2
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "strided_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          5242880,
+          131072,
+          512,
+          2
+        ],
+        [
+          1310720,
+          32768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "strided_value",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          2621440,
+          65536,
+          256,
+          1
+        ],
+        [
+          2621440,
+          65536,
+          256,
+          2
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "transposed_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          2621440,
+          65536,
+          1,
+          256
+        ],
+        [
+          1310720,
+          32768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 2,
+      "sequence": 256,
+      "pattern": "dense_after_layouts",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 2621440,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          2621440,
+          65536,
+          256,
+          1
+        ],
+        [
+          1310720,
+          32768,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        1310720,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "random",
+      "passed": true,
+      "bitwise_equal": false,
+      "unmatched": 0,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 0.667572021484375,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          39760360,
+          994009,
+          997,
+          1
+        ],
+        [
+          5104640,
+          127616,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "zero_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          39760360,
+          994009,
+          997,
+          1
+        ],
+        [
+          5104640,
+          127616,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "zero_value",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          39760360,
+          994009,
+          997,
+          1
+        ],
+        [
+          5104640,
+          127616,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "ones",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          39760360,
+          994009,
+          997,
+          1
+        ],
+        [
+          5104640,
+          127616,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "identity_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          39760360,
+          994009,
+          997,
+          1
+        ],
+        [
+          5104640,
+          127616,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "cancellation",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          39760360,
+          994009,
+          997,
+          1
+        ],
+        [
+          5104640,
+          127616,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "large_attention",
+      "passed": true,
+      "bitwise_equal": false,
+      "unmatched": 10,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 7.0,
+        "max_absolute_error": 16.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          39760360,
+          994009,
+          997,
+          1
+        ],
+        [
+          5104640,
+          127616,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "large_value",
+      "passed": true,
+      "bitwise_equal": false,
+      "unmatched": 10,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 7.0,
+        "max_absolute_error": 16.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          39760360,
+          994009,
+          997,
+          1
+        ],
+        [
+          5104640,
+          127616,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "small",
+      "passed": true,
+      "bitwise_equal": false,
+      "unmatched": 0,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 0.0078125,
+        "max_absolute_error": 7.62939453125e-06,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          39760360,
+          994009,
+          997,
+          1
+        ],
+        [
+          5104640,
+          127616,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "distinct_heads",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          39760360,
+          994009,
+          997,
+          1
+        ],
+        [
+          5104640,
+          127616,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "unaligned_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          39760360,
+          994009,
+          997,
+          1
+        ],
+        [
+          5104640,
+          127616,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        2,
+        0
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "unaligned_value",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          39760360,
+          994009,
+          997,
+          1
+        ],
+        [
+          5104640,
+          127616,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        2
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "strided_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          79520720,
+          1988018,
+          1994,
+          2
+        ],
+        [
+          5104640,
+          127616,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "strided_value",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          39760360,
+          994009,
+          997,
+          1
+        ],
+        [
+          10209280,
+          255232,
+          256,
+          2
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "transposed_attention",
+      "passed": true,
+      "bitwise_equal": true,
+      "unmatched": 0,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          39760360,
+          994009,
+          1,
+          997
+        ],
+        [
+          5104640,
+          127616,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    },
+    {
+      "batch": 1,
+      "sequence": 997,
+      "pattern": "dense_after_layouts",
+      "passed": true,
+      "bitwise_equal": false,
+      "unmatched": 0,
+      "elements": 5104640,
+      "error": {
+        "max_relative_error": 0.667572021484375,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "input_strides": [
+        [
+          39760360,
+          994009,
+          997,
+          1
+        ],
+        [
+          5104640,
+          127616,
+          128,
+          1
+        ]
+      ],
+      "input_alignment_mod16": [
+        0,
+        0
+      ],
+      "output_stride": [
+        5104640,
+        5120,
+        1
+      ],
+      "ownership_passed": true
+    }
+  ]
+}

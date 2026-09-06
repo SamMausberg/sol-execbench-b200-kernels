@@ -1,0 +1,263 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "batch_size": {
+          "description": "Batch size",
+          "type": "var"
+        },
+        "inner_dim": {
+          "description": "Hidden dimension size",
+          "type": "const",
+          "value": 3072
+        },
+        "output_dim": {
+          "description": "Output dimension of linear projection (6 * inner_dim)",
+          "expression": "inner_dim * 6",
+          "type": "expr"
+        }
+      },
+      "baseline": "import torch\n\n@torch.no_grad()\ndef run(emb: torch.Tensor, weight: torch.Tensor, bias: torch.Tensor):\n    \"\"\"\n    AdaLayerNormZero modulation parameter extraction.\n    \n    Performs a linear projection followed by chunking into 6 modulation parameters.\n    \n    Args:\n        emb: Timestep embeddings of shape [batch_size, inner_dim]\n        weight: Linear weight matrix of shape [6 * inner_dim, inner_dim]\n        bias: Linear bias of shape [6 * inner_dim]\n        \n    Returns:\n        Tuple of 6 tensors, each of shape [batch_size, inner_dim]:\n        - shift_msa, scale_msa, gate_msa: for attention path\n        - shift_mlp, scale_mlp, gate_mlp: for MLP path\n    \"\"\"\n    # Linear projection: [batch_size, inner_dim] @ [inner_dim, 6*inner_dim] + bias\n    # = [batch_size, 6*inner_dim]\n    emb_out = torch.matmul(emb, weight.t()) + bias\n    \n    # Chunk into 6 equal parts along the last dimension\n    # Each chunk has shape [batch_size, inner_dim]\n    shift_msa, scale_msa, gate_msa, shift_mlp, scale_mlp, gate_mlp = emb_out.chunk(6, dim=1)\n    \n    return shift_msa, scale_msa, gate_msa, shift_mlp, scale_mlp, gate_mlp\n",
+      "baseline_latency_ms": 0.024066,
+      "description": "AdaLayerNormZero modulation parameter extraction for Flux dual-stream transformer. Projects timestep embeddings through a linear layer and chunks into 6 modulation parameters (shift_msa, scale_msa, gate_msa, shift_mlp, scale_mlp, gate_mlp) that control attention and MLP paths.",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 35,
+      "inputs": {
+        "bias": {
+          "description": "Linear projection bias",
+          "dtype": "float32",
+          "shape": [
+            "output_dim"
+          ]
+        },
+        "emb": {
+          "description": "Timestep embeddings",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "inner_dim"
+          ]
+        },
+        "weight": {
+          "description": "Linear projection weight matrix",
+          "dtype": "float32",
+          "shape": [
+            "output_dim",
+            "inner_dim"
+          ]
+        }
+      },
+      "latency_unit": "ms",
+      "name": "035_flux_ada_layer_norm_zero_modulation_extraction",
+      "outputs": {
+        "gate_mlp": {
+          "description": "Gate parameter for MLP path",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "inner_dim"
+          ]
+        },
+        "gate_msa": {
+          "description": "Gate parameter for attention path",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "inner_dim"
+          ]
+        },
+        "scale_mlp": {
+          "description": "Scale parameter for MLP path",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "inner_dim"
+          ]
+        },
+        "scale_msa": {
+          "description": "Scale parameter for attention path",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "inner_dim"
+          ]
+        },
+        "shift_mlp": {
+          "description": "Shift parameter for MLP path",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "inner_dim"
+          ]
+        },
+        "shift_msa": {
+          "description": "Shift parameter for attention path",
+          "dtype": "float32",
+          "shape": [
+            "batch_size",
+            "inner_dim"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "normalization",
+        "diffusion",
+        "L1",
+        "model:FLUX.1-Kontext-dev"
+      ],
+      "title": "035_flux_ada_layer_norm_zero_modulation_extraction",
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 512,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.122992,
+          "sol_ms": 0.0324
+        },
+        {
+          "axes": {
+            "batch_size": 211,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.1007515,
+          "sol_ms": 0.0162
+        },
+        {
+          "axes": {
+            "batch_size": 449,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.1191355,
+          "sol_ms": 0.0285
+        },
+        {
+          "axes": {
+            "batch_size": 373,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.1101915,
+          "sol_ms": 0.0237
+        },
+        {
+          "axes": {
+            "batch_size": 16,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.083088,
+          "sol_ms": 0.0152
+        },
+        {
+          "axes": {
+            "batch_size": 192,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.098416,
+          "sol_ms": 0.0161
+        },
+        {
+          "axes": {
+            "batch_size": 131,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.0938084999999999,
+          "sol_ms": 0.0158
+        },
+        {
+          "axes": {
+            "batch_size": 919,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.169777,
+          "sol_ms": 0.0579
+        },
+        {
+          "axes": {
+            "batch_size": 32,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.084768,
+          "sol_ms": 0.0153
+        },
+        {
+          "axes": {
+            "batch_size": 853,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.1643204999999999,
+          "sol_ms": 0.0537
+        },
+        {
+          "axes": {
+            "batch_size": 128,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.0907205,
+          "sol_ms": 0.0158
+        },
+        {
+          "axes": {
+            "batch_size": 773,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.1517275,
+          "sol_ms": 0.0487
+        },
+        {
+          "axes": {
+            "batch_size": 5,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.082848,
+          "sol_ms": 0.0152
+        },
+        {
+          "axes": {
+            "batch_size": 384,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.11048,
+          "sol_ms": 0.0244
+        },
+        {
+          "axes": {
+            "batch_size": 691,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.145008,
+          "sol_ms": 0.0436
+        },
+        {
+          "axes": {
+            "batch_size": 96,
+            "inner_dim": 3072,
+            "output_dim": 18432
+          },
+          "baseline_latency_ms": 0.090064,
+          "sol_ms": 0.0156
+        }
+      ]
+    }
+  },
+  "response_sha256": "94541ddeab0b7530c770003c17bfbf032be2550b0e6dd207212ec849cf73c8b3",
+  "retrieved_at": "2026-09-06T20:57:25.506237+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/35"
+}

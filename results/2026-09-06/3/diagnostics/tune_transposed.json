@@ -1,0 +1,1063 @@
+{
+  "cublaslt_version": 130000,
+  "workloads": [
+    {
+      "index": 3,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 128,
+        "logits_to_keep": 128
+      },
+      "matrix_rows": 128,
+      "before": {
+        "timestamp": "2026-09-06T21:16:41.990030+00:00",
+        "processes": [
+          {
+            "pid": 417506,
+            "process_basename": "python",
+            "memory_mib": "1574",
+            "is_this_process": true
+          }
+        ]
+      },
+      "heuristics": [
+        {
+          "index": 0,
+          "workspace_bytes": 0,
+          "estimated_waves": 2.702702760696411,
+          "id": 66,
+          "tile": 24,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        },
+        {
+          "index": 1,
+          "workspace_bytes": 0,
+          "estimated_waves": 3.9324324131011963,
+          "id": 66,
+          "tile": 201,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        },
+        {
+          "index": 2,
+          "workspace_bytes": 0,
+          "estimated_waves": 3.6081080436706543,
+          "id": 66,
+          "tile": 31,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        },
+        {
+          "index": 3,
+          "workspace_bytes": 0,
+          "estimated_waves": 4.324324131011963,
+          "id": 66,
+          "tile": 30,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 4
+        },
+        {
+          "index": 4,
+          "workspace_bytes": 0,
+          "estimated_waves": 4.8108110427856445,
+          "id": 66,
+          "tile": 184,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        },
+        {
+          "index": 5,
+          "workspace_bytes": 0,
+          "estimated_waves": 6.182432651519775,
+          "id": 66,
+          "tile": 165,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 0,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 4
+        },
+        {
+          "index": 6,
+          "workspace_bytes": 0,
+          "estimated_waves": 5.405405521392822,
+          "id": 66,
+          "tile": 20,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        },
+        {
+          "index": 7,
+          "workspace_bytes": 0,
+          "estimated_waves": 1.8040540218353271,
+          "id": 66,
+          "tile": 264,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        }
+      ],
+      "candidates": {
+        "torch": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 85.15625
+        },
+        "lt_default": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 85.0122
+        },
+        "lt_custom0_cluster2": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 85.6335
+        },
+        "lt_custom1_cluster2": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 85.28745
+        },
+        "lt_custom2_cluster3": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 85.6777
+        },
+        "lt_custom3_cluster3": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 85.21885
+        },
+        "lt_custom1_cluster6": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 96.2668
+        },
+        "lt_custom3_cluster6": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 96.07455
+        },
+        "transposed_128_128_1_1_False_True_False": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 84.3353
+        },
+        "transposed_128_256_1_1_False_True_False": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 95.26955000000001
+        },
+        "transposed_256_256_2_1_True_True_False": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 88.87285
+        }
+      },
+      "after": {
+        "timestamp": "2026-09-06T21:17:00.941475+00:00",
+        "processes": [
+          {
+            "pid": 417506,
+            "process_basename": "python",
+            "memory_mib": "1688",
+            "is_this_process": true
+          }
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "axes": {
+        "batch_size": 1,
+        "seq_len": 293,
+        "logits_to_keep": 293
+      },
+      "matrix_rows": 293,
+      "before": {
+        "timestamp": "2026-09-06T21:17:01.077159+00:00",
+        "processes": [
+          {
+            "pid": 417506,
+            "process_basename": "python",
+            "memory_mib": "1986",
+            "is_this_process": true
+          }
+        ]
+      },
+      "heuristics": [
+        {
+          "index": 0,
+          "workspace_bytes": 0,
+          "estimated_waves": 10.810811042785645,
+          "id": 66,
+          "tile": 29,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        },
+        {
+          "index": 1,
+          "workspace_bytes": 0,
+          "estimated_waves": 10.810811042785645,
+          "id": 66,
+          "tile": 407,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        },
+        {
+          "index": 2,
+          "workspace_bytes": 0,
+          "estimated_waves": 10.810811042785645,
+          "id": 66,
+          "tile": 408,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        },
+        {
+          "index": 3,
+          "workspace_bytes": 0,
+          "estimated_waves": 3.6081080436706543,
+          "id": 66,
+          "tile": 553,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 3,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 5
+        },
+        {
+          "index": 4,
+          "workspace_bytes": 0,
+          "estimated_waves": 3.6081080436706543,
+          "id": 66,
+          "tile": 554,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 3,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 5
+        },
+        {
+          "index": 5,
+          "workspace_bytes": 0,
+          "estimated_waves": 3.6081080436706543,
+          "id": 66,
+          "tile": 555,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 3,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 5
+        },
+        {
+          "index": 6,
+          "workspace_bytes": 0,
+          "estimated_waves": 5.405405521392822,
+          "id": 66,
+          "tile": 501,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 3,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 5
+        },
+        {
+          "index": 7,
+          "workspace_bytes": 0,
+          "estimated_waves": 3.6081080436706543,
+          "id": 66,
+          "tile": 481,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        }
+      ],
+      "candidates": {
+        "torch": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 92.63425
+        },
+        "lt_default": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 92.345
+        },
+        "lt_custom0_cluster2": {
+          "passed": false,
+          "error": "check explicit algorithm failed with cuBLAS status 15"
+        },
+        "lt_custom1_cluster2": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 114.12615
+        },
+        "lt_custom2_cluster3": {
+          "passed": false,
+          "error": "check explicit algorithm failed with cuBLAS status 15"
+        },
+        "lt_custom3_cluster3": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 93.166
+        },
+        "lt_custom1_cluster6": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 100.79765
+        },
+        "lt_custom3_cluster6": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 100.6395
+        },
+        "transposed_128_128_1_1_False_True_False": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 130.86979999999997
+        },
+        "transposed_128_256_1_1_False_True_False": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 140.7766
+        },
+        "transposed_256_256_2_1_True_True_False": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 118.09514999999999
+        }
+      },
+      "after": {
+        "timestamp": "2026-09-06T21:17:16.123189+00:00",
+        "processes": [
+          {
+            "pid": 417506,
+            "process_basename": "python",
+            "memory_mib": "2344",
+            "is_this_process": true
+          }
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "axes": {
+        "batch_size": 4,
+        "seq_len": 512,
+        "logits_to_keep": 512
+      },
+      "matrix_rows": 2048,
+      "before": {
+        "timestamp": "2026-09-06T21:17:16.223422+00:00",
+        "processes": [
+          {
+            "pid": 417506,
+            "process_basename": "python",
+            "memory_mib": "2396",
+            "is_this_process": true
+          }
+        ]
+      },
+      "heuristics": [
+        {
+          "index": 0,
+          "workspace_bytes": 0,
+          "estimated_waves": 43.24324417114258,
+          "id": 66,
+          "tile": 23,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        },
+        {
+          "index": 1,
+          "workspace_bytes": 0,
+          "estimated_waves": 43.24324417114258,
+          "id": 66,
+          "tile": 24,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 3,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 6
+        },
+        {
+          "index": 2,
+          "workspace_bytes": 0,
+          "estimated_waves": 21.62162208557129,
+          "id": 66,
+          "tile": 513,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        },
+        {
+          "index": 3,
+          "workspace_bytes": 0,
+          "estimated_waves": 62.91891860961914,
+          "id": 66,
+          "tile": 201,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 2,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 5
+        },
+        {
+          "index": 4,
+          "workspace_bytes": 0,
+          "estimated_waves": 57.72972869873047,
+          "id": 66,
+          "tile": 31,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 3,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 6
+        },
+        {
+          "index": 5,
+          "workspace_bytes": 0,
+          "estimated_waves": 59.4594612121582,
+          "id": 66,
+          "tile": 32,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        },
+        {
+          "index": 6,
+          "workspace_bytes": 0,
+          "estimated_waves": 65.9459457397461,
+          "id": 66,
+          "tile": 197,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 2,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 5
+        },
+        {
+          "index": 7,
+          "workspace_bytes": 0,
+          "estimated_waves": 70.27027130126953,
+          "id": 66,
+          "tile": 29,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        }
+      ],
+      "candidates": {
+        "torch": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 498.50935
+        },
+        "lt_default": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 500.23875000000004
+        },
+        "lt_custom0_cluster2": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 559.7822
+        },
+        "lt_custom1_cluster2": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 554.9318
+        },
+        "lt_custom2_cluster3": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 538.9603000000001
+        },
+        "lt_custom3_cluster3": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 505.4227
+        },
+        "lt_custom1_cluster6": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 528.628
+        },
+        "lt_custom3_cluster6": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 527.975
+        },
+        "transposed_128_128_1_1_False_True_False": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 636.8697500000001
+        },
+        "transposed_128_256_1_1_False_True_False": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 561.96165
+        },
+        "transposed_256_256_2_1_True_True_False": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 509.94700000000006
+        }
+      },
+      "after": {
+        "timestamp": "2026-09-06T21:17:31.189840+00:00",
+        "processes": [
+          {
+            "pid": 417506,
+            "process_basename": "python",
+            "memory_mib": "8612",
+            "is_this_process": true
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "axes": {
+        "batch_size": 64,
+        "seq_len": 128,
+        "logits_to_keep": 128
+      },
+      "matrix_rows": 8192,
+      "before": {
+        "timestamp": "2026-09-06T21:17:31.316112+00:00",
+        "processes": [
+          {
+            "pid": 417506,
+            "process_basename": "python",
+            "memory_mib": "5210",
+            "is_this_process": true
+          }
+        ]
+      },
+      "heuristics": [
+        {
+          "index": 0,
+          "workspace_bytes": 0,
+          "estimated_waves": 172.9729766845703,
+          "id": 66,
+          "tile": 23,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        },
+        {
+          "index": 1,
+          "workspace_bytes": 0,
+          "estimated_waves": 172.9729766845703,
+          "id": 66,
+          "tile": 24,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 3,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 5
+        },
+        {
+          "index": 2,
+          "workspace_bytes": 0,
+          "estimated_waves": 86.48648834228516,
+          "id": 66,
+          "tile": 513,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        },
+        {
+          "index": 3,
+          "workspace_bytes": 0,
+          "estimated_waves": 232.43243408203125,
+          "id": 66,
+          "tile": 32,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        },
+        {
+          "index": 4,
+          "workspace_bytes": 0,
+          "estimated_waves": 251.67567443847656,
+          "id": 66,
+          "tile": 201,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 2,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 5
+        },
+        {
+          "index": 5,
+          "workspace_bytes": 0,
+          "estimated_waves": 230.91891479492188,
+          "id": 66,
+          "tile": 31,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 3,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 6
+        },
+        {
+          "index": 6,
+          "workspace_bytes": 0,
+          "estimated_waves": 92.97297668457031,
+          "id": 66,
+          "tile": 535,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 1,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 3
+        },
+        {
+          "index": 7,
+          "workspace_bytes": 0,
+          "estimated_waves": 263.7837829589844,
+          "id": 66,
+          "tile": 197,
+          "split_k": 1,
+          "reduction": 0,
+          "swizzle": 0,
+          "custom": 2,
+          "stages": 35,
+          "inner_shape": 0,
+          "cluster_shape": 5
+        }
+      ],
+      "candidates": {
+        "torch": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 2080.1311
+        },
+        "lt_default": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 2071.02395
+        },
+        "lt_custom0_cluster2": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 2338.13145
+        },
+        "lt_custom1_cluster2": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 2269.5807
+        },
+        "lt_custom2_cluster3": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 2237.0984
+        },
+        "lt_custom3_cluster3": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 2062.68705
+        },
+        "lt_custom1_cluster6": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 2152.4747500000003
+        },
+        "lt_custom3_cluster6": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 2169.4914
+        },
+        "transposed_128_128_1_1_False_True_False": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 2719.5258999999996
+        },
+        "transposed_128_256_1_1_False_True_False": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 2347.04675
+        },
+        "transposed_256_256_2_1_True_True_False": {
+          "passed": true,
+          "correctness": {
+            "max_relative_error": 0.0,
+            "max_absolute_error": 0.0,
+            "has_nan": false,
+            "has_inf": false,
+            "extra": null
+          },
+          "latency_us": 2073.42625
+        }
+      },
+      "after": {
+        "timestamp": "2026-09-06T21:17:48.773518+00:00",
+        "processes": [
+          {
+            "pid": 417506,
+            "process_basename": "python",
+            "memory_mib": "30824",
+            "is_this_process": true
+          }
+        ]
+      }
+    }
+  ]
+}

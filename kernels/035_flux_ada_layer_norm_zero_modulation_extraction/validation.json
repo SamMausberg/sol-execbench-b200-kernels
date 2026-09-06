@@ -1,0 +1,31 @@
+{
+  "problem_id": 35,
+  "problem_name": "035_flux_ada_layer_norm_zero_modulation_extraction",
+  "status": "parked; partial official coverage and noncompetitive register-MMA schedule",
+  "initial_official_package_sha256": "2725df378cc3330636731897ccf936f8a65cc91fcaddbd0c84db81e8e57e4a6a",
+  "initial_official_source_sha256": {
+    "kernel.py": "0ebc234e7faf763c3602fadae9b239f0ca3dc41eafb16165e14f53d55f990e9a"
+  },
+  "current_source_sha256": {
+    "kernel.py": "ae6e7d6efa97090c21c4bc7ff439b54371b2a4292d27eb69a1c22c97da8e0b5c"
+  },
+  "official_workloads_passed": 3,
+  "official_workloads_total": 16,
+  "full_harness_trials": 0,
+  "additional_projection_checks_passed": 16,
+  "additional_scope": "four configurations at two shapes, original and both projection operands multiplied by 32",
+  "standalone_process_samples": 15,
+  "standalone_foreign_samples": 0,
+  "standalone_monitor_errors": 0,
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "clock_mode": "unlocked",
+  "timing_valid_for_ranking": false,
+  "local_sol_score": null,
+  "leaderboard_snapshot_score": 0.654704,
+  "leaderboard_snapshot": "results/2026-09-06/35/diagnostics/35.json",
+  "archive_index": "results/2026-09-06/35/archive-index.json",
+  "hosted_rank_confirmed": false,
+  "hosted_submissions": 0,
+  "recommend_submission": false
+}

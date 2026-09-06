@@ -1,0 +1,423 @@
+{
+  "scope": "component experiment; unchanged output-projection input values; no problem score",
+  "started_at": "20260906T212548Z",
+  "source_sha256": {
+    "kernel_two_stage1.py": "edd72469b9e7478a23c33d5f5b8b6e61d59e26d627e2da9eca374e77d93bebc1",
+    "experiment_two_stage1.py": "9ff46111e1c1e63a7dffe4e34989908d0bcd12d4a53f57d3f7215b029634ef1a"
+  },
+  "source_id": "2caa7b20c148dea0036cb9b59d2305f9b8aea18eea29a097efab3108c4c0c25b",
+  "records": [
+    {
+      "kind": "end_to_end_accuracy",
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "weight_scale": 1.0,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.001920594135299325,
+        "max_absolute_error": 2.6702880859375e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 0.0036000000000000003,
+        "max_rtol": 1e-05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "kind": "end_to_end_accuracy",
+      "workload": 1,
+      "axes": {
+        "batch_size": 32,
+        "seq_len": 256
+      },
+      "weight_scale": 32.0,
+      "passed": true,
+      "matched_ratio": 0.9999980926513672,
+      "errors": {
+        "max_relative_error": 0.22025571763515472,
+        "max_absolute_error": 0.011474609375,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 0.0036000000000000003,
+        "max_rtol": 1e-05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "kind": "end_to_end_accuracy",
+      "workload": 9,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 4096
+      },
+      "weight_scale": 1.0,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0018297239439561963,
+        "max_absolute_error": 2.47955322265625e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 0.0043,
+        "max_rtol": 1e-05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "kind": "end_to_end_accuracy",
+      "workload": 9,
+      "axes": {
+        "batch_size": 2,
+        "seq_len": 4096
+      },
+      "weight_scale": 32.0,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.09873358905315399,
+        "max_absolute_error": 0.010009765625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 0.0043,
+        "max_rtol": 1e-05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "kind": "end_to_end_accuracy",
+      "workload": 13,
+      "axes": {
+        "batch_size": 16,
+        "seq_len": 512
+      },
+      "weight_scale": 1.0,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.0017720300238579512,
+        "max_absolute_error": 2.384185791015625e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 0.0037,
+        "max_rtol": 1e-05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "kind": "end_to_end_accuracy",
+      "workload": 13,
+      "axes": {
+        "batch_size": 16,
+        "seq_len": 512
+      },
+      "weight_scale": 32.0,
+      "passed": true,
+      "matched_ratio": 1.0,
+      "errors": {
+        "max_relative_error": 0.07510151714086533,
+        "max_absolute_error": 0.01123046875,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "tolerance": {
+        "max_atol": 0.0037,
+        "max_rtol": 1e-05,
+        "required_matched_ratio": 0.99,
+        "max_error_cap": null,
+        "allow_negative_inf": false
+      }
+    },
+    {
+      "kind": "timing",
+      "path": "frozen_emulated_bf16x9",
+      "algorithm": {
+        "index": 0,
+        "workspace_bytes": 4194816,
+        "estimated_waves": 1.0,
+        "id": 77,
+        "tile": 18,
+        "split_k": -2,
+        "reduction": 2,
+        "swizzle": 0,
+        "custom": 0,
+        "stages": 34,
+        "inner_shape": 0,
+        "cluster_shape": 8
+      },
+      "latency_ms": 0.1075675
+    },
+    {
+      "kind": "timing",
+      "path": "frozen_emulated_bf16x9",
+      "algorithm": {
+        "index": 1,
+        "workspace_bytes": 4194816,
+        "estimated_waves": 1.0,
+        "id": 77,
+        "tile": 18,
+        "split_k": -2,
+        "reduction": 2,
+        "swizzle": 0,
+        "custom": 0,
+        "stages": 34,
+        "inner_shape": 0,
+        "cluster_shape": 5
+      },
+      "latency_ms": 0.1061755
+    },
+    {
+      "kind": "timing",
+      "path": "shared_conversion_two_accumulators_one_stage_six_products_split4_and_reduction",
+      "latency_ms": 0.114143
+    }
+  ],
+  "process_samples": [
+    {
+      "timestamp": "2026-09-06T21:25:48.814055+00:00",
+      "finished_at": "2026-09-06T21:25:48.910499+00:00",
+      "root_pid": 427567,
+      "contexts": [],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:25:49.410862+00:00",
+      "finished_at": "2026-09-06T21:25:49.507826+00:00",
+      "root_pid": 427567,
+      "contexts": [
+        {
+          "pid": 427567,
+          "process_name": "python",
+          "memory_mib": "1208",
+          "start_ticks": 97496176,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:25:50.008179+00:00",
+      "finished_at": "2026-09-06T21:25:50.094019+00:00",
+      "root_pid": 427567,
+      "contexts": [
+        {
+          "pid": 427567,
+          "process_name": "python",
+          "memory_mib": "1306",
+          "start_ticks": 97496176,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:25:50.594252+00:00",
+      "finished_at": "2026-09-06T21:25:50.666054+00:00",
+      "root_pid": 427567,
+      "contexts": [
+        {
+          "pid": 427567,
+          "process_name": "python",
+          "memory_mib": "1306",
+          "start_ticks": 97496176,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:25:51.166777+00:00",
+      "finished_at": "2026-09-06T21:25:51.575023+00:00",
+      "root_pid": 427567,
+      "contexts": [
+        {
+          "pid": 427567,
+          "process_name": "python",
+          "memory_mib": "1306",
+          "start_ticks": 97496176,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:25:52.075446+00:00",
+      "finished_at": "2026-09-06T21:25:52.174188+00:00",
+      "root_pid": 427567,
+      "contexts": [
+        {
+          "pid": 427567,
+          "process_name": "python",
+          "memory_mib": "1306",
+          "start_ticks": 97496176,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:25:52.674604+00:00",
+      "finished_at": "2026-09-06T21:25:52.767464+00:00",
+      "root_pid": 427567,
+      "contexts": [
+        {
+          "pid": 427567,
+          "process_name": "python",
+          "memory_mib": "1306",
+          "start_ticks": 97496176,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:25:53.267722+00:00",
+      "finished_at": "2026-09-06T21:25:53.368599+00:00",
+      "root_pid": 427567,
+      "contexts": [
+        {
+          "pid": 427567,
+          "process_name": "python",
+          "memory_mib": "1306",
+          "start_ticks": 97496176,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:25:53.868836+00:00",
+      "finished_at": "2026-09-06T21:25:53.958022+00:00",
+      "root_pid": 427567,
+      "contexts": [
+        {
+          "pid": 427567,
+          "process_name": "python",
+          "memory_mib": "1306",
+          "start_ticks": 97496176,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:25:54.458350+00:00",
+      "finished_at": "2026-09-06T21:25:54.536569+00:00",
+      "root_pid": 427567,
+      "contexts": [
+        {
+          "pid": 427567,
+          "process_name": "python",
+          "memory_mib": "1306",
+          "start_ticks": 97496176,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:25:55.036813+00:00",
+      "finished_at": "2026-09-06T21:25:55.113303+00:00",
+      "root_pid": 427567,
+      "contexts": [
+        {
+          "pid": 427567,
+          "process_name": "python",
+          "memory_mib": "1306",
+          "start_ticks": 97496176,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:25:55.652346+00:00",
+      "finished_at": "2026-09-06T21:25:55.743613+00:00",
+      "root_pid": 427567,
+      "contexts": [
+        {
+          "pid": 427567,
+          "process_name": "python",
+          "memory_mib": "1308",
+          "start_ticks": 97496176,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:25:56.243871+00:00",
+      "finished_at": "2026-09-06T21:25:56.351865+00:00",
+      "root_pid": 427567,
+      "contexts": [
+        {
+          "pid": 427567,
+          "process_name": "python",
+          "memory_mib": "1644",
+          "start_ticks": 97496176,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:25:56.857814+00:00",
+      "finished_at": "2026-09-06T21:25:57.299101+00:00",
+      "root_pid": 427567,
+      "contexts": [
+        {
+          "pid": 427567,
+          "process_name": "python",
+          "memory_mib": "1644",
+          "start_ticks": 97496176,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    }
+  ],
+  "clock_mode": "unlocked",
+  "timing_caveat": "Exploratory timing, separate from qualification wrapper",
+  "environment": {
+    "torch": "2.9.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA B200",
+    "allow_tf32": false
+  },
+  "passed": true,
+  "timing_inputs": {
+    "workload": 13,
+    "weight_scale": 32.0
+  },
+  "baseline_source_sha256": "a9d423d8aca1e22f81dc476568242cde37a51fa2dd9cb777f5698fa888c78f78",
+  "completed_at": "2026-09-06T21:25:57.624289+00:00"
+}

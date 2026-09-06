@@ -82,11 +82,11 @@ Further archived correctness checkpoints:
 
 - 050 grouped QKV with bias passes three full trials and ten exact edge cases.
   All timings contain observed foreign CUDA contexts; no timing trial qualifies.
-- 055 grouped QKV with output views passes four full trials for V1 and one for
+- 055 grouped QKV with output views passes four full trials for V1 and five for
   V2. V1 passes 30 additional value/view calls; V2 passes 38 calls covering strides,
   pointer alignment, values, and output ownership. All 204 audited outputs are
-  exact. The five full timing trials contain foreign CUDA contexts. V2's raw
-  score of 0.796083 versus leader 0.684349 needs clean repeat measurements.
+  exact. Two V2 timing trials qualify; their combined score is 0.796114 versus
+  leader 0.684349. The other timing trials contain foreign CUDA contexts.
 - 036 Flux processing passes 16 official workloads and 16 additional input
   checks using explicit BF16x9-emulated FP32. Its unqualified score of 0.352235
   is below leader 0.644426. A six-product expansion passes 192 additional
@@ -130,3 +130,20 @@ then preserves the reference's BF16 rounding around GELU and multiplication.
 Its unqualified 0.770943 score versus leader 0.719587 has only a 3.76% uniform
 latency buffer. The failed DSMEM prototype and successful replacement are both
 archived, with the selected candidate identified by its exact package hash.
+
+The projection and attention-layout investigations are now preserved:
+
+- 003 vocabulary projection passes 16 official workloads and 21 input/layout/
+  ownership checks. Its unqualified 0.670583 score versus leader 0.536161 has
+  only a 6.19% uniform latency buffer, so it remains parked.
+- 032 attention/value multiplication passes 16 workloads in one qualified trial
+  and 48 extra checks. Its 0.727321 score is below leader 0.749744.
+- 035 modulation projection passes three official workloads and 16 additional
+  projection comparisons. Smaller tiles eliminate the initial register spills,
+  but measured large cases remain far slower than the scoring baseline.
+- 036 shared-memory fragment conversion passes 18 component checks across three
+  schedules. Its best complete conversion/product/reduction time is 111.04
+  microseconds versus same-run BF16x9 at 105.36 microseconds. It establishes no
+  full-problem speedup.
+
+These checkpoints add no hosted ranks or submission recommendations.

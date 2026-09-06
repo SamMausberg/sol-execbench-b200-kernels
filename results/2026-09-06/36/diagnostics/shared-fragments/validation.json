@@ -1,0 +1,221 @@
+{
+  "status": "frozen bounded component experiment; best variant remains slower than same-run BF16x9",
+  "scope": {
+    "shape_mnk": [
+      8192,
+      64,
+      3072
+    ],
+    "workloads": [
+      1,
+      9,
+      13
+    ],
+    "weight_scales": [
+      1.0,
+      32.0
+    ],
+    "replaced_operation": "output projection only",
+    "original_tolerances": true,
+    "precision_flags_changed": false,
+    "official_harness_trials": 0,
+    "hosted_submissions": 0,
+    "rank_claim": false
+  },
+  "best_variant": "kernel_two.py",
+  "total_passed_numerical_checks": 18,
+  "records": [
+    {
+      "report": "reports/shared-fragments-20260906T211554Z.json",
+      "report_sha256": "29dfd57ae99779834e878bd7587073ceb116e7827e8580f73e92ec51ba6a2732",
+      "source_id": "5cb4bb9396bdf929951b2692324e88b74ae7a52e06d34ca9306f02ef676a6a07",
+      "source_sha256": {
+        "kernel.py": "66c5f31a742ff6f29ec118b0f6c6a51bfba476377121cb1e9419c4fd04d41467",
+        "experiment.py": "b2ee737c8104f81d8b8608fd884edb018c215857a8faa07d10e31ca197c5c69a"
+      },
+      "passed": true,
+      "numerical_cases": 6,
+      "minimum_matched_ratio": 0.9999980926513672,
+      "maximum_absolute_error": 0.011474609375,
+      "timings": [
+        {
+          "kind": "timing",
+          "path": "frozen_emulated_bf16x9",
+          "algorithm": {
+            "index": 0,
+            "workspace_bytes": 4194816,
+            "estimated_waves": 1.0,
+            "id": 77,
+            "tile": 18,
+            "split_k": -2,
+            "reduction": 2,
+            "swizzle": 0,
+            "custom": 0,
+            "stages": 34,
+            "inner_shape": 0,
+            "cluster_shape": 8
+          },
+          "latency_ms": 0.1076635
+        },
+        {
+          "kind": "timing",
+          "path": "frozen_emulated_bf16x9",
+          "algorithm": {
+            "index": 1,
+            "workspace_bytes": 4194816,
+            "estimated_waves": 1.0,
+            "id": 77,
+            "tile": 18,
+            "split_k": -2,
+            "reduction": 2,
+            "swizzle": 0,
+            "custom": 0,
+            "stages": 34,
+            "inner_shape": 0,
+            "cluster_shape": 5
+          },
+          "latency_ms": 0.1053435
+        },
+        {
+          "kind": "timing",
+          "path": "shared_conversion_six_products_split4_and_reduction",
+          "latency_ms": 0.1245595
+        }
+      ],
+      "process_samples": 19,
+      "foreign_or_monitor_error_samples": 0
+    },
+    {
+      "report": "reports/shared-fragments-two-20260906T212324Z.json",
+      "report_sha256": "5e1c0b12baac7e6d469cdaedc7852bfaab72638019ab92a88732764510593242",
+      "source_id": "841847718172c069b2738908d3d203217fd5064906b8860f599bece3147ab02a",
+      "source_sha256": {
+        "kernel_two.py": "72cb444f66fa074fc01e1ceddd5f2ef6c177b8ba54008ce52e1e1c7a832beb23",
+        "experiment_two.py": "7f2a50a0f9582ff1389278d4b8deaf3f4a492cb3b68c74106cc516136a4e7ebf"
+      },
+      "passed": true,
+      "numerical_cases": 6,
+      "minimum_matched_ratio": 0.9999980926513672,
+      "maximum_absolute_error": 0.011474609375,
+      "timings": [
+        {
+          "kind": "timing",
+          "path": "frozen_emulated_bf16x9",
+          "algorithm": {
+            "index": 0,
+            "workspace_bytes": 4194816,
+            "estimated_waves": 1.0,
+            "id": 77,
+            "tile": 18,
+            "split_k": -2,
+            "reduction": 2,
+            "swizzle": 0,
+            "custom": 0,
+            "stages": 34,
+            "inner_shape": 0,
+            "cluster_shape": 8
+          },
+          "latency_ms": 0.109151
+        },
+        {
+          "kind": "timing",
+          "path": "frozen_emulated_bf16x9",
+          "algorithm": {
+            "index": 1,
+            "workspace_bytes": 4194816,
+            "estimated_waves": 1.0,
+            "id": 77,
+            "tile": 18,
+            "split_k": -2,
+            "reduction": 2,
+            "swizzle": 0,
+            "custom": 0,
+            "stages": 34,
+            "inner_shape": 0,
+            "cluster_shape": 5
+          },
+          "latency_ms": 0.10536
+        },
+        {
+          "kind": "timing",
+          "path": "shared_conversion_two_accumulators_six_products_split4_and_reduction",
+          "latency_ms": 0.11103950000000001
+        }
+      ],
+      "process_samples": 14,
+      "foreign_or_monitor_error_samples": 0
+    },
+    {
+      "report": "reports/shared-fragments-two-stage1-20260906T212548Z.json",
+      "report_sha256": "2845d1702ebf198c380c6984acaf4b0960802199039598929ed62e88af829d71",
+      "source_id": "2caa7b20c148dea0036cb9b59d2305f9b8aea18eea29a097efab3108c4c0c25b",
+      "source_sha256": {
+        "kernel_two_stage1.py": "edd72469b9e7478a23c33d5f5b8b6e61d59e26d627e2da9eca374e77d93bebc1",
+        "experiment_two_stage1.py": "9ff46111e1c1e63a7dffe4e34989908d0bcd12d4a53f57d3f7215b029634ef1a"
+      },
+      "passed": true,
+      "numerical_cases": 6,
+      "minimum_matched_ratio": 0.9999980926513672,
+      "maximum_absolute_error": 0.011474609375,
+      "timings": [
+        {
+          "kind": "timing",
+          "path": "frozen_emulated_bf16x9",
+          "algorithm": {
+            "index": 0,
+            "workspace_bytes": 4194816,
+            "estimated_waves": 1.0,
+            "id": 77,
+            "tile": 18,
+            "split_k": -2,
+            "reduction": 2,
+            "swizzle": 0,
+            "custom": 0,
+            "stages": 34,
+            "inner_shape": 0,
+            "cluster_shape": 8
+          },
+          "latency_ms": 0.1075675
+        },
+        {
+          "kind": "timing",
+          "path": "frozen_emulated_bf16x9",
+          "algorithm": {
+            "index": 1,
+            "workspace_bytes": 4194816,
+            "estimated_waves": 1.0,
+            "id": 77,
+            "tile": 18,
+            "split_k": -2,
+            "reduction": 2,
+            "swizzle": 0,
+            "custom": 0,
+            "stages": 34,
+            "inner_shape": 0,
+            "cluster_shape": 5
+          },
+          "latency_ms": 0.1061755
+        },
+        {
+          "kind": "timing",
+          "path": "shared_conversion_two_accumulators_one_stage_six_products_split4_and_reduction",
+          "latency_ms": 0.114143
+        }
+      ],
+      "process_samples": 14,
+      "foreign_or_monitor_error_samples": 0
+    }
+  ],
+  "other_source_sha256": {
+    "profile.py": "f0ab12ec9ee4c56b3d4ddefab520fa324322b00e413173aaff4d288204663968"
+  },
+  "artifacts_sha256": {
+    "reports/compiler/cutlass_compiled_entry_Tensorgmemo8192307230721_Tensorgmemo64307230721_Tensorgmemo641_Tensorgmemo468192643145728524288641_Tensorgmemo819264641_CUstream0x0.sm_100a.ptx": "dd365a55fedb3119149eb6add68e7a274c322250093d80f0bee29971cb3b1a5b",
+    "reports/compiler/manifest.json": "2043f56f13ffcc1bb5752b3d4d8c635b1e2c9fcd4e2629c84ec3bb85581b7938",
+    "reports/compiler/resources.txt": "3392174a8ac114ec34d6303806e381cc1e1479785c5bc143dc77517e215fb2cc",
+    "reports/shared-fragments-20260906T211554Z.json": "29dfd57ae99779834e878bd7587073ceb116e7827e8580f73e92ec51ba6a2732",
+    "reports/shared-fragments-two-20260906T212324Z.json": "5e1c0b12baac7e6d469cdaedc7852bfaab72638019ab92a88732764510593242",
+    "reports/shared-fragments-two-stage1-20260906T212548Z.json": "2845d1702ebf198c380c6984acaf4b0960802199039598929ed62e88af829d71",
+    "reports/timeline-six-products.json": "f9238ea52758eaec9d68e2e5175e998d58122b307eef07ca71a31b36c90dec00"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "author": "SamMausberg",
+  "definition": "035_flux_ada_layer_norm_zero_modulation_extraction",
+  "description": "FP32 projection with TF32x3 register-MMA lowering, fused bias, and six fresh concrete modulation views.",
+  "name": "flux_modulation_tf32x3_bias_views_v1",
+  "sources": [
+    {
+      "content": "# SPDX-License-Identifier: Apache-2.0\n\"\"\"FP32 modulation projection with fused bias and six concrete output views.\"\"\"\nimport torch\nimport triton\nimport triton.language as tl\n\n\n@triton.jit\ndef _projection(E, W, Bias, Output, M: tl.constexpr, N: tl.constexpr, K: tl.constexpr,\n                E0: tl.constexpr, E1: tl.constexpr, W0: tl.constexpr, W1: tl.constexpr,\n                B0: tl.constexpr, BM: tl.constexpr, BN: tl.constexpr, BK: tl.constexpr):\n    pm = tl.program_id(0)\n    pn = tl.program_id(1)\n    rows = pm * BM + tl.arange(0, BM)\n    columns = pn * BN + tl.arange(0, BN)\n    inner = tl.arange(0, BK)\n    accumulator = tl.full((BM, BN), 0, tl.float32)\n    for block in range(triton.cdiv(K, BK)):\n        k = block * BK + inner\n        left = tl.load(E + rows[:, None] * E0 + k[None, :] * E1,\n                       (rows[:, None] < M) & (k[None, :] < K), 0)\n        right = tl.load(W + columns[None, :] * W0 + k[:, None] * W1,\n                        (columns[None, :] < N) & (k[:, None] < K), 0)\n        accumulator = tl.dot(left, right, accumulator, input_precision='tf32x3')\n    bias = tl.load(Bias + columns * B0, columns < N, 0)\n    tl.store(Output + rows[:, None] * N + columns[None, :], accumulator + bias[None, :],\n             (rows[:, None] < M) & (columns[None, :] < N))\n\n\ndef launch(emb, weight, bias, output, bm=64, bn=64, bk=64, stages=3):\n    m, k = emb.shape\n    n = weight.shape[0]\n    _projection[(triton.cdiv(m, bm), triton.cdiv(n, bn))](\n        emb, weight, bias, output, m, n, k, *emb.stride(), *weight.stride(), bias.stride(0),\n        bm, bn, bk, num_warps=4, num_stages=stages, enable_fp_fusion=False, arch='sm80')\n\n\n@torch.no_grad()\ndef run(emb, weight, bias):\n    m, k = emb.shape\n    output = torch.empty((m, weight.shape[0]), device=emb.device, dtype=torch.float32)\n    views = tuple(output.split(k, dim=1))\n    launch(emb, weight, bias, output, bm=16 if m <= 16 else 32 if m <= 64 else 64)\n    return views\n",
+      "path": "kernel.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": false,
+    "entry_point": "kernel.py::run",
+    "languages": [
+      "pytorch",
+      "triton"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

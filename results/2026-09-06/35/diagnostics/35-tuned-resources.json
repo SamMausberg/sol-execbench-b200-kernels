@@ -1,0 +1,641 @@
+[
+  {
+    "binary_path": "/workspace/cache/triton/JH2LZSRCMPZPD4D6UBGTC5WAD722QFICQEV5CHMBUO5IWWZLFDEA/_projection.cubin",
+    "binary_sha256": "b0b5c47d656d9447541ae52591a7555b25b77b363417e35242eb344995998907",
+    "metadata": {
+      "hash": "49f4bcca2263f2f1f07ea04d3176c01ff5a81502812bd11d81a3ba8b5b2b28c8",
+      "target": {
+        "backend": "cuda",
+        "arch": 100,
+        "warp_size": 32
+      },
+      "num_warps": 4,
+      "num_ctas": 1,
+      "num_stages": 1,
+      "warp_size": 32,
+      "minRegAutoWS": 24,
+      "maxRegAutoWS": null,
+      "pingpongAutoWS": false,
+      "maxnreg": null,
+      "cluster_dims": [
+        1,
+        1,
+        1
+      ],
+      "ctas_per_cga": null,
+      "preferred_ctas_per_cga": null,
+      "ptx_version": null,
+      "ptx_options": null,
+      "ir_override": null,
+      "enable_fp_fusion": false,
+      "enable_reflect_ftz": true,
+      "launch_cooperative_grid": false,
+      "launch_cluster": false,
+      "launch_pdl": false,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e5"
+      ],
+      "deprecated_fp8_dot_operand_dtypes": [],
+      "default_dot_input_precision": "tf32",
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "max_num_imprecise_acc_default": 0,
+      "extern_libs": [
+        "libdevice"
+      ],
+      "debug": false,
+      "backend_name": "cuda",
+      "sanitize_overflow": false,
+      "arch": "sm80",
+      "instrumentation_mode": "",
+      "early_tma_store_lowering": null,
+      "generate_subtiled_region": false,
+      "triton_version": "3.7.0+fb.beta",
+      "tensordesc_meta": [],
+      "shared": 16384,
+      "tmem_size": 0,
+      "global_scratch_size": 0,
+      "global_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "profile_scratch_align": 1,
+      "name": "_projection"
+    },
+    "resource_usage": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _projection:\n  REG:166 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:944 TEXTURE:0 SURFACE:0 SAMPLER:0\n",
+    "local_load_instructions": 0,
+    "local_store_instructions": 0
+  },
+  {
+    "binary_path": "/workspace/cache/triton/PXMZLWRDGRPOD3MX4LDXQG5RO6YXUNHNE4EWE5Q7DBIRW5F5OP6A/_projection.cubin",
+    "binary_sha256": "24de41909e02f967b0c8b37cd82677470ba1a6d9042b4c31e9322d2c0ceac3cc",
+    "metadata": {
+      "hash": "7dd995da23345ee1ed97e2c7781bb177b17a34ed270962761f18511b74bd73fc",
+      "target": {
+        "backend": "cuda",
+        "arch": 100,
+        "warp_size": 32
+      },
+      "num_warps": 4,
+      "num_ctas": 1,
+      "num_stages": 2,
+      "warp_size": 32,
+      "minRegAutoWS": 24,
+      "maxRegAutoWS": null,
+      "pingpongAutoWS": false,
+      "maxnreg": null,
+      "cluster_dims": [
+        1,
+        1,
+        1
+      ],
+      "ctas_per_cga": null,
+      "preferred_ctas_per_cga": null,
+      "ptx_version": null,
+      "ptx_options": null,
+      "ir_override": null,
+      "enable_fp_fusion": false,
+      "enable_reflect_ftz": true,
+      "launch_cooperative_grid": false,
+      "launch_cluster": false,
+      "launch_pdl": false,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e5"
+      ],
+      "deprecated_fp8_dot_operand_dtypes": [],
+      "default_dot_input_precision": "tf32",
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "max_num_imprecise_acc_default": 0,
+      "extern_libs": [
+        "libdevice"
+      ],
+      "debug": false,
+      "backend_name": "cuda",
+      "sanitize_overflow": false,
+      "arch": "sm80",
+      "instrumentation_mode": "",
+      "early_tma_store_lowering": null,
+      "generate_subtiled_region": false,
+      "triton_version": "3.7.0+fb.beta",
+      "tensordesc_meta": [],
+      "shared": 20480,
+      "tmem_size": 0,
+      "global_scratch_size": 0,
+      "global_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "profile_scratch_align": 1,
+      "name": "_projection"
+    },
+    "resource_usage": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _projection:\n  REG:145 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:944 TEXTURE:0 SURFACE:0 SAMPLER:0\n",
+    "local_load_instructions": 0,
+    "local_store_instructions": 0
+  },
+  {
+    "binary_path": "/workspace/cache/triton/C3DYKB7LBFG3D6XWJMSMGE3P4M2WVAVCJ4JGJE2CZTNYM6SKTYNQ/_projection.cubin",
+    "binary_sha256": "a765e98fee176b099f231fc0711389be149eb281164f5ca593f0d153a26e5310",
+    "metadata": {
+      "hash": "16c78507eb094db1faf64b24c3136fe3356a82a24f12649342ccdb867a4a9e1b",
+      "target": {
+        "backend": "cuda",
+        "arch": 100,
+        "warp_size": 32
+      },
+      "num_warps": 8,
+      "num_ctas": 1,
+      "num_stages": 2,
+      "warp_size": 32,
+      "minRegAutoWS": 24,
+      "maxRegAutoWS": null,
+      "pingpongAutoWS": false,
+      "maxnreg": null,
+      "cluster_dims": [
+        1,
+        1,
+        1
+      ],
+      "ctas_per_cga": null,
+      "preferred_ctas_per_cga": null,
+      "ptx_version": null,
+      "ptx_options": null,
+      "ir_override": null,
+      "enable_fp_fusion": false,
+      "enable_reflect_ftz": true,
+      "launch_cooperative_grid": false,
+      "launch_cluster": false,
+      "launch_pdl": false,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e5"
+      ],
+      "deprecated_fp8_dot_operand_dtypes": [],
+      "default_dot_input_precision": "tf32",
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "max_num_imprecise_acc_default": 0,
+      "extern_libs": [
+        "libdevice"
+      ],
+      "debug": false,
+      "backend_name": "cuda",
+      "sanitize_overflow": false,
+      "arch": "sm80",
+      "instrumentation_mode": "",
+      "early_tma_store_lowering": null,
+      "generate_subtiled_region": false,
+      "triton_version": "3.7.0+fb.beta",
+      "tensordesc_meta": [],
+      "shared": 32768,
+      "tmem_size": 0,
+      "global_scratch_size": 0,
+      "global_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "profile_scratch_align": 1,
+      "name": "_projection"
+    },
+    "resource_usage": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _projection:\n  REG:164 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:944 TEXTURE:0 SURFACE:0 SAMPLER:0\n",
+    "local_load_instructions": 0,
+    "local_store_instructions": 0
+  },
+  {
+    "binary_path": "/workspace/cache/triton/AX6CSFYMSTNKQ3UZBPJQKLK4XRGXGHN6XFUO6TMHYBOCWNW4UOQQ/_projection.cubin",
+    "binary_sha256": "cfc665cac13e79ef3b42b90f3ac7364e00fe9d0b32de88f6d3b5baabd814889c",
+    "metadata": {
+      "hash": "05fc29170c94daa86e990bd3052d5cbc4d731dbeb968ef4d87c05c2b36dca3a1",
+      "target": {
+        "backend": "cuda",
+        "arch": 100,
+        "warp_size": 32
+      },
+      "num_warps": 4,
+      "num_ctas": 1,
+      "num_stages": 1,
+      "warp_size": 32,
+      "minRegAutoWS": 24,
+      "maxRegAutoWS": null,
+      "pingpongAutoWS": false,
+      "maxnreg": null,
+      "cluster_dims": [
+        1,
+        1,
+        1
+      ],
+      "ctas_per_cga": null,
+      "preferred_ctas_per_cga": null,
+      "ptx_version": null,
+      "ptx_options": null,
+      "ir_override": null,
+      "enable_fp_fusion": false,
+      "enable_reflect_ftz": true,
+      "launch_cooperative_grid": false,
+      "launch_cluster": false,
+      "launch_pdl": false,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e5"
+      ],
+      "deprecated_fp8_dot_operand_dtypes": [],
+      "default_dot_input_precision": "tf32",
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "max_num_imprecise_acc_default": 0,
+      "extern_libs": [
+        "libdevice"
+      ],
+      "debug": false,
+      "backend_name": "cuda",
+      "sanitize_overflow": false,
+      "arch": "sm80",
+      "instrumentation_mode": "",
+      "early_tma_store_lowering": null,
+      "generate_subtiled_region": false,
+      "triton_version": "3.7.0+fb.beta",
+      "tensordesc_meta": [],
+      "shared": 16384,
+      "tmem_size": 0,
+      "global_scratch_size": 0,
+      "global_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "profile_scratch_align": 1,
+      "name": "_projection"
+    },
+    "resource_usage": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _projection:\n  REG:166 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:944 TEXTURE:0 SURFACE:0 SAMPLER:0\n",
+    "local_load_instructions": 0,
+    "local_store_instructions": 0
+  },
+  {
+    "binary_path": "/workspace/cache/triton/2J2RFTYT6U5YG2U3SB3JFHNVIPRNU4O3A4QVFEPOVWIRRG7DLDRA/_projection.cubin",
+    "binary_sha256": "2d7a3e6f2e997d96c389412e8b5eed12cea16b15b0274679bc9ea224b6812977",
+    "metadata": {
+      "hash": "d27512cf13f53b836a9b9076929db543e2da71db07215291eead91189be358e2",
+      "target": {
+        "backend": "cuda",
+        "arch": 100,
+        "warp_size": 32
+      },
+      "num_warps": 4,
+      "num_ctas": 1,
+      "num_stages": 2,
+      "warp_size": 32,
+      "minRegAutoWS": 24,
+      "maxRegAutoWS": null,
+      "pingpongAutoWS": false,
+      "maxnreg": null,
+      "cluster_dims": [
+        1,
+        1,
+        1
+      ],
+      "ctas_per_cga": null,
+      "preferred_ctas_per_cga": null,
+      "ptx_version": null,
+      "ptx_options": null,
+      "ir_override": null,
+      "enable_fp_fusion": false,
+      "enable_reflect_ftz": true,
+      "launch_cooperative_grid": false,
+      "launch_cluster": false,
+      "launch_pdl": false,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e5"
+      ],
+      "deprecated_fp8_dot_operand_dtypes": [],
+      "default_dot_input_precision": "tf32",
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "max_num_imprecise_acc_default": 0,
+      "extern_libs": [
+        "libdevice"
+      ],
+      "debug": false,
+      "backend_name": "cuda",
+      "sanitize_overflow": false,
+      "arch": "sm80",
+      "instrumentation_mode": "",
+      "early_tma_store_lowering": null,
+      "generate_subtiled_region": false,
+      "triton_version": "3.7.0+fb.beta",
+      "tensordesc_meta": [],
+      "shared": 20480,
+      "tmem_size": 0,
+      "global_scratch_size": 0,
+      "global_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "profile_scratch_align": 1,
+      "name": "_projection"
+    },
+    "resource_usage": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _projection:\n  REG:145 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:944 TEXTURE:0 SURFACE:0 SAMPLER:0\n",
+    "local_load_instructions": 0,
+    "local_store_instructions": 0
+  },
+  {
+    "binary_path": "/workspace/cache/triton/QKHDHTB3LVDGICWM53YCPI3JTJ2N4NAW5DEJXE7LQ4XNDEOTHTLQ/_projection.cubin",
+    "binary_sha256": "eb12a7026316b369a55eed0694c070cb4c80d24c5b6e9403d1151fc255f03875",
+    "metadata": {
+      "hash": "828e33cc3b5d46640acceef027a3699a74de3416e8c89b93eb872ed191d33cd7",
+      "target": {
+        "backend": "cuda",
+        "arch": 100,
+        "warp_size": 32
+      },
+      "num_warps": 8,
+      "num_ctas": 1,
+      "num_stages": 2,
+      "warp_size": 32,
+      "minRegAutoWS": 24,
+      "maxRegAutoWS": null,
+      "pingpongAutoWS": false,
+      "maxnreg": null,
+      "cluster_dims": [
+        1,
+        1,
+        1
+      ],
+      "ctas_per_cga": null,
+      "preferred_ctas_per_cga": null,
+      "ptx_version": null,
+      "ptx_options": null,
+      "ir_override": null,
+      "enable_fp_fusion": false,
+      "enable_reflect_ftz": true,
+      "launch_cooperative_grid": false,
+      "launch_cluster": false,
+      "launch_pdl": false,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e5"
+      ],
+      "deprecated_fp8_dot_operand_dtypes": [],
+      "default_dot_input_precision": "tf32",
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "max_num_imprecise_acc_default": 0,
+      "extern_libs": [
+        "libdevice"
+      ],
+      "debug": false,
+      "backend_name": "cuda",
+      "sanitize_overflow": false,
+      "arch": "sm80",
+      "instrumentation_mode": "",
+      "early_tma_store_lowering": null,
+      "generate_subtiled_region": false,
+      "triton_version": "3.7.0+fb.beta",
+      "tensordesc_meta": [],
+      "shared": 32768,
+      "tmem_size": 0,
+      "global_scratch_size": 0,
+      "global_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "profile_scratch_align": 1,
+      "name": "_projection"
+    },
+    "resource_usage": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _projection:\n  REG:164 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:944 TEXTURE:0 SURFACE:0 SAMPLER:0\n",
+    "local_load_instructions": 0,
+    "local_store_instructions": 0
+  },
+  {
+    "binary_path": "/workspace/cache/triton/LFWFSEYGZJYMME5OLUUFIXBCOBFZYUIKM6U45EQKCB22L2NVNS7A/_projection.cubin",
+    "binary_sha256": "38c62d73a22d5b9a9a50d35630aed74c70818152e5a0c76faddb5d23185afff7",
+    "metadata": {
+      "hash": "596c591306ca70c613ae5d28545c22704b9c510a67a9ce920a1075a5e9b56cbe",
+      "target": {
+        "backend": "cuda",
+        "arch": 100,
+        "warp_size": 32
+      },
+      "num_warps": 4,
+      "num_ctas": 1,
+      "num_stages": 3,
+      "warp_size": 32,
+      "minRegAutoWS": 24,
+      "maxRegAutoWS": null,
+      "pingpongAutoWS": false,
+      "maxnreg": null,
+      "cluster_dims": [
+        1,
+        1,
+        1
+      ],
+      "ctas_per_cga": null,
+      "preferred_ctas_per_cga": null,
+      "ptx_version": null,
+      "ptx_options": null,
+      "ir_override": null,
+      "enable_fp_fusion": false,
+      "enable_reflect_ftz": true,
+      "launch_cooperative_grid": false,
+      "launch_cluster": false,
+      "launch_pdl": false,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e5"
+      ],
+      "deprecated_fp8_dot_operand_dtypes": [],
+      "default_dot_input_precision": "tf32",
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "max_num_imprecise_acc_default": 0,
+      "extern_libs": [
+        "libdevice"
+      ],
+      "debug": false,
+      "backend_name": "cuda",
+      "sanitize_overflow": false,
+      "arch": "sm80",
+      "instrumentation_mode": "",
+      "early_tma_store_lowering": null,
+      "generate_subtiled_region": false,
+      "triton_version": "3.7.0+fb.beta",
+      "tensordesc_meta": [],
+      "shared": 45056,
+      "tmem_size": 0,
+      "global_scratch_size": 0,
+      "global_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "profile_scratch_align": 1,
+      "name": "_projection"
+    },
+    "resource_usage": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _projection:\n  REG:161 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:944 TEXTURE:0 SURFACE:0 SAMPLER:0\n",
+    "local_load_instructions": 0,
+    "local_store_instructions": 0
+  },
+  {
+    "binary_path": "/workspace/cache/triton/MAYOYEV37SNVWCZZ6V6THHUSMNGA3ZRQPDNBVQVLCNYVBVXSAPAA/_projection.cubin",
+    "binary_sha256": "458b59855af9c3e3c61c5faa471e5824e7067a2990bd3986c1472e6a3b1058b5",
+    "metadata": {
+      "hash": "6030ec12bbfc9b5b0b39f57d339e92634c0de63078da1ac2ab137150d6f203c0",
+      "target": {
+        "backend": "cuda",
+        "arch": 100,
+        "warp_size": 32
+      },
+      "num_warps": 4,
+      "num_ctas": 1,
+      "num_stages": 3,
+      "warp_size": 32,
+      "minRegAutoWS": 24,
+      "maxRegAutoWS": null,
+      "pingpongAutoWS": false,
+      "maxnreg": null,
+      "cluster_dims": [
+        1,
+        1,
+        1
+      ],
+      "ctas_per_cga": null,
+      "preferred_ctas_per_cga": null,
+      "ptx_version": null,
+      "ptx_options": null,
+      "ir_override": null,
+      "enable_fp_fusion": false,
+      "enable_reflect_ftz": true,
+      "launch_cooperative_grid": false,
+      "launch_cluster": false,
+      "launch_pdl": false,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e5"
+      ],
+      "deprecated_fp8_dot_operand_dtypes": [],
+      "default_dot_input_precision": "tf32",
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "max_num_imprecise_acc_default": 0,
+      "extern_libs": [
+        "libdevice"
+      ],
+      "debug": false,
+      "backend_name": "cuda",
+      "sanitize_overflow": false,
+      "arch": "sm80",
+      "instrumentation_mode": "",
+      "early_tma_store_lowering": null,
+      "generate_subtiled_region": false,
+      "triton_version": "3.7.0+fb.beta",
+      "tensordesc_meta": [],
+      "shared": 81920,
+      "tmem_size": 0,
+      "global_scratch_size": 0,
+      "global_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "profile_scratch_align": 1,
+      "name": "_projection"
+    },
+    "resource_usage": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _projection:\n  REG:255 STACK:744 SHARED:1024 LOCAL:0 CONSTANT[0]:944 TEXTURE:0 SURFACE:0 SAMPLER:0\n",
+    "local_load_instructions": 166,
+    "local_store_instructions": 183
+  },
+  {
+    "binary_path": "/workspace/cache/triton/VTBH4XCZ3EWISN2Y3DOBVDNABRYBXI4CPZZL6VC3YRGPO7K2KA5Q/_projection.cubin",
+    "binary_sha256": "a70b31959b0d008192cf7dbb42c1934cd6bd04f87ec7a749976ca1d47dbcff23",
+    "metadata": {
+      "hash": "acc27e5c59d92c893758d8dc1a8da00c701ba3827e72bf545bc44cf77d5a503b",
+      "target": {
+        "backend": "cuda",
+        "arch": 100,
+        "warp_size": 32
+      },
+      "num_warps": 4,
+      "num_ctas": 1,
+      "num_stages": 3,
+      "warp_size": 32,
+      "minRegAutoWS": 24,
+      "maxRegAutoWS": null,
+      "pingpongAutoWS": false,
+      "maxnreg": null,
+      "cluster_dims": [
+        1,
+        1,
+        1
+      ],
+      "ctas_per_cga": null,
+      "preferred_ctas_per_cga": null,
+      "ptx_version": null,
+      "ptx_options": null,
+      "ir_override": null,
+      "enable_fp_fusion": false,
+      "enable_reflect_ftz": true,
+      "launch_cooperative_grid": false,
+      "launch_cluster": false,
+      "launch_pdl": false,
+      "supported_fp8_dtypes": [
+        "fp8e4b15",
+        "fp8e5"
+      ],
+      "deprecated_fp8_dot_operand_dtypes": [],
+      "default_dot_input_precision": "tf32",
+      "allowed_dot_input_precisions": [
+        "tf32",
+        "tf32x3",
+        "ieee",
+        "bf16x3",
+        "bf16x6"
+      ],
+      "max_num_imprecise_acc_default": 0,
+      "extern_libs": [
+        "libdevice"
+      ],
+      "debug": false,
+      "backend_name": "cuda",
+      "sanitize_overflow": false,
+      "arch": "sm80",
+      "instrumentation_mode": "",
+      "early_tma_store_lowering": null,
+      "generate_subtiled_region": false,
+      "triton_version": "3.7.0+fb.beta",
+      "tensordesc_meta": [],
+      "shared": 81920,
+      "tmem_size": 0,
+      "global_scratch_size": 0,
+      "global_scratch_align": 1,
+      "profile_scratch_size": 0,
+      "profile_scratch_align": 1,
+      "name": "_projection"
+    },
+    "resource_usage": "\nResource usage:\n Common:\n  GLOBAL:0\n Function _projection:\n  REG:255 STACK:744 SHARED:1024 LOCAL:0 CONSTANT[0]:944 TEXTURE:0 SURFACE:0 SAMPLER:0\n",
+    "local_load_instructions": 166,
+    "local_store_instructions": 183
+  }
+]

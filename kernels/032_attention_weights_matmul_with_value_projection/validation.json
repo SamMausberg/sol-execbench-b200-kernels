@@ -1,0 +1,274 @@
+{
+  "schema_version": 1,
+  "problem_id": 32,
+  "state": "parked candidate; below public leader",
+  "selected_manifest": "solution.json",
+  "submission_sha256": "ae6a44a926e27ecf82ad127ad8ffb73229884185cbee8ead5ef03aa41d30e6e7",
+  "source_sha256": {
+    "selected.py": "bcc675bb185ce68949a9957dfef268dd3a00d6c81a06bdb1447d9d436be6fc83",
+    "kernel.py": "5ef2dd288edb2eac7d24049007269f80f3701e2b618ca0a0a005df76fbca311b",
+    "cute_kernel.py": "ca4a1b5a17696514810c0bbdef3c5e3dbfaf4007b020dad96bd1f090eef431eb",
+    "cute_av.py": "97dd665d66ee27bfb33eeeb3fdb25d30cdc49326ae7ba81ffdb08d39570b8123"
+  },
+  "official_workloads": {
+    "run": ".work/runs/32/20260906T212739.877620Z-direct-layout-initial-20260906T212736542945Z-a1-ae6a44a926e2",
+    "passed": true,
+    "workloads": 16,
+    "trials": 1,
+    "summary_sha256": "da7de33951a8c12a79d2d9a8e017ab60a6b612d72a8e0544f625c0beaaca3488",
+    "contract_sha256": "2dc4067f2c3ead4fd0f2e05b436bc08ada7d33b4cb28e387570b232856875a41",
+    "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd"
+  },
+  "input_variations": {
+    "path": ".work/tuning/32-variation-selected.json",
+    "sha256": "e9e45dd8b03646287e1ee224ee0dc561bd959e956d52caafe557692426688789",
+    "cases": 48,
+    "passed_cases": 48,
+    "bitwise_equal_outputs": 38,
+    "all_elements_within_tolerance_outputs": 46,
+    "maximum_unmatched_fraction": 1.959002006018054e-06,
+    "input_preservation": true,
+    "prior_output_preservation": true,
+    "fresh_contiguous_output": true,
+    "input_layout_changes_checked": true
+  },
+  "timing": {
+    "scope": "one local trial qualified by sampled CUDA process identities; no hosted rank claim",
+    "local_mean_sol_score": 0.7273206658138093,
+    "leader_snapshot": ".work/tuning/32-leaderboard-final-20260906.json",
+    "leader_snapshot_sha256": "f4bf7cf7414e79375e5422681cae999760c2b0b6ebcfba2f08ee5684c16a962c",
+    "leader_score": 0.749744,
+    "leader_username": "RIAC as well",
+    "clock_mode": "unlocked",
+    "official_clock_comparison": "not comparable",
+    "reason_parked": "Qualified local score remains below the public leader after bounded direct-layout and padding comparisons.",
+    "qualification_report": ".work/qualification/32/20260906T212736542945Z-direct-layout-initial/qualification.json",
+    "qualification_sha256": "ca5e88f28d0de81106660a8917f4318b414d1c90dd56c763273294dd10eddfd5",
+    "qualified_trials": 1,
+    "foreign_context_observations": 0,
+    "monitor_errors": 0,
+    "samples_in_window": 114
+  },
+  "standalone_diagnostics": [
+    {
+      "path": ".work/tuning/32-direct-bounded.json",
+      "sha256": "dd1a70287fd66fb216932d1bcd371c8cc3cda1cec5c3c36e6864ae5f74bdd973",
+      "configurations": 67,
+      "passed_configurations": 66,
+      "foreign_context_samples": 0,
+      "process_samples": 37,
+      "monitor_errors": 0
+    },
+    {
+      "path": ".work/tuning/32-tiny-bounded.json",
+      "sha256": "18603cbf4e39889bde2cc5a07ce8064e33fa86b51617a69eed5ddaafb28e8210",
+      "configurations": 16,
+      "passed_configurations": 16,
+      "foreign_context_samples": 0,
+      "process_samples": 14,
+      "monitor_errors": 0
+    },
+    {
+      "path": ".work/tuning/32-cute-nested-smoke.json",
+      "sha256": "685dd792bee0e8d69ea3bdb129de63a3aaa54b3abfcf647070cf3bd477b3d8a9",
+      "configurations": 2,
+      "passed_configurations": 2,
+      "foreign_context_samples": 0,
+      "process_samples": 14,
+      "monitor_errors": 0
+    },
+    {
+      "path": ".work/tuning/32-cute-geometry-bounded.json",
+      "sha256": "ea5a6b38f38ad6964d61b83882cfde1d9a5ce5337ac02736a231b8e82209fb90",
+      "configurations": 12,
+      "passed_configurations": 11,
+      "foreign_context_samples": 0,
+      "process_samples": 40,
+      "monitor_errors": 0
+    },
+    {
+      "path": ".work/tuning/32-cute-reverse-bounded.json",
+      "sha256": "2bafa1be709bcd3de279976f29bd38b7c7e2a3c462811f79b7ee1c2b1b7841cc",
+      "configurations": 4,
+      "passed_configurations": 4,
+      "foreign_context_samples": 0,
+      "process_samples": 22,
+      "monitor_errors": 0
+    },
+    {
+      "path": ".work/tuning/32-cute-padded-bounded.json",
+      "sha256": "ca3171b02a9a0439131385bf0042dd4f8b626b62711ea712a81ed3bd0ef59096",
+      "configurations": 6,
+      "passed_configurations": 6,
+      "foreign_context_samples": 0,
+      "process_samples": 35,
+      "monitor_errors": 0
+    },
+    {
+      "path": ".work/tuning/32-odd997-bounded.json",
+      "sha256": "bcd42a8bcde81a1796c3fd0c3dc0f19f8ce31fef556fbf604f3c8dd2e73d3030",
+      "configurations": 8,
+      "passed_configurations": 8,
+      "foreign_context_samples": 0,
+      "process_samples": 9,
+      "monitor_errors": 0
+    }
+  ],
+  "hosted_submissions": 0,
+  "archive_index": "results/2026-09-06/32/archive-index.json",
+  "archived_runs": [
+    {
+      "run_directory": ".work/runs/32/20260906T204205.989334Z-av-direct-initial-e76dbccbd26a",
+      "archived_run": "results/2026-09-06/32/20260906T204205.989334Z-av-direct-initial-e76dbccbd26a",
+      "summary_sha256": "9e5dd5804d7a68260e1aa77b6bf397b54e74f85c3453af49f048cf58ea9d9a31",
+      "submission_sha256": "e76dbccbd26a8ef32351c06186821cd38187e54c12e1248c493defcbf4539007",
+      "source_sha256": {
+        "kernel.py": "5ef2dd288edb2eac7d24049007269f80f3701e2b618ca0a0a005df76fbca311b"
+      },
+      "passed": true,
+      "selected_workloads": 4,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "de055c0f56345a28532a78bc3d5ebbad5a31b202545d0d2cf741fd16228f02a5"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    },
+    {
+      "run_directory": ".work/runs/32/20260906T204915.855876Z-av-native-initial-207658a864ee",
+      "archived_run": "results/2026-09-06/32/20260906T204915.855876Z-av-native-initial-207658a864ee",
+      "summary_sha256": "4e851b313f7afdf20d7623bee76c8a816670f6c600a412220528135f5200eb5d",
+      "submission_sha256": "207658a864ee8f43a130fd258c9a452e3799ee459abe43c85bb80758ef3611f4",
+      "source_sha256": {
+        "binding.cpp": "4dc7d1b5218fdbf53ab5eb29fc9b3c4391cf86c01bcdf78b1bbda6b70bcf4a0f",
+        "pointers.cu": "42d2da7f7a52768633ee1a4daf5f14d27afc7e0294bc977a56beacd7d52337a8"
+      },
+      "passed": true,
+      "selected_workloads": 4,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "5c8fa5daed2d44770a2fd2349f61f6b8bbb8fa28b75427e01a2111cd0fc976dd"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    },
+    {
+      "run_directory": ".work/runs/32/20260906T212739.877620Z-direct-layout-initial-20260906T212736542945Z-a1-ae6a44a926e2",
+      "archived_run": "results/2026-09-06/32/20260906T212739.877620Z-direct-layout-initial-20260906T212736542945Z-a1-ae6a44a926e2",
+      "summary_sha256": "da7de33951a8c12a79d2d9a8e017ab60a6b612d72a8e0544f625c0beaaca3488",
+      "submission_sha256": "ae6a44a926e27ecf82ad127ad8ffb73229884185cbee8ead5ef03aa41d30e6e7",
+      "source_sha256": {
+        "cute_av.py": "97dd665d66ee27bfb33eeeb3fdb25d30cdc49326ae7ba81ffdb08d39570b8123",
+        "cute_kernel.py": "ca4a1b5a17696514810c0bbdef3c5e3dbfaf4007b020dad96bd1f090eef431eb",
+        "kernel.py": "5ef2dd288edb2eac7d24049007269f80f3701e2b618ca0a0a005df76fbca311b",
+        "selected.py": "bcc675bb185ce68949a9957dfef268dd3a00d6c81a06bdb1447d9d436be6fc83"
+      },
+      "passed": true,
+      "selected_workloads": 16,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "9826ebc1fd251d222dbfdadc489fb009f0cde60913a34d81ae6f5629bffef36b"
+      },
+      "timing_valid_for_ranking": true,
+      "observed_unqualified_sol_score": 0.7273206658138093
+    }
+  ],
+  "archived_reports": [
+    {
+      "original_path": ".work/qualification/32/20260906T212736542945Z-direct-layout-initial/attempt-1-processes.jsonl",
+      "original_sha256": "a80e0fde4da8c5be8a40989e30df35601c6fe66e90921239f08028d5d348f8f8",
+      "archived_path": "results/2026-09-06/32/qualification/20260906T212736542945Z-direct-layout-initial/attempt-1-processes.jsonl",
+      "archived_sha256": "a80e0fde4da8c5be8a40989e30df35601c6fe66e90921239f08028d5d348f8f8",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/32/20260906T212736542945Z-direct-layout-initial/attempt-1.log",
+      "original_sha256": "674e61989fc0bf7dc8a6f26899958ed1108fe80146f1989a8b0c89b04f81d6d0",
+      "archived_path": "results/2026-09-06/32/qualification/20260906T212736542945Z-direct-layout-initial/attempt-1.console.txt",
+      "archived_sha256": "674e61989fc0bf7dc8a6f26899958ed1108fe80146f1989a8b0c89b04f81d6d0",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/qualification/32/20260906T212736542945Z-direct-layout-initial/qualification.json",
+      "original_sha256": "ca5e88f28d0de81106660a8917f4318b414d1c90dd56c763273294dd10eddfd5",
+      "archived_path": "results/2026-09-06/32/qualification/20260906T212736542945Z-direct-layout-initial/qualification.json",
+      "archived_sha256": "ca5e88f28d0de81106660a8917f4318b414d1c90dd56c763273294dd10eddfd5",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/tuning/32-variation-selected.json",
+      "original_sha256": "e9e45dd8b03646287e1ee224ee0dc561bd959e956d52caafe557692426688789",
+      "archived_path": "results/2026-09-06/32/diagnostics/32-variation-selected.json",
+      "archived_sha256": "e9e45dd8b03646287e1ee224ee0dc561bd959e956d52caafe557692426688789",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/tuning/32-leaderboard-final-20260906.json",
+      "original_sha256": "f4bf7cf7414e79375e5422681cae999760c2b0b6ebcfba2f08ee5684c16a962c",
+      "archived_path": "results/2026-09-06/32/diagnostics/32-leaderboard-final-20260906.json",
+      "archived_sha256": "f4bf7cf7414e79375e5422681cae999760c2b0b6ebcfba2f08ee5684c16a962c",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/tuning/32-direct-bounded.json",
+      "original_sha256": "dd1a70287fd66fb216932d1bcd371c8cc3cda1cec5c3c36e6864ae5f74bdd973",
+      "archived_path": "results/2026-09-06/32/diagnostics/32-direct-bounded.json",
+      "archived_sha256": "dd1a70287fd66fb216932d1bcd371c8cc3cda1cec5c3c36e6864ae5f74bdd973",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/tuning/32-tiny-bounded.json",
+      "original_sha256": "18603cbf4e39889bde2cc5a07ce8064e33fa86b51617a69eed5ddaafb28e8210",
+      "archived_path": "results/2026-09-06/32/diagnostics/32-tiny-bounded.json",
+      "archived_sha256": "18603cbf4e39889bde2cc5a07ce8064e33fa86b51617a69eed5ddaafb28e8210",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/tuning/32-cute-nested-smoke.json",
+      "original_sha256": "685dd792bee0e8d69ea3bdb129de63a3aaa54b3abfcf647070cf3bd477b3d8a9",
+      "archived_path": "results/2026-09-06/32/diagnostics/32-cute-nested-smoke.json",
+      "archived_sha256": "685dd792bee0e8d69ea3bdb129de63a3aaa54b3abfcf647070cf3bd477b3d8a9",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/tuning/32-cute-geometry-bounded.json",
+      "original_sha256": "ea5a6b38f38ad6964d61b83882cfde1d9a5ce5337ac02736a231b8e82209fb90",
+      "archived_path": "results/2026-09-06/32/diagnostics/32-cute-geometry-bounded.json",
+      "archived_sha256": "ea5a6b38f38ad6964d61b83882cfde1d9a5ce5337ac02736a231b8e82209fb90",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/tuning/32-cute-reverse-bounded.json",
+      "original_sha256": "2bafa1be709bcd3de279976f29bd38b7c7e2a3c462811f79b7ee1c2b1b7841cc",
+      "archived_path": "results/2026-09-06/32/diagnostics/32-cute-reverse-bounded.json",
+      "archived_sha256": "2bafa1be709bcd3de279976f29bd38b7c7e2a3c462811f79b7ee1c2b1b7841cc",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/tuning/32-cute-padded-bounded.json",
+      "original_sha256": "ca3171b02a9a0439131385bf0042dd4f8b626b62711ea712a81ed3bd0ef59096",
+      "archived_path": "results/2026-09-06/32/diagnostics/32-cute-padded-bounded.json",
+      "archived_sha256": "ca3171b02a9a0439131385bf0042dd4f8b626b62711ea712a81ed3bd0ef59096",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/tuning/32-odd997-bounded.json",
+      "original_sha256": "bcd42a8bcde81a1796c3fd0c3dc0f19f8ce31fef556fbf604f3c8dd2e73d3030",
+      "archived_path": "results/2026-09-06/32/diagnostics/32-odd997-bounded.json",
+      "archived_sha256": "bcd42a8bcde81a1796c3fd0c3dc0f19f8ce31fef556fbf604f3c8dd2e73d3030",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    }
+  ]
+}

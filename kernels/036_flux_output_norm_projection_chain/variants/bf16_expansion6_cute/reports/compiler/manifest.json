@@ -1,0 +1,7 @@
+{
+  "cutlass_compiled_entry_Tensorgmemo8192307230721_Tensorgmemo64307230721_Tensorgmemo641_Tensorgmemo468192643145728524288641_Tensorgmemo819264641_CUstream0x0.sm_100a.cubin": {
+    "sha256": "174c67f91287f84c22f15b00c7d03955b71677da0d9a6ca177b94747bb98e455",
+    "bytes": 70080,
+    "local_path": "/workspace/sol-execbench-b200-kernels/.work/tuning/36-shared-fragments-compiler/cutlass_compiled_entry_Tensorgmemo8192307230721_Tensorgmemo64307230721_Tensorgmemo641_Tensorgmemo468192643145728524288641_Tensorgmemo819264641_CUstream0x0.sm_100a.cubin"
+  }
+}

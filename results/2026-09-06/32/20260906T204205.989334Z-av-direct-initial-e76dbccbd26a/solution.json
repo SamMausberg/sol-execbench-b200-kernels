@@ -1,0 +1,27 @@
+{
+  "author": "SamMausberg",
+  "definition": "032_attention_weights_matmul_with_value_projection",
+  "description": "BF16 attention/value matrix products with FP32 accumulation and direct stores into the required sequence/hidden layout.",
+  "name": "032_av_direct_layout_triton_experiment",
+  "sources": [
+    {
+      "content": "# SPDX-License-Identifier: Apache-2.0\n\"\"\"Attention/value products stored directly in the requested sequence layout.\"\"\"\n\nimport torch\nimport triton\nimport triton.language as tl\nfrom triton.tools.tensor_descriptor import TensorDescriptor\n\n\n@triton.jit\ndef _av_plain(A, V, O, SEQ: tl.constexpr,\n              BM: tl.constexpr, BN: tl.constexpr, BK: tl.constexpr):\n    combined_head = tl.program_id(2)\n    batch = combined_head // 40\n    head = combined_head % 40\n    m = tl.program_id(0) * BM + tl.arange(0, BM)\n    n = tl.program_id(1) * BN + tl.arange(0, BN)\n    k = tl.arange(0, BK)\n    a_base = A + combined_head * SEQ * SEQ + m[:, None] * SEQ\n    v_base = V + combined_head * SEQ * 128 + n[None, :]\n    accumulator = tl.full((BM, BN), 0, tl.float32)\n    for block in range(triton.cdiv(SEQ, BK)):\n        inner = block * BK + k\n        a = tl.load(a_base + inner[None, :],\n                    (m[:, None] < SEQ) & (inner[None, :] < SEQ), 0)\n        v = tl.load(v_base + inner[:, None] * 128,\n                    (inner[:, None] < SEQ) & (n[None, :] < 128), 0)\n        accumulator = tl.dot(a, v, accumulator)\n    offsets = (batch * SEQ + m[:, None]) * 5120 + head * 128 + n[None, :]\n    tl.store(O + offsets, accumulator, (m[:, None] < SEQ) & (n[None, :] < 128))\n\n\n@triton.jit\ndef _av_tma(A, V, O, OD, SEQ: tl.constexpr,\n            BM: tl.constexpr, BN: tl.constexpr, BK: tl.constexpr,\n            TMA_STORE: tl.constexpr):\n    combined_head = tl.program_id(2)\n    batch = combined_head // 40\n    head = combined_head % 40\n    row = tl.program_id(0) * BM\n    column = tl.program_id(1) * BN\n    accumulator = tl.full((BM, BN), 0, tl.float32)\n    for block in range(triton.cdiv(SEQ, BK)):\n        a = A.load([combined_head * SEQ + row, block * BK])\n        v = V.load([combined_head * SEQ + block * BK, column])\n        accumulator = tl.dot(a, v, accumulator)\n    if TMA_STORE:\n        OD.store([batch * SEQ + row, head * 128 + column], accumulator.to(tl.bfloat16))\n    else:\n        m = row + tl.arange(0, BM)\n        n = column + tl.arange(0, BN)\n        offsets = (batch * SEQ + m[:, None]) * 5120 + head * 128 + n[None, :]\n        tl.store(O + offsets, accumulator, (m[:, None] < SEQ) & (n[None, :] < 128))\n\n\n@torch.no_grad()\ndef launch(attn_weights, value_states, output, bm=64, bn=128, bk=64,\n           warps=4, stages=2, tma=False, tma_store=False, mma_v2=False):\n    batch, heads, sequence, _ = attn_weights.shape\n    grid = (triton.cdiv(sequence, bm), triton.cdiv(128, bn), batch * heads)\n    options = dict(num_warps=warps, num_stages=stages)\n    if mma_v2:\n        options[\"arch\"] = \"sm80\"\n    if tma:\n        # Head boundaries align to the tile dimensions for this path. This\n        # prevents a descriptor tile from reading values from the next head.\n        assert sequence % bm == 0 and sequence % bk == 0\n        a = TensorDescriptor(attn_weights, [batch * heads * sequence, sequence],\n                             [sequence, 1], [bm, bk])\n        v = TensorDescriptor(value_states, [batch * heads * sequence, 128],\n                             [128, 1], [bk, bn])\n        out = TensorDescriptor(output, [batch * sequence, 5120], [5120, 1], [bm, bn])\n        _av_tma[grid](a, v, output, out, sequence, bm, bn, bk, tma_store, **options)\n    else:\n        _av_plain[grid](attn_weights, value_states, output, sequence, bm, bn, bk, **options)\n\n\n@torch.no_grad()\ndef run(attn_weights, value_states):\n    batch, heads, sequence, _ = attn_weights.shape\n    if any(not tensor.is_contiguous() or tensor.data_ptr() % 16\n           for tensor in (attn_weights, value_states)):\n        return torch.matmul(attn_weights, value_states).transpose(1, 2).reshape(batch, sequence, 5120)\n    output = torch.empty((batch, sequence, 5120), dtype=attn_weights.dtype, device=attn_weights.device)\n    if sequence % 128 == 0:\n        launch(attn_weights, value_states, output, 64, 128, 64, 4, 2, True)\n    else:\n        launch(attn_weights, value_states, output, 32, 64, 64, 4, 3, False, False, True)\n    return output\n",
+      "path": "kernel.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton"
+    ],
+    "destination_passing_style": false,
+    "entry_point": "kernel.py::run",
+    "languages": [
+      "pytorch",
+      "triton"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

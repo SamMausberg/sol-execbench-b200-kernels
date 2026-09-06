@@ -1,0 +1,7 @@
+{
+  "cutlass_upstream_revision": "4370102f9dacab813282e1d67722fceb0b90a019",
+  "cutlass_upstream_path": "examples/python/CuTeDSL/blackwell/dense_gemm_persistent.py",
+  "cutlass_upstream_sha256": "ef31dd938182adc8bfb28ed58a77e6f7886c5dfe68e8b2a91216a5c85d82a326",
+  "license": "BSD-3-Clause; retained in cute_gemm.py",
+  "reference_contract_sha256": "04e6befa7f384cc4e63d4e87a6afe55d87882728b8b77ab10e91a8e13f9635cd"
+}

@@ -1,0 +1,12 @@
+{
+  "upstream_source": "https://github.com/NVIDIA/cutlass/blob/v4.4.1/examples/python/CuTeDSL/blackwell/dense_gemm_persistent.py",
+  "upstream_tag": "v4.4.1",
+  "upstream_sha256": "ef31dd938182adc8bfb28ed58a77e6f7886c5dfe68e8b2a91216a5c85d82a326",
+  "adapted_source": "cute_av.py",
+  "adapted_sha256": "97dd665d66ee27bfb33eeeb3fdb25d30cdc49326ae7ba81ffdb08d39570b8123",
+  "changes": [
+    "Retain kernel class and its stage helper; remove example driver and benchmarking helpers.",
+    "Rename kernel class and count nested batch mode elements when constructing the persistent scheduler."
+  ],
+  "license": "BSD-3-Clause; full upstream copyright notice and license retained in cute_av.py"
+}

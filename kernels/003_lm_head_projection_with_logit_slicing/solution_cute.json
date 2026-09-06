@@ -1,0 +1,15 @@
+{
+  "author": "SamMausberg",
+  "definition": "003_lm_head_projection_with_logit_slicing",
+  "description": "BF16 LM-head GEMM with FP32 accumulation, persistent Blackwell UMMA scheduling and TMA output stores; computes all reference positions.",
+  "name": "lm_head_cute_persistent_b200_v1",
+  "sources": [{"path": "cute_kernel.py"}, {"path": "cute_gemm.py"}],
+  "spec": {
+    "entry_point": "cute_kernel.py::run",
+    "languages": ["cute_dsl", "pytorch"],
+    "target_hardware": ["B200"],
+    "destination_passing_style": false,
+    "dependencies": ["torch", "nvidia-cutlass-dsl", "cuda-python"],
+    "compile_options": {}
+  }
+}

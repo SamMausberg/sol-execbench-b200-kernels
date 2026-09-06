@@ -1,0 +1,38 @@
+{
+  "author": "SamMausberg",
+  "definition": "032_attention_weights_matmul_with_value_projection",
+  "description": "Direct contiguous attention output: persistent CuTe batched GEMM for aligned sequence lengths, masked Triton for odd lengths, and a reference-equivalent fallback for other input layouts.",
+  "name": "032_av_direct_layout_b200_v1",
+  "sources": [
+    {
+      "path": "selected.py"
+    },
+    {
+      "path": "kernel.py"
+    },
+    {
+      "path": "cute_kernel.py"
+    },
+    {
+      "path": "cute_av.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton",
+      "nvidia-cutlass-dsl",
+      "cuda-python"
+    ],
+    "destination_passing_style": false,
+    "entry_point": "selected.py::run",
+    "languages": [
+      "pytorch",
+      "triton",
+      "cute_dsl"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

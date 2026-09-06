@@ -1,0 +1,14 @@
+{
+  "author": "SamMausberg",
+  "definition": "035_flux_ada_layer_norm_zero_modulation_extraction",
+  "description": "FP32 projection with TF32x3 register-MMA lowering, fused bias, and six fresh concrete modulation views.",
+  "name": "flux_modulation_tf32x3_bias_views_v1",
+  "sources": [{"path": "kernel.py"}],
+  "spec": {
+    "dependencies": ["torch", "triton"],
+    "destination_passing_style": false,
+    "entry_point": "kernel.py::run",
+    "languages": ["pytorch", "triton"],
+    "target_hardware": ["B200"]
+  }
+}

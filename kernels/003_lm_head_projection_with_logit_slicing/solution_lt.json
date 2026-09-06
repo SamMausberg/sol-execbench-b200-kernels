@@ -1,0 +1,43 @@
+{
+  "author": "sol-b200-kernel-team",
+  "definition": "003_lm_head_projection_with_logit_slicing",
+  "description": "LM-head BF16 projection with FP32 accumulation through cuBLASLt on the caller stream; computes every reference position.",
+  "name": "lm_head_cublaslt_configured_b200_v1",
+  "sources": [
+    {
+      "path": "binding.cpp"
+    },
+    {
+      "path": "cublaslt_bridge.h"
+    }
+  ],
+  "spec": {
+    "binding": "torch",
+    "compile_options": {
+      "cflags": [
+        "-O3",
+        "-std=c++17",
+        "-I/venv/lib/python3.12/site-packages/nvidia/cu13/include",
+        "-I/usr/local/cuda/include"
+      ],
+      "ld_flags": [
+        "-L/venv/lib/python3.12/site-packages/nvidia/cu13/lib",
+        "-L/usr/local/cuda/lib64",
+        "-l:libcublasLt.so.13",
+        "-l:libcudart.so.13"
+      ]
+    },
+    "dependencies": [
+      "torch",
+      "cublas"
+    ],
+    "destination_passing_style": false,
+    "entry_point": "binding.cpp::run",
+    "languages": [
+      "cuda_cpp"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

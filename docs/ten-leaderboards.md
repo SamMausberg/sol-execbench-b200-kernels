@@ -27,13 +27,19 @@ and ten exact edge cases, also without a qualified timing trial.
 
 Problem 036 passes all official cases and 16 extra checks with explicit FP32
 emulation. Its six-product expansion passes 192 checks, but conversion overhead
-prevents a complete-path speedup. It is parked below the leader. Current work
-targets 003 vocabulary projection, 032 attention output layout, 035 modulation
-projection. Problem 048 passes all official workloads and 11 extra checks;
+prevents a complete-path speedup. It is parked below the leader. Problem 003
+passes all 16 official workloads and 21 extra checks, but its unqualified lead
+has only a 6.19% uniform latency buffer. Problem 032 passes all official workloads
+in one qualified trial and 48 extra checks; its 0.727321 score is below leader
+0.749744. Problem 035's three-case projection investigation remains partial
+and far slower than the baseline at larger shapes. These experiments are parked.
+Current work targets 034 RoPE frequencies, 067 attention, and 210 fused add/RMSNorm.
+Problem 048 passes all official workloads and 11 extra checks;
 its unqualified 0.770943 score has only a 3.76% uniform latency buffer and is
-parked. A bounded CuTe experiment for
-036 will generate FP32 fragments inside GEMM shared memory to reduce conversion
-traffic. Problems 119 and 173 remain partial investigations; neither establishes a lead.
+parked. The bounded CuTe experiment for 036 generates FP32 fragments inside GEMM
+shared memory and passes all 18 checks. Its best two-accumulator schedule takes
+111.04 microseconds versus same-run BF16x9 at 105.36 microseconds, so it is also
+parked. Problems 119 and 173 remain partial investigations; neither establishes a lead.
 
 Problems 004, 006, and 043 now pass full official correctness and additional
 input checks. Problem 006 remains below its leader. Problems 004 and 043 have

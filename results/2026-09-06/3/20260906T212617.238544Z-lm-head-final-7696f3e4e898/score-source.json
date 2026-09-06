@@ -1,0 +1,257 @@
+{
+  "response": {
+    "data": {
+      "axes": {
+        "batch_size": {
+          "description": "Batch size",
+          "type": "var"
+        },
+        "hidden_size": {
+          "description": "Hidden dimension size",
+          "type": "const",
+          "value": 2048
+        },
+        "logits_to_keep": {
+          "description": "Number of trailing positions to compute logits for",
+          "type": "var"
+        },
+        "seq_len": {
+          "description": "Full sequence length of input hidden states",
+          "type": "var"
+        },
+        "vocab_size": {
+          "description": "Vocabulary size",
+          "type": "const",
+          "value": 102400
+        }
+      },
+      "baseline": "import torch\n\ndef get_inputs(axes_and_scalars: dict, device: torch.device) -> dict:\n    \"\"\"\n    Generate inputs for the LM head projection kernel.\n    \n    Args:\n        axes_and_scalars: Dictionary containing axis values\n        device: Target device for tensors\n    \n    Returns:\n        Dictionary of input tensors\n    \"\"\"\n    batch_size = axes_and_scalars[\"batch_size\"]\n    seq_len = axes_and_scalars[\"seq_len\"]\n    hidden_size = axes_and_scalars[\"hidden_size\"]\n    vocab_size = axes_and_scalars[\"vocab_size\"]\n    \n    # Generate random hidden states\n    hidden_states = torch.randn(\n        batch_size, seq_len, hidden_size,\n        dtype=torch.bfloat16, device=device\n    )\n    \n    # Generate random weight matrix with proper initialization\n    std = 1.0 / (hidden_size ** 0.5)\n    weight = torch.randn(\n        vocab_size, hidden_size,\n        dtype=torch.bfloat16, device=device\n    ) * std\n    \n    return {\n        \"hidden_states\": hidden_states,\n        \"weight\": weight\n    }\n\n\n@torch.no_grad()\ndef run(hidden_states: torch.Tensor, weight: torch.Tensor) -> torch.Tensor:\n    \"\"\"\n    LM head projection with logit slicing.\n    \n    This kernel performs:\n    1. Slice the last logits_to_keep positions from hidden_states\n    2. Project sliced hidden states to vocabulary space via matmul with weight\n    \n    Args:\n        hidden_states: [batch_size, seq_len, 2048] input hidden states\n        weight: [102400, 2048] projection weight matrix\n    \n    Returns:\n        logits: [batch_size, logits_to_keep, 102400] vocabulary logits\n    \n    Note: logits_to_keep is determined by the output shape requirement.\n    The kernel slices hidden_states[:, -logits_to_keep:, :] before projection.\n    For this reference implementation, we compute all positions and the\n    slicing is handled by the benchmark framework based on output shape.\n    \"\"\"\n    batch_size, seq_len, hidden_size = hidden_states.shape\n    vocab_size = weight.shape[0]\n    \n    # Perform the projection: [B, S, H] @ [H, V] = [B, S, V]\n    # Using matmul with transposed weight\n    # The slicing to logits_to_keep is implicit in the output shape\n    logits = torch.matmul(hidden_states, weight.t())\n    \n    return logits\n",
+      "baseline_latency_ms": 0.307661,
+      "description": "Final language model head projection from hidden states to vocabulary logits with optional slicing for generation efficiency. Projects [batch, seq_len, 2048] to [batch, logits_to_keep, 102400]. During generation, logits_to_keep specifies how many trailing positions to compute (typically 1 for autoregressive decoding).",
+      "gpu_types": [
+        "B200"
+      ],
+      "id": 3,
+      "inputs": {
+        "hidden_states": {
+          "description": "Input hidden states from final layer normalization",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "seq_len",
+            "hidden_size"
+          ]
+        },
+        "weight": {
+          "description": "LM head projection weight matrix",
+          "dtype": "bfloat16",
+          "shape": [
+            "vocab_size",
+            "hidden_size"
+          ]
+        }
+      },
+      "latency_unit": "ms",
+      "name": "003_lm_head_projection_with_logit_slicing",
+      "outputs": {
+        "logits": {
+          "description": "Output vocabulary logits for the kept positions",
+          "dtype": "bfloat16",
+          "shape": [
+            "batch_size",
+            "logits_to_keep",
+            "vocab_size"
+          ]
+        }
+      },
+      "sol_is_dummy": false,
+      "tags": [
+        "mlp",
+        "L1",
+        "model:EXAONE-4.0-1.2B"
+      ],
+      "title": "003_lm_head_projection_with_logit_slicing",
+      "workloads": [
+        {
+          "axes": {
+            "batch_size": 32,
+            "hidden_size": 2048,
+            "logits_to_keep": 128,
+            "seq_len": 128,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 1.057793,
+          "sol_ms": 0.9489
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "hidden_size": 2048,
+            "logits_to_keep": 128,
+            "seq_len": 128,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 0.0895035,
+          "sol_ms": 0.0619
+        },
+        {
+          "axes": {
+            "batch_size": 64,
+            "hidden_size": 2048,
+            "logits_to_keep": 128,
+            "seq_len": 128,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 2.115344,
+          "sol_ms": 1.8974
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 2048,
+            "logits_to_keep": 128,
+            "seq_len": 128,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 0.087104,
+          "sol_ms": 0.0585
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 2048,
+            "logits_to_keep": 512,
+            "seq_len": 512,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 0.5354410000000001,
+          "sol_ms": 0.4747
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 2048,
+            "logits_to_keep": 256,
+            "seq_len": 256,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 0.281344,
+          "sol_ms": 0.2375
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 2048,
+            "logits_to_keep": 293,
+            "seq_len": 293,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 0.1071845,
+          "sol_ms": 0.0682
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 2048,
+            "logits_to_keep": 1024,
+            "seq_len": 1024,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 0.2812,
+          "sol_ms": 0.2375
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 2048,
+            "logits_to_keep": 853,
+            "seq_len": 853,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 0.9693125,
+          "sol_ms": 0.7905
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 2048,
+            "logits_to_keep": 2048,
+            "seq_len": 2048,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 0.535296,
+          "sol_ms": 0.4747
+        },
+        {
+          "axes": {
+            "batch_size": 2,
+            "hidden_size": 2048,
+            "logits_to_keep": 2048,
+            "seq_len": 2048,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 1.0579044999999998,
+          "sol_ms": 0.9489
+        },
+        {
+          "axes": {
+            "batch_size": 4,
+            "hidden_size": 2048,
+            "logits_to_keep": 997,
+            "seq_len": 997,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 1.053856,
+          "sol_ms": 0.9239
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 2048,
+            "logits_to_keep": 256,
+            "seq_len": 256,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 0.089312,
+          "sol_ms": 0.0619
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 2048,
+            "logits_to_keep": 3011,
+            "seq_len": 3011,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 0.79008,
+          "sol_ms": 0.6977
+        },
+        {
+          "axes": {
+            "batch_size": 1,
+            "hidden_size": 2048,
+            "logits_to_keep": 691,
+            "seq_len": 691,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 0.215712,
+          "sol_ms": 0.1604
+        },
+        {
+          "axes": {
+            "batch_size": 8,
+            "hidden_size": 2048,
+            "logits_to_keep": 128,
+            "seq_len": 128,
+            "vocab_size": 102400
+          },
+          "baseline_latency_ms": 0.28144,
+          "sol_ms": 0.2375
+        }
+      ]
+    }
+  },
+  "response_sha256": "da1a1af411dd55a7907819238195e61e1678d778761ed93eaece2901e3f22e80",
+  "retrieved_at": "2026-09-06T21:26:17.237195+00:00",
+  "url": "https://research.nvidia.com/benchmarks/sol-execbench/api/kernels/3"
+}

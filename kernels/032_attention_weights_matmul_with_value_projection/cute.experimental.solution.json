@@ -1,0 +1,35 @@
+{
+  "author": "SamMausberg",
+  "definition": "032_attention_weights_matmul_with_value_projection",
+  "description": "FP32-accumulated BF16 persistent batched CuTe GEMM with a nested head/example output layout.",
+  "name": "032_av_cute_direct_layout_v1",
+  "sources": [
+    {
+      "path": "cute_kernel.py"
+    },
+    {
+      "path": "cute_av.py"
+    },
+    {
+      "path": "kernel.py"
+    }
+  ],
+  "spec": {
+    "dependencies": [
+      "torch",
+      "triton",
+      "nvidia-cutlass-dsl",
+      "cuda-python"
+    ],
+    "destination_passing_style": false,
+    "entry_point": "cute_kernel.py::run",
+    "languages": [
+      "pytorch",
+      "triton",
+      "cute_dsl"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

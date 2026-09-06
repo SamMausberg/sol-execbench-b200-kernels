@@ -1,0 +1,62 @@
+{
+  "problem_id": 35,
+  "runs": [
+    {
+      "run_directory": ".work/runs/35/20260906T205725.507889Z-register-mma-projection-smoke-2725df378cc3",
+      "archived_run": "results/2026-09-06/35/20260906T205725.507889Z-register-mma-projection-smoke-2725df378cc3",
+      "summary_sha256": "7dd708af835eec3529ed536bdd5c9b0a5cdb16438d7606edd08f61bd6de5317a",
+      "submission_sha256": "2725df378cc3330636731897ccf936f8a65cc91fcaddbd0c84db81e8e57e4a6a",
+      "source_sha256": {
+        "kernel.py": "0ebc234e7faf763c3602fadae9b239f0ca3dc41eafb16165e14f53d55f990e9a"
+      },
+      "passed": true,
+      "selected_workloads": 3,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "e1ff023d5b746136b9dca00598c1c136b85e520ba7ea1c09fe0143ed56b38a7d"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": null
+    }
+  ],
+  "reports": [
+    {
+      "original_path": ".work/tuning/35-initial-resources.json",
+      "original_sha256": "6a47e7bef2b102827f32c97aef1a504f41dfa291244d487023fafe68a34bbf59",
+      "archived_path": "results/2026-09-06/35/diagnostics/35-initial-resources.json",
+      "archived_sha256": "6a47e7bef2b102827f32c97aef1a504f41dfa291244d487023fafe68a34bbf59",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/tuning/35-register-pressure.json",
+      "original_sha256": "bec0c9046f048e65416dea0c250b326e039f7889696430dcebeb60b5b93f1812",
+      "archived_path": "results/2026-09-06/35/diagnostics/35-register-pressure.json",
+      "archived_sha256": "bec0c9046f048e65416dea0c250b326e039f7889696430dcebeb60b5b93f1812",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/tuning/35-tuned-resources.json",
+      "original_sha256": "c4846e682d535e9074ed8695206c6c246f0b0e45584e5a5ec79e44a5011105ef",
+      "archived_path": "results/2026-09-06/35/diagnostics/35-tuned-resources.json",
+      "archived_sha256": "c4846e682d535e9074ed8695206c6c246f0b0e45584e5a5ec79e44a5011105ef",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": ".work/leaderboards/checkpoint10/35.json",
+      "original_sha256": "e1043bad6b08fe0fc5b82c2b460818f8940a1baad2f0dce48e820b503f3a78a6",
+      "archived_path": "results/2026-09-06/35/diagnostics/35.json",
+      "archived_sha256": "e1043bad6b08fe0fc5b82c2b460818f8940a1baad2f0dce48e820b503f3a78a6",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    }
+  ],
+  "timing_valid_for_ranking": false,
+  "notes": [
+    "Only three of sixteen official workloads were evaluated.",
+    "Bounded tuning and binary resource inspection explain the rejected register-MMA schedule.",
+    "No compiled binaries or benchmark inputs are included in this archive."
+  ]
+}

@@ -168,6 +168,70 @@
       "archived_sha256": "08ef0dbcd0c824f21544739491c58890e8109192fb77df5e704d054a1b6fb330",
       "redaction": null,
       "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/036_flux_output_norm_projection_chain/variants/bf16_expansion6_cute/validation.json",
+      "original_sha256": "e121877b4186a4e71242782609f245b82f3767596e42df07ea7a52f9549d981e",
+      "archived_path": "results/2026-09-06/36/diagnostics/shared-fragments/validation.json",
+      "archived_sha256": "e121877b4186a4e71242782609f245b82f3767596e42df07ea7a52f9549d981e",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/036_flux_output_norm_projection_chain/variants/bf16_expansion6_cute/reports/compiler/cutlass_compiled_entry_Tensorgmemo8192307230721_Tensorgmemo64307230721_Tensorgmemo641_Tensorgmemo468192643145728524288641_Tensorgmemo819264641_CUstream0x0.sm_100a.ptx",
+      "original_sha256": "dd365a55fedb3119149eb6add68e7a274c322250093d80f0bee29971cb3b1a5b",
+      "archived_path": "results/2026-09-06/36/diagnostics/shared-fragments/reports/compiler/cutlass_compiled_entry_Tensorgmemo8192307230721_Tensorgmemo64307230721_Tensorgmemo641_Tensorgmemo468192643145728524288641_Tensorgmemo819264641_CUstream0x0.sm_100a.ptx",
+      "archived_sha256": "dd365a55fedb3119149eb6add68e7a274c322250093d80f0bee29971cb3b1a5b",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/036_flux_output_norm_projection_chain/variants/bf16_expansion6_cute/reports/compiler/manifest.json",
+      "original_sha256": "2043f56f13ffcc1bb5752b3d4d8c635b1e2c9fcd4e2629c84ec3bb85581b7938",
+      "archived_path": "results/2026-09-06/36/diagnostics/shared-fragments/reports/compiler/manifest.json",
+      "archived_sha256": "2043f56f13ffcc1bb5752b3d4d8c635b1e2c9fcd4e2629c84ec3bb85581b7938",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/036_flux_output_norm_projection_chain/variants/bf16_expansion6_cute/reports/compiler/resources.txt",
+      "original_sha256": "3392174a8ac114ec34d6303806e381cc1e1479785c5bc143dc77517e215fb2cc",
+      "archived_path": "results/2026-09-06/36/diagnostics/shared-fragments/reports/compiler/resources.txt",
+      "archived_sha256": "3392174a8ac114ec34d6303806e381cc1e1479785c5bc143dc77517e215fb2cc",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/036_flux_output_norm_projection_chain/variants/bf16_expansion6_cute/reports/shared-fragments-20260906T211554Z.json",
+      "original_sha256": "29dfd57ae99779834e878bd7587073ceb116e7827e8580f73e92ec51ba6a2732",
+      "archived_path": "results/2026-09-06/36/diagnostics/shared-fragments/reports/shared-fragments-20260906T211554Z.json",
+      "archived_sha256": "29dfd57ae99779834e878bd7587073ceb116e7827e8580f73e92ec51ba6a2732",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/036_flux_output_norm_projection_chain/variants/bf16_expansion6_cute/reports/shared-fragments-two-20260906T212324Z.json",
+      "original_sha256": "5e1c0b12baac7e6d469cdaedc7852bfaab72638019ab92a88732764510593242",
+      "archived_path": "results/2026-09-06/36/diagnostics/shared-fragments/reports/shared-fragments-two-20260906T212324Z.json",
+      "archived_sha256": "5e1c0b12baac7e6d469cdaedc7852bfaab72638019ab92a88732764510593242",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/036_flux_output_norm_projection_chain/variants/bf16_expansion6_cute/reports/shared-fragments-two-stage1-20260906T212548Z.json",
+      "original_sha256": "2845d1702ebf198c380c6984acaf4b0960802199039598929ed62e88af829d71",
+      "archived_path": "results/2026-09-06/36/diagnostics/shared-fragments/reports/shared-fragments-two-stage1-20260906T212548Z.json",
+      "archived_sha256": "2845d1702ebf198c380c6984acaf4b0960802199039598929ed62e88af829d71",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/036_flux_output_norm_projection_chain/variants/bf16_expansion6_cute/reports/timeline-six-products.json",
+      "original_sha256": "f9238ea52758eaec9d68e2e5175e998d58122b307eef07ca71a31b36c90dec00",
+      "archived_path": "results/2026-09-06/36/diagnostics/shared-fragments/reports/timeline-six-products.json",
+      "archived_sha256": "f9238ea52758eaec9d68e2e5175e998d58122b307eef07ca71a31b36c90dec00",
+      "redaction": null,
+      "normalized_process_name_fields": 0
     }
   ],
   "timing_valid_for_ranking": false,
@@ -175,6 +239,7 @@
     "Exact run artifacts retain their recorded hashes.",
     "Monitor report copies normalize executable paths to basenames; both original and archived hashes are recorded.",
     "Hash fields inside copied qualification reports still refer to original monitor files; use this index to locate normalized copies.",
-    "Foreign CUDA contexts and unlocked clocks exclude these timings from qualified ranking comparisons."
+    "Foreign CUDA contexts and unlocked clocks exclude these timings from qualified ranking comparisons.",
+    "The shared-memory fragment experiment passes18 component checks; its best two-accumulator schedule remains slower than same-run BF16x9."
   ]
 }

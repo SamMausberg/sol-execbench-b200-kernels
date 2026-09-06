@@ -1,0 +1,206 @@
+{
+  "rule": "Choose an alternative only if it is at least 1% faster than the first heuristic in the same sweep.",
+  "performance_qualified": false,
+  "configurations": {
+    "128": {
+      "candidate": "lt_6",
+      "latency_us": 81.22970000000001,
+      "configuration": [
+        66,
+        20,
+        1,
+        0,
+        0,
+        1,
+        35,
+        0,
+        3
+      ],
+      "workspace_bytes": 0,
+      "source": "tune_initial.json",
+      "foreign_snapshots": false
+    },
+    "293": {
+      "candidate": "lt_0",
+      "latency_us": 92.87615000000001,
+      "configuration": [
+        66,
+        29,
+        1,
+        0,
+        0,
+        1,
+        35,
+        0,
+        3
+      ],
+      "workspace_bytes": 0,
+      "source": "tune_initial.json",
+      "foreign_snapshots": false
+    },
+    "2048": {
+      "candidate": "lt_0",
+      "latency_us": 498.6834,
+      "configuration": [
+        66,
+        23,
+        1,
+        0,
+        0,
+        1,
+        35,
+        0,
+        3
+      ],
+      "workspace_bytes": 0,
+      "source": "tune_initial.json",
+      "foreign_snapshots": false
+    },
+    "8192": {
+      "candidate": "lt_0",
+      "latency_us": 2056.3845,
+      "configuration": [
+        66,
+        23,
+        1,
+        0,
+        0,
+        1,
+        35,
+        0,
+        3
+      ],
+      "workspace_bytes": 0,
+      "source": "tune_initial.json",
+      "foreign_snapshots": false
+    },
+    "4096": {
+      "candidate": "lt_0",
+      "latency_us": 1023.37355,
+      "configuration": [
+        66,
+        23,
+        1,
+        0,
+        0,
+        1,
+        35,
+        0,
+        3
+      ],
+      "workspace_bytes": 0,
+      "source": "tune_remaining.json",
+      "foreign_snapshots": false
+    },
+    "256": {
+      "candidate": "lt_0",
+      "latency_us": 85.2252,
+      "configuration": [
+        66,
+        201,
+        1,
+        0,
+        0,
+        2,
+        35,
+        0,
+        5
+      ],
+      "workspace_bytes": 0,
+      "source": "tune_remaining.json",
+      "foreign_snapshots": false
+    },
+    "1024": {
+      "candidate": "lt_0",
+      "latency_us": 242.39274999999998,
+      "configuration": [
+        66,
+        23,
+        1,
+        0,
+        0,
+        1,
+        35,
+        0,
+        3
+      ],
+      "workspace_bytes": 0,
+      "source": "tune_remaining.json",
+      "foreign_snapshots": false
+    },
+    "3412": {
+      "candidate": "lt_0",
+      "latency_us": 885.29155,
+      "configuration": [
+        66,
+        23,
+        1,
+        0,
+        0,
+        1,
+        35,
+        0,
+        3
+      ],
+      "workspace_bytes": 0,
+      "source": "tune_remaining.json",
+      "foreign_snapshots": false
+    },
+    "3988": {
+      "candidate": "lt_0",
+      "latency_us": 1018.41245,
+      "configuration": [
+        66,
+        23,
+        1,
+        0,
+        0,
+        1,
+        35,
+        0,
+        3
+      ],
+      "workspace_bytes": 0,
+      "source": "tune_remaining.json",
+      "foreign_snapshots": false
+    },
+    "3011": {
+      "candidate": "lt_0",
+      "latency_us": 750.9425000000001,
+      "configuration": [
+        66,
+        23,
+        1,
+        0,
+        0,
+        1,
+        35,
+        0,
+        3
+      ],
+      "workspace_bytes": 0,
+      "source": "tune_remaining.json",
+      "foreign_snapshots": false
+    },
+    "691": {
+      "candidate": "lt_0",
+      "latency_us": 183.20865,
+      "configuration": [
+        66,
+        23,
+        1,
+        0,
+        0,
+        1,
+        35,
+        0,
+        3
+      ],
+      "workspace_bytes": 0,
+      "source": "tune_remaining.json",
+      "foreign_snapshots": false
+    }
+  },
+  "exploratory_sol_score": 0.6703147883567633,
+  "exploratory_geometric_mean_latency_us": 350.4844055778978
+}

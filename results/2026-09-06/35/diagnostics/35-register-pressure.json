@@ -1,0 +1,620 @@
+{
+  "source_sha256": {
+    "kernel.py": "ae6e7d6efa97090c21c4bc7ff439b54371b2a4292d27eb69a1c22c97da8e0b5c"
+  },
+  "scope": "four configurations at two shapes; register-spill investigation",
+  "records": [
+    {
+      "workload": 6,
+      "axes": {
+        "batch_size": 131
+      },
+      "scale": 1,
+      "config": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "warps": 4
+      },
+      "started_at": 1788729482.4839644,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.002100354293361306,
+        "max_absolute_error": 1.2636184692382812e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.887276,
+      "finished_at": 1788729484.7201622
+    },
+    {
+      "workload": 6,
+      "axes": {
+        "batch_size": 131
+      },
+      "scale": 1,
+      "config": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "warps": 8
+      },
+      "started_at": 1788729484.7272463,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.002100354293361306,
+        "max_absolute_error": 1.2159347534179688e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 1.2794945,
+      "finished_at": 1788729485.726857
+    },
+    {
+      "workload": 6,
+      "axes": {
+        "batch_size": 131
+      },
+      "scale": 1,
+      "config": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "warps": 4
+      },
+      "started_at": 1788729485.7338593,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.002100354293361306,
+        "max_absolute_error": 1.2159347534179688e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.5115350000000001,
+      "finished_at": 1788729486.5377774
+    },
+    {
+      "workload": 6,
+      "axes": {
+        "batch_size": 131
+      },
+      "scale": 1,
+      "config": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 1,
+        "warps": 4
+      },
+      "started_at": 1788729486.5441468,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.002100354293361306,
+        "max_absolute_error": 1.2159347534179688e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 0.5189245,
+      "finished_at": 1788729487.3926942
+    },
+    {
+      "workload": 6,
+      "axes": {
+        "batch_size": 131
+      },
+      "scale": 32,
+      "config": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "warps": 4
+      },
+      "started_at": 1788729487.3981595,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.33731579780578613,
+        "max_absolute_error": 0.012939453125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "finished_at": 1788729487.400565
+    },
+    {
+      "workload": 6,
+      "axes": {
+        "batch_size": 131
+      },
+      "scale": 32,
+      "config": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "warps": 8
+      },
+      "started_at": 1788729487.4097114,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3021550178527832,
+        "max_absolute_error": 0.012451171875,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "finished_at": 1788729487.412413
+    },
+    {
+      "workload": 6,
+      "axes": {
+        "batch_size": 131
+      },
+      "scale": 32,
+      "config": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "warps": 4
+      },
+      "started_at": 1788729487.4176517,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3021550178527832,
+        "max_absolute_error": 0.012451171875,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "finished_at": 1788729487.4195921
+    },
+    {
+      "workload": 6,
+      "axes": {
+        "batch_size": 131
+      },
+      "scale": 32,
+      "config": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 1,
+        "warps": 4
+      },
+      "started_at": 1788729487.4237592,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.3021550178527832,
+        "max_absolute_error": 0.012451171875,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "finished_at": 1788729487.42563
+    },
+    {
+      "workload": 7,
+      "axes": {
+        "batch_size": 919
+      },
+      "scale": 1,
+      "config": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "warps": 4
+      },
+      "started_at": 1788729487.4452634,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.0030398366507142782,
+        "max_absolute_error": 1.811981201171875e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 4.19774,
+      "finished_at": 1788729487.6034386
+    },
+    {
+      "workload": 7,
+      "axes": {
+        "batch_size": 919
+      },
+      "scale": 1,
+      "config": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "warps": 8
+      },
+      "started_at": 1788729487.6111448,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.0030398366507142782,
+        "max_absolute_error": 1.6689300537109375e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 6.036429500000001,
+      "finished_at": 1788729488.5368865
+    },
+    {
+      "workload": 7,
+      "axes": {
+        "batch_size": 919
+      },
+      "scale": 1,
+      "config": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "warps": 4
+      },
+      "started_at": 1788729488.5432613,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.0030398366507142782,
+        "max_absolute_error": 1.6689300537109375e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 2.44109,
+      "finished_at": 1788729489.447542
+    },
+    {
+      "workload": 7,
+      "axes": {
+        "batch_size": 919
+      },
+      "scale": 1,
+      "config": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 1,
+        "warps": 4
+      },
+      "started_at": 1788729489.4538617,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.0030398366507142782,
+        "max_absolute_error": 1.6689300537109375e-05,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "latency_ms": 2.42381,
+      "finished_at": 1788729490.315614
+    },
+    {
+      "workload": 7,
+      "axes": {
+        "batch_size": 919
+      },
+      "scale": 32,
+      "config": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "warps": 4
+      },
+      "started_at": 1788729490.326962,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.7576671838760376,
+        "max_absolute_error": 0.0185546875,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "finished_at": 1788729490.3345344
+    },
+    {
+      "workload": 7,
+      "axes": {
+        "batch_size": 919
+      },
+      "scale": 32,
+      "config": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "warps": 8
+      },
+      "started_at": 1788729490.3438258,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.7715657353401184,
+        "max_absolute_error": 0.01708984375,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "finished_at": 1788729490.3515701
+    },
+    {
+      "workload": 7,
+      "axes": {
+        "batch_size": 919
+      },
+      "scale": 32,
+      "config": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "stages": 2,
+        "warps": 4
+      },
+      "started_at": 1788729490.3574264,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.7715657353401184,
+        "max_absolute_error": 0.01708984375,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "finished_at": 1788729490.3617926
+    },
+    {
+      "workload": 7,
+      "axes": {
+        "batch_size": 919
+      },
+      "scale": 32,
+      "config": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "stages": 1,
+        "warps": 4
+      },
+      "started_at": 1788729490.3672588,
+      "passed": true,
+      "error": {
+        "max_relative_error": 0.7715657353401184,
+        "max_absolute_error": 0.01708984375,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "finished_at": 1788729490.3712716
+    }
+  ],
+  "process_samples": [
+    {
+      "timestamp": "2026-09-06T21:18:01.586055+00:00",
+      "finished_at": "2026-09-06T21:18:01.694821+00:00",
+      "root_pid": 419359,
+      "contexts": [],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:18:02.195061+00:00",
+      "finished_at": "2026-09-06T21:18:02.275830+00:00",
+      "root_pid": 419359,
+      "contexts": [
+        {
+          "pid": 419359,
+          "process_name": "python",
+          "memory_mib": "1158",
+          "start_ticks": 97450095,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:18:02.913506+00:00",
+      "finished_at": "2026-09-06T21:18:03.005244+00:00",
+      "root_pid": 419359,
+      "contexts": [
+        {
+          "pid": 419359,
+          "process_name": "python",
+          "memory_mib": "1246",
+          "start_ticks": 97450095,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:18:03.505658+00:00",
+      "finished_at": "2026-09-06T21:18:03.584298+00:00",
+      "root_pid": 419359,
+      "contexts": [
+        {
+          "pid": 419359,
+          "process_name": "python",
+          "memory_mib": "1246",
+          "start_ticks": 97450095,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:18:04.084501+00:00",
+      "finished_at": "2026-09-06T21:18:04.169523+00:00",
+      "root_pid": 419359,
+      "contexts": [
+        {
+          "pid": 419359,
+          "process_name": "python",
+          "memory_mib": "1246",
+          "start_ticks": 97450095,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:18:04.669915+00:00",
+      "finished_at": "2026-09-06T21:18:04.771371+00:00",
+      "root_pid": 419359,
+      "contexts": [
+        {
+          "pid": 419359,
+          "process_name": "python",
+          "memory_mib": "1762",
+          "start_ticks": 97450095,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:18:05.273244+00:00",
+      "finished_at": "2026-09-06T21:18:05.358260+00:00",
+      "root_pid": 419359,
+      "contexts": [
+        {
+          "pid": 419359,
+          "process_name": "python",
+          "memory_mib": "1762",
+          "start_ticks": 97450095,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:18:05.858484+00:00",
+      "finished_at": "2026-09-06T21:18:05.935463+00:00",
+      "root_pid": 419359,
+      "contexts": [
+        {
+          "pid": 419359,
+          "process_name": "python",
+          "memory_mib": "1762",
+          "start_ticks": 97450095,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:18:06.435682+00:00",
+      "finished_at": "2026-09-06T21:18:06.537494+00:00",
+      "root_pid": 419359,
+      "contexts": [
+        {
+          "pid": 419359,
+          "process_name": "python",
+          "memory_mib": "1776",
+          "start_ticks": 97450095,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:18:07.037788+00:00",
+      "finished_at": "2026-09-06T21:18:07.118158+00:00",
+      "root_pid": 419359,
+      "contexts": [
+        {
+          "pid": 419359,
+          "process_name": "python",
+          "memory_mib": "1764",
+          "start_ticks": 97450095,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:18:07.623505+00:00",
+      "finished_at": "2026-09-06T21:18:07.726941+00:00",
+      "root_pid": 419359,
+      "contexts": [
+        {
+          "pid": 419359,
+          "process_name": "python",
+          "memory_mib": "2020",
+          "start_ticks": 97450095,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:18:08.227273+00:00",
+      "finished_at": "2026-09-06T21:18:08.302151+00:00",
+      "root_pid": 419359,
+      "contexts": [
+        {
+          "pid": 419359,
+          "process_name": "python",
+          "memory_mib": "2020",
+          "start_ticks": 97450095,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:18:08.802376+00:00",
+      "finished_at": "2026-09-06T21:18:08.884771+00:00",
+      "root_pid": 419359,
+      "contexts": [
+        {
+          "pid": 419359,
+          "process_name": "python",
+          "memory_mib": "2020",
+          "start_ticks": 97450095,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:18:09.385184+00:00",
+      "finished_at": "2026-09-06T21:18:09.492800+00:00",
+      "root_pid": 419359,
+      "contexts": [
+        {
+          "pid": 419359,
+          "process_name": "python",
+          "memory_mib": "2022",
+          "start_ticks": 97450095,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:18:09.993011+00:00",
+      "finished_at": "2026-09-06T21:18:10.075273+00:00",
+      "root_pid": 419359,
+      "contexts": [
+        {
+          "pid": 419359,
+          "process_name": "python",
+          "memory_mib": "2022",
+          "start_ticks": 97450095,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    }
+  ],
+  "foreign_samples": 0
+}

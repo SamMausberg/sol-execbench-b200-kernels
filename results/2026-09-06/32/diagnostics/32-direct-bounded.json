@@ -1,0 +1,2450 @@
+{
+  "scope": "bounded algorithm/geometry comparison; shifted arguments; cold L2; unlocked clocks",
+  "source_sha256": {
+    "kernel.py": "5ef2dd288edb2eac7d24049007269f80f3701e2b618ca0a0a005df76fbca311b",
+    "tune.py": "5199eeeded857f98ad486157977779bf62ba3a0d5079beba3af9edb7b6e1aa4b"
+  },
+  "lt_source_sha256": "d48128f08df79b5a3023fec90d803448de3627ee73761b6d13162651ca5cd4b6",
+  "records": [
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "library",
+      "config": {},
+      "started_at": 1788728425.7085483,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.072511,
+      "finished_at": 1788728426.2532823
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "id": 66,
+        "tile": 20,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35
+      },
+      "started_at": 1788728426.262679,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.02736,
+      "finished_at": 1788728426.3649228
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "id": 66,
+        "tile": 18,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35
+      },
+      "started_at": 1788728426.3737423,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.029376,
+      "finished_at": 1788728426.4680374
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "id": 66,
+        "tile": 29,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35
+      },
+      "started_at": 1788728426.4754798,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.028031,
+      "finished_at": 1788728426.5704947
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "id": 66,
+        "tile": 400,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35
+      },
+      "started_at": 1788728426.5781224,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.03008,
+      "finished_at": 1788728426.6733212
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "id": 66,
+        "tile": 16,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35
+      },
+      "started_at": 1788728426.6811821,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.040864,
+      "finished_at": 1788728426.7732625
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "id": 66,
+        "tile": 397,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35
+      },
+      "started_at": 1788728426.7837515,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.034944,
+      "finished_at": 1788728426.8643167
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 6,
+        "workspace_bytes": 0,
+        "id": 66,
+        "tile": 32,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35
+      },
+      "started_at": 1788728426.8722622,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.028384,
+      "finished_at": 1788728426.968321
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728426.97934,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.042176,
+      "finished_at": 1788728429.7173235
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728429.727947,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.032384,
+      "finished_at": 1788728430.6591945
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728430.6704957,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.027584,
+      "finished_at": 1788728431.7599378
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 128,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728431.7721114,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.033792,
+      "finished_at": 1788728432.65889
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 128,
+        "stages": 2,
+        "mma_v2": false,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728432.6684365,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.046527,
+      "finished_at": 1788728433.4815028
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 128,
+        "stages": 2,
+        "mma_v2": false,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728433.4930117,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.03568,
+      "finished_at": 1788728434.5228868
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 128,
+        "stages": 2,
+        "warps": 4,
+        "tma": true,
+        "tma_store": false
+      },
+      "started_at": 1788728434.5344386,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.027168,
+      "finished_at": 1788728435.397936
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 128,
+        "stages": 2,
+        "warps": 4,
+        "tma": true,
+        "tma_store": false
+      },
+      "started_at": 1788728435.4115787,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.0256,
+      "finished_at": 1788728436.3402963
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 128,
+        "stages": 1,
+        "warps": 4,
+        "tma": true,
+        "tma_store": false
+      },
+      "started_at": 1788728436.3531146,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.027008,
+      "finished_at": 1788728437.2103624
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 128,
+        "stages": 1,
+        "warps": 4,
+        "tma": true,
+        "tma_store": false
+      },
+      "started_at": 1788728437.2213333,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.025408,
+      "finished_at": 1788728438.3560584
+    },
+    {
+      "shape": [
+        32,
+        128
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 128,
+        "stages": 2,
+        "warps": 4,
+        "tma": true,
+        "tma_store": true
+      },
+      "started_at": 1788728438.3673365,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.024704,
+      "finished_at": 1788728439.1158156
+    },
+    {
+      "shape": [
+        2,
+        541
+      ],
+      "mode": "library",
+      "config": {},
+      "started_at": 1788728439.1290095,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.089248,
+      "finished_at": 1788728439.2153585
+    },
+    {
+      "shape": [
+        2,
+        541
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "id": 24,
+        "tile": 20,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 0,
+        "stages": 0
+      },
+      "started_at": 1788728439.227255,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.076512,
+      "finished_at": 1788728439.316528
+    },
+    {
+      "shape": [
+        2,
+        541
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "id": 24,
+        "tile": 23,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 0,
+        "stages": 0
+      },
+      "started_at": 1788728439.3253624,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.081056,
+      "finished_at": 1788728439.4276392
+    },
+    {
+      "shape": [
+        2,
+        541
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "id": 24,
+        "tile": 18,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 0,
+        "stages": 0
+      },
+      "started_at": 1788728439.4372754,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.078144,
+      "finished_at": 1788728439.5305486
+    },
+    {
+      "shape": [
+        2,
+        541
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "id": 24,
+        "tile": 17,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 0,
+        "stages": 0
+      },
+      "started_at": 1788728439.539323,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.081248,
+      "finished_at": 1788728439.6269555
+    },
+    {
+      "shape": [
+        2,
+        541
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "id": 24,
+        "tile": 15,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 0,
+        "stages": 0
+      },
+      "started_at": 1788728439.637428,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.087679,
+      "finished_at": 1788728439.740396
+    },
+    {
+      "shape": [
+        2,
+        541
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "id": 24,
+        "tile": 24,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 0,
+        "stages": 0
+      },
+      "started_at": 1788728439.750235,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.104063,
+      "finished_at": 1788728439.9318902
+    },
+    {
+      "shape": [
+        2,
+        541
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 6,
+        "workspace_bytes": 0,
+        "id": 24,
+        "tile": 11,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 0,
+        "stages": 7
+      },
+      "started_at": 1788728439.9416406,
+      "errors": {
+        "max_relative_error": 0.25,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.219967,
+      "finished_at": 1788728440.0529583
+    },
+    {
+      "shape": [
+        2,
+        541
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728440.0622725,
+      "errors": {
+        "max_relative_error": 0.2384185791015625,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.05488,
+      "finished_at": 1788728440.1895
+    },
+    {
+      "shape": [
+        2,
+        541
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728440.2040854,
+      "errors": {
+        "max_relative_error": 0.2384185791015625,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.043583,
+      "finished_at": 1788728441.0556555
+    },
+    {
+      "shape": [
+        2,
+        541
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728441.066869,
+      "errors": {
+        "max_relative_error": 0.2384185791015625,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.049472,
+      "finished_at": 1788728442.0119157
+    },
+    {
+      "shape": [
+        2,
+        541
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 128,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728442.0235538,
+      "errors": {
+        "max_relative_error": 0.2384185791015625,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.051231,
+      "finished_at": 1788728443.217688
+    },
+    {
+      "shape": [
+        2,
+        541
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 128,
+        "stages": 2,
+        "mma_v2": false,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728443.233053,
+      "errors": {
+        "max_relative_error": 0.2384185791015625,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.046976,
+      "finished_at": 1788728444.1828716
+    },
+    {
+      "shape": [
+        2,
+        541
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 128,
+        "stages": 2,
+        "mma_v2": false,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728444.195616,
+      "errors": {
+        "max_relative_error": 0.2384185791015625,
+        "max_absolute_error": 0.5,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.039679,
+      "finished_at": 1788728445.4888213
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "library",
+      "config": {},
+      "started_at": 1788728445.5029094,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.031808,
+      "finished_at": 1788728445.593359
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "id": 24,
+        "tile": 15,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 0,
+        "stages": 0
+      },
+      "started_at": 1788728445.6058242,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.008288,
+      "finished_at": 1788728445.6975148
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "id": 24,
+        "tile": 18,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 0,
+        "stages": 0
+      },
+      "started_at": 1788728445.711473,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.008608,
+      "finished_at": 1788728445.8096938
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "id": 24,
+        "tile": 20,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 0,
+        "stages": 0
+      },
+      "started_at": 1788728445.8204882,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.010367,
+      "finished_at": 1788728445.9074183
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "id": 24,
+        "tile": 17,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 0,
+        "stages": 0
+      },
+      "started_at": 1788728445.9182894,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.010816,
+      "finished_at": 1788728446.0030503
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "id": 24,
+        "tile": 24,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 0,
+        "stages": 0
+      },
+      "started_at": 1788728446.012898,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.012864,
+      "finished_at": 1788728446.1025205
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "id": 24,
+        "tile": 11,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 0,
+        "stages": 7
+      },
+      "started_at": 1788728446.1126735,
+      "errors": {
+        "max_relative_error": 0.010989011265337467,
+        "max_absolute_error": 0.0625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.012064,
+      "finished_at": 1788728446.1826637
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728446.194041,
+      "errors": {
+        "max_relative_error": 0.028985507786273956,
+        "max_absolute_error": 0.0625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.005152,
+      "finished_at": 1788728446.3360794
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728446.3504379,
+      "errors": {
+        "max_relative_error": 0.028985507786273956,
+        "max_absolute_error": 0.0625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.005504,
+      "finished_at": 1788728447.2708309
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728447.2828834,
+      "errors": {
+        "max_relative_error": 0.028985507786273956,
+        "max_absolute_error": 0.0625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.00592,
+      "finished_at": 1788728448.3898034
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 128,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728448.4011173,
+      "errors": {
+        "max_relative_error": 0.028985507786273956,
+        "max_absolute_error": 0.0625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.00576,
+      "finished_at": 1788728449.5744166
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 128,
+        "stages": 2,
+        "mma_v2": false,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728449.5863967,
+      "errors": {
+        "max_relative_error": 0.028985507786273956,
+        "max_absolute_error": 0.0625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.005408,
+      "finished_at": 1788728450.4821153
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 128,
+        "stages": 2,
+        "mma_v2": false,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728450.492091,
+      "errors": {
+        "max_relative_error": 0.028985507786273956,
+        "max_absolute_error": 0.0625,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.005888,
+      "finished_at": 1788728451.7701983
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "library",
+      "config": {},
+      "started_at": 1788728451.7915614,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.101151,
+      "finished_at": 1788728451.8804977
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 0,
+        "workspace_bytes": 0,
+        "id": 66,
+        "tile": 32,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35
+      },
+      "started_at": 1788728451.8918316,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.074368,
+      "finished_at": 1788728452.0099576
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 1,
+        "workspace_bytes": 0,
+        "id": 66,
+        "tile": 20,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35
+      },
+      "started_at": 1788728452.0235646,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.07232,
+      "finished_at": 1788728452.1220546
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 2,
+        "workspace_bytes": 0,
+        "id": 66,
+        "tile": 29,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35
+      },
+      "started_at": 1788728452.1335633,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.072927,
+      "finished_at": 1788728452.2311857
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 3,
+        "workspace_bytes": 0,
+        "id": 66,
+        "tile": 33,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35
+      },
+      "started_at": 1788728452.2422695,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.071265,
+      "finished_at": 1788728452.3613153
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 4,
+        "workspace_bytes": 0,
+        "id": 66,
+        "tile": 23,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35
+      },
+      "started_at": 1788728452.372492,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.07664,
+      "finished_at": 1788728452.4674613
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 5,
+        "workspace_bytes": 0,
+        "id": 66,
+        "tile": 18,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35
+      },
+      "started_at": 1788728452.478317,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.07568,
+      "finished_at": 1788728452.5806959
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 6,
+        "workspace_bytes": 0,
+        "id": 66,
+        "tile": 177,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35
+      },
+      "started_at": 1788728452.5922778,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.07984,
+      "finished_at": 1788728452.7134295
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "lt",
+      "config": {
+        "index": 7,
+        "workspace_bytes": 0,
+        "id": 66,
+        "tile": 16,
+        "split_k": 1,
+        "reduction": 0,
+        "swizzle": 0,
+        "custom": 3,
+        "stages": 35
+      },
+      "started_at": 1788728452.7270718,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.094208,
+      "finished_at": 1788728452.8375165
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728452.8510754,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.177791,
+      "finished_at": 1788728453.720675
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728453.731796,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.130208,
+      "finished_at": 1788728454.8030448
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 64,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728454.8166418,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.103423,
+      "finished_at": 1788728456.1143837
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 128,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728456.128097,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.108095,
+      "finished_at": 1788728457.438487
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 128,
+        "stages": 2,
+        "mma_v2": false,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728457.456644,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.135615,
+      "finished_at": 1788728458.8031783
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 128,
+        "stages": 2,
+        "mma_v2": false,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788728458.8190875,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.112063,
+      "finished_at": 1788728459.910005
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 128,
+        "stages": 2,
+        "warps": 4,
+        "tma": true,
+        "tma_store": false
+      },
+      "started_at": 1788728459.9269445,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.111839,
+      "finished_at": 1788728460.8385334
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 128,
+        "stages": 2,
+        "warps": 4,
+        "tma": true,
+        "tma_store": false
+      },
+      "started_at": 1788728460.8544886,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.121888,
+      "finished_at": 1788728461.9969993
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 128,
+        "bk": 128,
+        "stages": 1,
+        "warps": 4,
+        "tma": true,
+        "tma_store": false
+      },
+      "started_at": 1788728462.0138474,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.117792,
+      "finished_at": 1788728462.8504834
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 128,
+        "stages": 1,
+        "warps": 4,
+        "tma": true,
+        "tma_store": false
+      },
+      "started_at": 1788728462.8643553,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.101856,
+      "finished_at": 1788728463.7532532
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 128,
+        "stages": 2,
+        "warps": 4,
+        "tma": true,
+        "tma_store": true
+      },
+      "started_at": 1788728463.7699513,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.122079,
+      "finished_at": 1788728464.6044989
+    },
+    {
+      "shape": [
+        1,
+        2048
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 128,
+        "bn": 128,
+        "bk": 256,
+        "stages": 2,
+        "warps": 4,
+        "tma": true
+      },
+      "started_at": 1788728464.618325,
+      "passed": false,
+      "error": "OutOfResources: out of resource: shared memory, Required: 262176, Hardware limit: 232448. Reducing block sizes or `num_stages` may help.",
+      "finished_at": 1788728465.5125992
+    }
+  ],
+  "process_samples": [
+    {
+      "timestamp": "2026-09-06T21:00:25.096325+00:00",
+      "finished_at": "2026-09-06T21:00:25.169124+00:00",
+      "root_pid": 394199,
+      "contexts": [],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:26.169465+00:00",
+      "finished_at": "2026-09-06T21:00:26.250846+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1904",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:27.251179+00:00",
+      "finished_at": "2026-09-06T21:00:27.331477+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1898",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:28.331768+00:00",
+      "finished_at": "2026-09-06T21:00:28.426092+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1898",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:29.426436+00:00",
+      "finished_at": "2026-09-06T21:00:29.527178+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1898",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:30.527564+00:00",
+      "finished_at": "2026-09-06T21:00:30.637691+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1912",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:31.638072+00:00",
+      "finished_at": "2026-09-06T21:00:31.722030+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1900",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:32.722261+00:00",
+      "finished_at": "2026-09-06T21:00:32.816671+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1902",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:33.816922+00:00",
+      "finished_at": "2026-09-06T21:00:33.915281+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1904",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:34.915547+00:00",
+      "finished_at": "2026-09-06T21:00:35.008751+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1904",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:36.008979+00:00",
+      "finished_at": "2026-09-06T21:00:36.107464+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1906",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:37.107801+00:00",
+      "finished_at": "2026-09-06T21:00:37.208733+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1920",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:38.209005+00:00",
+      "finished_at": "2026-09-06T21:00:38.393029+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1914",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:39.404376+00:00",
+      "finished_at": "2026-09-06T21:00:39.529283+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1928",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:40.529759+00:00",
+      "finished_at": "2026-09-06T21:00:40.599466+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1922",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:41.599816+00:00",
+      "finished_at": "2026-09-06T21:00:41.675190+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1924",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:42.675471+00:00",
+      "finished_at": "2026-09-06T21:00:42.761913+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1924",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:43.762131+00:00",
+      "finished_at": "2026-09-06T21:00:43.857931+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1926",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:44.858425+00:00",
+      "finished_at": "2026-09-06T21:00:44.954791+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1926",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:45.955179+00:00",
+      "finished_at": "2026-09-06T21:00:46.056963+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1946",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:47.057379+00:00",
+      "finished_at": "2026-09-06T21:00:47.141491+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1940",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:48.141932+00:00",
+      "finished_at": "2026-09-06T21:00:48.229208+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1940",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:49.229464+00:00",
+      "finished_at": "2026-09-06T21:00:49.322007+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1942",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:50.322415+00:00",
+      "finished_at": "2026-09-06T21:00:50.403443+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1942",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:51.403661+00:00",
+      "finished_at": "2026-09-06T21:00:51.486918+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "1944",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:52.487264+00:00",
+      "finished_at": "2026-09-06T21:00:52.585769+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "2608",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:53.585991+00:00",
+      "finished_at": "2026-09-06T21:00:53.671746+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "2610",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:54.672037+00:00",
+      "finished_at": "2026-09-06T21:00:54.757198+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "2610",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:55.757654+00:00",
+      "finished_at": "2026-09-06T21:00:55.849500+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "2600",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:56.849745+00:00",
+      "finished_at": "2026-09-06T21:00:56.931061+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "2600",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:57.931750+00:00",
+      "finished_at": "2026-09-06T21:00:58.033019+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "2602",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:00:59.033293+00:00",
+      "finished_at": "2026-09-06T21:00:59.128454+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "2602",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:01:00.128780+00:00",
+      "finished_at": "2026-09-06T21:01:00.232884+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "2606",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:01:01.233286+00:00",
+      "finished_at": "2026-09-06T21:01:01.321307+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "2606",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:01:02.321529+00:00",
+      "finished_at": "2026-09-06T21:01:02.407607+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "2608",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:01:03.407894+00:00",
+      "finished_at": "2026-09-06T21:01:03.496278+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "2608",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:01:04.496506+00:00",
+      "finished_at": "2026-09-06T21:01:04.601143+00:00",
+      "root_pid": 394199,
+      "contexts": [
+        {
+          "pid": 394199,
+          "process_name": "python",
+          "memory_mib": "2622",
+          "start_ticks": 97335463,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    }
+  ]
+}

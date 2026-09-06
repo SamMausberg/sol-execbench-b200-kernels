@@ -7,3 +7,8 @@ kernels/043_mla_fused_qkv_rope_split/cute_mla.py linguist-vendored whitespace=-b
 kernels/048_fused_gate_up_projection_with_swiglu/cute_dual.py linguist-vendored whitespace=-blank-at-eof
 kernels/048_fused_gate_up_projection_with_swiglu/cute_paired.py linguist-vendored whitespace=-blank-at-eof
 kernels/048_fused_gate_up_projection_with_swiglu/history/dual_initial/cute_dual.py linguist-vendored whitespace=-blank-at-eof
+kernels/003_lm_head_projection_with_logit_slicing/cute_gemm.py linguist-vendored whitespace=-blank-at-eof
+kernels/032_attention_weights_matmul_with_value_projection/cute_av.py linguist-vendored whitespace=-blank-at-eof
+# Preserve exact compiler evidence, including inline-assembly whitespace.
+kernels/036_flux_output_norm_projection_chain/variants/bf16_expansion6_cute/reports/compiler/*.ptx linguist-generated whitespace=-blank-at-eol
+results/2026-09-06/36/diagnostics/shared-fragments/reports/compiler/*.ptx linguist-generated whitespace=-blank-at-eol

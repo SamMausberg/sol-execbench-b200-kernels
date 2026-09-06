@@ -1,0 +1,49 @@
+{
+  "author": "SamMausberg",
+  "definition": "032_attention_weights_matmul_with_value_projection",
+  "description": "Native FP32-accumulated BF16 batched GEMM writes heads directly into the sequence/hidden output layout using disjoint interleaved stores.",
+  "name": "032_av_cublas_direct_layout_v1",
+  "sources": [
+    {
+      "content": "// SPDX-License-Identifier: Apache-2.0\n// Batched products write each head into disjoint columns of the final output.\n#include <torch/extension.h>\n#include <c10/cuda/CUDAGuard.h>\n#include <c10/cuda/CUDAException.h>\n#include <c10/cuda/CUDAStream.h>\n#include <cublas_v2.h>\n\n#include <map>\n#include <memory>\n#include <mutex>\n\nvoid make_av_pointer_arrays(const void* weights, const void* values, void* output,\n                            void* pointers, int batch, int sequence, cudaStream_t stream);\n\nvoid check(cublasStatus_t status, const char* name) {\n    TORCH_CHECK(status == CUBLAS_STATUS_SUCCESS, name, \" failed with cuBLAS status \", int(status));\n}\n\nstruct Handle {\n    cublasHandle_t value = nullptr;\n    std::mutex mutex;\n    Handle() { check(cublasCreate(&value), \"create handle\"); }\n    ~Handle() { if (value) cublasDestroy(value); }\n};\n\nstd::map<int, std::unique_ptr<Handle>> handles;\nstd::mutex handles_mutex;\n\nHandle* handle_for(int device) {\n    std::lock_guard<std::mutex> lock(handles_mutex);\n    auto& entry = handles[device];\n    if (!entry) entry = std::make_unique<Handle>();\n    return entry.get();\n}\n\ntorch::Tensor run(const torch::Tensor& attn_weights, const torch::Tensor& value_states) {\n    at::NoGradGuard no_grad;\n    TORCH_CHECK(attn_weights.is_cuda() && value_states.device() == attn_weights.device(),\n                \"expected tensors on one CUDA device\");\n    TORCH_CHECK(attn_weights.scalar_type() == at::kBFloat16 && value_states.scalar_type() == at::kBFloat16,\n                \"expected BF16 inputs\");\n    TORCH_CHECK(attn_weights.dim() == 4 && value_states.dim() == 4 && attn_weights.size(1) == 40,\n                \"expected attention tensors with 40 heads\");\n    const int batch = attn_weights.size(0), sequence = attn_weights.size(2);\n    TORCH_CHECK(attn_weights.size(3) == sequence && value_states.size(0) == batch &&\n                value_states.size(1) == 40 && value_states.size(2) == sequence && value_states.size(3) == 128,\n                \"invalid attention/value shape\");\n    if (!attn_weights.is_contiguous() || !value_states.is_contiguous() ||\n        reinterpret_cast<uintptr_t>(attn_weights.data_ptr()) % 16 ||\n        reinterpret_cast<uintptr_t>(value_states.data_ptr()) % 16) {\n        return at::matmul(attn_weights, value_states).transpose(1, 2).reshape({batch, sequence, 5120});\n    }\n    c10::cuda::CUDAGuard guard(attn_weights.device());\n    auto output = torch::empty({batch, sequence, 5120}, attn_weights.options());\n    auto workspace = torch::empty({32 * 1024 * 1024}, attn_weights.options().dtype(at::kByte));\n    auto* state = handle_for(attn_weights.get_device());\n    std::lock_guard<std::mutex> lock(state->mutex);\n    const auto stream = c10::cuda::getCurrentCUDAStream(attn_weights.get_device()).stream();\n    check(cublasSetStream(state->value, stream), \"set stream\");\n    check(cublasSetWorkspace(state->value, workspace.data_ptr(), workspace.numel()), \"set workspace\");\n    const float alpha = 1.0f, beta = 0.0f;\n    // Column-major [128, S] = V.T @ attention.T. The large C leading\n    // dimension interleaves heads while keeping their actual elements disjoint.\n    if (batch == 1) {\n        check(cublasGemmStridedBatchedEx(\n            state->value, CUBLAS_OP_N, CUBLAS_OP_N, 128, sequence, sequence,\n            &alpha, value_states.data_ptr(), CUDA_R_16BF, 128, int64_t(sequence) * 128,\n            attn_weights.data_ptr(), CUDA_R_16BF, sequence, int64_t(sequence) * sequence,\n            &beta, output.data_ptr(), CUDA_R_16BF, 5120, 128, 40,\n            CUBLAS_COMPUTE_32F, CUBLAS_GEMM_DEFAULT_TENSOR_OP), \"strided batched AV\");\n    } else {\n        auto pointers = torch::empty({3, batch * 40}, attn_weights.options().dtype(at::kLong));\n        make_av_pointer_arrays(attn_weights.data_ptr(), value_states.data_ptr(), output.data_ptr(),\n                               pointers.data_ptr(), batch, sequence, stream);\n        C10_CUDA_KERNEL_LAUNCH_CHECK();\n        auto* table = pointers.data_ptr<int64_t>();\n        check(cublasGemmBatchedEx(\n            state->value, CUBLAS_OP_N, CUBLAS_OP_N, 128, sequence, sequence,\n            &alpha, reinterpret_cast<const void* const*>(table), CUDA_R_16BF, 128,\n            reinterpret_cast<const void* const*>(table + batch * 40), CUDA_R_16BF, sequence,\n            &beta, reinterpret_cast<void* const*>(table + 2 * batch * 40), CUDA_R_16BF, 5120,\n            batch * 40, CUBLAS_COMPUTE_32F, CUBLAS_GEMM_DEFAULT_TENSOR_OP), \"pointer batched AV\");\n    }\n    return output;\n}\n\nPYBIND11_MODULE(TORCH_EXTENSION_NAME, module) {\n    module.def(\"run\", &run);\n}\n",
+      "path": "binding.cpp"
+    },
+    {
+      "content": "// SPDX-License-Identifier: Apache-2.0\n#include <cuda_runtime.h>\n#include <cstdint>\n\n__global__ void pointer_arrays(const uint16_t* weights, const uint16_t* values,\n                               uint16_t* output, uintptr_t* pointers,\n                               int combined_heads, int sequence) {\n    const int combined_head = blockIdx.x * blockDim.x + threadIdx.x;\n    if (combined_head >= combined_heads) return;\n    const int batch = combined_head / 40, head = combined_head % 40;\n    pointers[combined_head] = reinterpret_cast<uintptr_t>(values + int64_t(combined_head) * sequence * 128);\n    pointers[combined_heads + combined_head] = reinterpret_cast<uintptr_t>(weights + int64_t(combined_head) * sequence * sequence);\n    pointers[2 * combined_heads + combined_head] = reinterpret_cast<uintptr_t>(output + int64_t(batch) * sequence * 5120 + head * 128);\n}\n\nvoid make_av_pointer_arrays(const void* weights, const void* values, void* output,\n                            void* pointers, int batch, int sequence, cudaStream_t stream) {\n    pointer_arrays<<<(batch * 40 + 255) / 256, 256, 0, stream>>>(\n        static_cast<const uint16_t*>(weights), static_cast<const uint16_t*>(values),\n        static_cast<uint16_t*>(output), static_cast<uintptr_t*>(pointers), batch * 40, sequence);\n}\n",
+      "path": "pointers.cu"
+    }
+  ],
+  "spec": {
+    "binding": "torch",
+    "compile_options": {
+      "cflags": [
+        "-O3",
+        "-std=c++17",
+        "-I/venv/lib/python3.12/site-packages/nvidia/cu13/include",
+        "-I/usr/local/cuda/include"
+      ],
+      "cuda_cflags": [
+        "-O3",
+        "-std=c++17"
+      ],
+      "ld_flags": [
+        "-L/venv/lib/python3.12/site-packages/nvidia/cu13/lib",
+        "-L/usr/local/cuda/lib64",
+        "-l:libcublas.so.13",
+        "-l:libcudart.so.13"
+      ]
+    },
+    "dependencies": [
+      "torch",
+      "cublas"
+    ],
+    "destination_passing_style": false,
+    "entry_point": "binding.cpp::run",
+    "languages": [
+      "cuda_cpp"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "author": "SamMausberg",
+  "definition": "032_attention_weights_matmul_with_value_projection",
+  "description": "FP32-accumulated BF16 cuBLASLt batched GEMM with fresh pointer arrays and direct interleaved output stores.",
+  "name": "032_av_cublaslt_direct_layout_v1",
+  "sources": [
+    {
+      "path": "binding.cpp"
+    },
+    {
+      "path": "pointers.cu"
+    }
+  ],
+  "spec": {
+    "binding": "torch",
+    "compile_options": {
+      "cflags": [
+        "-O3",
+        "-std=c++17",
+        "-I/venv/lib/python3.12/site-packages/nvidia/cu13/include",
+        "-I/usr/local/cuda/include"
+      ],
+      "cuda_cflags": [
+        "-O3",
+        "-std=c++17"
+      ],
+      "ld_flags": [
+        "-L/venv/lib/python3.12/site-packages/nvidia/cu13/lib",
+        "-L/usr/local/cuda/lib64",
+        "-l:libcublasLt.so.13",
+        "-l:libcudart.so.13"
+      ]
+    },
+    "dependencies": [
+      "torch",
+      "cublas"
+    ],
+    "destination_passing_style": false,
+    "entry_point": "binding.cpp::run",
+    "languages": [
+      "cuda_cpp"
+    ],
+    "target_hardware": [
+      "B200"
+    ]
+  }
+}

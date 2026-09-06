@@ -1,0 +1,662 @@
+{
+  "scope": "bounded algorithm/geometry comparison; shifted arguments; cold L2; unlocked clocks",
+  "source_sha256": {
+    "kernel.py": "5ef2dd288edb2eac7d24049007269f80f3701e2b618ca0a0a005df76fbca311b",
+    "tune.py": "f57916ae01740165ab4738cab414f0ff9dcca40fbcef56f95ce055e71799224e"
+  },
+  "lt_source_sha256": null,
+  "records": [
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "mma_v2": true,
+        "warps": 2,
+        "tma": false
+      },
+      "started_at": 1788729561.739122,
+      "errors": {
+        "max_relative_error": 0.007575757801532745,
+        "max_absolute_error": 0.125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.005376,
+      "finished_at": 1788729564.4542336
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 16,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788729564.459327,
+      "errors": {
+        "max_relative_error": 0.007575757801532745,
+        "max_absolute_error": 0.125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.005056,
+      "finished_at": 1788729565.1636837
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 16,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788729565.1703563,
+      "errors": {
+        "max_relative_error": 0.007575757801532745,
+        "max_absolute_error": 0.125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.005376,
+      "finished_at": 1788729565.7904818
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "mma_v2": true,
+        "warps": 2,
+        "tma": false
+      },
+      "started_at": 1788729565.7972105,
+      "errors": {
+        "max_relative_error": 0.007575757801532745,
+        "max_absolute_error": 0.125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.005376,
+      "finished_at": 1788729566.5507472
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 128,
+        "stages": 2,
+        "mma_v2": true,
+        "warps": 2,
+        "tma": false
+      },
+      "started_at": 1788729566.5565834,
+      "errors": {
+        "max_relative_error": 0.007575757801532745,
+        "max_absolute_error": 0.125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.006528,
+      "finished_at": 1788729567.4113352
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 1,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788729567.4186344,
+      "errors": {
+        "max_relative_error": 0.007575757801532745,
+        "max_absolute_error": 0.125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.006336,
+      "finished_at": 1788729568.0151894
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788729568.1185465,
+      "errors": {
+        "max_relative_error": 0.007575757801532745,
+        "max_absolute_error": 0.125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.005568,
+      "finished_at": 1788729568.8542316
+    },
+    {
+      "shape": [
+        1,
+        131
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788729568.8617513,
+      "errors": {
+        "max_relative_error": 0.007575757801532745,
+        "max_absolute_error": 0.125,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": false,
+      "passed": true,
+      "latency_ms": 0.005664,
+      "finished_at": 1788729569.5281487
+    },
+    {
+      "shape": [
+        1,
+        256
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "mma_v2": true,
+        "warps": 2,
+        "tma": false
+      },
+      "started_at": 1788729569.5430984,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.00704,
+      "finished_at": 1788729570.234691
+    },
+    {
+      "shape": [
+        1,
+        256
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 16,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788729570.2415037,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.007552,
+      "finished_at": 1788729571.0505013
+    },
+    {
+      "shape": [
+        1,
+        256
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 16,
+        "bn": 128,
+        "bk": 32,
+        "stages": 3,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788729571.0581195,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.007424,
+      "finished_at": 1788729571.7666073
+    },
+    {
+      "shape": [
+        1,
+        256
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "mma_v2": true,
+        "warps": 2,
+        "tma": false
+      },
+      "started_at": 1788729571.7735415,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.006849,
+      "finished_at": 1788729572.5344026
+    },
+    {
+      "shape": [
+        1,
+        256
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 128,
+        "stages": 2,
+        "mma_v2": true,
+        "warps": 2,
+        "tma": false
+      },
+      "started_at": 1788729572.5414886,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.006591,
+      "finished_at": 1788729573.5761638
+    },
+    {
+      "shape": [
+        1,
+        256
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 64,
+        "bk": 64,
+        "stages": 1,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788729573.5832617,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.00784,
+      "finished_at": 1788729574.2136304
+    },
+    {
+      "shape": [
+        1,
+        256
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 32,
+        "bn": 128,
+        "bk": 64,
+        "stages": 2,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788729574.2200453,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.007424,
+      "finished_at": 1788729575.0454838
+    },
+    {
+      "shape": [
+        1,
+        256
+      ],
+      "mode": "triton",
+      "config": {
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "stages": 2,
+        "mma_v2": true,
+        "warps": 4,
+        "tma": false
+      },
+      "started_at": 1788729575.051988,
+      "errors": {
+        "max_relative_error": 0.0,
+        "max_absolute_error": 0.0,
+        "has_nan": false,
+        "has_inf": false,
+        "extra": null
+      },
+      "bitwise_equal": true,
+      "passed": true,
+      "latency_ms": 0.007264,
+      "finished_at": 1788729575.8815029
+    }
+  ],
+  "process_samples": [
+    {
+      "timestamp": "2026-09-06T21:19:20.118851+00:00",
+      "finished_at": "2026-09-06T21:19:21.169092+00:00",
+      "root_pid": 420797,
+      "contexts": [],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:19:22.178781+00:00",
+      "finished_at": "2026-09-06T21:19:22.267751+00:00",
+      "root_pid": 420797,
+      "contexts": [
+        {
+          "pid": 420797,
+          "process_name": "python",
+          "memory_mib": "792",
+          "start_ticks": 97456907,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:19:23.268056+00:00",
+      "finished_at": "2026-09-06T21:19:23.416220+00:00",
+      "root_pid": 420797,
+      "contexts": [
+        {
+          "pid": 420797,
+          "process_name": "python",
+          "memory_mib": "792",
+          "start_ticks": 97456907,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:19:24.416585+00:00",
+      "finished_at": "2026-09-06T21:19:24.497643+00:00",
+      "root_pid": 420797,
+      "contexts": [
+        {
+          "pid": 420797,
+          "process_name": "python",
+          "memory_mib": "1074",
+          "start_ticks": 97456907,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:19:25.498087+00:00",
+      "finished_at": "2026-09-06T21:19:25.572692+00:00",
+      "root_pid": 420797,
+      "contexts": [
+        {
+          "pid": 420797,
+          "process_name": "python",
+          "memory_mib": "1074",
+          "start_ticks": 97456907,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:19:26.578155+00:00",
+      "finished_at": "2026-09-06T21:19:26.670749+00:00",
+      "root_pid": 420797,
+      "contexts": [
+        {
+          "pid": 420797,
+          "process_name": "python",
+          "memory_mib": "1076",
+          "start_ticks": 97456907,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:19:27.671126+00:00",
+      "finished_at": "2026-09-06T21:19:27.749098+00:00",
+      "root_pid": 420797,
+      "contexts": [
+        {
+          "pid": 420797,
+          "process_name": "python",
+          "memory_mib": "1078",
+          "start_ticks": 97456907,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:19:28.749363+00:00",
+      "finished_at": "2026-09-06T21:19:28.920184+00:00",
+      "root_pid": 420797,
+      "contexts": [
+        {
+          "pid": 420797,
+          "process_name": "python",
+          "memory_mib": "1080",
+          "start_ticks": 97456907,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:19:29.920451+00:00",
+      "finished_at": "2026-09-06T21:19:29.995993+00:00",
+      "root_pid": 420797,
+      "contexts": [
+        {
+          "pid": 420797,
+          "process_name": "python",
+          "memory_mib": "1080",
+          "start_ticks": 97456907,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:19:30.996350+00:00",
+      "finished_at": "2026-09-06T21:19:31.099584+00:00",
+      "root_pid": 420797,
+      "contexts": [
+        {
+          "pid": 420797,
+          "process_name": "python",
+          "memory_mib": "1082",
+          "start_ticks": 97456907,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:19:32.100154+00:00",
+      "finished_at": "2026-09-06T21:19:32.179358+00:00",
+      "root_pid": 420797,
+      "contexts": [
+        {
+          "pid": 420797,
+          "process_name": "python",
+          "memory_mib": "1084",
+          "start_ticks": 97456907,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:19:33.179650+00:00",
+      "finished_at": "2026-09-06T21:19:33.257413+00:00",
+      "root_pid": 420797,
+      "contexts": [
+        {
+          "pid": 420797,
+          "process_name": "python",
+          "memory_mib": "1084",
+          "start_ticks": 97456907,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:19:34.257734+00:00",
+      "finished_at": "2026-09-06T21:19:34.406656+00:00",
+      "root_pid": 420797,
+      "contexts": [
+        {
+          "pid": 420797,
+          "process_name": "python",
+          "memory_mib": "1086",
+          "start_ticks": 97456907,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "timestamp": "2026-09-06T21:19:35.406971+00:00",
+      "finished_at": "2026-09-06T21:19:35.484441+00:00",
+      "root_pid": 420797,
+      "contexts": [
+        {
+          "pid": 420797,
+          "process_name": "python",
+          "memory_mib": "1088",
+          "start_ticks": 97456907,
+          "campaign_descendant": true
+        }
+      ],
+      "error": null
+    }
+  ]
+}

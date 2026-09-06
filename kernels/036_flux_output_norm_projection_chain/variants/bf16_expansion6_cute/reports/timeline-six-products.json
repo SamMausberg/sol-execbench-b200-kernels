@@ -1,0 +1,54 @@
+{
+  "kernel_sha256": "66c5f31a742ff6f29ec118b0f6c6a51bfba476377121cb1e9419c4fd04d41467",
+  "scope": "three cold-cache timeline samples; fixed input addresses; exploratory only",
+  "samples": [
+    {
+      "kernels": [
+        {
+          "name": "kernel_cutlass_products_kernel_tensorptrf32gmemalign16o8192307230721_tensorptrf32gmemalign16o64307230721_tensorptrf32gmemalign16o468192643145728524288641_TiledMMA_ThrLayoutVMNK11110000_Pe_0",
+          "duration_us": 113.856
+        },
+        {
+          "name": "kernel_cutlass_reduce_kernel_tensorptrf32gmemalign16o468192643145728524288641_tensorptrf32gmemalign16o641_tensorptrf32gmemalign16o819264641_1",
+          "duration_us": 7.616
+        }
+      ],
+      "span_us": 123.936,
+      "gaps_us": [
+        2.464
+      ]
+    },
+    {
+      "kernels": [
+        {
+          "name": "kernel_cutlass_products_kernel_tensorptrf32gmemalign16o8192307230721_tensorptrf32gmemalign16o64307230721_tensorptrf32gmemalign16o468192643145728524288641_TiledMMA_ThrLayoutVMNK11110000_Pe_0",
+          "duration_us": 112.928
+        },
+        {
+          "name": "kernel_cutlass_reduce_kernel_tensorptrf32gmemalign16o468192643145728524288641_tensorptrf32gmemalign16o641_tensorptrf32gmemalign16o819264641_1",
+          "duration_us": 7.776
+        }
+      ],
+      "span_us": 121.856,
+      "gaps_us": [
+        1.152
+      ]
+    },
+    {
+      "kernels": [
+        {
+          "name": "kernel_cutlass_products_kernel_tensorptrf32gmemalign16o8192307230721_tensorptrf32gmemalign16o64307230721_tensorptrf32gmemalign16o468192643145728524288641_TiledMMA_ThrLayoutVMNK11110000_Pe_0",
+          "duration_us": 113.247
+        },
+        {
+          "name": "kernel_cutlass_reduce_kernel_tensorptrf32gmemalign16o468192643145728524288641_tensorptrf32gmemalign16o641_tensorptrf32gmemalign16o819264641_1",
+          "duration_us": 8.0
+        }
+      ],
+      "span_us": 123.679,
+      "gaps_us": [
+        2.432
+      ]
+    }
+  ]
+}

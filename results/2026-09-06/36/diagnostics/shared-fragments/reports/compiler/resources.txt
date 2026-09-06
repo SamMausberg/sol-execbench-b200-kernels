@@ -1,0 +1,8 @@
+
+Resource usage:
+ Common:
+  GLOBAL:0
+ Function kernel_cutlass_reduce_kernel_tensorptrf32gmemalign16o468192643145728524288641_tensorptrf32gmemalign16o641_tensorptrf32gmemalign16o819264641_1:
+  REG:32 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:920 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function kernel_cutlass_products_kernel_tensorptrf32gmemalign16o8192307230721_tensorptrf32gmemalign16o64307230721_tensorptrf32gmemalign16o468192643145728524288641_TiledMMA_ThrLayoutVMNK11110000_Pe_0:
+  REG:209 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:923 TEXTURE:0 SURFACE:0 SAMPLER:0

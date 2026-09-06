@@ -1,0 +1,926 @@
+[
+  {
+    "index": 3,
+    "seed": 2027,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 128,
+      "logits_to_keep": 128
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        262144,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      1,
+      128,
+      102400
+    ],
+    "output_stride": [
+      13107200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 3,
+    "seed": 2028,
+    "variant": "zero_input",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 128,
+      "logits_to_keep": 128
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        262144,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      1,
+      128,
+      102400
+    ],
+    "output_stride": [
+      13107200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 3,
+    "seed": 2029,
+    "variant": "zero_weights",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 128,
+      "logits_to_keep": 128
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        262144,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      1,
+      128,
+      102400
+    ],
+    "output_stride": [
+      13107200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 3,
+    "seed": 2030,
+    "variant": "basis",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 128,
+      "logits_to_keep": 128
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        262144,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      1,
+      128,
+      102400
+    ],
+    "output_stride": [
+      13107200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 3,
+    "seed": 2031,
+    "variant": "cancellation",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 128,
+      "logits_to_keep": 128
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        262144,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      1,
+      128,
+      102400
+    ],
+    "output_stride": [
+      13107200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 3,
+    "seed": 2032,
+    "variant": "strided",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 128,
+      "logits_to_keep": 128
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        524288,
+        4096,
+        2
+      ],
+      [
+        4096,
+        2
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      1,
+      128,
+      102400
+    ],
+    "output_stride": [
+      13107200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 3,
+    "seed": 2033,
+    "variant": "shifted",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 128,
+      "logits_to_keep": 128
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        262144,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      128,
+      102400
+    ],
+    "output_stride": [
+      13107200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 6,
+    "seed": 2027,
+    "variant": "random",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 293,
+      "logits_to_keep": 293
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        600064,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      1,
+      293,
+      102400
+    ],
+    "output_stride": [
+      30003200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 6,
+    "seed": 2028,
+    "variant": "zero_input",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 293,
+      "logits_to_keep": 293
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        600064,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      1,
+      293,
+      102400
+    ],
+    "output_stride": [
+      30003200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 6,
+    "seed": 2029,
+    "variant": "zero_weights",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 293,
+      "logits_to_keep": 293
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        600064,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      1,
+      293,
+      102400
+    ],
+    "output_stride": [
+      30003200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 6,
+    "seed": 2030,
+    "variant": "basis",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 293,
+      "logits_to_keep": 293
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        600064,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      1,
+      293,
+      102400
+    ],
+    "output_stride": [
+      30003200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 6,
+    "seed": 2031,
+    "variant": "cancellation",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 293,
+      "logits_to_keep": 293
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        600064,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      1,
+      293,
+      102400
+    ],
+    "output_stride": [
+      30003200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 6,
+    "seed": 2032,
+    "variant": "strided",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 293,
+      "logits_to_keep": 293
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        1200128,
+        4096,
+        2
+      ],
+      [
+        4096,
+        2
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      1,
+      293,
+      102400
+    ],
+    "output_stride": [
+      30003200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 6,
+    "seed": 2033,
+    "variant": "shifted",
+    "axes": {
+      "batch_size": 1,
+      "seq_len": 293,
+      "logits_to_keep": 293
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        600064,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      16,
+      16
+    ],
+    "output_shape": [
+      1,
+      293,
+      102400
+    ],
+    "output_stride": [
+      30003200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 2,
+    "seed": 2027,
+    "variant": "random",
+    "axes": {
+      "batch_size": 64,
+      "seq_len": 128,
+      "logits_to_keep": 128
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        262144,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      64,
+      128,
+      102400
+    ],
+    "output_stride": [
+      13107200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 2,
+    "seed": 2028,
+    "variant": "zero_input",
+    "axes": {
+      "batch_size": 64,
+      "seq_len": 128,
+      "logits_to_keep": 128
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        262144,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      64,
+      128,
+      102400
+    ],
+    "output_stride": [
+      13107200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 2,
+    "seed": 2029,
+    "variant": "zero_weights",
+    "axes": {
+      "batch_size": 64,
+      "seq_len": 128,
+      "logits_to_keep": 128
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        262144,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      64,
+      128,
+      102400
+    ],
+    "output_stride": [
+      13107200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 2,
+    "seed": 2030,
+    "variant": "basis",
+    "axes": {
+      "batch_size": 64,
+      "seq_len": 128,
+      "logits_to_keep": 128
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        262144,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      64,
+      128,
+      102400
+    ],
+    "output_stride": [
+      13107200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 2,
+    "seed": 2031,
+    "variant": "cancellation",
+    "axes": {
+      "batch_size": 64,
+      "seq_len": 128,
+      "logits_to_keep": 128
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        262144,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      64,
+      128,
+      102400
+    ],
+    "output_stride": [
+      13107200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 2,
+    "seed": 2032,
+    "variant": "strided",
+    "axes": {
+      "batch_size": 64,
+      "seq_len": 128,
+      "logits_to_keep": 128
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        524288,
+        4096,
+        2
+      ],
+      [
+        4096,
+        2
+      ]
+    ],
+    "input_alignment_mod_256": [
+      0,
+      0
+    ],
+    "output_shape": [
+      64,
+      128,
+      102400
+    ],
+    "output_stride": [
+      13107200,
+      102400,
+      1
+    ]
+  },
+  {
+    "index": 2,
+    "seed": 2033,
+    "variant": "shifted",
+    "axes": {
+      "batch_size": 64,
+      "seq_len": 128,
+      "logits_to_keep": 128
+    },
+    "passed": true,
+    "inputs_unchanged": true,
+    "correctness": {
+      "max_relative_error": 0.0,
+      "max_absolute_error": 0.0,
+      "has_nan": false,
+      "has_inf": false,
+      "extra": null
+    },
+    "input_strides": [
+      [
+        262144,
+        2048,
+        1
+      ],
+      [
+        2048,
+        1
+      ]
+    ],
+    "input_alignment_mod_256": [
+      16,
+      16
+    ],
+    "output_shape": [
+      64,
+      128,
+      102400
+    ],
+    "output_stride": [
+      13107200,
+      102400,
+      1
+    ]
+  }
+]

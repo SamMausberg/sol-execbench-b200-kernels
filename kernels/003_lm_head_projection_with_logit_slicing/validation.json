@@ -1,0 +1,157 @@
+{
+  "problem_id": 3,
+  "problem_name": "003_lm_head_projection_with_logit_slicing",
+  "status": "experimental",
+  "passed": true,
+  "official_workloads": 16,
+  "full_harness_trials": 1,
+  "accepted_performance_trials": 0,
+  "timing_valid_for_ranking": false,
+  "clock_mode": "unlocked",
+  "evaluation_stack": "v1.1",
+  "evaluator_revision": "a9fa0804c793d438e70850c33fe34426e66d53dd",
+  "contract_sha256": "04e6befa7f384cc4e63d4e87a6afe55d87882728b8b77ab10e91a8e13f9635cd",
+  "submission_sha256": "7696f3e4e898fc78b21e0fc88b327b3815279974a0beeacafff0ce4d1f9a4cb3",
+  "source_sha256": {
+    "binding.cpp": "7fa0fbb45a888a2c1e24129734cb61f9d281632f17d137ffcfe4886db31e0c97",
+    "cublaslt_bridge.h": "bbc3bcfd6089ebac2fcb50820fd3b28c8557660a20739e52403c27b56382d71d"
+  },
+  "local_sol_score": null,
+  "observed_unqualified_sol_score": 0.6705828071643353,
+  "observed_unqualified_geometric_mean_latency_us": 350.2513935617788,
+  "timing_limitations": [
+    "B200 clocks were unlocked and differ from the hosted 1500 MHz setup.",
+    "Only one diagnostic full trial was run; no repeated performance qualification was requested for this narrow margin."
+  ],
+  "gpu_process_monitor": {
+    "path": "kernels/003_lm_head_projection_with_logit_slicing/gpu_processes_full.json",
+    "sha256": "c4a0525c64cf7591d8c878ce3f71558f471721015f7cb9e3458a4d1bee773798",
+    "foreign_process_samples_during_lock": 0,
+    "no_foreign_context_observed": true,
+    "sampling_limitation": "Sub-sample overlap cannot be excluded."
+  },
+  "summary_path": ".work/runs/3/20260906T212617.238544Z-lm-head-final-7696f3e4e898/summary.json",
+  "summary_sha256": "c2c7cdb0c0abb92057151980fe166568f5aa3c9b887c6aa0d70d4311e9d5b347",
+  "trace_sha256": {
+    "trial-1.jsonl": "292d3d00bb42997bb38b42b775baf99f07395ded06b5f44ec274aeb7493a92fc"
+  },
+  "leaderboard_snapshot_score": 0.536161,
+  "unqualified_score_exceeds_snapshot": true,
+  "uniform_latency_increase_to_snapshot_leader_percent": 6.193941898625921,
+  "local_lead": null,
+  "hosted_rank_confirmed": false,
+  "recommend_submission": false,
+  "reason": "All 16 official workloads and 21 value/layout/ownership checks passed. The raw score exceeds the snapshot, but approximately 6% slower latencies erase that advantage; unlocked clocks prevent a confident submission recommendation.",
+  "additional_input_variations": {
+    "cases": 21,
+    "official_tolerance_passed": 21,
+    "inputs_unchanged_cases": 21,
+    "reports": [
+      "variation.json"
+    ],
+    "report_sha256": "3682e823eb854713f1ef7dcbc8a66816d0260e7917beaf9d906686af6af1f774",
+    "description": "M128, M293 and M8192 with fresh random values, zero inputs, zero weights, basis inputs, cancellation, strided tensors and addresses shifted by 16 bytes."
+  },
+  "algorithm_selection_report": {
+    "path": "kernels/003_lm_head_projection_with_logit_slicing/selected_algorithms.json",
+    "sha256": "55a152fe442b9977fa4eba495838f1fa2b85420da55f59e54441e3d9ef8f01b6",
+    "algorithm_fields": [
+      "ID",
+      "tile",
+      "splitK",
+      "reduction",
+      "swizzle",
+      "custom",
+      "stages",
+      "inner_shape",
+      "cluster_shape"
+    ],
+    "input_values_cached": false,
+    "output_values_cached": false,
+    "workspace_bytes": 0
+  },
+  "tuning_reports": {
+    "tune_initial.json": "e377d4f14988a848f11c80b3f0ad7ca27b3f1de7a54bcc70146df00198f27815",
+    "tune_transposed.json": "c73c83997b6166d3dc37e9fd6419af7884cfc3a85fea11c308aaefcc3b6c1a42",
+    "tune_remaining.json": "a30bdfbe7665a2e8d2719d94cfc5fbfd306fe5b68c1d8f537f4ad9f9723409a0"
+  },
+  "archive_index": "results/2026-09-06/3/archive-index.json",
+  "archived_runs": [
+    {
+      "run_directory": ".work/runs/3/20260906T212617.238544Z-lm-head-final-7696f3e4e898",
+      "archived_run": "results/2026-09-06/3/20260906T212617.238544Z-lm-head-final-7696f3e4e898",
+      "summary_sha256": "c2c7cdb0c0abb92057151980fe166568f5aa3c9b887c6aa0d70d4311e9d5b347",
+      "submission_sha256": "7696f3e4e898fc78b21e0fc88b327b3815279974a0beeacafff0ce4d1f9a4cb3",
+      "source_sha256": {
+        "binding.cpp": "7fa0fbb45a888a2c1e24129734cb61f9d281632f17d137ffcfe4886db31e0c97",
+        "cublaslt_bridge.h": "bbc3bcfd6089ebac2fcb50820fd3b28c8557660a20739e52403c27b56382d71d"
+      },
+      "passed": true,
+      "selected_workloads": 16,
+      "total_workloads": 16,
+      "trace_sha256": {
+        "trial-1.jsonl": "292d3d00bb42997bb38b42b775baf99f07395ded06b5f44ec274aeb7493a92fc"
+      },
+      "timing_valid_for_ranking": false,
+      "observed_unqualified_sol_score": 0.6705828071643353
+    }
+  ],
+  "archived_reports": [
+    {
+      "original_path": "kernels/003_lm_head_projection_with_logit_slicing/gpu_processes_full.json",
+      "original_sha256": "c4a0525c64cf7591d8c878ce3f71558f471721015f7cb9e3458a4d1bee773798",
+      "archived_path": "results/2026-09-06/3/diagnostics/gpu_processes_full.json",
+      "archived_sha256": "c4a0525c64cf7591d8c878ce3f71558f471721015f7cb9e3458a4d1bee773798",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/003_lm_head_projection_with_logit_slicing/variation.json",
+      "original_sha256": "3682e823eb854713f1ef7dcbc8a66816d0260e7917beaf9d906686af6af1f774",
+      "archived_path": "results/2026-09-06/3/diagnostics/variation.json",
+      "archived_sha256": "3682e823eb854713f1ef7dcbc8a66816d0260e7917beaf9d906686af6af1f774",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/003_lm_head_projection_with_logit_slicing/selected_algorithms.json",
+      "original_sha256": "55a152fe442b9977fa4eba495838f1fa2b85420da55f59e54441e3d9ef8f01b6",
+      "archived_path": "results/2026-09-06/3/diagnostics/selected_algorithms.json",
+      "archived_sha256": "55a152fe442b9977fa4eba495838f1fa2b85420da55f59e54441e3d9ef8f01b6",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/003_lm_head_projection_with_logit_slicing/tune_initial.json",
+      "original_sha256": "e377d4f14988a848f11c80b3f0ad7ca27b3f1de7a54bcc70146df00198f27815",
+      "archived_path": "results/2026-09-06/3/diagnostics/tune_initial.json",
+      "archived_sha256": "e377d4f14988a848f11c80b3f0ad7ca27b3f1de7a54bcc70146df00198f27815",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/003_lm_head_projection_with_logit_slicing/tune_transposed.json",
+      "original_sha256": "c73c83997b6166d3dc37e9fd6419af7884cfc3a85fea11c308aaefcc3b6c1a42",
+      "archived_path": "results/2026-09-06/3/diagnostics/tune_transposed.json",
+      "archived_sha256": "c73c83997b6166d3dc37e9fd6419af7884cfc3a85fea11c308aaefcc3b6c1a42",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/003_lm_head_projection_with_logit_slicing/tune_remaining.json",
+      "original_sha256": "a30bdfbe7665a2e8d2719d94cfc5fbfd306fe5b68c1d8f537f4ad9f9723409a0",
+      "archived_path": "results/2026-09-06/3/diagnostics/tune_remaining.json",
+      "archived_sha256": "a30bdfbe7665a2e8d2719d94cfc5fbfd306fe5b68c1d8f537f4ad9f9723409a0",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    },
+    {
+      "original_path": "kernels/003_lm_head_projection_with_logit_slicing/leaderboard_snapshot.json",
+      "original_sha256": "631064d0bded6097273a24963bc3f741f2dad3a57fc13edf87c5a707b9c39dc9",
+      "archived_path": "results/2026-09-06/3/diagnostics/leaderboard_snapshot.json",
+      "archived_sha256": "631064d0bded6097273a24963bc3f741f2dad3a57fc13edf87c5a707b9c39dc9",
+      "redaction": null,
+      "normalized_process_name_fields": 0
+    }
+  ]
+}
